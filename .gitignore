@@ -1,0 +1,37 @@
+# 依赖与构建产物
+node_modules/
+**/.vitepress/cache/
+**/.vitepress/dist/
+
+# 模型权重：一律不入库，用下载脚本或 Ollama/llama.cpp 自带缓存
+models/
+*.gguf
+*.safetensors
+*.bin
+*.pth
+*.pt
+
+# 语料本体：只提交 corpus/sources.yaml 与下载脚本（见 writing-principles 第 4 条）
+corpus/raw/
+corpus/**/*.pdf
+corpus/**/*.png
+corpus/**/*.jpg
+corpus/**/*.tif
+
+# Python
+.venv/
+__pycache__/
+*.pyc
+.ipynb_checkpoints/
+
+# 环境与编辑器
+.env
+.env.*
+.DS_Store
+.idea/
+.vscode/*
+!.vscode/extensions.json
+
+# 测量与日志的临时输出
+benchmarks/**/*.tmp
+*.log
