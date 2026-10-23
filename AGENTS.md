@@ -25,7 +25,7 @@
 - `labs/<部分编号>-<部分名>/`：与章节一一对应的可运行代码。
 - `labs/07-gpu-inference/`：云 GPU 实验，**本地（Mac）不要求能跑**。
 - `benchmarks/`：原始测量数据与生成图表的脚本。`benchmarks/estimates/` 放估算类的 CSV 与绘图脚本（PEP 723 + uv，不写进 `package.json`）。
-- `corpus/`：只放 `sources.yaml`（链接、协议、用途）和下载脚本。公开资料也有版权，正文引用时注明协议。
+- `corpus/`：语料清单与流水线。`sources.yaml` 记出处、协议与 `redistributable` 档位；`index.json` 是条款索引，入库；`raw/` 是下载物、节选与合成产物，**不入库**。规则见「写语料的约定」。
 - `eval/`：测试问题集（问题 / 标准答案 / 出处）。
 
 ## 常用命令
@@ -38,9 +38,29 @@ npm run docs:preview  # 预览构建结果
 ./figures/render.sh            # 渲染全部图 + 几何校验
 ./figures/render.sh 1-3 --png  # 只渲染 1-3 开头的图，并导出审阅 PNG
 uv run benchmarks/estimates/plot.py --preview   # 重画定量图
+
+./corpus/fetch.sh --list                          # 语料清单，不联网
+./corpus/fetch.sh                                 # 只下 full 档
+uv run corpus/excerpt.py --all                    # 切 excerpt 档
+uv run corpus/index.py                            # 重建条款索引
+uv run corpus/synthetic/generate.py --clean --validate   # 合成语料 + 自检
 ```
 
 画图的几何校验靠 `fireworks-tech-graph`（装在 `~/.agents/skills/fireworks-tech-graph`，用 `FIREWORKS_GRAPH_SKILL` 覆盖路径）。它要求显式坐标，所以图源是 JSON 而不是 Markdown 指令；`check` 会拦文字截断、标注重叠和连线弯折，但字号是启发式估算，导出 PNG 目视一次仍不可省。
+
+## 写语料的约定
+
+`corpus/` 只解决"资料从哪来、能不能用"，正文怎么写不在这里。
+
+- **三档授权，语义不能混**：`full`（法规、政府文件，可全文入库）、`excerpt`（招股书、事故报告、专利、环评，只节选）、`none`（国标、厂商手册，只记链接）。"免费公开"不等于"可再分发"。
+- **只提交清单与脚本，语料本体不入库。** `sources.yaml` 记出处、协议、`sha256`；`raw/` 已被 `.gitignore` 覆盖，不要 `git add -f`。
+- **节选按形态分档**：长文档 ≤5%，短报告 ≤30% 且 ≤3000 字。每份的上限写在条目的 `excerpt_ratio` 里，`excerpt.py` 超限即报错。
+- **正文用化名，出处留真名**：经营类材料 → `先赚一个亿科技有限公司`；事故类 → `某注塑厂 A`，且不写伤亡细节。人名为"姓 + 某"，身份证号、住址、电话、统一社会信用代码直接删。真实名称只出现在 `sources.yaml`——清单也化名，就没人能核对了。
+- **合成语料只补四类**：规模、权限、版本冲突、脏数据。字段名必须来自 `synthetic/fields.yaml`，且标明 `verbatim`（逐字抄政府范本）还是 `derived`（推导），不许自创"备注"这类万能列。
+- **合成件上跑出的数字不许写成实测。** 标记为"实测"的结论必须跑在真实语料上。
+- **改了生成器先跑 `--validate`**：验份数、字段声明、四类「脏」、同 seed 的确定性。
+- **新增语料要在 `index.py` 的 `AUTHORITY` 里登记效力层级**，否则脚本报错。5.9 的权限过滤靠这个字段。
+- 已知缺口记在 `corpus/GAPS.md`，别在正文里用"以后再补"糊过去。
 
 ## 写图的约定
 
