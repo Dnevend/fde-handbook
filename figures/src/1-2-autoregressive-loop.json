@@ -1,0 +1,123 @@
+{
+  "schema_version": 1,
+  "mode": "architecture",
+  "template_type": "architecture",
+  "style": 4,
+  "quality_profile": "standard",
+  "text_policy": "strict",
+  "width": 960,
+  "height": 520,
+  "title": "生成一个 token 的四个动作",
+  "footer": "训练时整句已知，一次前向能并行算所有位置；推理时第 t+1 个 token 还没采出来，只能串行",
+  "footer_x": 48,
+  "footer_y": 492,
+  "nodes": [
+    {
+      "id": "hidden",
+      "kind": "rect",
+      "x": 120,
+      "y": 130,
+      "width": 300,
+      "height": 74,
+      "label": "取最后一个位置的输出向量",
+      "sublabel": "长度为 hidden 的浮点向量",
+      "fill": "#ffffff",
+      "stroke": "#e5e7eb",
+      "stroke_width": 1.8,
+      "flat": true,
+      "title_size": 20
+    },
+    {
+      "id": "logits",
+      "kind": "rect",
+      "x": 540,
+      "y": 130,
+      "width": 300,
+      "height": 74,
+      "label": "乘输出投影，得到 logits",
+      "sublabel": "Qwen3.5 词表 248,320 个分数",
+      "fill": "#ffffff",
+      "stroke": "#e5e7eb",
+      "stroke_width": 1.8,
+      "flat": true,
+      "title_size": 20
+    },
+    {
+      "id": "sample",
+      "kind": "rect",
+      "x": 540,
+      "y": 330,
+      "width": 300,
+      "height": 74,
+      "label": "按采样策略选一个 token",
+      "sublabel": "temperature / top-p / min-p",
+      "fill": "#fffbeb",
+      "stroke": "#f59e0b",
+      "stroke_width": 1.8,
+      "flat": true,
+      "title_size": 20
+    },
+    {
+      "id": "append",
+      "kind": "rect",
+      "x": 120,
+      "y": 330,
+      "width": 300,
+      "height": 74,
+      "label": "拼到序列末尾，写 KV Cache",
+      "sublabel": "下一步直接复用，不重算",
+      "fill": "#eff6ff",
+      "stroke": "#3b82f6",
+      "stroke_width": 1.8,
+      "flat": true,
+      "title_size": 20
+    },
+    {
+      "id": "note",
+      "kind": "rect",
+      "x": 400,
+      "y": 248,
+      "width": 160,
+      "height": 40,
+      "label": "一步 = 一次前向",
+      "fill": "none",
+      "stroke": "none",
+      "flat": true,
+      "title_size": 20
+    }
+  ],
+  "arrows": [
+    {
+      "id": "a1",
+      "source": "hidden",
+      "target": "logits",
+      "flow": "control",
+      "label": "投影"
+    },
+    {
+      "id": "a2",
+      "source": "logits",
+      "target": "sample",
+      "flow": "control",
+      "source_port": "bottom",
+      "target_port": "top",
+      "label": "概率分布"
+    },
+    {
+      "id": "a3",
+      "source": "sample",
+      "target": "append",
+      "flow": "control",
+      "label": "token id"
+    },
+    {
+      "id": "a4",
+      "source": "append",
+      "target": "hidden",
+      "flow": "control",
+      "source_port": "top",
+      "target_port": "bottom",
+      "label": "下一个位置"
+    }
+  ]
+}

@@ -22,6 +22,16 @@ title: 对话模板（Chat Template）：模板错了模型就会胡言乱语
 
 关键词只有三个：`<|im_start|>` 开始一个回合，角色名紧跟其后，`<|im_end|>` 结束。模型在预训练后经过指令微调（SFT）时，见到的就是这种结构；它靠这些 token 判断"接下来轮到我说话"以及"话说完了该停"。
 
+模板做的事情可以用一句话概括（图 3.3-1）：把上面的消息数组拼成下面那串 token，模型看到的只有后者，它从来没见过"角色"这个概念。
+
+<Figure
+  id="3.3-1"
+  src="/figures/3-3-chat-template.svg"
+  alt="对话模板的翻译过程：system、user、assistant 三条消息经模板拼成一串带特殊 token 的文本，assistant 之后紧跟 think 标记"
+  caption="模板不只管角色，还管正文从哪里开始——橙色那几个标记是模板插入的，不是模型生成的。"
+  source="模板结构以 Qwen3.5-9B 模型卡为准（引用 [2]）；token 串为示意，不是逐字实测输出。"
+/>
+
 `Qwen3.5` 的模板还多一层：默认在 assistant 开头插入 `<think>`，思考结束时输出 `</think>`，两者之间是思考内容，之后才是正文（引用 [\[2\]](#ref-2)）。所以模板不只管角色，还管**思考从哪里开始、正文从哪里开始**。
 
 模板的写法是 Jinja2 模板，和分词器一起存放在模型文件里。GGUF 里是 `tokenizer.chat_template` 这个元数据项（3.1 节实测确认过），HF 的 safetensors 文件里则在 `tokenizer_config.json`。llama.cpp 默认用模型自带的模板，也可以用 `--chat-template` 覆盖（引用 [\[3\]](#ref-3)）。

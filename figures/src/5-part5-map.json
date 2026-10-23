@@ -1,0 +1,213 @@
+{
+  "schema_version": 1,
+  "mode": "flowchart",
+  "template_type": "flowchart",
+  "style": 4,
+  "quality_profile": "standard",
+  "text_policy": "strict",
+  "width": 960,
+  "height": 430,
+  "title": "第五部分：离线入库与在线问答",
+  "subtitle": "两条流水线，在索引处交汇",
+  "footer": "失败大多发生在这条链路上，而不是模型本身。",
+  "footer_x": 48,
+  "footer_y": 404,
+  "nodes": [
+    {
+      "id": "n00",
+      "kind": "rect",
+      "x": 32.0,
+      "y": 150,
+      "width": 160,
+      "height": 64,
+      "type_label": "5.1",
+      "label": "为什么用 RAG",
+      "fill": "#ffffff",
+      "stroke": "#e5e7eb",
+      "stroke_width": 1.8,
+      "flat": true,
+      "title_size": 18,
+      "sublabel": "对比微调与长上下文"
+    },
+    {
+      "id": "n01",
+      "kind": "rect",
+      "x": 216.0,
+      "y": 150,
+      "width": 160,
+      "height": 64,
+      "type_label": "5.2",
+      "label": "文档解析",
+      "fill": "#ffffff",
+      "stroke": "#e5e7eb",
+      "stroke_width": 1.8,
+      "flat": true,
+      "title_size": 18,
+      "sublabel": "PDF / 表格 / 扫描件"
+    },
+    {
+      "id": "n02",
+      "kind": "rect",
+      "x": 400.0,
+      "y": 150,
+      "width": 160,
+      "height": 64,
+      "type_label": "5.3",
+      "label": "切分",
+      "fill": "#ffffff",
+      "stroke": "#e5e7eb",
+      "stroke_width": 1.8,
+      "flat": true,
+      "title_size": 18,
+      "sublabel": "长度、结构与语义"
+    },
+    {
+      "id": "n03",
+      "kind": "rect",
+      "x": 584.0,
+      "y": 150,
+      "width": 160,
+      "height": 64,
+      "type_label": "5.4",
+      "label": "Embedding",
+      "fill": "#ffffff",
+      "stroke": "#e5e7eb",
+      "stroke_width": 1.8,
+      "flat": true,
+      "title_size": 18,
+      "sublabel": "向量怎么表示语义"
+    },
+    {
+      "id": "n04",
+      "kind": "rect",
+      "x": 768.0,
+      "y": 150,
+      "width": 160,
+      "height": 64,
+      "type_label": "5.5",
+      "label": "向量库与索引",
+      "fill": "#ffffff",
+      "stroke": "#e5e7eb",
+      "stroke_width": 1.8,
+      "flat": true,
+      "title_size": 18,
+      "sublabel": "HNSW 为什么快"
+    },
+    {
+      "id": "n10",
+      "kind": "rect",
+      "x": 768,
+      "y": 290,
+      "width": 160,
+      "height": 64,
+      "type_label": "5.6",
+      "label": "混合检索",
+      "fill": "#ffffff",
+      "stroke": "#e5e7eb",
+      "stroke_width": 1.8,
+      "flat": true,
+      "title_size": 18,
+      "sublabel": "BM25 与 RRF"
+    },
+    {
+      "id": "n11",
+      "kind": "rect",
+      "x": 584,
+      "y": 290,
+      "width": 160,
+      "height": 64,
+      "type_label": "5.7",
+      "label": "重排",
+      "fill": "#ffffff",
+      "stroke": "#e5e7eb",
+      "stroke_width": 1.8,
+      "flat": true,
+      "title_size": 18,
+      "sublabel": "把对的那块提到前面"
+    },
+    {
+      "id": "n12",
+      "kind": "rect",
+      "x": 400,
+      "y": 290,
+      "width": 160,
+      "height": 64,
+      "type_label": "5.8",
+      "label": "生成",
+      "fill": "#ffffff",
+      "stroke": "#e5e7eb",
+      "stroke_width": 1.8,
+      "flat": true,
+      "title_size": 18,
+      "sublabel": "提示词与拒答"
+    },
+    {
+      "id": "n13",
+      "kind": "rect",
+      "x": 216,
+      "y": 290,
+      "width": 160,
+      "height": 64,
+      "type_label": "5.9",
+      "label": "元数据与更新",
+      "fill": "#ffffff",
+      "stroke": "#e5e7eb",
+      "stroke_width": 1.8,
+      "flat": true,
+      "title_size": 18,
+      "sublabel": "权限过滤与增量"
+    }
+  ],
+  "arrows": [
+    {
+      "id": "e00",
+      "source": "n00",
+      "target": "n01",
+      "flow": "control"
+    },
+    {
+      "id": "e01",
+      "source": "n01",
+      "target": "n02",
+      "flow": "control"
+    },
+    {
+      "id": "e02",
+      "source": "n02",
+      "target": "n03",
+      "flow": "control"
+    },
+    {
+      "id": "e03",
+      "source": "n03",
+      "target": "n04",
+      "flow": "control"
+    },
+    {
+      "id": "e10",
+      "source": "n11",
+      "target": "n10",
+      "flow": "control"
+    },
+    {
+      "id": "e11",
+      "source": "n12",
+      "target": "n11",
+      "flow": "control"
+    },
+    {
+      "id": "e12",
+      "source": "n13",
+      "target": "n12",
+      "flow": "control"
+    },
+    {
+      "id": "join",
+      "source": "n04",
+      "target": "n10",
+      "flow": "control",
+      "source_port": "bottom",
+      "target_port": "top"
+    }
+  ]
+}

@@ -1,0 +1,244 @@
+{
+  "schema_version": 1,
+  "mode": "architecture",
+  "template_type": "architecture",
+  "style": 4,
+  "quality_profile": "standard",
+  "text_policy": "strict",
+  "width": 960,
+  "height": 460,
+  "title": "GQA：多个 Query 头共享一组 K/V",
+  "subtitle": "KV 头数是 KV Cache 公式里唯一的架构乘数",
+  "footer": "以 Qwen3-8B 为例：32 个 Q 头、8 个 KV 头，KV Cache 是 MHA 的四分之一、MQA 的八倍",
+  "footer_x": 48,
+  "footer_y": 436,
+  "nodes": [
+    {
+      "id": "q0",
+      "kind": "rect",
+      "x": 228.0,
+      "y": 150,
+      "width": 56,
+      "height": 44,
+      "label": "Q",
+      "fill": "#eff6ff",
+      "stroke": "#3b82f6",
+      "stroke_width": 1.4,
+      "flat": true,
+      "title_size": 16
+    },
+    {
+      "id": "q1",
+      "kind": "rect",
+      "x": 292.0,
+      "y": 150,
+      "width": 56,
+      "height": 44,
+      "label": "Q",
+      "fill": "#eff6ff",
+      "stroke": "#3b82f6",
+      "stroke_width": 1.4,
+      "flat": true,
+      "title_size": 16
+    },
+    {
+      "id": "q2",
+      "kind": "rect",
+      "x": 356.0,
+      "y": 150,
+      "width": 56,
+      "height": 44,
+      "label": "Q",
+      "fill": "#eff6ff",
+      "stroke": "#3b82f6",
+      "stroke_width": 1.4,
+      "flat": true,
+      "title_size": 16
+    },
+    {
+      "id": "q3",
+      "kind": "rect",
+      "x": 420.0,
+      "y": 150,
+      "width": 56,
+      "height": 44,
+      "label": "Q",
+      "fill": "#eff6ff",
+      "stroke": "#3b82f6",
+      "stroke_width": 1.4,
+      "flat": true,
+      "title_size": 16
+    },
+    {
+      "id": "q4",
+      "kind": "rect",
+      "x": 484.0,
+      "y": 150,
+      "width": 56,
+      "height": 44,
+      "label": "Q",
+      "fill": "#eff6ff",
+      "stroke": "#3b82f6",
+      "stroke_width": 1.4,
+      "flat": true,
+      "title_size": 16
+    },
+    {
+      "id": "q5",
+      "kind": "rect",
+      "x": 548.0,
+      "y": 150,
+      "width": 56,
+      "height": 44,
+      "label": "Q",
+      "fill": "#eff6ff",
+      "stroke": "#3b82f6",
+      "stroke_width": 1.4,
+      "flat": true,
+      "title_size": 16
+    },
+    {
+      "id": "q6",
+      "kind": "rect",
+      "x": 612.0,
+      "y": 150,
+      "width": 56,
+      "height": 44,
+      "label": "Q",
+      "fill": "#eff6ff",
+      "stroke": "#3b82f6",
+      "stroke_width": 1.4,
+      "flat": true,
+      "title_size": 16
+    },
+    {
+      "id": "q7",
+      "kind": "rect",
+      "x": 676.0,
+      "y": 150,
+      "width": 56,
+      "height": 44,
+      "label": "Q",
+      "fill": "#eff6ff",
+      "stroke": "#3b82f6",
+      "stroke_width": 1.4,
+      "flat": true,
+      "title_size": 16
+    },
+    {
+      "id": "kv0",
+      "kind": "rect",
+      "x": 277.0,
+      "y": 300,
+      "width": 150,
+      "height": 48,
+      "label": "KV 组 1",
+      "fill": "#f0fdf4",
+      "stroke": "#16a34a",
+      "stroke_width": 1.4,
+      "flat": true,
+      "title_size": 16
+    },
+    {
+      "id": "kv1",
+      "kind": "rect",
+      "x": 533.0,
+      "y": 300,
+      "width": 150,
+      "height": 48,
+      "label": "KV 组 2",
+      "fill": "#f0fdf4",
+      "stroke": "#16a34a",
+      "stroke_width": 1.4,
+      "flat": true,
+      "title_size": 16
+    },
+    {
+      "id": "lbl-q",
+      "kind": "rect",
+      "x": 60,
+      "y": 110,
+      "width": 300,
+      "height": 26,
+      "fill": "none",
+      "stroke": "none",
+      "label": "32 个 Query 头（图中取 8 个）",
+      "title_size": 16
+    },
+    {
+      "id": "lbl-kv",
+      "kind": "rect",
+      "x": 60,
+      "y": 368,
+      "width": 300,
+      "height": 26,
+      "fill": "none",
+      "stroke": "none",
+      "label": "8 组 KV 头 → 4 个 Q 共享一组",
+      "title_size": 16
+    },
+    {
+      "id": "note",
+      "kind": "rect",
+      "x": 560,
+      "y": 360,
+      "width": 360,
+      "height": 60,
+      "fill": "none",
+      "stroke": "none",
+      "label": "MHA 是 1:1，MQA 是全部共享 1 组",
+      "sublabel": "GQA 在中间：同样的显存能装 4 倍上下文",
+      "title_size": 16
+    }
+  ],
+  "arrows": [
+    {
+      "id": "a0",
+      "source": "q0",
+      "target": "kv0",
+      "flow": "read"
+    },
+    {
+      "id": "a1",
+      "source": "q1",
+      "target": "kv0",
+      "flow": "read"
+    },
+    {
+      "id": "a2",
+      "source": "q2",
+      "target": "kv0",
+      "flow": "read"
+    },
+    {
+      "id": "a3",
+      "source": "q3",
+      "target": "kv0",
+      "flow": "read"
+    },
+    {
+      "id": "a4",
+      "source": "q4",
+      "target": "kv1",
+      "flow": "read"
+    },
+    {
+      "id": "a5",
+      "source": "q5",
+      "target": "kv1",
+      "flow": "read"
+    },
+    {
+      "id": "a6",
+      "source": "q6",
+      "target": "kv1",
+      "flow": "read"
+    },
+    {
+      "id": "a7",
+      "source": "q7",
+      "target": "kv1",
+      "flow": "read"
+    }
+  ]
+}

@@ -1,0 +1,189 @@
+{
+  "schema_version": 1,
+  "mode": "architecture",
+  "template_type": "architecture",
+  "style": 4,
+  "quality_profile": "standard",
+  "text_policy": "strict",
+  "width": 960,
+  "height": 300,
+  "title": "八部分，一条交付链路",
+  "subtitle": "每一部分都以上一部分的失败为起点",
+  "footer": "蓝色三块是主线：讲清原理、搭出链路、交出去；其余四块是主线上绕不开的取舍",
+  "footer_x": 48,
+  "footer_y": 278,
+  "nodes": [
+    {
+      "id": "p0",
+      "kind": "rect",
+      "x": 21,
+      "y": 150,
+      "width": 106,
+      "height": 72,
+      "type_label": "第一",
+      "label": "推理原理",
+      "sublabel": "为什么这么慢",
+      "fill": "#eff6ff",
+      "stroke": "#3b82f6",
+      "stroke_width": 1.6,
+      "flat": true,
+      "title_size": 16
+    },
+    {
+      "id": "p1",
+      "kind": "rect",
+      "x": 137,
+      "y": 150,
+      "width": 106,
+      "height": 72,
+      "type_label": "第二",
+      "label": "模型选型",
+      "sublabel": "选哪个、多大",
+      "fill": "#ffffff",
+      "stroke": "#e5e7eb",
+      "stroke_width": 1.6,
+      "flat": true,
+      "title_size": 16
+    },
+    {
+      "id": "p2",
+      "kind": "rect",
+      "x": 253,
+      "y": 150,
+      "width": 106,
+      "height": 72,
+      "type_label": "第三",
+      "label": "本地部署",
+      "sublabel": "怎么跑起来",
+      "fill": "#ffffff",
+      "stroke": "#e5e7eb",
+      "stroke_width": 1.6,
+      "flat": true,
+      "title_size": 16
+    },
+    {
+      "id": "p3",
+      "kind": "rect",
+      "x": 369,
+      "y": 150,
+      "width": 106,
+      "height": 72,
+      "type_label": "第四",
+      "label": "量化",
+      "sublabel": "压到什么程度",
+      "fill": "#ffffff",
+      "stroke": "#e5e7eb",
+      "stroke_width": 1.6,
+      "flat": true,
+      "title_size": 16
+    },
+    {
+      "id": "p4",
+      "kind": "rect",
+      "x": 485,
+      "y": 150,
+      "width": 106,
+      "height": 72,
+      "type_label": "第五",
+      "label": "RAG 全链路",
+      "sublabel": "凭什么答对",
+      "fill": "#eff6ff",
+      "stroke": "#3b82f6",
+      "stroke_width": 1.6,
+      "flat": true,
+      "title_size": 16
+    },
+    {
+      "id": "p5",
+      "kind": "rect",
+      "x": 601,
+      "y": 150,
+      "width": 106,
+      "height": 72,
+      "type_label": "第六",
+      "label": "评估与调优",
+      "sublabel": "好多少",
+      "fill": "#ffffff",
+      "stroke": "#e5e7eb",
+      "stroke_width": 1.6,
+      "flat": true,
+      "title_size": 16
+    },
+    {
+      "id": "p6",
+      "kind": "rect",
+      "x": 717,
+      "y": 150,
+      "width": 106,
+      "height": 72,
+      "type_label": "第七",
+      "label": "GPU 加速",
+      "sublabel": "一台够不够",
+      "fill": "#ffffff",
+      "stroke": "#e5e7eb",
+      "stroke_width": 1.6,
+      "flat": true,
+      "title_size": 16
+    },
+    {
+      "id": "p7",
+      "kind": "rect",
+      "x": 833,
+      "y": 150,
+      "width": 106,
+      "height": 72,
+      "type_label": "第八",
+      "label": "工程交付",
+      "sublabel": "怎么交出去",
+      "fill": "#eff6ff",
+      "stroke": "#3b82f6",
+      "stroke_width": 1.6,
+      "flat": true,
+      "title_size": 16
+    }
+  ],
+  "arrows": [
+    {
+      "id": "e1",
+      "source": "p0",
+      "target": "p1",
+      "flow": "control"
+    },
+    {
+      "id": "e2",
+      "source": "p1",
+      "target": "p2",
+      "flow": "control"
+    },
+    {
+      "id": "e3",
+      "source": "p2",
+      "target": "p3",
+      "flow": "control"
+    },
+    {
+      "id": "e4",
+      "source": "p3",
+      "target": "p4",
+      "flow": "control"
+    },
+    {
+      "id": "e5",
+      "source": "p4",
+      "target": "p5",
+      "flow": "control"
+    },
+    {
+      "id": "e6",
+      "source": "p5",
+      "target": "p6",
+      "flow": "control"
+    },
+    {
+      "id": "e7",
+      "source": "p6",
+      "target": "p7",
+      "flow": "control"
+    }
+  ]
+}

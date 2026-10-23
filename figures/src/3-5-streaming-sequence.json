@@ -1,0 +1,200 @@
+{
+  "schema_version": 1,
+  "mode": "sequence",
+  "template_type": "sequence",
+  "style": 4,
+  "quality_profile": "standard",
+  "text_policy": "strict",
+  "width": 960,
+  "height": 560,
+  "title": "一次流式请求的时序",
+  "subtitle": "TTFT 覆盖前三个回合，后续每个分片只占一个 TPOT",
+  "footer": "第三个回合之后才开始产生内容：prefill 越短、排队越少，第一个字来得越快",
+  "footer_x": 48,
+  "footer_y": 536,
+  "nodes": [
+    {
+      "id": "h0",
+      "kind": "rect",
+      "x": 110,
+      "y": 112,
+      "width": 180,
+      "height": 48,
+      "label": "客户端",
+      "fill": "#ffffff",
+      "stroke": "#e5e7eb",
+      "stroke_width": 1.6,
+      "flat": true,
+      "title_size": 16
+    },
+    {
+      "id": "l0",
+      "kind": "rect",
+      "x": 199,
+      "y": 170,
+      "width": 2,
+      "height": 360,
+      "fill": "#d1d5db",
+      "stroke": "#d1d5db",
+      "stroke_width": 0,
+      "flat": true
+    },
+    {
+      "id": "h1",
+      "kind": "rect",
+      "x": 390,
+      "y": 112,
+      "width": 180,
+      "height": 48,
+      "label": "llama-server",
+      "fill": "#ffffff",
+      "stroke": "#e5e7eb",
+      "stroke_width": 1.6,
+      "flat": true,
+      "title_size": 16
+    },
+    {
+      "id": "l1",
+      "kind": "rect",
+      "x": 479,
+      "y": 170,
+      "width": 2,
+      "height": 360,
+      "fill": "#d1d5db",
+      "stroke": "#d1d5db",
+      "stroke_width": 0,
+      "flat": true
+    },
+    {
+      "id": "h2",
+      "kind": "rect",
+      "x": 670,
+      "y": 112,
+      "width": 180,
+      "height": 48,
+      "label": "推理引擎",
+      "fill": "#ffffff",
+      "stroke": "#e5e7eb",
+      "stroke_width": 1.6,
+      "flat": true,
+      "title_size": 16
+    },
+    {
+      "id": "l2",
+      "kind": "rect",
+      "x": 759,
+      "y": 170,
+      "width": 2,
+      "height": 360,
+      "fill": "#d1d5db",
+      "stroke": "#d1d5db",
+      "stroke_width": 0,
+      "flat": true
+    },
+    {
+      "id": "brk",
+      "kind": "rect",
+      "x": 800,
+      "y": 200,
+      "width": 2,
+      "height": 150,
+      "fill": "#f59e0b",
+      "stroke": "#f59e0b",
+      "stroke_width": 0,
+      "flat": true
+    },
+    {
+      "id": "brk-t",
+      "kind": "rect",
+      "x": 794,
+      "y": 199,
+      "width": 12,
+      "height": 2,
+      "fill": "#f59e0b",
+      "stroke": "#f59e0b",
+      "stroke_width": 0,
+      "flat": true
+    },
+    {
+      "id": "brk-b",
+      "kind": "rect",
+      "x": 794,
+      "y": 349,
+      "width": 12,
+      "height": 2,
+      "fill": "#f59e0b",
+      "stroke": "#f59e0b",
+      "stroke_width": 0,
+      "flat": true
+    },
+    {
+      "id": "brk-l",
+      "kind": "rect",
+      "x": 808,
+      "y": 238,
+      "width": 140,
+      "height": 70,
+      "fill": "none",
+      "stroke": "none",
+      "label": "TTFT",
+      "sublabel": "排队+prefill",
+      "title_size": 14
+    }
+  ],
+  "arrows": [
+    {
+      "id": "m0",
+      "x1": 206,
+      "y1": 200,
+      "x2": 474,
+      "y2": 200,
+      "flow": "control",
+      "label": "POST /v1/chat/completions"
+    },
+    {
+      "id": "m1",
+      "x1": 486,
+      "y1": 250,
+      "x2": 754,
+      "y2": 250,
+      "flow": "control",
+      "label": "套模板 + tokenize → prefill"
+    },
+    {
+      "id": "m2",
+      "x1": 754,
+      "y1": 300,
+      "x2": 486,
+      "y2": 300,
+      "flow": "control",
+      "label": "第一个 token"
+    },
+    {
+      "id": "m3",
+      "x1": 474,
+      "y1": 350,
+      "x2": 206,
+      "y2": 350,
+      "flow": "control",
+      "label": "SSE：第一个分片到达（TTFT）"
+    },
+    {
+      "id": "m4",
+      "x1": 474,
+      "y1": 400,
+      "x2": 206,
+      "y2": 400,
+      "flow": "control",
+      "label": "SSE：后续分片"
+    },
+    {
+      "id": "m5",
+      "x1": 474,
+      "y1": 455,
+      "x2": 206,
+      "y2": 455,
+      "flow": "control",
+      "label": "SSE：[DONE] + usage"
+    }
+  ]
+}

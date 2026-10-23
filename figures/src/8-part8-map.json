@@ -1,0 +1,169 @@
+{
+  "schema_version": 1,
+  "mode": "flowchart",
+  "template_type": "flowchart",
+  "style": 4,
+  "quality_profile": "standard",
+  "text_policy": "strict",
+  "width": 960,
+  "height": 430,
+  "title": "第八部分：从跑起来到交出去",
+  "subtitle": "能跑不是交付，能被别人接手才是",
+  "footer": "这一部分的验收标准是：换一个人来，照文档能重装一遍。",
+  "footer_x": 48,
+  "footer_y": 404,
+  "nodes": [
+    {
+      "id": "n00",
+      "kind": "rect",
+      "x": 32.0,
+      "y": 150,
+      "width": 160,
+      "height": 64,
+      "type_label": "8.1",
+      "label": "服务架构",
+      "fill": "#ffffff",
+      "stroke": "#e5e7eb",
+      "stroke_width": 1.8,
+      "flat": true,
+      "title_size": 18,
+      "sublabel": "流式与编排"
+    },
+    {
+      "id": "n01",
+      "kind": "rect",
+      "x": 216.0,
+      "y": 150,
+      "width": 160,
+      "height": 64,
+      "type_label": "8.2",
+      "label": "离线部署",
+      "fill": "#ffffff",
+      "stroke": "#e5e7eb",
+      "stroke_width": 1.8,
+      "flat": true,
+      "title_size": 18,
+      "sublabel": "断网怎么验"
+    },
+    {
+      "id": "n02",
+      "kind": "rect",
+      "x": 400.0,
+      "y": 150,
+      "width": 160,
+      "height": 64,
+      "type_label": "8.3",
+      "label": "压测与验收",
+      "fill": "#ffffff",
+      "stroke": "#e5e7eb",
+      "stroke_width": 1.8,
+      "flat": true,
+      "title_size": 18,
+      "sublabel": "容量怎么承诺"
+    },
+    {
+      "id": "n03",
+      "kind": "rect",
+      "x": 584.0,
+      "y": 150,
+      "width": 160,
+      "height": 64,
+      "type_label": "8.4",
+      "label": "可观测性",
+      "fill": "#ffffff",
+      "stroke": "#e5e7eb",
+      "stroke_width": 1.8,
+      "flat": true,
+      "title_size": 18,
+      "sublabel": "出问题先看哪里"
+    },
+    {
+      "id": "n10",
+      "kind": "rect",
+      "x": 768,
+      "y": 290,
+      "width": 160,
+      "height": 64,
+      "type_label": "8.5",
+      "label": "安全与权限",
+      "fill": "#ffffff",
+      "stroke": "#e5e7eb",
+      "stroke_width": 1.8,
+      "flat": true,
+      "title_size": 18,
+      "sublabel": "数据不出内网"
+    },
+    {
+      "id": "n11",
+      "kind": "rect",
+      "x": 584,
+      "y": 290,
+      "width": 160,
+      "height": 64,
+      "type_label": "8.6",
+      "label": "迁到 GPU",
+      "fill": "#ffffff",
+      "stroke": "#e5e7eb",
+      "stroke_width": 1.8,
+      "flat": true,
+      "title_size": 18,
+      "sublabel": "环境差异清单"
+    },
+    {
+      "id": "n12",
+      "kind": "rect",
+      "x": 400,
+      "y": 290,
+      "width": 160,
+      "height": 64,
+      "type_label": "8.7",
+      "label": "交付物",
+      "fill": "#ffffff",
+      "stroke": "#e5e7eb",
+      "stroke_width": 1.8,
+      "flat": true,
+      "title_size": 18,
+      "sublabel": "文档、培训、规范"
+    }
+  ],
+  "arrows": [
+    {
+      "id": "e00",
+      "source": "n00",
+      "target": "n01",
+      "flow": "control"
+    },
+    {
+      "id": "e01",
+      "source": "n01",
+      "target": "n02",
+      "flow": "control"
+    },
+    {
+      "id": "e02",
+      "source": "n02",
+      "target": "n03",
+      "flow": "control"
+    },
+    {
+      "id": "e10",
+      "source": "n11",
+      "target": "n10",
+      "flow": "control"
+    },
+    {
+      "id": "e11",
+      "source": "n12",
+      "target": "n11",
+      "flow": "control"
+    },
+    {
+      "id": "join",
+      "source": "n03",
+      "target": "n10",
+      "flow": "control",
+      "source_port": "bottom",
+      "target_port": "top"
+    }
+  ]
+}

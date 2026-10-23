@@ -1,0 +1,147 @@
+{
+  "schema_version": 1,
+  "mode": "flowchart",
+  "template_type": "flowchart",
+  "style": 4,
+  "quality_profile": "standard",
+  "text_policy": "strict",
+  "width": 960,
+  "height": 430,
+  "title": "第二部分：从读名字到拍板",
+  "subtitle": "先拆名字，再算代价，最后收成一张表",
+  "footer": "目标：面对陌生场景，半小时内给出「用哪个模型、哪个量化、大概多快」，并说清理由。",
+  "footer_x": 48,
+  "footer_y": 404,
+  "nodes": [
+    {
+      "id": "n00",
+      "kind": "rect",
+      "x": 32.0,
+      "y": 150,
+      "width": 160,
+      "height": 64,
+      "type_label": "2.1",
+      "label": "模型家族",
+      "fill": "#ffffff",
+      "stroke": "#e5e7eb",
+      "stroke_width": 1.8,
+      "flat": true,
+      "title_size": 18,
+      "sublabel": "三个变体，别靠后缀猜"
+    },
+    {
+      "id": "n01",
+      "kind": "rect",
+      "x": 216.0,
+      "y": 150,
+      "width": 160,
+      "height": 64,
+      "type_label": "2.2",
+      "label": "参数量取舍",
+      "fill": "#ffffff",
+      "stroke": "#e5e7eb",
+      "stroke_width": 1.8,
+      "flat": true,
+      "title_size": 18,
+      "sublabel": "多 5B 买到了什么"
+    },
+    {
+      "id": "n02",
+      "kind": "rect",
+      "x": 400.0,
+      "y": 150,
+      "width": 160,
+      "height": 64,
+      "type_label": "2.3",
+      "label": "Dense 与 MoE",
+      "fill": "#ffffff",
+      "stroke": "#e5e7eb",
+      "stroke_width": 1.8,
+      "flat": true,
+      "title_size": 18,
+      "sublabel": "总参数与激活参数"
+    },
+    {
+      "id": "n10",
+      "kind": "rect",
+      "x": 768,
+      "y": 290,
+      "width": 160,
+      "height": 64,
+      "type_label": "2.4",
+      "label": "上下文与协议",
+      "fill": "#ffffff",
+      "stroke": "#e5e7eb",
+      "stroke_width": 1.8,
+      "flat": true,
+      "title_size": 18,
+      "sublabel": "标称窗口不等于有效"
+    },
+    {
+      "id": "n11",
+      "kind": "rect",
+      "x": 584,
+      "y": 290,
+      "width": 160,
+      "height": 64,
+      "type_label": "2.5",
+      "label": "榜单怎么看",
+      "fill": "#ffffff",
+      "stroke": "#e5e7eb",
+      "stroke_width": 1.8,
+      "flat": true,
+      "title_size": 18,
+      "sublabel": "筛候选，别当决策依据"
+    },
+    {
+      "id": "n12",
+      "kind": "rect",
+      "x": 400,
+      "y": 290,
+      "width": 160,
+      "height": 64,
+      "type_label": "2.6",
+      "label": "选型方法论",
+      "fill": "#ffffff",
+      "stroke": "#e5e7eb",
+      "stroke_width": 1.8,
+      "flat": true,
+      "title_size": 18,
+      "sublabel": "六步走到结论"
+    }
+  ],
+  "arrows": [
+    {
+      "id": "e00",
+      "source": "n00",
+      "target": "n01",
+      "flow": "control"
+    },
+    {
+      "id": "e01",
+      "source": "n01",
+      "target": "n02",
+      "flow": "control"
+    },
+    {
+      "id": "e10",
+      "source": "n11",
+      "target": "n10",
+      "flow": "control"
+    },
+    {
+      "id": "e11",
+      "source": "n12",
+      "target": "n11",
+      "flow": "control"
+    },
+    {
+      "id": "join",
+      "source": "n02",
+      "target": "n10",
+      "flow": "control",
+      "source_port": "bottom",
+      "target_port": "top"
+    }
+  ]
+}

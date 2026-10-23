@@ -1,0 +1,218 @@
+{
+  "schema_version": 1,
+  "mode": "architecture",
+  "template_type": "architecture",
+  "style": 4,
+  "quality_profile": "standard",
+  "text_policy": "strict",
+  "width": 960,
+  "height": 460,
+  "title": "两条流水线，一个交汇点",
+  "footer": "离线侧怕切分丢了语义，在线侧怕检索回来的块答不了问题",
+  "footer_x": 48,
+  "footer_y": 436,
+  "containers": [
+    {
+      "id": "offline",
+      "x": 40,
+      "y": 96,
+      "width": 900,
+      "height": 122,
+      "label": "离线入库：文档进来时跑一次，或定期增量",
+      "stroke": "#e5e7eb",
+      "fill": "none"
+    },
+    {
+      "id": "online",
+      "x": 40,
+      "y": 300,
+      "width": 900,
+      "height": 104,
+      "label": "在线问答：每次提问跑一次",
+      "stroke": "#e5e7eb",
+      "fill": "none"
+    }
+  ],
+  "nodes": [
+    {
+      "id": "parse",
+      "kind": "rect",
+      "x": 70,
+      "y": 132,
+      "width": 170,
+      "height": 60,
+      "label": "解析文档",
+      "sublabel": "PDF / Word / 扫描件",
+      "fill": "#ffffff",
+      "stroke": "#e5e7eb",
+      "flat": true,
+      "title_size": 20
+    },
+    {
+      "id": "split",
+      "kind": "rect",
+      "x": 290,
+      "y": 132,
+      "width": 170,
+      "height": 60,
+      "label": "切分",
+      "sublabel": "按长度 / 结构 / 语义",
+      "fill": "#ffffff",
+      "stroke": "#e5e7eb",
+      "flat": true,
+      "title_size": 20
+    },
+    {
+      "id": "embed",
+      "kind": "rect",
+      "x": 510,
+      "y": 132,
+      "width": 170,
+      "height": 60,
+      "label": "向量化",
+      "sublabel": "每块算一个稠密向量",
+      "fill": "#ffffff",
+      "stroke": "#e5e7eb",
+      "flat": true,
+      "title_size": 20
+    },
+    {
+      "id": "index",
+      "kind": "rect",
+      "x": 405,
+      "y": 232,
+      "width": 190,
+      "height": 54,
+      "label": "向量索引 + 元数据",
+      "sublabel": "文档名 / 页码 / 版本 / 权限",
+      "fill": "#eff6ff",
+      "stroke": "#3b82f6",
+      "stroke_width": 1.8,
+      "flat": true,
+      "title_size": 20
+    },
+    {
+      "id": "question",
+      "kind": "rect",
+      "x": 70,
+      "y": 326,
+      "width": 140,
+      "height": 56,
+      "label": "用户问题",
+      "fill": "#ffffff",
+      "stroke": "#e5e7eb",
+      "flat": true,
+      "title_size": 20
+    },
+    {
+      "id": "rewrite",
+      "kind": "rect",
+      "x": 250,
+      "y": 326,
+      "width": 140,
+      "height": 56,
+      "label": "改写与扩展",
+      "fill": "#ffffff",
+      "stroke": "#e5e7eb",
+      "flat": true,
+      "title_size": 20
+    },
+    {
+      "id": "retrieve",
+      "kind": "rect",
+      "x": 430,
+      "y": 326,
+      "width": 140,
+      "height": 56,
+      "label": "检索",
+      "sublabel": "向量 + 关键词",
+      "fill": "#eff6ff",
+      "stroke": "#3b82f6",
+      "stroke_width": 1.8,
+      "flat": true,
+      "title_size": 20
+    },
+    {
+      "id": "rerank",
+      "kind": "rect",
+      "x": 610,
+      "y": 326,
+      "width": 140,
+      "height": 56,
+      "label": "合并与重排",
+      "fill": "#ffffff",
+      "stroke": "#e5e7eb",
+      "flat": true,
+      "title_size": 20
+    },
+    {
+      "id": "generate",
+      "kind": "rect",
+      "x": 790,
+      "y": 326,
+      "width": 140,
+      "height": 56,
+      "label": "生成",
+      "sublabel": "附引用，流式返回",
+      "fill": "#fffbeb",
+      "stroke": "#f59e0b",
+      "stroke_width": 1.8,
+      "flat": true,
+      "title_size": 20
+    }
+  ],
+  "arrows": [
+    {
+      "id": "a1",
+      "source": "parse",
+      "target": "split",
+      "flow": "control"
+    },
+    {
+      "id": "a2",
+      "source": "split",
+      "target": "embed",
+      "flow": "control"
+    },
+    {
+      "id": "a3",
+      "source": "embed",
+      "target": "index",
+      "flow": "data",
+      "label": "写入",
+      "source_port": "bottom",
+      "target_port": "top"
+    },
+    {
+      "id": "a4",
+      "source": "question",
+      "target": "rewrite",
+      "flow": "control"
+    },
+    {
+      "id": "a5",
+      "source": "rewrite",
+      "target": "retrieve",
+      "flow": "control"
+    },
+    {
+      "id": "a6",
+      "source": "index",
+      "target": "retrieve",
+      "flow": "read",
+      "label": "检索时读"
+    },
+    {
+      "id": "a7",
+      "source": "retrieve",
+      "target": "rerank",
+      "flow": "control"
+    },
+    {
+      "id": "a8",
+      "source": "rerank",
+      "target": "generate",
+      "flow": "control"
+    }
+  ]
+}

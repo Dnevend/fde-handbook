@@ -1,0 +1,169 @@
+{
+  "schema_version": 1,
+  "mode": "flowchart",
+  "template_type": "flowchart",
+  "style": 4,
+  "quality_profile": "standard",
+  "text_policy": "strict",
+  "width": 960,
+  "height": 430,
+  "title": "第三部分：从文件到可测的服务",
+  "subtitle": "先能加载，再能对话，最后能测",
+  "footer": "实验代码在 labs/03-deployment/，依赖只有 OpenAI 官方 SDK。",
+  "footer_x": 48,
+  "footer_y": 404,
+  "nodes": [
+    {
+      "id": "n00",
+      "kind": "rect",
+      "x": 32.0,
+      "y": 150,
+      "width": 160,
+      "height": 64,
+      "type_label": "3.1",
+      "label": "模型格式",
+      "fill": "#ffffff",
+      "stroke": "#e5e7eb",
+      "stroke_width": 1.8,
+      "flat": true,
+      "title_size": 18,
+      "sublabel": "文件怎么组织"
+    },
+    {
+      "id": "n01",
+      "kind": "rect",
+      "x": 216.0,
+      "y": 150,
+      "width": 160,
+      "height": 64,
+      "type_label": "3.2",
+      "label": "推理引擎",
+      "fill": "#ffffff",
+      "stroke": "#e5e7eb",
+      "stroke_width": 1.8,
+      "flat": true,
+      "title_size": 18,
+      "sublabel": "四个引擎怎么选"
+    },
+    {
+      "id": "n02",
+      "kind": "rect",
+      "x": 400.0,
+      "y": 150,
+      "width": 160,
+      "height": 64,
+      "type_label": "3.3",
+      "label": "对话模板",
+      "fill": "#ffffff",
+      "stroke": "#e5e7eb",
+      "stroke_width": 1.8,
+      "flat": true,
+      "title_size": 18,
+      "sublabel": "模板错就胡言乱语"
+    },
+    {
+      "id": "n03",
+      "kind": "rect",
+      "x": 584.0,
+      "y": 150,
+      "width": 160,
+      "height": 64,
+      "type_label": "3.4",
+      "label": "采样参数",
+      "fill": "#ffffff",
+      "stroke": "#e5e7eb",
+      "stroke_width": 1.8,
+      "flat": true,
+      "title_size": 18,
+      "sublabel": "下一步怎么抽"
+    },
+    {
+      "id": "n10",
+      "kind": "rect",
+      "x": 768,
+      "y": 290,
+      "width": 160,
+      "height": 64,
+      "type_label": "3.5",
+      "label": "服务化",
+      "fill": "#ffffff",
+      "stroke": "#e5e7eb",
+      "stroke_width": 1.8,
+      "flat": true,
+      "title_size": 18,
+      "sublabel": "OpenAI 兼容接口"
+    },
+    {
+      "id": "n11",
+      "kind": "rect",
+      "x": 584,
+      "y": 290,
+      "width": 160,
+      "height": 64,
+      "type_label": "3.6",
+      "label": "并发与批处理",
+      "fill": "#ffffff",
+      "stroke": "#e5e7eb",
+      "stroke_width": 1.8,
+      "flat": true,
+      "title_size": 18,
+      "sublabel": "槽位即排队长度"
+    },
+    {
+      "id": "n12",
+      "kind": "rect",
+      "x": 400,
+      "y": 290,
+      "width": 160,
+      "height": 64,
+      "type_label": "3.7",
+      "label": "性能测量",
+      "fill": "#ffffff",
+      "stroke": "#e5e7eb",
+      "stroke_width": 1.8,
+      "flat": true,
+      "title_size": 18,
+      "sublabel": "怎么测才可信"
+    }
+  ],
+  "arrows": [
+    {
+      "id": "e00",
+      "source": "n00",
+      "target": "n01",
+      "flow": "control"
+    },
+    {
+      "id": "e01",
+      "source": "n01",
+      "target": "n02",
+      "flow": "control"
+    },
+    {
+      "id": "e02",
+      "source": "n02",
+      "target": "n03",
+      "flow": "control"
+    },
+    {
+      "id": "e10",
+      "source": "n11",
+      "target": "n10",
+      "flow": "control"
+    },
+    {
+      "id": "e11",
+      "source": "n12",
+      "target": "n11",
+      "flow": "control"
+    },
+    {
+      "id": "join",
+      "source": "n03",
+      "target": "n10",
+      "flow": "control",
+      "source_port": "bottom",
+      "target_port": "top"
+    }
+  ]
+}

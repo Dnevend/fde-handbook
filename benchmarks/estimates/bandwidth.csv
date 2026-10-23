@@ -1,0 +1,4 @@
+device,bandwidth_gb_s,bandwidth_source,weights_gb,note
+Apple M4,120,"引用 [2]，120 GB/s",5.68,统一内存
+RTX 4090,1008,"引用 [3]，1008 GB/s",5.68,GDDR6X
+H100 SXM,3350,"引用 [4]，3.35 TB/s",5.68,HBM3

@@ -1,0 +1,90 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 520" width="960" height="520" data-generator="fireworks-tech-graph" data-schema-version="1" data-text-metrics="heuristic-v1" data-style-id="4" data-visual-theme="Notion Clean" data-diagram-type="architecture" data-motion-scene="" data-semantic-profile="generic" data-semantic-valid="true" data-quality-profile="standard" data-max-bends-per-edge="12" data-max-total-bends="100" data-max-route-stretch="5.0" data-max-bridged-crossings="8" data-min-node-gap="0.0" data-min-container-gutter="0.0" data-min-label-clearance="2.0" data-min-segment-length="0.0">
+  <defs>
+    <marker id="arrowA" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto">
+      <polygon points="0 0, 8 3, 0 6" fill="#3b82f6"/>
+    </marker>
+    <marker id="arrowB" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto">
+      <polygon points="0 0, 8 3, 0 6" fill="#3b82f6"/>
+    </marker>
+    <marker id="arrowC" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto">
+      <polygon points="0 0, 8 3, 0 6" fill="#3b82f6"/>
+    </marker>
+    <marker id="arrowE" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto">
+      <polygon points="0 0, 8 3, 0 6" fill="#3b82f6"/>
+    </marker>
+    <marker id="arrowF" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto">
+      <polygon points="0 0, 8 3, 0 6" fill="#9ca3af"/>
+    </marker>
+    <marker id="arrowG" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto">
+      <polygon points="0 0, 8 3, 0 6" fill="#9ca3af"/>
+    </marker>
+    <marker id="arrowH" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto">
+      <polygon points="0 0, 8 3, 0 6" fill="#d1d5db"/>
+    </marker>
+    <style>
+    text { font-family: 'Hiragino Sans GB', 'PingFang SC', 'Noto Sans CJK SC', 'Microsoft YaHei', 'Helvetica Neue', Arial, sans-serif; }
+    .title { font-size: 24px; font-weight: 700; fill: #111827; }
+    .subtitle { font-size: 15px; font-weight: 500; fill: #9ca3af; }
+    .section { font-size: 13px; font-weight: 700; fill: #6b7280; letter-spacing: 1.4px; }
+    .section-sub { font-size: 12px; font-weight: 500; fill: #6b7280; }
+    .node-title { font-weight: 700; fill: #111827; }
+    .node-sub { font-weight: 500; fill: #374151; }
+    .node-type { font-size: 11px; font-weight: 700; fill: #6b7280; letter-spacing: 0.08em; }
+    .arrow-label { font-size: 12px; font-weight: 600; fill: #6b7280; }
+    .legend { font-size: 12px; font-weight: 500; fill: #6b7280; }
+    .footnote { font-size: 12px; font-weight: 500; fill: #6b7280; }
+    .metric-label { font-size: 8.5px; font-weight: 700; fill: #6b7280; text-transform: uppercase; }
+    .metric-value { font-size: 9.5px; font-weight: 700; fill: #111827; }
+    </style>
+  </defs>
+  <rect data-graph-role="background" width="960.0" height="520.0" fill="#ffffff"/>
+  <text x="48.0" y="48" text-anchor="start" class="title">生成一个 token 的四个动作</text>
+  <line x1="48" y1="82" x2="912.0" y2="82" stroke="#e5e7eb" stroke-width="1"/>
+  <path id="a1" data-graph-role="edge" data-edge-id="a1" data-source="hidden" data-target="logits" data-edge-kind="flow" data-topic-id="" data-flow="control" data-motion-role="" data-motion-stage="" data-motion-order="" data-protocol="" data-via="" data-critical-path-id="" data-critical-hop="" data-critical-hops="" data-critical="false" data-bends="0" data-route-stretch="1.0" data-bridges="" d="M 420,167 L 540,167" fill="none" stroke="#3b82f6" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#arrowA)"/>
+  <path id="a2" data-graph-role="edge" data-edge-id="a2" data-source="logits" data-target="sample" data-edge-kind="flow" data-topic-id="" data-flow="control" data-motion-role="" data-motion-stage="" data-motion-order="" data-protocol="" data-via="" data-critical-path-id="" data-critical-hop="" data-critical-hops="" data-critical="false" data-bends="0" data-route-stretch="1.0" data-bridges="" d="M 690,204 L 690,330" fill="none" stroke="#3b82f6" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#arrowA)"/>
+  <path id="a3" data-graph-role="edge" data-edge-id="a3" data-source="sample" data-target="append" data-edge-kind="flow" data-topic-id="" data-flow="control" data-motion-role="" data-motion-stage="" data-motion-order="" data-protocol="" data-via="" data-critical-path-id="" data-critical-hop="" data-critical-hops="" data-critical="false" data-bends="0" data-route-stretch="1.0" data-bridges="" d="M 540,367 L 420,367" fill="none" stroke="#3b82f6" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#arrowA)"/>
+  <path id="a4" data-graph-role="edge" data-edge-id="a4" data-source="append" data-target="hidden" data-edge-kind="flow" data-topic-id="" data-flow="control" data-motion-role="" data-motion-stage="" data-motion-order="" data-protocol="" data-via="" data-critical-path-id="" data-critical-hop="" data-critical-hops="" data-critical="false" data-bends="0" data-route-stretch="1.0" data-bridges="" d="M 270,330 L 270,204" fill="none" stroke="#3b82f6" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#arrowA)"/>
+  <g id="node-hidden" data-graph-role="node" data-node-id="hidden" data-semantic-role="rect" data-motion-role="" data-motion-stage="" data-motion-order="" data-parent="" data-deployment-id="" data-topic-id="" data-span-id="" data-station-order="" data-status="" data-start-ms="" data-duration-ms="" data-parent-span="" data-graph-bounds="120,130,420,204">
+  <rect x="120.0" y="130.0" width="300.0" height="74.0" rx="4.0" fill="#ffffff" stroke="#e5e7eb" stroke-width="1.8"/>
+  <text data-text-role="title" data-full-text="取最后一个位置的输出向量" data-text-max-width="276.0" x="270.0" y="167.0" text-anchor="middle" class="node-title" font-size="20.0">取最后一个位置的输出向量</text>
+  <text data-text-role="subtitle" data-full-text="长度为 hidden 的浮点向量" data-text-max-width="276.0" x="270.0" y="189.0" text-anchor="middle" class="node-sub" font-size="12">长度为 hidden 的浮点向量</text>
+  </g>
+  <g id="node-logits" data-graph-role="node" data-node-id="logits" data-semantic-role="rect" data-motion-role="" data-motion-stage="" data-motion-order="" data-parent="" data-deployment-id="" data-topic-id="" data-span-id="" data-station-order="" data-status="" data-start-ms="" data-duration-ms="" data-parent-span="" data-graph-bounds="540,130,840,204">
+  <rect x="540.0" y="130.0" width="300.0" height="74.0" rx="4.0" fill="#ffffff" stroke="#e5e7eb" stroke-width="1.8"/>
+  <text data-text-role="title" data-full-text="乘输出投影，得到 logits" data-text-max-width="276.0" x="690.0" y="167.0" text-anchor="middle" class="node-title" font-size="20.0">乘输出投影，得到 logits</text>
+  <text data-text-role="subtitle" data-full-text="Qwen3.5 词表 248,320 个分数" data-text-max-width="276.0" x="690.0" y="189.0" text-anchor="middle" class="node-sub" font-size="12">Qwen3.5 词表 248,320 个分数</text>
+  </g>
+  <g id="node-sample" data-graph-role="node" data-node-id="sample" data-semantic-role="rect" data-motion-role="" data-motion-stage="" data-motion-order="" data-parent="" data-deployment-id="" data-topic-id="" data-span-id="" data-station-order="" data-status="" data-start-ms="" data-duration-ms="" data-parent-span="" data-graph-bounds="540,330,840,404">
+  <rect x="540.0" y="330.0" width="300.0" height="74.0" rx="4.0" fill="#fffbeb" stroke="#f59e0b" stroke-width="1.8"/>
+  <text data-text-role="title" data-full-text="按采样策略选一个 token" data-text-max-width="276.0" x="690.0" y="367.0" text-anchor="middle" class="node-title" font-size="20.0">按采样策略选一个 token</text>
+  <text data-text-role="subtitle" data-full-text="temperature / top-p / min-p" data-text-max-width="276.0" x="690.0" y="389.0" text-anchor="middle" class="node-sub" font-size="12">temperature / top-p / min-p</text>
+  </g>
+  <g id="node-append" data-graph-role="node" data-node-id="append" data-semantic-role="rect" data-motion-role="" data-motion-stage="" data-motion-order="" data-parent="" data-deployment-id="" data-topic-id="" data-span-id="" data-station-order="" data-status="" data-start-ms="" data-duration-ms="" data-parent-span="" data-graph-bounds="120,330,420,404">
+  <rect x="120.0" y="330.0" width="300.0" height="74.0" rx="4.0" fill="#eff6ff" stroke="#3b82f6" stroke-width="1.8"/>
+  <text data-text-role="title" data-full-text="拼到序列末尾，写 KV Cache" data-text-max-width="276.0" x="270.0" y="367.0" text-anchor="middle" class="node-title" font-size="19.99">拼到序列末尾，写 KV Cache</text>
+  <text data-text-role="subtitle" data-full-text="下一步直接复用，不重算" data-text-max-width="276.0" x="270.0" y="389.0" text-anchor="middle" class="node-sub" font-size="12">下一步直接复用，不重算</text>
+  </g>
+  <g id="node-note" data-graph-role="node" data-node-id="note" data-semantic-role="rect" data-motion-role="" data-motion-stage="" data-motion-order="" data-parent="" data-deployment-id="" data-topic-id="" data-span-id="" data-station-order="" data-status="" data-start-ms="" data-duration-ms="" data-parent-span="" data-graph-bounds="400,248,560,288">
+  <rect x="400.0" y="248.0" width="160.0" height="40.0" rx="4.0" fill="none" stroke="none" stroke-width="1.8"/>
+  <text data-text-role="title" data-full-text="一步 = 一次前向" data-text-max-width="136.0" x="480.0" y="268.0" text-anchor="middle" class="node-title" font-size="17.25">一步 = 一次前向</text>
+  </g>
+  <g id="a1-label" data-graph-role="label" data-owner="a1" data-graph-bounds="461,136,499,156">
+  <rect x="461.0" y="136.0" width="38.0" height="20" rx="6" fill="#ffffff" opacity="0.96"/>
+  <text x="480.0" y="150.0" text-anchor="middle" class="arrow-label">投影</text>
+  </g>
+  <g id="a2-label" data-graph-role="label" data-owner="a2" data-graph-bounds="625,253,687,273">
+  <rect x="625.0" y="253.0" width="62.0" height="20" rx="6" fill="#ffffff" opacity="0.96"/>
+  <text x="656.0" y="267.0" text-anchor="middle" class="arrow-label">概率分布</text>
+  </g>
+  <g id="a3-label" data-graph-role="label" data-owner="a3" data-graph-bounds="448.04,336,511.96,356">
+  <rect x="448.04" y="336.0" width="63.91999999999999" height="20" rx="6" fill="#ffffff" opacity="0.96"/>
+  <text x="480.0" y="350.0" text-anchor="middle" class="arrow-label">token id</text>
+  </g>
+  <g id="a4-label" data-graph-role="label" data-owner="a4" data-graph-bounds="193,253,267,273">
+  <rect x="193.0" y="253.0" width="74.0" height="20" rx="6" fill="#ffffff" opacity="0.96"/>
+  <text x="230.0" y="267.0" text-anchor="middle" class="arrow-label">下一个位置</text>
+  </g>
+  <g id="footer" data-graph-role="reserved" data-graph-bounds="48,480,384,496">
+  <text x="48.0" y="492.0" class="footnote">训练时整句已知，一次前向能并行算所有位置；推理时第 t+1 个 token 还没采出来，只能串行</text>
+  </g>
+</svg>

@@ -69,6 +69,16 @@ for chunk in stream:
 
 流式带来的第一个可观测指标是**首字延迟（TTFT）**：从请求发出到第一个增量到达。本机实测（见 `benchmarks/client-bench/`）：短 prompt 冷请求约 0.26 s，约 700 token 的长 prompt 冷请求约 3.6 s；同一 prompt 紧接着再发，首字降到 0.1 s 左右——因为前缀缓存命中了。这条差异在 3.7 节展开。
 
+把一次流式请求画成时序图（图 3.5-1）：TTFT 覆盖「发请求 → 套模板 → prefill → 第一个 token 回来」这几步，之后每个分片才是一个 TPOT。
+
+<Figure
+  id="3.5-1"
+  src="/figures/3-5-streaming-sequence.svg"
+  alt="流式请求时序：客户端发 POST，服务端套模板并 prefill，引擎返回第一个 token，服务端随后持续推送 SSE 分片，TTFT 覆盖到第一个分片到达为止"
+  caption="用户感知的快慢由竖线左侧那一段决定；右侧的分片再多，也只是在填已经开始的回答。"
+  source="时序按 llama-server 的实际行为绘制；TTFT 的具体数值见 benchmarks/client-bench/api-bench.csv（实测）。"
+/>
+
 ## 非标准字段：思考内容
 
 `Qwen3.5` 默认开思考，思考内容不能混进正文，否则前端会把推理过程当答案显示。llama-server 的做法是把思考拆到 `reasoning_content` 字段：

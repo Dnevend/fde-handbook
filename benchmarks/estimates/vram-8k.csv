@@ -1,0 +1,4 @@
+model,weights_gb,kv_cache_gb,runtime_gb,margin_ratio
+Qwen3.5-9B,5.68,0.27,1.5,0.2
+Qwen3-14B,9.0,1.34,1.5,0.2
+Gemma-4-26B-A4B,16.95,1.00,1.5,0.2

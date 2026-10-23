@@ -1,0 +1,158 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 700" width="960" height="700" data-generator="fireworks-tech-graph" data-schema-version="1" data-text-metrics="heuristic-v1" data-style-id="4" data-visual-theme="Notion Clean" data-diagram-type="architecture" data-motion-scene="" data-semantic-profile="generic" data-semantic-valid="true" data-quality-profile="standard" data-max-bends-per-edge="12" data-max-total-bends="100" data-max-route-stretch="5.0" data-max-bridged-crossings="8" data-min-node-gap="0.0" data-min-container-gutter="0.0" data-min-label-clearance="2.0" data-min-segment-length="0.0">
+  <defs>
+    <marker id="arrowA" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto">
+      <polygon points="0 0, 8 3, 0 6" fill="#3b82f6"/>
+    </marker>
+    <marker id="arrowB" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto">
+      <polygon points="0 0, 8 3, 0 6" fill="#3b82f6"/>
+    </marker>
+    <marker id="arrowC" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto">
+      <polygon points="0 0, 8 3, 0 6" fill="#3b82f6"/>
+    </marker>
+    <marker id="arrowE" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto">
+      <polygon points="0 0, 8 3, 0 6" fill="#3b82f6"/>
+    </marker>
+    <marker id="arrowF" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto">
+      <polygon points="0 0, 8 3, 0 6" fill="#9ca3af"/>
+    </marker>
+    <marker id="arrowG" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto">
+      <polygon points="0 0, 8 3, 0 6" fill="#9ca3af"/>
+    </marker>
+    <marker id="arrowH" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto">
+      <polygon points="0 0, 8 3, 0 6" fill="#d1d5db"/>
+    </marker>
+    <style>
+    text { font-family: 'Hiragino Sans GB', 'PingFang SC', 'Noto Sans CJK SC', 'Microsoft YaHei', 'Helvetica Neue', Arial, sans-serif; }
+    .title { font-size: 24px; font-weight: 700; fill: #111827; }
+    .subtitle { font-size: 15px; font-weight: 500; fill: #9ca3af; }
+    .section { font-size: 13px; font-weight: 700; fill: #6b7280; letter-spacing: 1.4px; }
+    .section-sub { font-size: 12px; font-weight: 500; fill: #6b7280; }
+    .node-title { font-weight: 700; fill: #111827; }
+    .node-sub { font-weight: 500; fill: #374151; }
+    .node-type { font-size: 11px; font-weight: 700; fill: #6b7280; letter-spacing: 0.08em; }
+    .arrow-label { font-size: 12px; font-weight: 600; fill: #6b7280; }
+    .legend { font-size: 12px; font-weight: 500; fill: #6b7280; }
+    .footnote { font-size: 12px; font-weight: 500; fill: #6b7280; }
+    .metric-label { font-size: 8.5px; font-weight: 700; fill: #6b7280; text-transform: uppercase; }
+    .metric-value { font-size: 9.5px; font-weight: 700; fill: #111827; }
+    </style>
+  </defs>
+  <rect data-graph-role="background" width="960.0" height="700.0" fill="#ffffff"/>
+  <text x="48.0" y="48" text-anchor="start" class="title">六层坐标系</text>
+  <text x="48.0" y="72" text-anchor="start" class="subtitle">请求沿前四层向下走，后两层托底</text>
+  <line x1="48" y1="100" x2="912.0" y2="100" stroke="#e5e7eb" stroke-width="1"/>
+  <path id="e1" data-graph-role="edge" data-edge-id="e1" data-source="l-access" data-target="l-orch" data-edge-kind="flow" data-topic-id="" data-flow="control" data-motion-role="" data-motion-stage="" data-motion-order="" data-protocol="" data-via="" data-critical-path-id="" data-critical-hop="" data-critical-hops="" data-critical="false" data-bends="0" data-route-stretch="1.0" data-bridges="" d="M 103,174 L 103,214" fill="none" stroke="#3b82f6" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#arrowA)"/>
+  <path id="e2" data-graph-role="edge" data-edge-id="e2" data-source="l-orch" data-target="l-kb" data-edge-kind="flow" data-topic-id="" data-flow="control" data-motion-role="" data-motion-stage="" data-motion-order="" data-protocol="" data-via="" data-critical-path-id="" data-critical-hop="" data-critical-hops="" data-critical="false" data-bends="0" data-route-stretch="1.0" data-bridges="" d="M 103,268 L 103,308" fill="none" stroke="#3b82f6" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#arrowA)"/>
+  <path id="e3" data-graph-role="edge" data-edge-id="e3" data-source="l-kb" data-target="l-model" data-edge-kind="flow" data-topic-id="" data-flow="control" data-motion-role="" data-motion-stage="" data-motion-order="" data-protocol="" data-via="" data-critical-path-id="" data-critical-hop="" data-critical-hops="" data-critical="false" data-bends="0" data-route-stretch="1.0" data-bridges="" d="M 103,362 L 103,402" fill="none" stroke="#3b82f6" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#arrowA)"/>
+  <g id="node-l-access" data-graph-role="node" data-node-id="l-access" data-semantic-role="rect" data-motion-role="" data-motion-stage="" data-motion-order="" data-parent="" data-deployment-id="" data-topic-id="" data-span-id="" data-station-order="" data-status="" data-start-ms="" data-duration-ms="" data-parent-span="" data-graph-bounds="48,120,158,174">
+  <rect x="48.0" y="120.0" width="110.0" height="54.0" rx="4.0" fill="#eff6ff" stroke="#3b82f6" stroke-width="1.6"/>
+  <text data-text-role="title" data-full-text="接入层" data-text-max-width="86.0" x="103.0" y="147.0" text-anchor="middle" class="node-title" font-size="20.0">接入层</text>
+  </g>
+  <g id="node-n-auth" data-graph-role="node" data-node-id="n-auth" data-semantic-role="rect" data-motion-role="" data-motion-stage="" data-motion-order="" data-parent="" data-deployment-id="" data-topic-id="" data-span-id="" data-station-order="" data-status="" data-start-ms="" data-duration-ms="" data-parent-span="" data-graph-bounds="190,120,360,174">
+  <rect x="190.0" y="120.0" width="170.0" height="54.0" rx="4.0" fill="#ffffff" stroke="#e5e7eb" stroke-width="1.8"/>
+  <text data-text-role="title" data-full-text="鉴权与会话" data-text-max-width="146.0" x="275.0" y="147.0" text-anchor="middle" class="node-title" font-size="20.0">鉴权与会话</text>
+  </g>
+  <g id="node-n-stream" data-graph-role="node" data-node-id="n-stream" data-semantic-role="rect" data-motion-role="" data-motion-stage="" data-motion-order="" data-parent="" data-deployment-id="" data-topic-id="" data-span-id="" data-station-order="" data-status="" data-start-ms="" data-duration-ms="" data-parent-span="" data-graph-bounds="384,120,554,174">
+  <rect x="384.0" y="120.0" width="170.0" height="54.0" rx="4.0" fill="#ffffff" stroke="#e5e7eb" stroke-width="1.8"/>
+  <text data-text-role="title" data-full-text="流式返回" data-text-max-width="146.0" x="469.0" y="147.0" text-anchor="middle" class="node-title" font-size="20.0">流式返回</text>
+  </g>
+  <g id="node-n-timeout" data-graph-role="node" data-node-id="n-timeout" data-semantic-role="rect" data-motion-role="" data-motion-stage="" data-motion-order="" data-parent="" data-deployment-id="" data-topic-id="" data-span-id="" data-station-order="" data-status="" data-start-ms="" data-duration-ms="" data-parent-span="" data-graph-bounds="578,120,748,174">
+  <rect x="578.0" y="120.0" width="170.0" height="54.0" rx="4.0" fill="#ffffff" stroke="#e5e7eb" stroke-width="1.8"/>
+  <text data-text-role="title" data-full-text="超时与重试" data-text-max-width="146.0" x="663.0" y="147.0" text-anchor="middle" class="node-title" font-size="20.0">超时与重试</text>
+  </g>
+  <g id="node-l-orch" data-graph-role="node" data-node-id="l-orch" data-semantic-role="rect" data-motion-role="" data-motion-stage="" data-motion-order="" data-parent="" data-deployment-id="" data-topic-id="" data-span-id="" data-station-order="" data-status="" data-start-ms="" data-duration-ms="" data-parent-span="" data-graph-bounds="48,214,158,268">
+  <rect x="48.0" y="214.0" width="110.0" height="54.0" rx="4.0" fill="#eff6ff" stroke="#3b82f6" stroke-width="1.6"/>
+  <text data-text-role="title" data-full-text="编排层" data-text-max-width="86.0" x="103.0" y="241.0" text-anchor="middle" class="node-title" font-size="20.0">编排层</text>
+  </g>
+  <g id="node-n-decide" data-graph-role="node" data-node-id="n-decide" data-semantic-role="rect" data-motion-role="" data-motion-stage="" data-motion-order="" data-parent="" data-deployment-id="" data-topic-id="" data-span-id="" data-station-order="" data-status="" data-start-ms="" data-duration-ms="" data-parent-span="" data-graph-bounds="190,214,360,268">
+  <rect x="190.0" y="214.0" width="170.0" height="54.0" rx="4.0" fill="#ffffff" stroke="#e5e7eb" stroke-width="1.8"/>
+  <text data-text-role="title" data-full-text="要不要检索" data-text-max-width="146.0" x="275.0" y="241.0" text-anchor="middle" class="node-title" font-size="20.0">要不要检索</text>
+  </g>
+  <g id="node-n-prompt" data-graph-role="node" data-node-id="n-prompt" data-semantic-role="rect" data-motion-role="" data-motion-stage="" data-motion-order="" data-parent="" data-deployment-id="" data-topic-id="" data-span-id="" data-station-order="" data-status="" data-start-ms="" data-duration-ms="" data-parent-span="" data-graph-bounds="384,214,554,268">
+  <rect x="384.0" y="214.0" width="170.0" height="54.0" rx="4.0" fill="#ffffff" stroke="#e5e7eb" stroke-width="1.8"/>
+  <text data-text-role="title" data-full-text="拼提示词" data-text-max-width="146.0" x="469.0" y="241.0" text-anchor="middle" class="node-title" font-size="20.0">拼提示词</text>
+  </g>
+  <g id="node-n-cite" data-graph-role="node" data-node-id="n-cite" data-semantic-role="rect" data-motion-role="" data-motion-stage="" data-motion-order="" data-parent="" data-deployment-id="" data-topic-id="" data-span-id="" data-station-order="" data-status="" data-start-ms="" data-duration-ms="" data-parent-span="" data-graph-bounds="578,214,748,268">
+  <rect x="578.0" y="214.0" width="170.0" height="54.0" rx="4.0" fill="#ffffff" stroke="#e5e7eb" stroke-width="1.8"/>
+  <text data-text-role="title" data-full-text="解析引用标记" data-text-max-width="146.0" x="663.0" y="241.0" text-anchor="middle" class="node-title" font-size="20.0">解析引用标记</text>
+  </g>
+  <g id="node-l-kb" data-graph-role="node" data-node-id="l-kb" data-semantic-role="rect" data-motion-role="" data-motion-stage="" data-motion-order="" data-parent="" data-deployment-id="" data-topic-id="" data-span-id="" data-station-order="" data-status="" data-start-ms="" data-duration-ms="" data-parent-span="" data-graph-bounds="48,308,158,362">
+  <rect x="48.0" y="308.0" width="110.0" height="54.0" rx="4.0" fill="#eff6ff" stroke="#3b82f6" stroke-width="1.6"/>
+  <text data-text-role="title" data-full-text="知识层" data-text-max-width="86.0" x="103.0" y="335.0" text-anchor="middle" class="node-title" font-size="20.0">知识层</text>
+  </g>
+  <g id="node-n-parse" data-graph-role="node" data-node-id="n-parse" data-semantic-role="rect" data-motion-role="" data-motion-stage="" data-motion-order="" data-parent="" data-deployment-id="" data-topic-id="" data-span-id="" data-station-order="" data-status="" data-start-ms="" data-duration-ms="" data-parent-span="" data-graph-bounds="190,308,290,362">
+  <rect x="190.0" y="308.0" width="100.0" height="54.0" rx="4.0" fill="#ffffff" stroke="#e5e7eb" stroke-width="1.8"/>
+  <text data-text-role="title" data-full-text="解析" data-text-max-width="76.0" x="240.0" y="335.0" text-anchor="middle" class="node-title" font-size="20.0">解析</text>
+  </g>
+  <g id="node-n-split" data-graph-role="node" data-node-id="n-split" data-semantic-role="rect" data-motion-role="" data-motion-stage="" data-motion-order="" data-parent="" data-deployment-id="" data-topic-id="" data-span-id="" data-station-order="" data-status="" data-start-ms="" data-duration-ms="" data-parent-span="" data-graph-bounds="310,308,410,362">
+  <rect x="310.0" y="308.0" width="100.0" height="54.0" rx="4.0" fill="#ffffff" stroke="#e5e7eb" stroke-width="1.8"/>
+  <text data-text-role="title" data-full-text="切分" data-text-max-width="76.0" x="360.0" y="335.0" text-anchor="middle" class="node-title" font-size="20.0">切分</text>
+  </g>
+  <g id="node-n-embed" data-graph-role="node" data-node-id="n-embed" data-semantic-role="rect" data-motion-role="" data-motion-stage="" data-motion-order="" data-parent="" data-deployment-id="" data-topic-id="" data-span-id="" data-station-order="" data-status="" data-start-ms="" data-duration-ms="" data-parent-span="" data-graph-bounds="430,308,530,362">
+  <rect x="430.0" y="308.0" width="100.0" height="54.0" rx="4.0" fill="#ffffff" stroke="#e5e7eb" stroke-width="1.8"/>
+  <text data-text-role="title" data-full-text="向量化" data-text-max-width="76.0" x="480.0" y="335.0" text-anchor="middle" class="node-title" font-size="20.0">向量化</text>
+  </g>
+  <g id="node-n-index" data-graph-role="node" data-node-id="n-index" data-semantic-role="rect" data-motion-role="" data-motion-stage="" data-motion-order="" data-parent="" data-deployment-id="" data-topic-id="" data-span-id="" data-station-order="" data-status="" data-start-ms="" data-duration-ms="" data-parent-span="" data-graph-bounds="550,308,650,362">
+  <rect x="550.0" y="308.0" width="100.0" height="54.0" rx="4.0" fill="#ffffff" stroke="#e5e7eb" stroke-width="1.8"/>
+  <text data-text-role="title" data-full-text="索引" data-text-max-width="76.0" x="600.0" y="335.0" text-anchor="middle" class="node-title" font-size="20.0">索引</text>
+  </g>
+  <g id="node-n-search" data-graph-role="node" data-node-id="n-search" data-semantic-role="rect" data-motion-role="" data-motion-stage="" data-motion-order="" data-parent="" data-deployment-id="" data-topic-id="" data-span-id="" data-station-order="" data-status="" data-start-ms="" data-duration-ms="" data-parent-span="" data-graph-bounds="670,308,770,362">
+  <rect x="670.0" y="308.0" width="100.0" height="54.0" rx="4.0" fill="#ffffff" stroke="#e5e7eb" stroke-width="1.8"/>
+  <text data-text-role="title" data-full-text="检索" data-text-max-width="76.0" x="720.0" y="335.0" text-anchor="middle" class="node-title" font-size="20.0">检索</text>
+  </g>
+  <g id="node-n-rerank" data-graph-role="node" data-node-id="n-rerank" data-semantic-role="rect" data-motion-role="" data-motion-stage="" data-motion-order="" data-parent="" data-deployment-id="" data-topic-id="" data-span-id="" data-station-order="" data-status="" data-start-ms="" data-duration-ms="" data-parent-span="" data-graph-bounds="790,308,890,362">
+  <rect x="790.0" y="308.0" width="100.0" height="54.0" rx="4.0" fill="#ffffff" stroke="#e5e7eb" stroke-width="1.8"/>
+  <text data-text-role="title" data-full-text="重排" data-text-max-width="76.0" x="840.0" y="335.0" text-anchor="middle" class="node-title" font-size="20.0">重排</text>
+  </g>
+  <g id="node-l-model" data-graph-role="node" data-node-id="l-model" data-semantic-role="rect" data-motion-role="" data-motion-stage="" data-motion-order="" data-parent="" data-deployment-id="" data-topic-id="" data-span-id="" data-station-order="" data-status="" data-start-ms="" data-duration-ms="" data-parent-span="" data-graph-bounds="48,402,158,456">
+  <rect x="48.0" y="402.0" width="110.0" height="54.0" rx="4.0" fill="#eff6ff" stroke="#3b82f6" stroke-width="1.6"/>
+  <text data-text-role="title" data-full-text="模型层" data-text-max-width="86.0" x="103.0" y="429.0" text-anchor="middle" class="node-title" font-size="20.0">模型层</text>
+  </g>
+  <g id="node-n-weights" data-graph-role="node" data-node-id="n-weights" data-semantic-role="rect" data-motion-role="" data-motion-stage="" data-motion-order="" data-parent="" data-deployment-id="" data-topic-id="" data-span-id="" data-station-order="" data-status="" data-start-ms="" data-duration-ms="" data-parent-span="" data-graph-bounds="190,402,360,456">
+  <rect x="190.0" y="402.0" width="170.0" height="54.0" rx="4.0" fill="#ffffff" stroke="#e5e7eb" stroke-width="1.8"/>
+  <text data-text-role="title" data-full-text="权重与分词" data-text-max-width="146.0" x="275.0" y="429.0" text-anchor="middle" class="node-title" font-size="20.0">权重与分词</text>
+  </g>
+  <g id="node-n-gen" data-graph-role="node" data-node-id="n-gen" data-semantic-role="rect" data-motion-role="" data-motion-stage="" data-motion-order="" data-parent="" data-deployment-id="" data-topic-id="" data-span-id="" data-station-order="" data-status="" data-start-ms="" data-duration-ms="" data-parent-span="" data-graph-bounds="384,402,554,456">
+  <rect x="384.0" y="402.0" width="170.0" height="54.0" rx="4.0" fill="#ffffff" stroke="#e5e7eb" stroke-width="1.8"/>
+  <text data-text-role="title" data-full-text="逐 token 生成" data-text-max-width="146.0" x="469.0" y="429.0" text-anchor="middle" class="node-title" font-size="20.0">逐 token 生成</text>
+  </g>
+  <g id="node-n-engine" data-graph-role="node" data-node-id="n-engine" data-semantic-role="rect" data-motion-role="" data-motion-stage="" data-motion-order="" data-parent="" data-deployment-id="" data-topic-id="" data-span-id="" data-station-order="" data-status="" data-start-ms="" data-duration-ms="" data-parent-span="" data-graph-bounds="578,402,748,456">
+  <rect x="578.0" y="402.0" width="170.0" height="54.0" rx="4.0" fill="#ffffff" stroke="#e5e7eb" stroke-width="1.8"/>
+  <text data-text-role="title" data-full-text="推理引擎" data-text-max-width="146.0" x="663.0" y="429.0" text-anchor="middle" class="node-title" font-size="20.0">推理引擎</text>
+  </g>
+  <g id="node-l-run" data-graph-role="node" data-node-id="l-run" data-semantic-role="rect" data-motion-role="" data-motion-stage="" data-motion-order="" data-parent="" data-deployment-id="" data-topic-id="" data-span-id="" data-station-order="" data-status="" data-start-ms="" data-duration-ms="" data-parent-span="" data-graph-bounds="48,496,158,550">
+  <rect x="48.0" y="496.0" width="110.0" height="54.0" rx="4.0" fill="#f9fafb" stroke="#9ca3af" stroke-width="1.8"/>
+  <text data-text-role="title" data-full-text="运行层" data-text-max-width="86.0" x="103.0" y="523.0" text-anchor="middle" class="node-title" font-size="20.0">运行层</text>
+  </g>
+  <g id="node-n-vram" data-graph-role="node" data-node-id="n-vram" data-semantic-role="rect" data-motion-role="" data-motion-stage="" data-motion-order="" data-parent="" data-deployment-id="" data-topic-id="" data-span-id="" data-station-order="" data-status="" data-start-ms="" data-duration-ms="" data-parent-span="" data-graph-bounds="190,496,360,550">
+  <rect x="190.0" y="496.0" width="170.0" height="54.0" rx="4.0" fill="#ffffff" stroke="#e5e7eb" stroke-width="1.8"/>
+  <text data-text-role="title" data-full-text="显存" data-text-max-width="146.0" x="275.0" y="523.0" text-anchor="middle" class="node-title" font-size="20.0">显存</text>
+  </g>
+  <g id="node-n-conc" data-graph-role="node" data-node-id="n-conc" data-semantic-role="rect" data-motion-role="" data-motion-stage="" data-motion-order="" data-parent="" data-deployment-id="" data-topic-id="" data-span-id="" data-station-order="" data-status="" data-start-ms="" data-duration-ms="" data-parent-span="" data-graph-bounds="384,496,554,550">
+  <rect x="384.0" y="496.0" width="170.0" height="54.0" rx="4.0" fill="#ffffff" stroke="#e5e7eb" stroke-width="1.8"/>
+  <text data-text-role="title" data-full-text="并发与排队" data-text-max-width="146.0" x="469.0" y="523.0" text-anchor="middle" class="node-title" font-size="20.0">并发与排队</text>
+  </g>
+  <g id="node-n-obs" data-graph-role="node" data-node-id="n-obs" data-semantic-role="rect" data-motion-role="" data-motion-stage="" data-motion-order="" data-parent="" data-deployment-id="" data-topic-id="" data-span-id="" data-station-order="" data-status="" data-start-ms="" data-duration-ms="" data-parent-span="" data-graph-bounds="578,496,748,550">
+  <rect x="578.0" y="496.0" width="170.0" height="54.0" rx="4.0" fill="#ffffff" stroke="#e5e7eb" stroke-width="1.8"/>
+  <text data-text-role="title" data-full-text="日志与监控" data-text-max-width="146.0" x="663.0" y="523.0" text-anchor="middle" class="node-title" font-size="20.0">日志与监控</text>
+  </g>
+  <g id="node-l-ship" data-graph-role="node" data-node-id="l-ship" data-semantic-role="rect" data-motion-role="" data-motion-stage="" data-motion-order="" data-parent="" data-deployment-id="" data-topic-id="" data-span-id="" data-station-order="" data-status="" data-start-ms="" data-duration-ms="" data-parent-span="" data-graph-bounds="48,590,158,644">
+  <rect x="48.0" y="590.0" width="110.0" height="54.0" rx="4.0" fill="#f9fafb" stroke="#9ca3af" stroke-width="1.8"/>
+  <text data-text-role="title" data-full-text="交付层" data-text-max-width="86.0" x="103.0" y="617.0" text-anchor="middle" class="node-title" font-size="20.0">交付层</text>
+  </g>
+  <g id="node-n-offline" data-graph-role="node" data-node-id="n-offline" data-semantic-role="rect" data-motion-role="" data-motion-stage="" data-motion-order="" data-parent="" data-deployment-id="" data-topic-id="" data-span-id="" data-station-order="" data-status="" data-start-ms="" data-duration-ms="" data-parent-span="" data-graph-bounds="190,590,360,644">
+  <rect x="190.0" y="590.0" width="170.0" height="54.0" rx="4.0" fill="#ffffff" stroke="#e5e7eb" stroke-width="1.8"/>
+  <text data-text-role="title" data-full-text="离线安装" data-text-max-width="146.0" x="275.0" y="617.0" text-anchor="middle" class="node-title" font-size="20.0">离线安装</text>
+  </g>
+  <g id="node-n-accept" data-graph-role="node" data-node-id="n-accept" data-semantic-role="rect" data-motion-role="" data-motion-stage="" data-motion-order="" data-parent="" data-deployment-id="" data-topic-id="" data-span-id="" data-station-order="" data-status="" data-start-ms="" data-duration-ms="" data-parent-span="" data-graph-bounds="384,590,554,644">
+  <rect x="384.0" y="590.0" width="170.0" height="54.0" rx="4.0" fill="#ffffff" stroke="#e5e7eb" stroke-width="1.8"/>
+  <text data-text-role="title" data-full-text="断网验收" data-text-max-width="146.0" x="469.0" y="617.0" text-anchor="middle" class="node-title" font-size="20.0">断网验收</text>
+  </g>
+  <g id="node-n-handover" data-graph-role="node" data-node-id="n-handover" data-semantic-role="rect" data-motion-role="" data-motion-stage="" data-motion-order="" data-parent="" data-deployment-id="" data-topic-id="" data-span-id="" data-station-order="" data-status="" data-start-ms="" data-duration-ms="" data-parent-span="" data-graph-bounds="578,590,748,644">
+  <rect x="578.0" y="590.0" width="170.0" height="54.0" rx="4.0" fill="#ffffff" stroke="#e5e7eb" stroke-width="1.8"/>
+  <text data-text-role="title" data-full-text="升级与交接" data-text-max-width="146.0" x="663.0" y="617.0" text-anchor="middle" class="node-title" font-size="20.0">升级与交接</text>
+  </g>
+  <g id="footer" data-graph-role="reserved" data-graph-bounds="48,660,251,676">
+  <text x="48.0" y="672.0" class="footnote">同一条错误回答可能来自任何一层；判错层，后面的调优都是白费</text>
+  </g>
+</svg>

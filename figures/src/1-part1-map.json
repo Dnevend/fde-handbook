@@ -1,0 +1,147 @@
+{
+  "schema_version": 1,
+  "mode": "flowchart",
+  "template_type": "flowchart",
+  "style": 4,
+  "quality_profile": "standard",
+  "text_policy": "strict",
+  "width": 960,
+  "height": 430,
+  "title": "第一部分：六节，一条因果链",
+  "subtitle": "每一节都是上一节动手时冒出来的问题",
+  "footer": "读完这条链，你应该能在没跑之前判断「这套配置会不会 OOM、大概多快」。",
+  "footer_x": 48,
+  "footer_y": 404,
+  "nodes": [
+    {
+      "id": "n00",
+      "kind": "rect",
+      "x": 32.0,
+      "y": 150,
+      "width": 160,
+      "height": 64,
+      "type_label": "1.1",
+      "label": "Token 与分词",
+      "fill": "#ffffff",
+      "stroke": "#e5e7eb",
+      "stroke_width": 1.8,
+      "flat": true,
+      "title_size": 18,
+      "sublabel": "中文为什么更贵"
+    },
+    {
+      "id": "n01",
+      "kind": "rect",
+      "x": 216.0,
+      "y": 150,
+      "width": 160,
+      "height": 64,
+      "type_label": "1.2",
+      "label": "自回归生成",
+      "fill": "#ffffff",
+      "stroke": "#e5e7eb",
+      "stroke_width": 1.8,
+      "flat": true,
+      "title_size": 18,
+      "sublabel": "为什么一个个吐"
+    },
+    {
+      "id": "n02",
+      "kind": "rect",
+      "x": 400.0,
+      "y": 150,
+      "width": 160,
+      "height": 64,
+      "type_label": "1.3",
+      "label": "Prefill 与 Decode",
+      "fill": "#ffffff",
+      "stroke": "#e5e7eb",
+      "stroke_width": 1.8,
+      "flat": true,
+      "title_size": 18,
+      "sublabel": "首字为什么慢"
+    },
+    {
+      "id": "n10",
+      "kind": "rect",
+      "x": 768,
+      "y": 290,
+      "width": 160,
+      "height": 64,
+      "type_label": "1.4",
+      "label": "KV Cache",
+      "fill": "#ffffff",
+      "stroke": "#e5e7eb",
+      "stroke_width": 1.8,
+      "flat": true,
+      "title_size": 18,
+      "sublabel": "上下文为什么吃内存"
+    },
+    {
+      "id": "n11",
+      "kind": "rect",
+      "x": 584,
+      "y": 290,
+      "width": 160,
+      "height": 64,
+      "type_label": "1.5",
+      "label": "带宽瓶颈",
+      "fill": "#ffffff",
+      "stroke": "#e5e7eb",
+      "stroke_width": 1.8,
+      "flat": true,
+      "title_size": 18,
+      "sublabel": "为什么不是算力瓶颈"
+    },
+    {
+      "id": "n12",
+      "kind": "rect",
+      "x": 400,
+      "y": 290,
+      "width": 160,
+      "height": 64,
+      "type_label": "1.6",
+      "label": "显存估算",
+      "fill": "#ffffff",
+      "stroke": "#e5e7eb",
+      "stroke_width": 1.8,
+      "flat": true,
+      "title_size": 18,
+      "sublabel": "跑之前能不能算出来"
+    }
+  ],
+  "arrows": [
+    {
+      "id": "e00",
+      "source": "n00",
+      "target": "n01",
+      "flow": "control"
+    },
+    {
+      "id": "e01",
+      "source": "n01",
+      "target": "n02",
+      "flow": "control"
+    },
+    {
+      "id": "e10",
+      "source": "n11",
+      "target": "n10",
+      "flow": "control"
+    },
+    {
+      "id": "e11",
+      "source": "n12",
+      "target": "n11",
+      "flow": "control"
+    },
+    {
+      "id": "join",
+      "source": "n02",
+      "target": "n10",
+      "flow": "control",
+      "source_port": "bottom",
+      "target_port": "top"
+    }
+  ]
+}

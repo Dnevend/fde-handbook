@@ -1,0 +1,213 @@
+{
+  "schema_version": 1,
+  "mode": "flowchart",
+  "template_type": "flowchart",
+  "style": 4,
+  "quality_profile": "standard",
+  "text_policy": "strict",
+  "width": 960,
+  "height": 430,
+  "title": "第七部分：从一张卡到几张卡",
+  "subtitle": "原理在 Mac 上学，实操在云 GPU 上做",
+  "footer": "这一部分需要真的有一张 NVIDIA 卡：实验手册见附录 F。",
+  "footer_x": 48,
+  "footer_y": 404,
+  "nodes": [
+    {
+      "id": "n00",
+      "kind": "rect",
+      "x": 32.0,
+      "y": 150,
+      "width": 160,
+      "height": 64,
+      "type_label": "7.1",
+      "label": "GPU 硬件",
+      "fill": "#ffffff",
+      "stroke": "#e5e7eb",
+      "stroke_width": 1.8,
+      "flat": true,
+      "title_size": 18,
+      "sublabel": "显存、带宽、算力"
+    },
+    {
+      "id": "n01",
+      "kind": "rect",
+      "x": 216.0,
+      "y": 150,
+      "width": 160,
+      "height": 64,
+      "type_label": "7.2",
+      "label": "软件栈",
+      "fill": "#ffffff",
+      "stroke": "#e5e7eb",
+      "stroke_width": 1.8,
+      "flat": true,
+      "title_size": 18,
+      "sublabel": "版本怎么对应"
+    },
+    {
+      "id": "n02",
+      "kind": "rect",
+      "x": 400.0,
+      "y": 150,
+      "width": 160,
+      "height": 64,
+      "type_label": "7.3",
+      "label": "监控与诊断",
+      "fill": "#ffffff",
+      "stroke": "#e5e7eb",
+      "stroke_width": 1.8,
+      "flat": true,
+      "title_size": 18,
+      "sublabel": "利用率与降频"
+    },
+    {
+      "id": "n03",
+      "kind": "rect",
+      "x": 584.0,
+      "y": 150,
+      "width": 160,
+      "height": 64,
+      "type_label": "7.4",
+      "label": "vLLM 部署",
+      "fill": "#ffffff",
+      "stroke": "#e5e7eb",
+      "stroke_width": 1.8,
+      "flat": true,
+      "title_size": 18,
+      "sublabel": "分页与连续批处理"
+    },
+    {
+      "id": "n04",
+      "kind": "rect",
+      "x": 768.0,
+      "y": 150,
+      "width": 160,
+      "height": 64,
+      "type_label": "7.5",
+      "label": "GPU 端量化",
+      "fill": "#ffffff",
+      "stroke": "#e5e7eb",
+      "stroke_width": 1.8,
+      "flat": true,
+      "title_size": 18,
+      "sublabel": "AWQ / GPTQ / FP8"
+    },
+    {
+      "id": "n10",
+      "kind": "rect",
+      "x": 768,
+      "y": 290,
+      "width": 160,
+      "height": 64,
+      "type_label": "7.6",
+      "label": "推理加速",
+      "fill": "#ffffff",
+      "stroke": "#e5e7eb",
+      "stroke_width": 1.8,
+      "flat": true,
+      "title_size": 18,
+      "sublabel": "前缀缓存与投机解码"
+    },
+    {
+      "id": "n11",
+      "kind": "rect",
+      "x": 584,
+      "y": 290,
+      "width": 160,
+      "height": 64,
+      "type_label": "7.7",
+      "label": "多卡",
+      "fill": "#ffffff",
+      "stroke": "#e5e7eb",
+      "stroke_width": 1.8,
+      "flat": true,
+      "title_size": 18,
+      "sublabel": "三者的取舍"
+    },
+    {
+      "id": "n12",
+      "kind": "rect",
+      "x": 400,
+      "y": 290,
+      "width": 160,
+      "height": 64,
+      "type_label": "7.8",
+      "label": "OOM 与卡顿",
+      "fill": "#ffffff",
+      "stroke": "#e5e7eb",
+      "stroke_width": 1.8,
+      "flat": true,
+      "title_size": 18,
+      "sublabel": "诊断流程图"
+    },
+    {
+      "id": "n13",
+      "kind": "rect",
+      "x": 216,
+      "y": 290,
+      "width": 160,
+      "height": 64,
+      "type_label": "7.9",
+      "label": "容量规划",
+      "fill": "#ffffff",
+      "stroke": "#e5e7eb",
+      "stroke_width": 1.8,
+      "flat": true,
+      "title_size": 18,
+      "sublabel": "并发 × 上下文 → 几张卡"
+    }
+  ],
+  "arrows": [
+    {
+      "id": "e00",
+      "source": "n00",
+      "target": "n01",
+      "flow": "control"
+    },
+    {
+      "id": "e01",
+      "source": "n01",
+      "target": "n02",
+      "flow": "control"
+    },
+    {
+      "id": "e02",
+      "source": "n02",
+      "target": "n03",
+      "flow": "control"
+    },
+    {
+      "id": "e03",
+      "source": "n03",
+      "target": "n04",
+      "flow": "control"
+    },
+    {
+      "id": "e10",
+      "source": "n11",
+      "target": "n10",
+      "flow": "control"
+    },
+    {
+      "id": "e11",
+      "source": "n12",
+      "target": "n11",
+      "flow": "control"
+    },
+    {
+      "id": "e12",
+      "source": "n13",
+      "target": "n12",
+      "flow": "control"
+    },
+    {
+      "id": "join",
+      "source": "n04",
+      "target": "n10",
+      "flow": "control",
+      "source_port": "bottom",
+      "target_port": "top"
+    }
+  ]
+}

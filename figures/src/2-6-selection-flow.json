@@ -1,0 +1,219 @@
+{
+  "schema_version": 1,
+  "mode": "flowchart",
+  "template_type": "flowchart",
+  "style": 4,
+  "quality_profile": "standard",
+  "text_policy": "strict",
+  "width": 960,
+  "height": 760,
+  "title": "选型六步，先约束后模型",
+  "footer": "没有量化过的约束不算约束：要快不是约束，首字 2 秒内、每秒 15 token 以上才是",
+  "footer_x": 48,
+  "footer_y": 734,
+  "nodes": [
+    {
+      "id": "s1",
+      "kind": "rect",
+      "x": 280,
+      "y": 112,
+      "width": 400,
+      "height": 58,
+      "label": "1 写清六项约束",
+      "sublabel": "硬件 · 延迟 · 并发 · 语言 · 合规 · 运维",
+      "fill": "#ffffff",
+      "stroke": "#e5e7eb",
+      "stroke_width": 1.8,
+      "flat": true,
+      "title_size": 20
+    },
+    {
+      "id": "s2",
+      "kind": "rect",
+      "x": 280,
+      "y": 196,
+      "width": 400,
+      "height": 58,
+      "label": "2 算内存预算",
+      "sublabel": "从可用内存倒推权重上限",
+      "fill": "#ffffff",
+      "stroke": "#e5e7eb",
+      "stroke_width": 1.8,
+      "flat": true,
+      "title_size": 20
+    },
+    {
+      "id": "s3",
+      "kind": "rect",
+      "x": 280,
+      "y": 280,
+      "width": 400,
+      "height": 58,
+      "label": "3 定规模档",
+      "sublabel": "15 GB ÷ 0.6 ≈ 25B，再留一档余量",
+      "fill": "#ffffff",
+      "stroke": "#e5e7eb",
+      "stroke_width": 1.8,
+      "flat": true,
+      "title_size": 20
+    },
+    {
+      "id": "d1",
+      "kind": "hexagon",
+      "x": 400,
+      "y": 364,
+      "width": 160,
+      "height": 64,
+      "label": "装得下 MoE 吗",
+      "fill": "#fffbeb",
+      "stroke": "#f59e0b",
+      "stroke_width": 1.6,
+      "title_size": 20
+    },
+    {
+      "id": "b-no",
+      "kind": "rect",
+      "x": 110,
+      "y": 372,
+      "width": 200,
+      "height": 48,
+      "label": "否：走 dense",
+      "fill": "#f9fafb",
+      "stroke": "#9ca3af",
+      "flat": true,
+      "title_size": 20
+    },
+    {
+      "id": "b-yes",
+      "kind": "rect",
+      "x": 650,
+      "y": 372,
+      "width": 200,
+      "height": 48,
+      "label": "是：走 MoE",
+      "fill": "#f9fafb",
+      "stroke": "#9ca3af",
+      "flat": true,
+      "title_size": 20
+    },
+    {
+      "id": "s4",
+      "kind": "rect",
+      "x": 280,
+      "y": 470,
+      "width": 400,
+      "height": 58,
+      "label": "4 选 2–3 个候选",
+      "sublabel": "不同家族各一，别做全家桶对比",
+      "fill": "#ffffff",
+      "stroke": "#e5e7eb",
+      "stroke_width": 1.8,
+      "flat": true,
+      "title_size": 20
+    },
+    {
+      "id": "s5",
+      "kind": "rect",
+      "x": 280,
+      "y": 554,
+      "width": 400,
+      "height": 58,
+      "label": "5 定量化：先 Q4_K_M",
+      "sublabel": "内存有余量再升 Q5/Q8，不够才降 Q3",
+      "fill": "#ffffff",
+      "stroke": "#e5e7eb",
+      "stroke_width": 1.8,
+      "flat": true,
+      "title_size": 20
+    },
+    {
+      "id": "s6",
+      "kind": "rect",
+      "x": 280,
+      "y": 638,
+      "width": 400,
+      "height": 58,
+      "label": "6 自测并记录",
+      "sublabel": "20–50 题：正确率 · 输出 token · 耗时 · 峰值内存",
+      "fill": "#eff6ff",
+      "stroke": "#3b82f6",
+      "stroke_width": 1.8,
+      "flat": true,
+      "title_size": 20
+    }
+  ],
+  "arrows": [
+    {
+      "id": "a1",
+      "source": "s1",
+      "target": "s2",
+      "flow": "control",
+      "source_port": "bottom",
+      "target_port": "top"
+    },
+    {
+      "id": "a2",
+      "source": "s2",
+      "target": "s3",
+      "flow": "control",
+      "source_port": "bottom",
+      "target_port": "top"
+    },
+    {
+      "id": "a3",
+      "source": "s3",
+      "target": "d1",
+      "flow": "control",
+      "source_port": "bottom",
+      "target_port": "top"
+    },
+    {
+      "id": "a4",
+      "source": "d1",
+      "target": "b-no",
+      "flow": "control",
+      "source_port": "left",
+      "target_port": "right"
+    },
+    {
+      "id": "a5",
+      "source": "d1",
+      "target": "b-yes",
+      "flow": "control",
+      "source_port": "right",
+      "target_port": "left"
+    },
+    {
+      "id": "a6",
+      "source": "b-no",
+      "target": "s4",
+      "flow": "control",
+      "source_port": "bottom",
+      "target_port": "left"
+    },
+    {
+      "id": "a7",
+      "source": "b-yes",
+      "target": "s4",
+      "flow": "control",
+      "source_port": "bottom",
+      "target_port": "right"
+    },
+    {
+      "id": "a8",
+      "source": "s4",
+      "target": "s5",
+      "flow": "control",
+      "source_port": "bottom",
+      "target_port": "top"
+    },
+    {
+      "id": "a9",
+      "source": "s5",
+      "target": "s6",
+      "flow": "control",
+      "source_port": "bottom",
+      "target_port": "top"
+    }
+  ]
+}

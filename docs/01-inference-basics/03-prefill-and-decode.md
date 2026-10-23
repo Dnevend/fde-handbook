@@ -14,7 +14,15 @@ title: Prefill 与 Decode：首字延迟和生成速度分别由什么决定
 
 **Decode（解码）**：从第二个 token 开始，每次只处理一个新 token。它要读全部的模型权重，却只做一次"矩阵 × 向量"的乘法，算力利用率极低。每生成一个 token 都要重复一遍这个过程，直到结束。
 
-两段的耗时特征完全不同，所以性能指标也必须分开看：
+两段的耗时特征完全不同，所以性能指标也必须分开看（图 1.3-1）：
+
+<Figure
+  id="1.3-1"
+  src="/figures/1-3-prefill-decode-timeline.svg"
+  alt="一次请求的时间轴：排队、Prefill、Decode 三段，标注 TTFT 覆盖排队与 prefill，TPOT 是两个相邻 token 的间隔，端到端时延为 TTFT 加 TPOT 乘输出 token 数"
+  caption="示意，非等比。TTFT 由排队与 prefill 决定，总时长还要再加「输出 token 数 × TPOT」。"
+  source="指标定义见本节参考资料 [3]；图中不含实测数字。"
+/>
 
 - **首字延迟（Time To First Token，TTFT）**：从请求发出到第一个 token 返回。主要由排队、分词、prefill 决定。
 - **每 token 时间（Time Per Output Token，TPOT）**，也叫 token 间延迟（ITL）：decode 阶段平均每个 token 花多久。这两个指标的定义以服务引擎的指标文档为准（引用 [\[3\]](#ref-3)）。

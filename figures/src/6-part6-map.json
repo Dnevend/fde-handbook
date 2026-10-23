@@ -1,0 +1,123 @@
+{
+  "schema_version": 1,
+  "mode": "flowchart",
+  "template_type": "flowchart",
+  "style": 4,
+  "quality_profile": "standard",
+  "text_policy": "strict",
+  "width": 960,
+  "height": 300,
+  "title": "第六部分：先有尺子，再谈调优",
+  "subtitle": "从造题开始，到定位错在哪一步",
+  "footer": "没有评估集的「优化」，只是换了一种感觉。",
+  "footer_x": 48,
+  "footer_y": 282,
+  "nodes": [
+    {
+      "id": "n00",
+      "kind": "rect",
+      "x": 32.0,
+      "y": 150,
+      "width": 160,
+      "height": 64,
+      "type_label": "6.1",
+      "label": "构建测试集",
+      "fill": "#ffffff",
+      "stroke": "#e5e7eb",
+      "stroke_width": 1.8,
+      "flat": true,
+      "title_size": 18,
+      "sublabel": "三道工序"
+    },
+    {
+      "id": "n01",
+      "kind": "rect",
+      "x": 216.0,
+      "y": 150,
+      "width": 160,
+      "height": 64,
+      "type_label": "6.2",
+      "label": "检索指标",
+      "fill": "#ffffff",
+      "stroke": "#e5e7eb",
+      "stroke_width": 1.8,
+      "flat": true,
+      "title_size": 18,
+      "sublabel": "三个检索指标"
+    },
+    {
+      "id": "n02",
+      "kind": "rect",
+      "x": 400.0,
+      "y": 150,
+      "width": 160,
+      "height": 64,
+      "type_label": "6.3",
+      "label": "生成指标",
+      "fill": "#ffffff",
+      "stroke": "#e5e7eb",
+      "stroke_width": 1.8,
+      "flat": true,
+      "title_size": 18,
+      "sublabel": "忠实度与 LLM-as-judge"
+    },
+    {
+      "id": "n03",
+      "kind": "rect",
+      "x": 584.0,
+      "y": 150,
+      "width": 160,
+      "height": 64,
+      "type_label": "6.4",
+      "label": "消融实验",
+      "fill": "#ffffff",
+      "stroke": "#e5e7eb",
+      "stroke_width": 1.8,
+      "flat": true,
+      "title_size": 18,
+      "sublabel": "一次只改一个变量"
+    },
+    {
+      "id": "n04",
+      "kind": "rect",
+      "x": 768.0,
+      "y": 150,
+      "width": 160,
+      "height": 64,
+      "type_label": "6.5",
+      "label": "错误归因",
+      "fill": "#ffffff",
+      "stroke": "#e5e7eb",
+      "stroke_width": 1.8,
+      "flat": true,
+      "title_size": 18,
+      "sublabel": "一张排查流程图"
+    }
+  ],
+  "arrows": [
+    {
+      "id": "e00",
+      "source": "n00",
+      "target": "n01",
+      "flow": "control"
+    },
+    {
+      "id": "e01",
+      "source": "n01",
+      "target": "n02",
+      "flow": "control"
+    },
+    {
+      "id": "e02",
+      "source": "n02",
+      "target": "n03",
+      "flow": "control"
+    },
+    {
+      "id": "e03",
+      "source": "n03",
+      "target": "n04",
+      "flow": "control"
+    }
+  ]
+}

@@ -1,0 +1,108 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 460" width="960" height="460" data-generator="fireworks-tech-graph" data-schema-version="1" data-text-metrics="heuristic-v1" data-style-id="4" data-visual-theme="Notion Clean" data-diagram-type="architecture" data-motion-scene="" data-semantic-profile="generic" data-semantic-valid="true" data-quality-profile="standard" data-max-bends-per-edge="12" data-max-total-bends="100" data-max-route-stretch="5.0" data-max-bridged-crossings="8" data-min-node-gap="0.0" data-min-container-gutter="0.0" data-min-label-clearance="2.0" data-min-segment-length="0.0">
+  <defs>
+    <marker id="arrowA" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto">
+      <polygon points="0 0, 8 3, 0 6" fill="#3b82f6"/>
+    </marker>
+    <marker id="arrowB" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto">
+      <polygon points="0 0, 8 3, 0 6" fill="#3b82f6"/>
+    </marker>
+    <marker id="arrowC" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto">
+      <polygon points="0 0, 8 3, 0 6" fill="#3b82f6"/>
+    </marker>
+    <marker id="arrowE" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto">
+      <polygon points="0 0, 8 3, 0 6" fill="#3b82f6"/>
+    </marker>
+    <marker id="arrowF" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto">
+      <polygon points="0 0, 8 3, 0 6" fill="#9ca3af"/>
+    </marker>
+    <marker id="arrowG" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto">
+      <polygon points="0 0, 8 3, 0 6" fill="#9ca3af"/>
+    </marker>
+    <marker id="arrowH" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto">
+      <polygon points="0 0, 8 3, 0 6" fill="#d1d5db"/>
+    </marker>
+    <style>
+    text { font-family: 'Hiragino Sans GB', 'PingFang SC', 'Noto Sans CJK SC', 'Microsoft YaHei', 'Helvetica Neue', Arial, sans-serif; }
+    .title { font-size: 24px; font-weight: 700; fill: #111827; }
+    .subtitle { font-size: 15px; font-weight: 500; fill: #9ca3af; }
+    .section { font-size: 13px; font-weight: 700; fill: #6b7280; letter-spacing: 1.4px; }
+    .section-sub { font-size: 12px; font-weight: 500; fill: #6b7280; }
+    .node-title { font-weight: 700; fill: #111827; }
+    .node-sub { font-weight: 500; fill: #374151; }
+    .node-type { font-size: 11px; font-weight: 700; fill: #6b7280; letter-spacing: 0.08em; }
+    .arrow-label { font-size: 12px; font-weight: 600; fill: #6b7280; }
+    .legend { font-size: 12px; font-weight: 500; fill: #6b7280; }
+    .footnote { font-size: 12px; font-weight: 500; fill: #6b7280; }
+    .metric-label { font-size: 8.5px; font-weight: 700; fill: #6b7280; text-transform: uppercase; }
+    .metric-value { font-size: 9.5px; font-weight: 700; fill: #111827; }
+    </style>
+  </defs>
+  <rect data-graph-role="background" width="960.0" height="460.0" fill="#ffffff"/>
+  <text x="48.0" y="48" text-anchor="start" class="title">GQA：多个 Query 头共享一组 K/V</text>
+  <text x="48.0" y="72" text-anchor="start" class="subtitle">KV 头数是 KV Cache 公式里唯一的架构乘数</text>
+  <line x1="48" y1="100" x2="912.0" y2="100" stroke="#e5e7eb" stroke-width="1"/>
+  <path id="a0" data-graph-role="edge" data-edge-id="a0" data-source="q0" data-target="kv0" data-edge-kind="flow" data-topic-id="" data-flow="read" data-motion-role="" data-motion-stage="" data-motion-order="" data-protocol="" data-via="" data-critical-path-id="" data-critical-hop="" data-critical-hops="" data-critical="false" data-bends="2" data-route-stretch="1.0" data-bridges="" d="M 256,194 L 256,218 L 325,218 L 325,300" fill="none" stroke="#3b82f6" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#arrowA)"/>
+  <path id="a1" data-graph-role="edge" data-edge-id="a1" data-source="q1" data-target="kv0" data-edge-kind="flow" data-topic-id="" data-flow="read" data-motion-role="" data-motion-stage="" data-motion-order="" data-protocol="" data-via="" data-critical-path-id="" data-critical-hop="" data-critical-hops="" data-critical="false" data-bends="4" data-route-stretch="1.0" data-bridges="" d="M 320,194 L 320,214.4 L 331.5,214.4 L 331.5,279.6 L 343,279.6 L 343,300" fill="none" stroke="#3b82f6" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#arrowA)"/>
+  <path id="a2" data-graph-role="edge" data-edge-id="a2" data-source="q2" data-target="kv0" data-edge-kind="flow" data-topic-id="" data-flow="read" data-motion-role="" data-motion-stage="" data-motion-order="" data-protocol="" data-via="" data-critical-path-id="" data-critical-hop="" data-critical-hops="" data-critical="false" data-bends="2" data-route-stretch="1.0" data-bridges="" d="M 384,194 L 384,218 L 361,218 L 361,300" fill="none" stroke="#3b82f6" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#arrowA)"/>
+  <path id="a3" data-graph-role="edge" data-edge-id="a3" data-source="q3" data-target="kv0" data-edge-kind="flow" data-topic-id="" data-flow="read" data-motion-role="" data-motion-stage="" data-motion-order="" data-protocol="" data-via="" data-critical-path-id="" data-critical-hop="" data-critical-hops="" data-critical="false" data-bends="2" data-route-stretch="1.0" data-bridges="" d="M 448,194 L 448,247 L 379,247 L 379,300" fill="none" stroke="#3b82f6" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#arrowA)"/>
+  <path id="a4" data-graph-role="edge" data-edge-id="a4" data-source="q4" data-target="kv1" data-edge-kind="flow" data-topic-id="" data-flow="read" data-motion-role="" data-motion-stage="" data-motion-order="" data-protocol="" data-via="" data-critical-path-id="" data-critical-hop="" data-critical-hops="" data-critical="false" data-bends="2" data-route-stretch="1.0" data-bridges="" d="M 512,194 L 512,218 L 581,218 L 581,300" fill="none" stroke="#3b82f6" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#arrowA)"/>
+  <path id="a5" data-graph-role="edge" data-edge-id="a5" data-source="q5" data-target="kv1" data-edge-kind="flow" data-topic-id="" data-flow="read" data-motion-role="" data-motion-stage="" data-motion-order="" data-protocol="" data-via="" data-critical-path-id="" data-critical-hop="" data-critical-hops="" data-critical="false" data-bends="4" data-route-stretch="1.0" data-bridges="" d="M 576,194 L 576,214.4 L 587.5,214.4 L 587.5,279.6 L 599,279.6 L 599,300" fill="none" stroke="#3b82f6" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#arrowA)"/>
+  <path id="a6" data-graph-role="edge" data-edge-id="a6" data-source="q6" data-target="kv1" data-edge-kind="flow" data-topic-id="" data-flow="read" data-motion-role="" data-motion-stage="" data-motion-order="" data-protocol="" data-via="" data-critical-path-id="" data-critical-hop="" data-critical-hops="" data-critical="false" data-bends="2" data-route-stretch="1.0" data-bridges="" d="M 640,194 L 640,218 L 617,218 L 617,300" fill="none" stroke="#3b82f6" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#arrowA)"/>
+  <path id="a7" data-graph-role="edge" data-edge-id="a7" data-source="q7" data-target="kv1" data-edge-kind="flow" data-topic-id="" data-flow="read" data-motion-role="" data-motion-stage="" data-motion-order="" data-protocol="" data-via="" data-critical-path-id="" data-critical-hop="" data-critical-hops="" data-critical="false" data-bends="2" data-route-stretch="1.0" data-bridges="" d="M 704,194 L 704,247 L 635,247 L 635,300" fill="none" stroke="#3b82f6" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#arrowA)"/>
+  <g id="node-q0" data-graph-role="node" data-node-id="q0" data-semantic-role="rect" data-motion-role="" data-motion-stage="" data-motion-order="" data-parent="" data-deployment-id="" data-topic-id="" data-span-id="" data-station-order="" data-status="" data-start-ms="" data-duration-ms="" data-parent-span="" data-graph-bounds="228,150,284,194">
+  <rect x="228.0" y="150.0" width="56.0" height="44.0" rx="4.0" fill="#eff6ff" stroke="#3b82f6" stroke-width="1.4"/>
+  <text data-text-role="title" data-full-text="Q" data-text-max-width="32.0" x="256.0" y="172.0" text-anchor="middle" class="node-title" font-size="16.0">Q</text>
+  </g>
+  <g id="node-q1" data-graph-role="node" data-node-id="q1" data-semantic-role="rect" data-motion-role="" data-motion-stage="" data-motion-order="" data-parent="" data-deployment-id="" data-topic-id="" data-span-id="" data-station-order="" data-status="" data-start-ms="" data-duration-ms="" data-parent-span="" data-graph-bounds="292,150,348,194">
+  <rect x="292.0" y="150.0" width="56.0" height="44.0" rx="4.0" fill="#eff6ff" stroke="#3b82f6" stroke-width="1.4"/>
+  <text data-text-role="title" data-full-text="Q" data-text-max-width="32.0" x="320.0" y="172.0" text-anchor="middle" class="node-title" font-size="16.0">Q</text>
+  </g>
+  <g id="node-q2" data-graph-role="node" data-node-id="q2" data-semantic-role="rect" data-motion-role="" data-motion-stage="" data-motion-order="" data-parent="" data-deployment-id="" data-topic-id="" data-span-id="" data-station-order="" data-status="" data-start-ms="" data-duration-ms="" data-parent-span="" data-graph-bounds="356,150,412,194">
+  <rect x="356.0" y="150.0" width="56.0" height="44.0" rx="4.0" fill="#eff6ff" stroke="#3b82f6" stroke-width="1.4"/>
+  <text data-text-role="title" data-full-text="Q" data-text-max-width="32.0" x="384.0" y="172.0" text-anchor="middle" class="node-title" font-size="16.0">Q</text>
+  </g>
+  <g id="node-q3" data-graph-role="node" data-node-id="q3" data-semantic-role="rect" data-motion-role="" data-motion-stage="" data-motion-order="" data-parent="" data-deployment-id="" data-topic-id="" data-span-id="" data-station-order="" data-status="" data-start-ms="" data-duration-ms="" data-parent-span="" data-graph-bounds="420,150,476,194">
+  <rect x="420.0" y="150.0" width="56.0" height="44.0" rx="4.0" fill="#eff6ff" stroke="#3b82f6" stroke-width="1.4"/>
+  <text data-text-role="title" data-full-text="Q" data-text-max-width="32.0" x="448.0" y="172.0" text-anchor="middle" class="node-title" font-size="16.0">Q</text>
+  </g>
+  <g id="node-q4" data-graph-role="node" data-node-id="q4" data-semantic-role="rect" data-motion-role="" data-motion-stage="" data-motion-order="" data-parent="" data-deployment-id="" data-topic-id="" data-span-id="" data-station-order="" data-status="" data-start-ms="" data-duration-ms="" data-parent-span="" data-graph-bounds="484,150,540,194">
+  <rect x="484.0" y="150.0" width="56.0" height="44.0" rx="4.0" fill="#eff6ff" stroke="#3b82f6" stroke-width="1.4"/>
+  <text data-text-role="title" data-full-text="Q" data-text-max-width="32.0" x="512.0" y="172.0" text-anchor="middle" class="node-title" font-size="16.0">Q</text>
+  </g>
+  <g id="node-q5" data-graph-role="node" data-node-id="q5" data-semantic-role="rect" data-motion-role="" data-motion-stage="" data-motion-order="" data-parent="" data-deployment-id="" data-topic-id="" data-span-id="" data-station-order="" data-status="" data-start-ms="" data-duration-ms="" data-parent-span="" data-graph-bounds="548,150,604,194">
+  <rect x="548.0" y="150.0" width="56.0" height="44.0" rx="4.0" fill="#eff6ff" stroke="#3b82f6" stroke-width="1.4"/>
+  <text data-text-role="title" data-full-text="Q" data-text-max-width="32.0" x="576.0" y="172.0" text-anchor="middle" class="node-title" font-size="16.0">Q</text>
+  </g>
+  <g id="node-q6" data-graph-role="node" data-node-id="q6" data-semantic-role="rect" data-motion-role="" data-motion-stage="" data-motion-order="" data-parent="" data-deployment-id="" data-topic-id="" data-span-id="" data-station-order="" data-status="" data-start-ms="" data-duration-ms="" data-parent-span="" data-graph-bounds="612,150,668,194">
+  <rect x="612.0" y="150.0" width="56.0" height="44.0" rx="4.0" fill="#eff6ff" stroke="#3b82f6" stroke-width="1.4"/>
+  <text data-text-role="title" data-full-text="Q" data-text-max-width="32.0" x="640.0" y="172.0" text-anchor="middle" class="node-title" font-size="16.0">Q</text>
+  </g>
+  <g id="node-q7" data-graph-role="node" data-node-id="q7" data-semantic-role="rect" data-motion-role="" data-motion-stage="" data-motion-order="" data-parent="" data-deployment-id="" data-topic-id="" data-span-id="" data-station-order="" data-status="" data-start-ms="" data-duration-ms="" data-parent-span="" data-graph-bounds="676,150,732,194">
+  <rect x="676.0" y="150.0" width="56.0" height="44.0" rx="4.0" fill="#eff6ff" stroke="#3b82f6" stroke-width="1.4"/>
+  <text data-text-role="title" data-full-text="Q" data-text-max-width="32.0" x="704.0" y="172.0" text-anchor="middle" class="node-title" font-size="16.0">Q</text>
+  </g>
+  <g id="node-kv0" data-graph-role="node" data-node-id="kv0" data-semantic-role="rect" data-motion-role="" data-motion-stage="" data-motion-order="" data-parent="" data-deployment-id="" data-topic-id="" data-span-id="" data-station-order="" data-status="" data-start-ms="" data-duration-ms="" data-parent-span="" data-graph-bounds="277,300,427,348">
+  <rect x="277.0" y="300.0" width="150.0" height="48.0" rx="4.0" fill="#f0fdf4" stroke="#16a34a" stroke-width="1.4"/>
+  <text data-text-role="title" data-full-text="KV 组 1" data-text-max-width="126.0" x="352.0" y="324.0" text-anchor="middle" class="node-title" font-size="16.0">KV 组 1</text>
+  </g>
+  <g id="node-kv1" data-graph-role="node" data-node-id="kv1" data-semantic-role="rect" data-motion-role="" data-motion-stage="" data-motion-order="" data-parent="" data-deployment-id="" data-topic-id="" data-span-id="" data-station-order="" data-status="" data-start-ms="" data-duration-ms="" data-parent-span="" data-graph-bounds="533,300,683,348">
+  <rect x="533.0" y="300.0" width="150.0" height="48.0" rx="4.0" fill="#f0fdf4" stroke="#16a34a" stroke-width="1.4"/>
+  <text data-text-role="title" data-full-text="KV 组 2" data-text-max-width="126.0" x="608.0" y="324.0" text-anchor="middle" class="node-title" font-size="16.0">KV 组 2</text>
+  </g>
+  <g id="node-lbl-q" data-graph-role="node" data-node-id="lbl-q" data-semantic-role="rect" data-motion-role="" data-motion-stage="" data-motion-order="" data-parent="" data-deployment-id="" data-topic-id="" data-span-id="" data-station-order="" data-status="" data-start-ms="" data-duration-ms="" data-parent-span="" data-graph-bounds="60,110,360,136">
+  <rect x="60.0" y="110.0" width="300.0" height="26.0" rx="4.0" fill="none" stroke="none" stroke-width="1.8"/>
+  <text data-text-role="title" data-full-text="32 个 Query 头（图中取 8 个）" data-text-max-width="276.0" x="210.0" y="123.0" text-anchor="middle" class="node-title" font-size="16.0">32 个 Query 头（图中取 8 个）</text>
+  </g>
+  <g id="node-lbl-kv" data-graph-role="node" data-node-id="lbl-kv" data-semantic-role="rect" data-motion-role="" data-motion-stage="" data-motion-order="" data-parent="" data-deployment-id="" data-topic-id="" data-span-id="" data-station-order="" data-status="" data-start-ms="" data-duration-ms="" data-parent-span="" data-graph-bounds="60,368,360,394">
+  <rect x="60.0" y="368.0" width="300.0" height="26.0" rx="4.0" fill="none" stroke="none" stroke-width="1.8"/>
+  <text data-text-role="title" data-full-text="8 组 KV 头 → 4 个 Q 共享一组" data-text-max-width="276.0" x="210.0" y="381.0" text-anchor="middle" class="node-title" font-size="16.0">8 组 KV 头 → 4 个 Q 共享一组</text>
+  </g>
+  <g id="node-note" data-graph-role="node" data-node-id="note" data-semantic-role="rect" data-motion-role="" data-motion-stage="" data-motion-order="" data-parent="" data-deployment-id="" data-topic-id="" data-span-id="" data-station-order="" data-status="" data-start-ms="" data-duration-ms="" data-parent-span="" data-graph-bounds="560,360,920,420">
+  <rect x="560.0" y="360.0" width="360.0" height="60.0" rx="4.0" fill="none" stroke="none" stroke-width="1.8"/>
+  <text data-text-role="title" data-full-text="MHA 是 1:1，MQA 是全部共享 1 组" data-text-max-width="336.0" x="740.0" y="390.0" text-anchor="middle" class="node-title" font-size="16.0">MHA 是 1:1，MQA 是全部共享 1 组</text>
+  <text data-text-role="subtitle" data-full-text="GQA 在中间：同样的显存能装 4 倍上下文" data-text-max-width="336.0" x="740.0" y="412.0" text-anchor="middle" class="node-sub" font-size="12">GQA 在中间：同样的显存能装 4 倍上下文</text>
+  </g>
+  <g id="footer" data-graph-role="reserved" data-graph-bounds="48,424,468,440">
+  <text x="48.0" y="436.0" class="footnote">以 Qwen3-8B 为例：32 个 Q 头、8 个 KV 头，KV Cache 是 MHA 的四分之一、MQA 的八倍</text>
+  </g>
+</svg>
