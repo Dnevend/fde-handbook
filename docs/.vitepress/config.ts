@@ -6,9 +6,6 @@ export default defineConfig({
   title: 'FDE Handbook',
   description: '从本地大模型到 RAG 落地',
   cleanUrls: true,
-  // 部署在 dnevend.github.io/fde-handbook/ 下，构建时由 workflow 传入 DOCS_BASE；
-  // 本地 dev/preview 不设该变量，仍在根路径预览。
-  base: process.env.DOCS_BASE || '/',
   srcExclude: ['**/README.md'],
 
   themeConfig: {

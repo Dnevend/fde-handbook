@@ -46,12 +46,7 @@ npm run docs:preview  # 预览构建结果
 
 ## 部署
 
-推送到 `master` 后由 GitHub Actions 自动构建并发布到 GitHub Pages，配置见 `.github/workflows/deploy.yml`（VitePress 官方模板）。
-
-- 线上地址：<https://dnevend.github.io/fde-handbook/>
-- 站点部署在子路径下，构建时通过环境变量传入 `base`：`DOCS_BASE=/fde-handbook/ npm run docs:build`。本地开发不设该变量，仍在根路径预览。
-- 首次使用需在仓库 **Settings → Pages → Build and deployment → Source** 选择 **GitHub Actions**。
-- 也可在 Actions 页面手动触发（`workflow_dispatch`）。
+待定。当前仓库为私有，暂未配置发布流程。
 
 ## 写作约定
 

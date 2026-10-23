@@ -28,10 +28,7 @@
 npm run docs:dev      # 本地预览
 npm run docs:build    # 构建（改完侧边栏或页面后必须跑一次）
 npm run docs:preview  # 预览构建结果
-DOCS_BASE=/fde-handbook/ npm run docs:build   # 模拟线上子路径构建
 ```
-
-部署：推送 `master` 触发 `.github/workflows/deploy.yml`（GitHub Pages 官方模板）。**不要**改用 gh-pages 分支或第三方 action，也不要手写 `base` 常量——`base` 由 `DOCS_BASE` 环境变量注入。
 
 ## 不要做
 
