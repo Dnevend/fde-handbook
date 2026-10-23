@@ -1,7 +1,6 @@
 import { defineConfig } from 'vitepress'
 
-// 侧边栏即书的目录，顺序与 /Users/dnevend/.opencode/plan/fde-handbook-outline-v1.md 的
-// 「四、详细目录」一一对应。增删章节时两边同步。
+// 侧边栏即书的目录。增删章节时，同步修改对应部分的 index.md 列表与页面的 frontmatter title。
 export default defineConfig({
   lang: 'zh-CN',
   title: 'FDE Handbook',
@@ -15,9 +14,9 @@ export default defineConfig({
     sidebar: [
       {
         text: '序',
-        collapsed: false,
+        collapsed: true,
         items: [
-          { text: '序 · 导言', link: '/00-preface/' },
+          { text: '导言', link: '/00-preface/' },
           { text: '0.1 写给焦虑的工程师', link: '/00-preface/01-why-fde' },
           { text: '0.2 全景图', link: '/00-preface/02-system-overview' },
           { text: '0.3 硬件与环境', link: '/00-preface/03-hardware-and-environment' },
@@ -26,9 +25,9 @@ export default defineConfig({
       },
       {
         text: '第一部分 推理原理（只学到"够用"）',
-        collapsed: false,
+        collapsed: true,
         items: [
-          { text: '第一部分 推理原理（只学到"够用"） · 导言', link: '/01-inference-basics/' },
+          { text: '导言', link: '/01-inference-basics/' },
           { text: '1.1 Token 与分词', link: '/01-inference-basics/01-tokens' },
           { text: '1.2 自回归生成', link: '/01-inference-basics/02-autoregressive' },
           { text: '1.3 Prefill 与 Decode', link: '/01-inference-basics/03-prefill-and-decode' },
@@ -39,9 +38,9 @@ export default defineConfig({
       },
       {
         text: '第二部分 模型选型',
-        collapsed: false,
+        collapsed: true,
         items: [
-          { text: '第二部分 模型选型 · 导言', link: '/02-model-selection/' },
+          { text: '导言', link: '/02-model-selection/' },
           { text: '2.1 认识模型家族与版本', link: '/02-model-selection/01-model-families' },
           { text: '2.2 参数量取舍', link: '/02-model-selection/02-parameter-tradeoff' },
           { text: '2.3 Dense 与 MoE', link: '/02-model-selection/03-dense-vs-moe' },
@@ -52,9 +51,9 @@ export default defineConfig({
       },
       {
         text: '第三部分 本地部署',
-        collapsed: false,
+        collapsed: true,
         items: [
-          { text: '第三部分 本地部署 · 导言', link: '/03-deployment/' },
+          { text: '导言', link: '/03-deployment/' },
           { text: '3.1 模型格式', link: '/03-deployment/01-model-formats' },
           { text: '3.2 推理引擎对比', link: '/03-deployment/02-engine-comparison' },
           { text: '3.3 对话模板', link: '/03-deployment/03-chat-template' },
@@ -66,9 +65,9 @@ export default defineConfig({
       },
       {
         text: '第四部分 量化',
-        collapsed: false,
+        collapsed: true,
         items: [
-          { text: '第四部分 量化 · 导言', link: '/04-quantization/' },
+          { text: '导言', link: '/04-quantization/' },
           { text: '4.1 数值表示', link: '/04-quantization/01-number-formats' },
           { text: '4.2 量化原理', link: '/04-quantization/02-quantization-principles' },
           { text: '4.3 GGUF K-quants', link: '/04-quantization/03-gguf-k-quants' },
@@ -80,9 +79,9 @@ export default defineConfig({
       },
       {
         text: '第五部分 RAG 全链路',
-        collapsed: false,
+        collapsed: true,
         items: [
-          { text: '第五部分 RAG 全链路 · 导言', link: '/05-rag/' },
+          { text: '导言', link: '/05-rag/' },
           { text: '5.1 为什么用 RAG', link: '/05-rag/01-why-rag' },
           { text: '5.2 文档解析', link: '/05-rag/02-document-parsing' },
           { text: '5.3 切分', link: '/05-rag/03-chunking' },
@@ -96,9 +95,9 @@ export default defineConfig({
       },
       {
         text: '第六部分 评估与调优',
-        collapsed: false,
+        collapsed: true,
         items: [
-          { text: '第六部分 评估与调优 · 导言', link: '/06-evaluation/' },
+          { text: '导言', link: '/06-evaluation/' },
           { text: '6.1 构建测试集', link: '/06-evaluation/01-building-test-set' },
           { text: '6.2 检索指标', link: '/06-evaluation/02-retrieval-metrics' },
           { text: '6.3 生成指标', link: '/06-evaluation/03-generation-metrics' },
@@ -108,9 +107,9 @@ export default defineConfig({
       },
       {
         text: '第七部分 GPU 服务器与推理加速',
-        collapsed: false,
+        collapsed: true,
         items: [
-          { text: '第七部分 GPU 服务器与推理加速 · 导言', link: '/07-gpu-inference/' },
+          { text: '导言', link: '/07-gpu-inference/' },
           { text: '7.1 GPU 硬件常识', link: '/07-gpu-inference/01-gpu-hardware' },
           { text: '7.2 软件栈', link: '/07-gpu-inference/02-software-stack' },
           { text: '7.3 监控与诊断', link: '/07-gpu-inference/03-monitoring' },
@@ -124,9 +123,9 @@ export default defineConfig({
       },
       {
         text: '第八部分 工程化与交付',
-        collapsed: false,
+        collapsed: true,
         items: [
-          { text: '第八部分 工程化与交付 · 导言', link: '/08-delivery/' },
+          { text: '导言', link: '/08-delivery/' },
           { text: '8.1 服务架构与流式输出', link: '/08-delivery/01-service-architecture' },
           { text: '8.2 离线部署与断网验证', link: '/08-delivery/02-offline-deployment' },
           { text: '8.3 压测与容量验收', link: '/08-delivery/03-load-testing' },
@@ -138,9 +137,9 @@ export default defineConfig({
       },
       {
         text: '附录',
-        collapsed: false,
+        collapsed: true,
         items: [
-          { text: '附录 · 导言', link: '/appendix/' },
+          { text: '导言', link: '/appendix/' },
           { text: 'A 显存速查表', link: '/appendix/a-vram-cheatsheet' },
           { text: 'B 术语表', link: '/appendix/b-glossary' },
           { text: 'C 故障排查手册', link: '/appendix/c-troubleshooting' },

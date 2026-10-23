@@ -11,7 +11,7 @@ models/
 *.pth
 *.pt
 
-# 语料本体：只提交 corpus/sources.yaml 与下载脚本（见 writing-principles 第 4 条）
+# 语料本体：公开资料也有版权，只提交 corpus/sources.yaml 与下载脚本
 corpus/raw/
 corpus/**/*.pdf
 corpus/**/*.png

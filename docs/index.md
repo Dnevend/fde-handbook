@@ -3,14 +3,14 @@ layout: home
 
 hero:
   name: FDE Handbook
-  text: 从本地大模型到 RAG 落地
-  tagline: 给会写代码、正面临 AI 转行危机的工程师——一条能在自己电脑上走完的落地路径
+  text: 从跑通一个模型，到交付一套企业离线知识库
+  tagline: 不假设你懂 AI，只假设你懂工程——你已有的经验就是起点。这里记录一条可复现的路：把大模型交到真正使用它的人手里。
   actions:
     - theme: brand
       text: 从序章开始
       link: /00-preface/01-why-fde
     - theme: alt
-      text: 目录结构
+      text: 关于本书
       link: /00-preface/
 
 features:
