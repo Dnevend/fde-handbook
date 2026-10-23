@@ -32,6 +32,9 @@ __pycache__/
 .vscode/*
 !.vscode/extensions.json
 
+# 浏览器自动化（playwright MCP）的临时输出
+.playwright-mcp/
+
 # 测量与日志的临时输出
 benchmarks/**/*.tmp
 *.log
