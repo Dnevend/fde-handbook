@@ -8,7 +8,12 @@ export default defineConfig({
   cleanUrls: true,
   srcExclude: ['**/README.md'],
 
+  head: [['link', { rel: 'icon', type: 'image/svg+xml', href: '/favicon.svg' }]],
+
   themeConfig: {
+    // 深浅两版除颜色外必须一致；含义见 docs/public/logo.svg 的注释
+    logo: { light: '/logo.svg', dark: '/logo-dark.svg' },
+
     nav: [{ text: '序', link: '/00-preface/' }],
 
     sidebar: [

@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24" role="img" aria-label="FDE Handbook">
+  <title>FDE Handbook</title>
+  <!-- 几何同 logo.svg；颜色随系统深浅色切换，因为浏览器标签栏可能是深色底。 -->
+  <style>
+    .ink { fill: #1a1a1a; stroke: #1a1a1a }
+    @media (prefers-color-scheme: dark) {
+      .ink { fill: #f5f5f5; stroke: #f5f5f5 }
+    }
+  </style>
+  <g class="ink" fill="none" stroke-width="1.5">
+    <path d="M2 8V2h6"/>
+    <path d="M16 2h6v6"/>
+    <path d="M2 16v6h6"/>
+  </g>
+  <rect class="ink" x="11.5" y="11.5" width="7" height="7" rx="1.75" stroke="none"/>
+</svg>
