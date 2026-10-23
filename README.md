@@ -27,7 +27,8 @@
 | `docs/` | VitePress 正文根目录，侧边栏即书的目录 |
 | `docs/00-preface/` … `docs/08-delivery/` | 序 + 八个部分的正文 |
 | `docs/appendix/` | 速查表、术语表、排查手册、面试题索引、参考文献 |
-| `docs/public/` | 图片与架构图 |
+| `docs/public/` | 图片与架构图（站点直接引用，**图的源在 `figures/src/`**） |
+| `figures/src/` | 结构图的图源（JSON，显式坐标）；`figures/render.sh` 渲染成 `docs/public/figures/*.svg` |
 | `labs/` | 与章节一一对应的可运行代码（`07-gpu-inference/` 只放云 GPU 脚本，本地不跑） |
 | `benchmarks/` | 原始测量数据（CSV/JSON）与生成图表的脚本 |
 | `corpus/` | 公开语料清单与下载脚本；**只提交清单，不提交 PDF 本体** |
@@ -53,6 +54,7 @@ npm run docs:preview  # 预览构建结果
 - 每个数据都注明硬件、软件版本与完整命令，原始数据放 `benchmarks/`。
 - 数据来源用文字括注，不用 emoji：估算写「约 5.7 GB（估算，推导见下）」，引用写「（引用 [1]）」，实测写「（实测，见 `benchmarks/…`）」。引用编号对应当节末尾的「参考资料」，只收一手资料：论文、官方文档、源码、模型卡、协议原文。
 - 语料不入库，并注明各份资料的协议。
+- 插图不手画：结构图的源是 `figures/src/*.json`，定量图由 `benchmarks/estimates/plot.py` 从 CSV 生成，`docs/public/figures/` 里只有渲染产物。图号写 `图 1.3-1`（部分导言页写 `图 3-1`），正文至少引用一次，图里的每个数字同样要标来源。
 
 ## 进度
 
