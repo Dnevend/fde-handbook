@@ -12,10 +12,12 @@
 3. **增删章节要三处同步**：`docs/.vitepress/config.ts` 的侧边栏、所在部分的 `index.md` 列表、页面 frontmatter 的 `title`。
 4. **不写没验证过的结论。** 占位页保留"本章要回答的问题"句式；正文写到什么程度就只声明到什么程度，未做的实验不能写成"实测"。
 5. **中文正文，术语首次出现标注英文**（如 首字延迟（TTFT））。
+6. **首页动效零依赖。** 封面背景（`HeroAurora.vue`）保持纯 CSS + 内联 SVG 噪声，不引动画库、不写客户端 JS；动效必须在 `prefers-reduced-motion: reduce` 下静态可用，且不得拦截点击或推迟首屏文字渲染。
 
 ## 路径约定
 
 - `docs/00-preface/` … `docs/08-delivery/`、`docs/appendix/`：正文，一个目录对应一个部分。
+- `docs/.vitepress/theme/`：主题扩展。`index.ts` 负责挂默认主题槽位，`components/` 放组件，`custom.css` 只放必须作用于默认主题元素的全局选择器；能用页面或组件内样式解决的不要放这里。
 - `labs/<部分编号>-<部分名>/`：与章节一一对应的可运行代码。
 - `labs/07-gpu-inference/`：云 GPU 实验，**本地（Mac）不要求能跑**。
 - `benchmarks/`：原始测量数据与生成图表的脚本。

@@ -1,0 +1,10 @@
+/*
+ * 主题级全局样式。组件自身的样式尽量内联在 SFC 的 <style scoped> 里，
+ * 这里只放必须作用于默认主题元素的选择器。
+ */
+
+/* 首页 Hero 背景层（HeroAurora.vue）的定位上下文。
+   默认主题的 .VPHome 没有 position，导致槽位里的绝对定位元素会逃到页面根部。 */
+.VPHome {
+  position: relative;
+}
