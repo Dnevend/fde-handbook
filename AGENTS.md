@@ -1,0 +1,42 @@
+# AGENTS.md
+
+给在本仓库里工作的 agent。面向读者的说明在 `README.md`，这里只写"改这个仓库时该注意什么"。
+
+**仓库是什么**：一本书的站点与配套实验代码——《FDE Handbook：从本地大模型到 RAG 落地》。VitePress 站点 + 章节正文 + `labs/` 实验脚本。
+**当前阶段**：骨架。侧边栏与目录已就位，正文为占位页，只有标题和"本章要回答的问题"。
+
+## 硬规则
+
+1. **语料本体、模型权重、构建产物一律不入库。** `.gitignore` 已覆盖 `*.gguf`、`*.safetensors`、`corpus/raw/`、PDF/图片、`.vitepress/cache|dist`、`node_modules/`。不要为了"方便"放宽这些规则，也不要 `git add -f` 绕过。
+2. **每个数字都标来源。** 区分 🧪 实测 / 📐 估算 / 📚 引用，估算不得写成事实。实测必须写明硬件、软件版本与完整命令；原始数据（CSV/JSON）放 `benchmarks/`，正文只放结论和图表。
+3. **增删章节要三处同步**：`docs/.vitepress/config.ts` 的侧边栏、所在部分的 `index.md` 列表、页面 frontmatter 的 `title`。
+4. **不写没验证过的结论。** 占位页保留"本章要回答的问题"句式；正文写到什么程度就只声明到什么程度，未做的实验不能写成"实测"。
+5. **中文正文，术语首次出现标注英文**（如 首字延迟（TTFT））。
+
+## 路径约定
+
+- `docs/00-preface/` … `docs/08-delivery/`、`docs/appendix/`：正文，一个目录对应一个部分。
+- `labs/<部分编号>-<部分名>/`：与章节一一对应的可运行代码。
+- `labs/07-gpu-inference/`：云 GPU 实验，**本地（Mac）不要求能跑**。
+- `benchmarks/`：原始测量数据与生成图表的脚本。
+- `corpus/`：只放 `sources.yaml`（链接、协议、用途）和下载脚本。公开资料也有版权，正文引用时注明协议。
+- `eval/`：测试问题集（问题 / 标准答案 / 出处）。
+
+## 常用命令
+
+```bash
+npm run docs:dev      # 本地预览
+npm run docs:build    # 构建（改完侧边栏或页面后必须跑一次）
+npm run docs:preview  # 预览构建结果
+DOCS_BASE=/fde-handbook/ npm run docs:build   # 模拟线上子路径构建
+```
+
+部署：推送 `master` 触发 `.github/workflows/deploy.yml`（GitHub Pages 官方模板）。**不要**改用 gh-pages 分支或第三方 action，也不要手写 `base` 常量——`base` 由 `DOCS_BASE` 环境变量注入。
+
+## 不要做
+
+- 不要为了"看起来完整"提前填正文，占位页是刻意的。
+- 不要调整章节顺序或增删部分，结构由维护者决定。
+- 不要擅自更换开源协议（正文与数据 CC BY-NC-SA 4.0、代码 MIT，见 `LICENSE-docs` 与 `LICENSE`），也不要擅自决定部署方式（待定）。
+- 不要引入与当前章节无关的依赖；需要新依赖时先说明用途。
+- 不要在仓库里写本机绝对路径（`/Users/...`）。

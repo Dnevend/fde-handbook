@@ -44,6 +44,15 @@ npm run docs:build    # 构建静态站点到 docs/.vitepress/dist
 npm run docs:preview  # 预览构建结果
 ```
 
+## 部署
+
+推送到 `master` 后由 GitHub Actions 自动构建并发布到 GitHub Pages，配置见 `.github/workflows/deploy.yml`（VitePress 官方模板）。
+
+- 线上地址：<https://dnevend.github.io/fde-handbook/>
+- 站点部署在子路径下，构建时通过环境变量传入 `base`：`DOCS_BASE=/fde-handbook/ npm run docs:build`。本地开发不设该变量，仍在根路径预览。
+- 首次使用需在仓库 **Settings → Pages → Build and deployment → Source** 选择 **GitHub Actions**。
+- 也可在 Actions 页面手动触发（`workflow_dispatch`）。
+
 ## 写作约定
 
 - 每个数据都注明硬件、软件版本与完整命令，原始数据放 `benchmarks/`。
@@ -57,4 +66,11 @@ npm run docs:preview  # 预览构建结果
 
 ## 协议
 
-待定（正文拟 CC BY-NC-SA 4.0，代码拟 MIT）。在定稿前请勿转载或商用。
+| 内容 | 协议 |
+|---|---|
+| 正文（`docs/` 下的 Markdown 与图表） | [CC BY-NC-SA 4.0](./LICENSE-docs) |
+| 基准数据与测试集（`benchmarks/`、`eval/`） | [CC BY-NC-SA 4.0](./LICENSE-docs) |
+| 配套代码（`labs/`、站点配置） | [MIT](./LICENSE) |
+
+- 正文与数据**不得用于商业目的**；转载或改编需署名，衍生作品须以相同协议共享。
+- 代码可自由使用、修改、分发，保留版权声明即可。

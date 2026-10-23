@@ -2,6 +2,7 @@
   "name": "fde-handbook",
   "version": "0.1.0",
   "private": true,
+  "license": "MIT",
   "description": "《FDE Handbook：从本地大模型到 RAG 落地》——书籍站点与配套实验代码",
   "type": "module",
   "scripts": {

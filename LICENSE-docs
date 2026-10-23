@@ -1,0 +1,24 @@
+# 正文与数据许可：CC BY-NC-SA 4.0
+
+本仓库中以下内容采用 **Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International（CC BY-NC-SA 4.0）** 许可：
+
+- `docs/` 下的全部 Markdown 正文与图表
+- `benchmarks/` 下的基准数据
+- `eval/` 下的测试问题集
+- `corpus/sources.yaml` 中的整理性内容（不含第三方资料的原始权利）
+
+你可以自由地：**共享**（以任何媒介复制、发行）与**改编**（修改、转换、基于本作品创作）。
+
+但须遵守以下条件：
+
+- **署名**：须给出适当署名、附上许可协议链接，并说明是否作出修改。
+- **非商业性使用**：不得将上述内容用于商业目的。
+- **相同方式共享**：若改编上述内容，须以相同协议分发你的贡献。
+
+协议全文（含中文法律文本）：<https://creativecommons.org/licenses/by-nc-sa/4.0/legalcode.zh-hans>
+
+署名建议：`FDE Handbook, NeilYoung, CC BY-NC-SA 4.0`。
+
+---
+
+配套代码不受本文件约束，见根目录的 `LICENSE`（MIT）。
