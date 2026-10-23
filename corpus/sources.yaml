@@ -1,0 +1,337 @@
+# 公开语料清单。
+#
+# 只提交本文件与下载脚本，语料正文不入库（见 .gitignore 的 corpus/raw/ 与 corpus/**/*.pdf）。
+#
+# redistributable 三档，语义严格区分：
+#   full    — 可直接全文入库（法规、政府文件）
+#   excerpt — 只能节选引用，单份不超过原文 10%，原文件不入库
+#   none    — 只存链接与条款号，任何情况下都不下载进仓库
+#
+# 字段约定：
+#   url           已核验可访问的直接地址；为 null 时用 resolve 的检索式由人工确认
+#   resolve       人工检索式（站点 + 关键词），不是自动抓取目标
+#   sections      只取哪几节，对应 excerpt 的切取范围
+#   used_in       这份语料服务正文的哪几节，防止收了不用
+#   verify        书目信息（标准号、文号）待下载时复核
+#
+# 主线场景：某注塑厂 3 号线（注塑机 / 模温机 / 冷水机 / 机械手 / 模架）。
+# 模具车间（CNC / EDM / 抛光 / 试模）作为对照场景。
+
+version: 1
+updated: 2026-10-23
+scope: 注塑与模具车间
+
+sources:
+  # ---------- 法规与政府文件：可全文入库 ----------
+  - id: reg-safety-law
+    title: 中华人民共和国安全生产法（2021 年修正）
+    doc_type: regulation
+    publisher: 全国人民代表大会常务委员会
+    issued: 2021-06-10
+    url: https://www.samr.gov.cn/tzsbj/zcfg/flfg/art/2021/art_d8ec5ba871464b49bfd0a0275bb57756.html
+    resolve: "国家法律法规数据库 flk.npc.gov.cn 安全生产法 2021 修正"
+    sha256: 76596899905e6a31e93823b0027795e44c61ba9f36bdadcbc7fa14696318b6c3
+    license: 《著作权法》第五条：法律、法规、国家机关的决议、决定、命令不适用著作权法
+    redistributable: full
+    role: corpus
+    sections: [全文]
+    used_in: [5.9, 8.5]
+    verify: false
+    notes: 权限分层的"强制规范"层。重点第二十八条（教育培训）、第四十一条（隐患排查）。市场监管总局法规页转载全文；flk.npc.gov.cn 为权威源，抓取时需带 User-Agent
+
+  - id: reg-mem-order-13
+    title: 工贸企业有限空间作业安全规定（应急管理部令第 13 号）
+    doc_type: regulation
+    publisher: 应急管理部
+    issued: 2023-11-29
+    url: https://www.gov.cn/gongbao/2024/issue_11166/202402/content_6931872.html
+    resolve: "site:mem.gov.cn 应急管理部令 第13号 工贸企业有限空间作业安全规定"
+    sha256: 124fbc221371cd6a4feac24b42c5f634115ef3c85623f2448c6040d1ffa430fd
+    license: 《著作权法》第五条
+    redistributable: full
+    role: corpus
+    sections: [全文]
+    used_in: [5.9]
+    verify: false
+    notes: 2024-01-01 施行。取国务院公报版本；应急管理部原文 mem.gov.cn/gk/zfxxgkpt/fdzdgknr/202312/t20231208_471355.shtml 作备链
+
+  - id: gov-checklist-hs
+    title: 黄石市应急管理局"通用版""预防为主"指导清单
+    doc_type: gov_doc
+    publisher: 黄石市应急管理局
+    issued: 2025-05-06
+    url: http://yjj.huangshi.gov.cn/hdzt/sqxzjcgs/202512/t20251226_1294541.html
+    resolve: null
+    sha256: 1428175649d7c70a34b08a743921e4d2ea3076d16d8d8a8aeae21ad0b4b6ed7c
+    license: 《著作权法》第五条
+    redistributable: full
+    role: corpus
+    sections: [全文]
+    used_in: [5.3, 5.9]
+    verify: false
+    notes: 条款—法律依据—检查方式三段式，适合做切分的"条款边界"样本
+
+  - id: gov-responsibility-zs
+    title: 2023 年安全生产履责清单（企业岗位安全履责要点）
+    doc_type: gov_doc
+    publisher: 中山市应急管理局
+    issued: 2023-05-24
+    url: http://www.zs.gov.cn/yjj/wgk/glgk/content/post_2303488.html
+    resolve: null
+    sha256: ac17328b0ce3208e76409f57fdce2d6151260198c41f95ae80f29bc8506d8897
+    license: 《著作权法》第五条
+    redistributable: full
+    role: corpus
+    sections: [全文]
+    used_in: [5.3, 5.9]
+    verify: false
+    notes: 主要负责人/分管负责人/车间/班组/岗位五级职责，天然带层级元数据
+
+  - id: gov-ledger-guide
+    title: 北京市生产经营单位安全生产主体责任规定——工作指南（2023 年 5 月）
+    doc_type: gov_doc
+    publisher: 北京市应急管理局
+    issued: 2023-05-09
+    url: "https://yjglj.beijing.gov.cn/attach/0/%E5%8C%97%E4%BA%AC%E5%B8%82%E7%94%9F%E4%BA%A7%E7%BB%8F%E8%90%A5%E5%8D%95%E4%BD%8D%E5%AE%89%E5%85%A8%E7%94%9F%E4%BA%A7%E4%B8%BB%E4%BD%93%E8%B4%A3%E4%BB%BB%E8%A7%84%E5%AE%9A%E2%80%94%E2%80%94%E5%B7%A5%E4%BD%9C%E6%8C%87%E5%8D%97(202305).pdf"
+    resolve: null
+    sha256: 72a0ca0fdc382c03d1b0f1cf7be8a06f0740d91fd7b7ce05c7583a477da481cc
+    license: 《著作权法》第五条（政府机关发布的工作指南）
+    redistributable: full
+    role: corpus
+    sections: [8.1 设备设施台账格式, 8.2 特种设备台账格式, 12.2 安全检查记录表格式, 12.5 事故隐患排查治理台账格式]
+    used_in: [5.2, 5.3, 5.9]
+    verify: false
+    notes: 合成语料的表头来源。附范本直接给出台账字段名与签字栏，字段覆盖比检查清单完整
+
+  # ---------- 事故调查报告：脱敏后节选 ----------
+  - id: acc-fangsu-0518
+    title: 广州市白云区钟落潭镇"5·18"机械伤害一般事故调查报告
+    doc_type: accident_report
+    publisher: 广州市白云区应急管理局
+    issued: 2022-09-08
+    url: https://www.by.gov.cn/attachment/7/7158/7158031/8558271.pdf
+    resolve: null
+    license: 政府事故调查组出具，具行政性质；含个人信息，须脱敏
+    redistributable: excerpt
+    excerpt_ratio: 0.30
+    role: corpus
+    redaction: [personal_info, company_name]
+    sections: [现场勘查（涉事设备）, 事故原因分析]
+    ranges:
+      - label: 现场勘查（涉事设备）
+        start: "（四）现场勘查情况"
+        end: "二、事故经过"
+      - label: 事故原因分析
+        start: "三、事故原因分析"
+        end: "四、存在的主要问题"
+    used_in: [5.2, 6.5]
+    verify: false
+    notes: 吹瓶机左右模组件间距、安全门、光幕描述精确到毫米级，是"设备结构长文本"样本
+
+  - id: acc-meizhu-0116
+    title: 厚街镇"1·16"一般机械伤害事故调查报告
+    doc_type: accident_report
+    publisher: 东莞市应急管理局
+    issued: 2021-03-01
+    url: http://dgsafety.dg.gov.cn/attachment/0/52/52730/3505265.pdf
+    resolve: null
+    license: 政府事故调查组出具，具行政性质；含个人信息，须脱敏
+    redistributable: excerpt
+    excerpt_ratio: 0.06
+    role: corpus
+    ocr_sample: true
+    redaction: [personal_info, company_name]
+    sections: [事故相关单位情况, 事故原因分析, 整改措施]
+    used_in: [5.9, 6.5]
+    verify: false
+    notes: 明确记载"有制定操作规程并设置在机器上"但"无维保证据"，是版本/时效冲突的天然样本
+
+  - id: acc-yisheng-0527
+    title: 昆山高新区昆山乙盛机械工业有限公司"5·27"机械伤害事故调查报告
+    doc_type: accident_report
+    publisher: 昆山市应急管理局
+    issued: 2022-02-07
+    url: https://www.ks.gov.cn/kss/sgdc/202202/5b95acd59e1240fbb95831f80c96a42d.shtml
+    resolve: null
+    license: 政府事故调查组出具，具行政性质；含个人信息，须脱敏
+    redistributable: excerpt
+    excerpt_ratio: 0.20
+    role: corpus
+    redaction: [personal_info, company_name]
+    sections: [事故发生车间、设备情况, 事故原因分析]
+    ranges:
+      - label: 事故发生车间与设备
+        start: "（二）事故发生车间、设备情况"
+        end: "二、事故经过及应急处置情况"
+      - label: 事故原因与性质
+        start: "四、事故原因分析和事故性质认定"
+        end: "五、监管履职情况"
+    used_in: [5.3, 6.1]
+    verify: false
+    notes: 对照组（冲压 + 机械手）。点名点检表缺"联锁装置"检查项，是"表壳漏项"的最佳证据
+
+  # ---------- 招股说明书：节选 ----------
+  - id: ipo-hitech
+    title: 青岛海泰科模塑科技股份有限公司首次公开发行股票并在创业板上市之上市保荐书
+    doc_type: prospectus
+    publisher: 深圳证券交易所 / 巨潮资讯网
+    issued: 2021-03-29
+    url: http://static.cninfo.com.cn/finalpage/2021-03-29/1209472573.PDF
+    resolve: "巨潮资讯 301022 海泰科 招股说明书 2021"
+    license: 公开披露文件；版权归发行人，仅节选引用
+    redistributable: excerpt
+    excerpt_ratio: 0.12
+    role: corpus
+    sections: [核心技术及其来源, 产品质量控制情况]
+    ranges:
+      - label: 核心技术
+        start: "（一）发行人的核心技术及其来源"
+        end: "（二）核心技术先进性及具体表征"
+      - label: 产品质量控制
+        start: "（十）产品质量控制情况"
+        end: "四、主要经营和财务数据及指标"
+    used_in: [5.3, 5.8]
+    verify: false
+    substituted: 招股说明书（巨潮检索接口未返回稳定直链）
+    notes: 用同一发行人的上市保荐书替代：工艺与设备描述集中在"核心技术"章，制度名集中在"质量控制"章
+
+  - id: ipo-borch
+    title: 博创智能装备股份有限公司首次公开发行股票并在科创板上市招股说明书（申报稿）
+    doc_type: prospectus
+    publisher: 上海证券交易所
+    issued: 2022-06-08
+    url: https://static.sse.com.cn/stock/disclosure/announcement/c/202206/001176_20220608_A0YR.pdf
+    resolve: null
+    license: 公开披露文件；版权归发行人，仅节选引用
+    redistributable: excerpt
+    excerpt_ratio: 0.04
+    role: corpus
+    sections: [释义（术语表）]
+    ranges:
+      - label: 专业术语释义
+        start: "二、专业术语释义\\s*注塑机\\s*指"
+        end: "第二节\\s*概\\s*览"
+    used_in: [5.4, 5.6, 6.3]
+    verify: false
+    notes: 释义章是术语基准表（二板机/三板机/注塑岛/稼动率/螺杆），用于造"同物异名"负样本
+
+  # ---------- 环评：节选 ----------
+  - id: eia-injection-01
+    title: 中山市三禾塑胶科技有限公司年产塑料制品 100 吨、模具 30 套迁建项目环境影响报告表
+    doc_type: eia
+    publisher: 中山市生态环境局
+    issued: 2025-12
+    url: http://zsepb.zs.gov.cn/attachment/0/556/556658/2578121.pdf
+    resolve: "site:*.gov.cn 注塑 建设项目环境影响报告表 主要设备 工艺流程"
+    license: 政府公示文件；版权归建设单位与环评单位，仅节选引用
+    redistributable: excerpt
+    excerpt_ratio: 0.12
+    role: corpus
+    sections: [主要设备一览表, 注塑与模具两段工艺流程]
+    ranges:
+      - label: 主要设备
+        start: "4、主要设备"
+        end: "（1）设备产能核算"
+      - label: 工艺流程
+        start: "工艺流程和产排污环节"
+        end: "与项目有关的原有环境污染问题"
+    used_in: [5.2, 5.5]
+    verify: false
+    notes: 同一份报告里既有注塑流程又有模具流程（机加工/火花机/磨床），主线与对照一次取齐；设备表是天然的跨页表格样本
+
+  # ---------- 标准与专利：只取条款与参数 ----------
+  - id: std-gbt-12555
+    title: GB/T 12555 塑料注射模模架
+    doc_type: standard
+    publisher: 全国标准信息公共服务平台
+    issued: null
+    url: https://openstd.samr.gov.cn/bzgk/gb/
+    resolve: "全国标准信息公共服务平台 GB/T 12555 塑料注射模模架"
+    license: 标准文本版权归发布机构；免费公开不等于可再分发
+    redistributable: none
+    role: reference
+    sections: [术语, 模架型号与规格]
+    used_in: [5.6]
+    verify: true
+    notes: 只记条款号与型号命名规则，不复制正文
+
+  - id: pat-inj-01
+    title: CN102717475B 一种 PA9T 与金属嵌件相结合的成型工艺
+    doc_type: patent
+    publisher: 国家知识产权局
+    issued: 2012-06-28
+    url: https://patents.google.com/patent/CN102717475B/zh
+    resolve: "国家知识产权局 专利公布公告 CN102717475B"
+    license: 专利文献公开；引用权利要求与实施例
+    redistributable: excerpt
+    excerpt_ratio: 0.35
+    role: corpus
+    sections: [权利要求 1, 具体实施方式（实施例参数表）]
+    ranges:
+      - label: 权利要求 1
+        start: "1\\.一种PA9T与金属嵌件"
+        end: "2\\.根据权利要求1"
+      - label: 具体实施方式
+        start: "具体实施方式"
+        end: "Claims"
+    used_in: [5.3, 5.8]
+    verify: false
+    notes: 数值层来源：注塑压力 60–80 MPa、保压 50–65 MPa、保压 10–15 s、冷却 25–30 s。正文写"某注塑工艺专利"，不写企业名。检索入口以 CNIPA 为准，Google Patents 仅作可读镜像
+
+  - id: pat-inj-02
+    title: CN104249459A 一种冰箱内胆及其成型方法
+    doc_type: patent
+    publisher: 国家知识产权局
+    issued: 2014-12-31
+    url: https://patents.google.com/patent/CN104249459A/zh
+    resolve: "国家知识产权局 专利公布公告 CN104249459A"
+    license: 专利文献公开；引用权利要求与实施例
+    redistributable: excerpt
+    excerpt_ratio: 0.25
+    role: corpus
+    sections: [具体实施方式（料筒分段温度与注射参数）]
+    ranges:
+      - label: 具体实施方式
+        start: "具体实施方式"
+        end: "Claims"
+    used_in: [5.6, 6.2]
+    verify: false
+    notes: 与 pat-inj-01 同领域不同侧重：这份给的是料筒五段温度（180/210/220/220/220℃）与喷嘴温度，适合造"参数写在不同字段里"的检索题的对照
+
+  # ---------- 上市公司披露：节选 ----------
+  - id: inst-equip-repair
+    title: 聊城大学仪器设备维修管理办法（含维修报告单与流程附件）
+    doc_type: institution_doc
+    publisher: 聊城大学资产处
+    issued: 2012-08-16
+    url: https://zcc.lcu.edu.cn/gzzd/235555.htm
+    resolve: "高校 仪器设备维修管理办法 日常维护 维修程序 验收"
+    license: 高校公开规章制度；仅节选引用
+    redistributable: excerpt
+    excerpt_ratio: 0.45
+    role: corpus
+    sections: [日常管理与维修程序, 维修报告单与流程附件]
+    ranges:
+      - label: 日常管理与维修程序
+        start: "第二章\\s*日常管理"
+        end: "第四章\\s*经费管理"
+    used_in: [5.3, 5.9, 8.5]
+    verify: false
+    substituted: 上市公司《设备管理制度》（巨潮无稳定直链）
+    notes: 用高校设备维修办法替代企业制度：同为"申请—审批—维修—验收—归档"的闭环文体，含预算分级与旧件处置，字段可直接迁移到合成工单
+
+  # ---------- 厂商手册：只存链接 ----------
+  - id: vendor-injection-manual
+    title: 注塑机操作与保养手册（厂商版）
+    doc_type: vendor_manual
+    publisher: 注塑机厂商官网下载中心
+    issued: null
+    url: null
+    resolve: "海天 / 震雄 / 博创 官网下载中心 注塑机 操作手册 保养"
+    license: 厂商版权，禁止再分发
+    redistributable: none
+    role: reference
+    sections: [日常保养, 报警代码, 液压系统]
+    used_in: [5.2, 5.9]
+    verify: true
+    notes: 本地私有副本，不入库，读者按自己的机型自取。报警代码表是"现象—原因—处理"三段式的好样本

@@ -1,0 +1,166 @@
+# 表壳：合成语料的字段名来源。
+#
+# 原则：字段名能抄就抄，抄不到就标清楚是派生的。不许自创"检查结果 / 备注"这类万能列——
+# 万能列是"表壳没取自真实模板"的信号。
+#
+# verbatim  = 逐字取自下列政府文件
+# derived   = 由 verbatim 字段组合或按台账惯例推导，来源写在 basis 里
+
+source:
+  id: gov-ledger-guide
+  title: 北京市生产经营单位安全生产主体责任规定——工作指南（2023 年 5 月）
+  publisher: 北京市应急管理局
+  章节: [8.1 设备设施台账格式, 12.2 安全检查记录表格式, 12.5 事故隐患排查治理台账格式]
+
+forms:
+  equipment_ledger:
+    title: 设备设施台账
+    provenance: verbatim
+    fields:
+      - 序号
+      - 设备设施名称
+      - 规格型号
+      - 设备编号
+      - 生产厂家
+      - 数量
+      - 安装时间
+      - 使用部门/安装地点
+      - 使用状态
+      - 管理责任部门/人
+    footer: [记录人, 日期]
+
+  safety_check:
+    title: 安全检查记录表
+    provenance: verbatim
+    fields:
+      - 受检单位
+      - 检查时间
+      - 检查组织部门
+      - 参检人员
+      - 检查计划方案
+      - 检查过程综述
+    footer: [记录人, 日期]
+
+  hazard_ledger:
+    title: 事故隐患排查治理台账
+    provenance: verbatim
+    fields:
+      - 序号
+      - 发现日期
+      - 事故隐患描述
+      - 类别
+      - 级别
+      - 所在部位
+      - 责任部门（或岗位）
+      - 治理措施/方案及完成情况
+      - 治理验收情况/验收人/日期
+      - 备注
+
+  # 日常点检表：政府工作指南里没有逐日点检的表格格式，
+  # 用设备台账字段打底，点检四项（项目/标准/方法/周期）按检维修惯例补，
+  # 因此整表标记为 derived——不要声称它抄自某个政府文件。
+  daily_inspection:
+    title: 设备日常点检表
+    provenance: derived
+    basis: equipment_ledger 的标识字段 + 检维修通行结构
+    fields:
+      - 设备编号
+      - 设备名称
+      - 点检部位
+      - 点检项目
+      - 点检标准
+      - 点检方法
+      - 班次
+      - 点检结果
+      - 异常描述
+      - 处理措施
+    footer: [点检人, 班组长确认, 日期]
+
+  repair_order:
+    title: 设备维修工单
+    provenance: derived
+    basis: hazard_ledger 的"发现—治理—验收"闭环字段
+    fields:
+      - 工单号
+      - 报修时间
+      - 设备编号
+      - 故障现象
+      - 涉及部位
+      - 原因分析
+      - 处理措施
+      - 依据
+      - 更换备件
+      - 停机时长(h)
+      - 完工时间
+      - 验收
+      - 验收人
+    footer: [维修人, 使用部门确认]
+
+  process_card:
+    title: 注塑工艺参数卡
+    provenance: derived
+    basis: 数值取自 pat-inj-01 的实施例区间；表头按注塑车间通行参数项
+    fields:
+      - 产品名称
+      - 模具编号
+      - 机台编号
+      - 材料牌号
+      - 干燥温度(℃)
+      - 干燥时间(h)
+      - 料筒温度(℃)
+      - 模温(℃)
+      - 注射压力(MPa)
+      - 保压压力(MPa)
+      - 保压时间(s)
+      - 冷却时间(s)
+      - 成型周期(s)
+    footer: [工艺员, 审核, 生效日期]
+
+  maintenance_plan:
+    title: 设备保养计划
+    provenance: derived
+    basis: equipment_ledger 标识字段 + 保养分级惯例
+    fields:
+      - 设备编号
+      - 设备名称
+      - 保养级别
+      - 保养周期
+      - 保养项目
+      - 作业内容
+      - 执行标准
+      - 责任部门
+      - 上次执行
+      - 下次执行
+    footer: [编制, 批准, 版本]
+
+  mold_change:
+    title: 换模记录
+    provenance: derived
+    basis: equipment_ledger 标识字段 + process_card 参数项
+    fields:
+      - 记录号
+      - 模具编号
+      - 原机台
+      - 新机台
+      - 换模开始
+      - 换模结束
+      - 首件确认
+      - 参数偏移
+    footer: [操作工, 工艺员确认]
+
+  quality_incident:
+    title: 质量异常单
+    provenance: derived
+    basis: hazard_ledger 的"发现—治理—验收"结构
+    fields:
+      - 单号
+      - 发现日期
+      - 批次
+      - 产品名称
+      - 缺陷描述
+      - 关联点检
+      - 关联工单
+      - 初步原因
+      - 处置措施
+      - 结论
+    footer: [质量工程师, 生产确认]

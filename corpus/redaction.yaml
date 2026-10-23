@@ -1,0 +1,37 @@
+# 脱敏映射。只作用于正文渲染与合成语料，不改变 sources.yaml 里的真实出处。
+#
+# 分两套名字，原因：
+#   经营类材料（招股书、管理制度、合成工单）用固定化名，读起来像一家真公司；
+#   事故类材料涉人员死亡，用中性代号，叙述压到技术层面，避免戏谑化名。
+
+policy:
+  narrative: 正文、图注、附录叙述中出现的企业名称一律替换为下列化名
+  provenance: corpus/sources.yaml 保留真实名称与链接，不替换——化名会让清单失去可核查性
+  personal_info: 姓名一律写"姓 + 某"，身份证号、住址、电话、统一社会信用代码直接删除
+  numbers: 设备型号、参数、间距等数字不改写，它们是语料的检索价值所在
+
+business:
+  default: 先赚一个亿科技有限公司
+  aliases:
+    - 先赚一个亿科技有限公司
+    - 某精密模塑有限公司
+  applies_to: [prospectus, disclosure, eia, synthetic]
+
+accident:
+  default: 某注塑厂 A
+  aliases:
+    - 某注塑厂 A
+    - 某注塑厂 B
+    - 某模具厂
+  rationale: 涉人员死亡，只用中性代号，且正文不写伤亡细节
+  applies_to: [accident_report]
+
+people:
+  pattern: 姓 + 某
+  examples: [张某, 李某, 王某]
+
+fields_to_drop:
+  - 身份证号
+  - 住址
+  - 联系电话
+  - 统一社会信用代码
