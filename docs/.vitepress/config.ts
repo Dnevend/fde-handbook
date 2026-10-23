@@ -10,13 +10,7 @@ export default defineConfig({
   srcExclude: ['**/README.md'],
 
   themeConfig: {
-    nav: [
-      { text: '序', link: '/00-preface/' },
-      { text: '推理原理', link: '/01-inference-basics/' },
-      { text: 'RAG 全链路', link: '/05-rag/' },
-      { text: 'GPU 与加速', link: '/07-gpu-inference/' },
-      { text: '附录', link: '/appendix/' },
-    ],
+    nav: [{ text: '序', link: '/00-preface/' }],
 
     sidebar: [
       {
