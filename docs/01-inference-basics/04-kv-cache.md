@@ -95,15 +95,19 @@ MQA 的思路最早由 Shazeer 提出（引用 [\[4\]](#ref-4)），GQA 则是�
 **命令**：
 
 ```bash
-# 固定 512 token 的 prompt，只改变上下文上限，观察峰值内存
+# 固定同一段 prompt，只改变上下文上限，观察峰值内存
+printf '用一句话说明什么是 KV Cache。' > /tmp/p.txt
 for c in 4096 8192 16384 32768; do
-  /usr/bin/time -l llama-cli -m Qwen3.5-9B-Q4_K_M.gguf -c $c -n 16 \
-    -p "用一句话说明什么是 KV Cache。" --no-display-prompt 2>&1 | \
+  echo "== -c $c"
+  /usr/bin/time -l llama-completion -m "$MODEL" -c $c -n 16 \
+    -f /tmp/p.txt --no-display-prompt 2>&1 | \
     grep -E "maximum resident set size"
 done
 ```
 
 **记录**：每个 `-c` 下的峰值常驻内存（字节），减去权重文件大小，再减去同一 `-c` 下 `-n 0` 的基线，得到 KV 的实测增量。与公式值比较，算出偏差比例。数据存 `benchmarks/kv-cache/`。
+
+**一个已经踩到过的坑**：在 Mac 上 llama.cpp 用内存映射（mmap）加载权重，`maximum resident set size` 不一定把全部权重页算进去，减出来的数可能是负的。遇到负值不要硬解释，改用 `vm_stat` 的 `Pages active` + `Pages wired` 或活动监视器交叉核对，并在记录里写明这次用的是哪种口径——不同口径的数字不能混在一张表里比。
 :::
 
 ## 参考资料

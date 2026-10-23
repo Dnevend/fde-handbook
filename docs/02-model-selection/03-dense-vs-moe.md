@@ -75,12 +75,12 @@ MoE 真正舒服的场景是显存更大的机器：48GB 的 Mac、单卡 48GB �
 **命令**：
 
 ```bash
-# 速度
+# 速度（Gemma-4-26B-A4B 需另行下载，见 2.6 节；9B 是必做的基线）
 llama-bench -m Gemma-4-26B-A4B-Q4_K_M.gguf -p 512 -n 128 -r 5 -o csv
-llama-bench -m Qwen3.5-9B-Q4_K_M.gguf      -p 512 -n 128 -r 5 -o csv
+llama-bench -m "$MODEL"                     -p 512 -n 128 -r 5 -o csv
 
 # 内存（观察是否触发 swap）
-/usr/bin/time -l llama-bench -m Gemma-4-26B-A4B-Q4_K_M.gguf -p 512 -n 32 -r 1 -o md 2>&1 | \
+/usr/bin/time -l llama-bench -m Gemma-4-26B-A4B-Q4_K_M.gguf -p 512 -n 128 -r 1 -o md 2>&1 | \
   grep "maximum resident set size"
 vm_stat | grep -E "Pageouts|Swapouts"
 ```

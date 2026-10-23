@@ -1,0 +1,4 @@
+slots,concurrency,wall_s,aggregate_tok_per_s,ttft_p50_s,ttft_max_s,per_req_tok_per_s
+1,8,24.27,14.1,11.47,20.59,16.3
+2,8,17.24,19.8,8.04,13.25,12.8
+4,8,12.66,27.0,5.14,8.15,9.8

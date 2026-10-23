@@ -72,13 +72,13 @@ RAG 场景特别适合这个优化：system prompt 和模板通常一字不变�
 
 ```bash
 # 默认上下文深度
-llama-bench -m Qwen3.5-9B-Q4_K_M.gguf -p 512 -n 128 -r 5 -o md
+llama-bench -m "$MODEL" -p 512 -n 128 -r 5 -o md
 
 # 分别在不同深度下测 decode（-d 为上下文深度）
-llama-bench -m Qwen3.5-9B-Q4_K_M.gguf -p 512 -n 128 -d 0,4096,16384 -r 3 -o csv
+llama-bench -m "$MODEL" -p 512 -n 128 -d 0,4096,16384 -r 3 -o csv
 ```
 
-**记录**：`pp512`、`tg128` 的均值与标准差，以及 `-d` 变化时 `tg` 的下降幅度。CSV 存到 `benchmarks/prefill-decode/`，并在文件名里写明机型与引擎版本。
+**记录**：`pp512`、`tg128` 的均值与标准差，以及 `-d` 变化时 `tg` 的下降幅度。CSV 存到 `benchmarks/prefill-decode/`，同目录放一份 `bash benchmarks/record-env.sh` 的输出（机型、macOS 版本、引擎版本）。`-r 5` 指每个配置重复 5 次，`±` 后面的数字就是这 5 次的方差，方差大说明机器当时不干净（后台任务、热降频），重跑一次再下结论。
 :::
 
 ## 参考资料

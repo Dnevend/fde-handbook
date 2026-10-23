@@ -86,12 +86,18 @@ P(x₁, x₂, …, x_T) = P(x₁) · P(x₂|x₁) · P(x₃|x₁,x₂) · … ·
 **命令**：
 
 ```bash
+# llama-completion 是引擎的原始终端接口：不套对话模板，输出只有生成的 token，
+# 适合逐字比较。llama-cli 从 0.7.0 起默认连续对话，需要 -st 才会答完退出，
+# 而且会把启动 banner 打进标准输出，不适合重定向到文件。
+printf '用一句话解释什么是 KV Cache。' > /tmp/p.txt
 for i in 1 2 3; do
-  llama-cli -m Qwen3.5-9B-Q4_K_M.gguf --temp 0 -n 128 -p "用一句话解释什么是 KV Cache。" --no-display-prompt 2>/dev/null
+  llama-completion -m "$MODEL" -c 2048 --temp 0 -n 128 \
+    -f /tmp/p.txt --no-display-prompt 2>/dev/null
+  echo "---"
 done
 ```
 
-**记录**：三次输出是否逐字相同；再改 `-ub 512` 与 `-ub 2048` 各跑三次，比较差异。结论写入 `benchmarks/determinism/`。
+**记录**：三次输出是否逐字相同；再改 `-ub 512` 与 `-ub 2048` 各跑三次，比较差异。结论连同上一次的命令与 `benchmarks/record-env.sh` 的输出写入 `benchmarks/determinism/`。
 :::
 
 ## 参考资料

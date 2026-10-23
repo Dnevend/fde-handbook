@@ -71,13 +71,15 @@ Prefill 则相反。同样是那个矩阵，如果一次处理 512 个 token，�
 **命令**：
 
 ```bash
-# 三个模型各测一次 decode
-llama-bench -m Qwen3.5-9B-Q4_K_M.gguf  -p 512 -n 128 -r 5 -o csv
-llama-bench -m Qwen3-14B-Q4_K_M.gguf   -p 512 -n 128 -r 5 -o csv
-llama-bench -m Gemma-4-26B-A4B-Q4_K_M.gguf -p 512 -n 128 -r 5 -o csv
+# 主力模型必做
+llama-bench -m "$MODEL" -p 512 -n 128 -r 5 -o csv
+
+# 可选对照：同参数换模型（需另行下载，见 2.6 节）
+llama-bench -m Qwen3-14B-Q4_K_M.gguf        -p 512 -n 128 -r 5 -o csv
+llama-bench -m Gemma-4-26B-A4B-Q4_K_M.gguf  -p 512 -n 128 -r 5 -o csv
 ```
 
-**记录**：`tg128` 的实测值，与"带宽 ÷ 权重字节"算出的上限相比，得到利用率。同时记录峰值内存（用 `/usr/bin/time -l`），验证 MoE 的"内存按总参数、速度按激活参数"。数据存 `benchmarks/bandwidth/`。
+**记录**：`tg128` 的实测值，与"带宽 ÷ 权重字节"算出的上限相比，得到利用率。权重字节数取 `llama-bench` 输出里的 `size` 列，或直接看 GGUF 文件大小。同时记录峰值内存（用 `/usr/bin/time -l` 包住同一条命令），验证 MoE 的"内存按总参数、速度按激活参数"。数据存 `benchmarks/bandwidth/`。
 :::
 
 ## 参考资料

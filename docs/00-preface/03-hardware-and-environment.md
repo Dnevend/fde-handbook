@@ -62,16 +62,36 @@ brew install llama.cpp
 llama-cli --version        # 记录版本，本书为 0.7.0 (build 11669)
 
 # 下载主力模型（约 5.7 GB，首次需要联网）
-llama-cli -hf unsloth/Qwen3.5-9B-GGUF:Q4_K_M -p "你好" -n 32
+llama-cli -hf unsloth/Qwen3.5-9B-GGUF:Q4_K_M -st -p "你好" -n 32
 
 # 查看本机内存与 Exchange/swap 使用
 sysctl -n hw.memsize
 vm_stat | head -5
 ```
 
-后续章节会按需增加 Python 环境、向量库和评测脚本。凡是需要额外依赖的地方，都会在那一节说明用途，不提前铺开。
+**命令里的两个参数不是可选的。** `-st`（single turn）让命令行在回答完一轮后退出。从 0.7.0 起 `llama-cli` 默认进入连续对话模式，不加 `-st` 会停在输入提示上等你打字，看起来就像"卡住了"。带 `-hf` 下载时，如果仓库里有视觉投影模型（`mmproj-*.gguf`），llama.cpp 会顺带下载一份（`Qwen3.5-9B` 的约 879 MB）。纯文本实验用不到它，但也不会被加载；想省下载时间可以加 `--no-mmproj`。
 
-还有一个不起眼但很重要的习惯：**每次实验都记下三样东西——硬件、引擎版本、完整命令**。一周后你会感谢自己。本书的"待实测"提示块里，命令是写全的，你跑完把输出填进去就能得到一条可引用的结论。
+**下载之后，把模型路径固定成 `$MODEL`。** `-hf` 把权重放在 Hugging Face 缓存里，路径中间带一段版本哈希，每次手写既容易错、也会随更新失效。本书所有命令统一写成 `-m "$MODEL"`：
+
+```bash
+# 在仓库根目录执行。脚本会用通配查找缓存里的 Qwen3.5-9B-Q4_K_M.gguf
+source labs/env.sh
+echo "$MODEL"      # 例如 ~/.cache/huggingface/hub/models--unsloth--.../Qwen3.5-9B-Q4_K_M.gguf
+```
+
+`export` 只在当前终端窗口有效，新开窗口要重新 `source` 一次。想一劳永逸，把 `source labs/env.sh` 写进自己的 shell 启动配置；如果设置过 `HF_HOME` 或 `LLAMA_CACHE`，缓存位置会不同，`env.sh` 已经处理了这两种情况。
+
+**后文不再逐节提醒。** 本书所有命令都假定：已在仓库根目录执行过 `source labs/env.sh`，`$MODEL` 指向主力模型。换终端窗口后忘了这一步，报错通常是"模型加载失败"——先 `echo "$MODEL"` 确认它不为空。
+
+后续章节会按需增加 Python 环境、向量库和评测脚本。凡是需要额外依赖的地方，都会在那一节说明用途，不提前铺开。第三部分的实验脚本用 Python 写成，依赖只有 OpenAI 官方 SDK，用 `uv` 装（3.5 节给命令）。
+
+还有一个不起眼但很重要的习惯：**每次实验都记下三样东西——硬件、引擎版本、完整命令**。一周后你会感谢自己。仓库里的 `benchmarks/record-env.sh` 一次打印前两样，复制到数据文件的头部即可：
+
+```bash
+bash benchmarks/record-env.sh > benchmarks/<主题>/env.txt
+```
+
+本书的"待实测"提示块里，命令是写全的，你跑完把输出填进去就能得到一条可引用的结论。
 
 ## 接下来
 

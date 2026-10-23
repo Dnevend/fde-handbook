@@ -89,15 +89,21 @@ TensorRT-LLM 又有自己的 workspace 概念。**跨引擎搬数字之前，先
 **命令**：
 
 ```bash
-for m in Qwen3.5-9B-Q4_K_M.gguf Qwen3-14B-Q4_K_M.gguf Gemma-4-26B-A4B-Q4_K_M.gguf; do
+# 主力模型必做。用 -n 128 而不是 -n 32，才能和正文引用的 tg128 对上
+/usr/bin/time -l llama-bench -m "$MODEL" -p 512 -n 128 -r 1 -o md 2>&1 | \
+  grep -E "maximum resident set size"
+vm_stat | grep -E "Pageouts|Swapouts"
+
+# 可选对照：两个更大的模型（需另行下载，24GB 机器上 26B-A4B 很可能触发 swap）
+for m in Qwen3-14B-Q4_K_M.gguf Gemma-4-26B-A4B-Q4_K_M.gguf; do
   echo "== $m"
-  /usr/bin/time -l llama-bench -m $m -p 512 -n 32 -r 1 -o md 2>&1 | \
+  /usr/bin/time -l llama-bench -m $m -p 512 -n 128 -r 1 -o md 2>&1 | \
     grep -E "maximum resident set size"
   vm_stat | grep -E "Pageouts|Swapouts"
 done
 ```
 
-**记录**：每个模型的峰值常驻内存、Pageouts 增量、`tg128` 速度。与公式估算并列成表，算出偏差。数据存 `benchmarks/vram/`，机型、macOS 版本、引擎版本写在同一份文件里。
+**记录**：每个模型的峰值常驻内存、Pageouts 增量、`tg128` 速度。同一次测量里，`/usr/bin/time` 包住的是模型加载与推理全过程，所以峰值包含权重、KV 和运行时开销，正好和公式的总额比，不要只和权重比。与公式估算并列成表，算出偏差。数据存 `benchmarks/vram/`，机型、macOS 版本、引擎版本写在同一份文件里。
 :::
 
 ## 参考资料

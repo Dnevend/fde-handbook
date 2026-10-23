@@ -1,0 +1,7 @@
+case,prompt_tokens,ttft_median_s,total_median_s,tok_per_s_median,ttft_spread_s,gen_tokens
+short-cold,26,0.257,1.729,17.0,0.163,25
+short-warm,20,0.095,1.074,17.3,0.103,17
+medium-cold,167,0.978,2.557,17.1,0.007,27
+medium-warm,161,0.094,1.665,17.2,0.747,27
+long-cold,711,3.563,5.207,17.1,0.107,28
+long-warm,705,0.098,1.738,17.1,3.31,28

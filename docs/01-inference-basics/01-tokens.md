@@ -49,7 +49,7 @@ title: Token 与分词：中文为什么更"贵"
 
 ```bash
 # 用分词器数 token，而不是靠猜
-llama-tokenize -m Qwen3.5-9B-Q4_K_M.gguf -p "3 号线液压站多久换一次油？" --show-count
+llama-tokenize -m "$MODEL" -p "3 号线液压站多久换一次油？" --show-count
 ```
 
 ## 待实测
@@ -57,15 +57,18 @@ llama-tokenize -m Qwen3.5-9B-Q4_K_M.gguf -p "3 号线液压站多久换一次油
 ::: tip 待实测：中英文 token 成本
 **假设**：同一段含义等价的中英文文本，中文的 token 数高于英文；不同分词器的差距不一样。
 
-**命令**（在仓库根目录，模型已下载）：
+**命令**（在仓库根目录执行）：
 
 ```bash
-llama-tokenize -m Qwen3.5-9B-Q4_K_M.gguf -p "3 号线液压站每 500 小时更换一次液压油。" --show-count
-llama-tokenize -m Qwen3.5-9B-Q4_K_M.gguf -p "Replace the hydraulic oil in Line 3 every 500 hours." --show-count
-llama-tokenize -m Qwen3-14B-Q4_K_M.gguf -p "3 号线液压站每 500 小时更换一次液压油。" --show-count
+# 9B（本书主力模型，必做）
+llama-tokenize -m "$MODEL" --no-bos -p "3 号线液压站每 500 小时更换一次液压油。" --show-count
+llama-tokenize -m "$MODEL" --no-bos -p "Replace the hydraulic oil in Line 3 every 500 hours." --show-count
+
+# 换一个分词器对比（可选，需另行下载 14B，见 2.6 节）
+llama-tokenize -m Qwen3-14B-Q4_K_M.gguf --no-bos -p "3 号线液压站每 500 小时更换一次液压油。" --show-count
 ```
 
-**记录**：两段文本各自的 token 数、比值，以及两个分词器的差异。把结果按"硬件/引擎版本/命令"的格式写进 `benchmarks/tokenizer/`，正文再引用。加 `--no-bos` 可以排除开头特殊 token 的干扰，比较时统一口径。
+**记录**：两段文本各自的 token 数、比值，以及两个分词器的差异。每行命令连同 `bash benchmarks/record-env.sh` 的输出一起存进 `benchmarks/tokenizer/`，正文再引用。两段都加 `--no-bos`，统一排除开头特殊 token 的干扰。
 :::
 
 ## 参考资料

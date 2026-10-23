@@ -69,10 +69,20 @@ title: 榜单怎么看，以及为什么要用自己的数据评测
 **命令**：
 
 ```bash
-# 同一题、同一参数，换模型跑
-for m in Qwen3.5-9B-Q4_K_M.gguf Qwen3-14B-Q4_K_M.gguf Gemma-4-26B-A4B-Q4_K_M.gguf; do
-  llama-cli -m $m -c 8192 --temp 0 -n 256 \
-    -f eval/mini/q01.txt --no-display-prompt > out_$(basename $m .gguf)_q01.txt
+# 前置：把模型路径和简称对上，方便按名字存输出
+declare -A MODELS=(
+  [qwen35-9b]="$MODEL"
+  # 下面两个需另行下载，见 2.6 节；不下载就注释掉
+  # [qwen3-14b]="$HOME/models/Qwen3-14B-Q4_K_M.gguf"
+  # [gemma4-26b]="$HOME/models/Gemma-4-26B-A4B-Q4_K_M.gguf"
+)
+
+mkdir -p out
+for name in "${!MODELS[@]}"; do
+  for q in eval/mini/q*.txt; do
+    llama-completion -m "${MODELS[$name]}" -c 8192 --temp 0 -n 256 \
+      -f "$q" --no-display-prompt > "out/${name}_$(basename "$q")"
+  done
 done
 ```
 

@@ -56,7 +56,9 @@ npm run docs:preview  # 预览构建结果
 
 ## 进度
 
-序、第一部分（推理原理）、第二部分（模型选型）已有正文；其余部分仍为占位页（只有标题与"本章要回答的问题"）。正文按 `docs/00-preface/` → `docs/08-delivery/` 的顺序推进。
+序、第一部分（推理原理）、第二部分（模型选型）、第三部分（本地部署）已有正文；其余部分仍为占位页（只有标题与"本章要回答的问题"）。正文按 `docs/00-preface/` → `docs/08-delivery/` 的顺序推进。
+
+第三部分的实验代码在 `labs/03-deployment/`，已在本机跑通；对应实测数据在 `benchmarks/`（`gguf-format/`、`prefill-decode/`、`template/`、`sampling/`、`concurrency/`、`client-bench/`）。
 
 ## 协议
 

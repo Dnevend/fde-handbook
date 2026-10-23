@@ -82,15 +82,20 @@ title: 参数量取舍（实验：8B 对比 14B）
 
 ```bash
 # 速度基线
-llama-bench -m Qwen3.5-9B-Q4_K_M.gguf -p 512 -n 128 -r 5 -o csv
-llama-bench -m Qwen3-14B-Q4_K_M.gguf  -p 512 -n 128 -r 5 -o csv
+llama-bench -m "$MODEL" -p 512 -n 128 -r 5 -o csv
+llama-bench -m Qwen3-14B-Q4_K_M.gguf -p 512 -n 128 -r 5 -o csv   # 可选，需另行下载
 
 # 质量对照：同一提示词、同一采样参数、同一上下文长度，各跑 20 题
-llama-cli -m Qwen3.5-9B-Q4_K_M.gguf -c 8192 --temp 0 -n 256 \
-  -f eval/prompts/q01.txt --no-display-prompt
+mkdir -p out
+for i in $(seq -w 1 20); do
+  llama-completion -m "$MODEL" -c 8192 --temp 0 -n 256 \
+    -f eval/prompts/q$i.txt --no-display-prompt > out/q$i.txt
+done
 ```
 
 **记录**：每题是否正确（对照标准答案人工判定）、是否给出正确出处、输出 token 数、耗时。按任务类型分组统计，不要只报总分。数据存 `benchmarks/param-tradeoff/`。
+
+用 `llama-completion` 而不是 `llama-cli`，是因为前者的标准输出只有生成内容，可以直接重定向；后者会把启动 banner 一并写进去，还要手工剔除。代价是不套对话模板——跨模型比较时这反而是优点：模板差异被排除，只剩权重差异。上线路径上的模板效应留给 3.3 节和服务接口实验。
 :::
 
 ## 参考资料

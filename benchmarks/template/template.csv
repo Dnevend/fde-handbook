@@ -1,0 +1,4 @@
+variant,thinking,rendered,ttft_s,total_s,gen_tokens,tok_per_s,has_reasoning,reasoning_chars,answer_chars,answer
+default-think-on,True,<|im_start|>user\n你好<|im_end|>\n<|im_start|>assistant\n<think>\n,0.5036,16.7335,263,16.2,True,807,9,3 × 2 = 6
+default-think-off,False,<|im_start|>user\n你好<|im_end|>\n<|im_start|>assistant\n<think>\n,0.3866,0.8101,7,16.53,False,0,9,3 × 2 = 6
+chatml-think-off,False,<|im_start|>user\n你好<|im_end|>\n<|im_start|>assistant\n,0.2583,16.5838,267,16.35,False,0,834,<think> Thinking Process:  1.  **Analyze the Request:**     *   Scenario: A factory has three production lines (三条产线).     *   Event: Each line stops for 2 hours (各停机 2 小时).     *   Question: What is 

@@ -1,0 +1,45 @@
+# Qwen3.5-9B Q4_K_M 文件结构实测
+
+# 实验环境
+
+## 硬件
+- CPU: Apple M4
+- 核心数: 10
+- 内存: 24.0 GB
+
+## 系统
+- macOS 26.2 (25C56)
+- 采集时间: 2026-10-23 16:27:08 CST
+
+## 推理引擎
+- version: 0.7.0 (build 11669, commit 620d2225c)
+- built with AppleClang 21.0.0.21000334 for Darwin arm64
+- Python: 3.14.2
+
+## 模型
+- MODEL=Qwen3.5-9B-Q4_K_M.gguf
+
+## 元数据
+gguf_ex_read_0: version:      3
+gguf_ex_read_0: alignment:   32
+gguf_ex_read_0: data offset: 10968288
+gguf_ex_read_0: n_kv: 46
+gguf_ex_read_0: n_tensors: 427
+
+## 量化类型分布（张量个数）
+ 177 f32
+ 132 q4_K
+  48 q8_0
+  48 q5_K
+  22 q6_K
+
+## 体积与平均位数
+文件字节: 5680522464
+5.29 GiB / 5.68 GB
+5.08 位/参数
+
+## 校验和
+整文件 sha256（shasum -a 256）:
+03b74727a860a56338e042c4420bb3f04b2fec5734175f4cb9fa853daf52b7e8
+张量内容 sha256（llama-gguf-hash --sha256 --no-layer）:
+2d9e6160e04e195eb125eb76901c5195e601027000a872da5d95c36e7615794d
