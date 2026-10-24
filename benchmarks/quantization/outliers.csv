@@ -1,0 +1,5 @@
+tensor,channels,absmax_max,absmax_median,ratio,p99_over_median
+blk.16.attn_qkv.weight,4096,0.137671,0.044169,3.1,1.6
+blk.16.ffn_down.weight,12288,0.111767,0.028457,3.9,1.7
+blk.16.ffn_up.weight,4096,0.065151,0.030627,2.1,1.6
+token_embd.weight,4096,0.462868,0.020798,22.3,6.9

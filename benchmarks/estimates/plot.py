@@ -160,6 +160,68 @@ def plot_bandwidth(preview: bool) -> None:
     save(fig, "1-5-bandwidth-scaling", preview)
 
 
+def read_quant(name: str) -> list[dict[str, str]]:
+    """量化实验的 CSV 在 benchmarks/quantization/，与本目录的估算账本分开。"""
+    with open(ROOT / "benchmarks" / "quantization" / name, encoding="utf-8") as handle:
+        return list(csv.DictReader(handle))
+
+
+def plot_group_size(preview: bool) -> None:
+    rows = read_quant("group-size.csv")
+    fig, ax = plt.subplots(figsize=(9.6, 4.6), dpi=100)
+    groups = [16, 32, 64, 128, 256, 512, 1024]
+
+    for bits, color, label in ((4, BLUE, "4 位"), (8, "#9ca3af", "8 位")):
+        xs, ys = [], []
+        for row in rows:
+            if int(row["bits"]) != bits or row["scheme"] != "symmetric" or row["group"] == "per-tensor":
+                continue
+            xs.append(int(row["group"]))
+            ys.append(float(row["rmse_norm"]))
+        ax.plot(xs, ys, color=color, linewidth=2, marker="o", markersize=5, zorder=3)
+        ax.annotate(label, xy=(xs[-1], ys[-1]), xytext=(8, 0), textcoords="offset points",
+                    va="center", ha="left", fontsize=10, color=color)
+        per_tensor = next(
+            float(r["rmse_norm"]) for r in rows
+            if int(r["bits"]) == bits and r["scheme"] == "symmetric" and r["group"] == "per-tensor"
+        )
+        ax.axhline(per_tensor, color=color, linewidth=1.2, linestyle=(0, (4, 3)), zorder=2)
+        ax.annotate(f"逐张量 {per_tensor:.2f}", xy=(16, per_tensor), xytext=(2, 7), textcoords="offset points",
+                    va="bottom", ha="left", fontsize=9, color=color)
+
+    ax.set_xscale("log", base=2)
+    ax.set_xticks(groups, [str(g) for g in groups])
+    ax.set_xlim(14, 2600)
+    ax.set_xlabel("分组大小（每个 scale 管多少个权重）")
+    ax.set_ylabel("归一化 RMSE（越小越好）")
+    ax.set_title("分组越小误差越低，但每组的 scale 也是要存的", loc="left", fontsize=14, color=INK, pad=14)
+    style_axes(ax)
+    fig.tight_layout()
+    save(fig, "4-2-group-size", preview)
+
+
+def plot_ppl_domain(preview: bool) -> None:
+    rows = read_quant("ppl-domain.csv")
+    labels = [r["domain"] for r in rows]
+    values = [float(r["ppl"]) for r in rows]
+    chars = [int(r["chars"]) for r in rows]
+
+    fig, ax = plt.subplots(figsize=(9.6, 4.2), dpi=100)
+    y = list(range(len(labels)))
+    ax.barh(y, values, height=0.55, color=BLUE_LIGHT, edgecolor=BLUE, linewidth=1.2, zorder=3)
+    for index, (value, n) in enumerate(zip(values, chars)):
+        ax.text(value + 0.12, index, f"{value:.2f}", va="center", ha="left", fontsize=11, color=INK)
+        ax.text(value + 0.75, index, f"样本 {n} 字符", va="center", ha="left", fontsize=9, color=MUTED)
+    ax.set_yticks(y, labels)
+    ax.invert_yaxis()
+    ax.set_xlim(0, 11.5)
+    ax.set_xlabel("困惑度（同一模型、同一参数）")
+    ax.set_title("换个语料域，困惑度差 3 倍多", loc="left", fontsize=14, color=INK, pad=14)
+    style_axes(ax)
+    fig.tight_layout()
+    save(fig, "4-6-ppl-domain", preview)
+
+
 def save(fig: plt.Figure, name: str, preview: bool) -> None:
     OUT.mkdir(parents=True, exist_ok=True)
     fig.savefig(OUT / f"{name}.svg", format="svg", facecolor="white")
@@ -176,3 +238,5 @@ if __name__ == "__main__":
     args = parser.parse_args()
     plot_vram(args.preview)
     plot_bandwidth(args.preview)
+    plot_group_size(args.preview)
+    plot_ppl_domain(args.preview)

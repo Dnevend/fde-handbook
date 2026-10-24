@@ -1,0 +1,6 @@
+domain,ppl,ppl_stderr,chars,source
+政府文件,2.8760,0.1760,40000,corpus/raw/gov-ledger-guide/full.txt
+事故报告,8.4300,0.7339,7606,corpus/raw/acc-fangsu-0518/full.txt
+招股书,5.9316,0.4490,40000,corpus/raw/ipo-borch/full.txt
+专利,5.5058,0.4439,11828,corpus/raw/pat-inj-01/full.txt
+合成工单,2.5049,0.1671,29395,corpus/raw/synthetic

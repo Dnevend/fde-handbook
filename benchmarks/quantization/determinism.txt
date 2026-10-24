@@ -1,0 +1,18 @@
+# 困惑度的重复性：同一配置跑两次
+
+命令（在仓库根目录，先 `source labs/env.sh`；语料由 `benchmarks/quantization/build-calib.sh` 生成）：
+
+```bash
+llama-perplexity -m "$MODEL" -f /tmp/fde-ppl-calib.txt -c 512 --chunks 8 -fa on
+```
+
+两次运行的输出：
+
+```
+Final estimate: PPL = 2.6147 +/- 0.11167
+Final estimate: PPL = 2.6147 +/- 0.11167
+```
+
+结论：同一模型、同一文本、同一参数下，困惑度是确定性的，重复运行没有差异。
+括号里的 `±0.11167` 是块间标准差，不是重复测量的标准误——4.6 节用这个区别说明
+为什么不能拿它当置信区间。

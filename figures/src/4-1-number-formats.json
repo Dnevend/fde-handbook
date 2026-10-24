@@ -1,0 +1,44 @@
+{
+  "schema_version": 1,
+  "mode": "architecture",
+  "template_type": "architecture",
+  "style": 4,
+  "quality_profile": "standard",
+  "text_policy": "strict",
+  "width": 960,
+  "height": 520,
+  "title": "同样叫 16 位，位怎么分决定了它能表示什么",
+  "footer": "红=符号 黄=指数 蓝=尾数；整数格式没有指数，靠外挂的 scale 找回范围",
+  "footer_x": 48,
+  "footer_y": 492,
+  "nodes": [
+    { "id": "lbl32", "kind": "rect", "x": 48, "y": 96, "width": 100, "height": 40, "fill": "none", "stroke": "none", "label": "fp32", "title_size": 20 },
+    { "id": "f32-s", "kind": "rect", "x": 180, "y": 92, "width": 20, "height": 44, "fill": "#fecaca", "stroke": "#ffffff", "stroke_width": 1, "flat": true },
+    { "id": "f32-e", "kind": "rect", "x": 202, "y": 92, "width": 160, "height": 44, "fill": "#fef3c7", "stroke": "#ffffff", "stroke_width": 1, "flat": true, "label": "8 位指数", "title_size": 20 },
+    { "id": "f32-m", "kind": "rect", "x": 364, "y": 92, "width": 460, "height": 44, "fill": "#dbeafe", "stroke": "#ffffff", "stroke_width": 1, "flat": true, "label": "23 位尾数", "title_size": 20 },
+    { "id": "f32-note", "kind": "rect", "x": 836, "y": 96, "width": 100, "height": 40, "fill": "none", "stroke": "none", "label": "32 位", "title_size": 20 },
+
+    { "id": "lbl16", "kind": "rect", "x": 48, "y": 172, "width": 100, "height": 40, "fill": "none", "stroke": "none", "label": "fp16", "title_size": 20 },
+    { "id": "f16-s", "kind": "rect", "x": 180, "y": 168, "width": 20, "height": 44, "fill": "#fecaca", "stroke": "#ffffff", "stroke_width": 1, "flat": true },
+    { "id": "f16-e", "kind": "rect", "x": 202, "y": 168, "width": 100, "height": 44, "fill": "#fef3c7", "stroke": "#ffffff", "stroke_width": 1, "flat": true, "label": "5 位指数", "title_size": 20 },
+    { "id": "f16-m", "kind": "rect", "x": 304, "y": 168, "width": 200, "height": 44, "fill": "#dbeafe", "stroke": "#ffffff", "stroke_width": 1, "flat": true, "label": "10 位尾数", "title_size": 20 },
+    { "id": "f16-note", "kind": "rect", "x": 516, "y": 172, "width": 420, "height": 40, "fill": "none", "stroke": "none", "label": "16 位：范围到 65504，精度高", "title_size": 20 },
+
+    { "id": "lblbf", "kind": "rect", "x": 48, "y": 248, "width": 100, "height": 40, "fill": "none", "stroke": "none", "label": "bf16", "title_size": 20 },
+    { "id": "bf16-s", "kind": "rect", "x": 180, "y": 244, "width": 20, "height": 44, "fill": "#fecaca", "stroke": "#ffffff", "stroke_width": 1, "flat": true },
+    { "id": "bf16-e", "kind": "rect", "x": 202, "y": 244, "width": 160, "height": 44, "fill": "#fef3c7", "stroke": "#ffffff", "stroke_width": 1, "flat": true, "label": "8 位指数", "title_size": 20 },
+    { "id": "bf16-m", "kind": "rect", "x": 364, "y": 244, "width": 140, "height": 44, "fill": "#dbeafe", "stroke": "#ffffff", "stroke_width": 1, "flat": true, "label": "7 位尾数", "title_size": 20 },
+    { "id": "bf16-note", "kind": "rect", "x": 516, "y": 248, "width": 420, "height": 40, "fill": "none", "stroke": "none", "label": "16 位：范围同 fp32，精度低 8 倍", "title_size": 20 },
+
+    { "id": "lbl8", "kind": "rect", "x": 48, "y": 324, "width": 100, "height": 40, "fill": "none", "stroke": "none", "label": "int8", "title_size": 20 },
+    { "id": "i8-q", "kind": "rect", "x": 180, "y": 320, "width": 160, "height": 44, "fill": "#e5e7eb", "stroke": "#9ca3af", "stroke_width": 1.6, "flat": true, "label": "8 位整数", "title_size": 20 },
+    { "id": "i8-s", "kind": "rect", "x": 344, "y": 320, "width": 76, "height": 44, "fill": "#ede9fe", "stroke": "#ffffff", "stroke_width": 1, "flat": true, "label": "scale", "title_size": 20 },
+    { "id": "i8-note", "kind": "rect", "x": 436, "y": 324, "width": 500, "height": 40, "fill": "none", "stroke": "none", "label": "每 32 个权重共享一个 fp16 scale", "title_size": 20 },
+
+    { "id": "lbl4", "kind": "rect", "x": 48, "y": 400, "width": 100, "height": 40, "fill": "none", "stroke": "none", "label": "int4", "title_size": 20 },
+    { "id": "i4-q", "kind": "rect", "x": 180, "y": 396, "width": 80, "height": 44, "fill": "#e5e7eb", "stroke": "#9ca3af", "stroke_width": 1.6, "flat": true, "label": "4 位", "title_size": 20 },
+    { "id": "i4-s", "kind": "rect", "x": 264, "y": 396, "width": 76, "height": 44, "fill": "#ede9fe", "stroke": "#ffffff", "stroke_width": 1, "flat": true, "label": "scale", "title_size": 20 },
+    { "id": "i4-note", "kind": "rect", "x": 356, "y": 400, "width": 580, "height": 40, "fill": "none", "stroke": "none", "label": "Q4_K 靠 32 权重的子块 scale 补回范围", "title_size": 20 }
+  ],
+  "arrows": []
+}

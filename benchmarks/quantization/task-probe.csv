@@ -1,0 +1,241 @@
+label,pass,temperature,doc_id,kind,answer,got,correct
+f16-f16,pass0,0.0,PC-001,process_card,24,24,1
+f16-f16,pass0,0.0,PC-002,process_card,31,33,0
+f16-f16,pass0,0.0,PC-003,process_card,34,34,1
+f16-f16,pass0,0.0,PC-004,process_card,17,17,1
+f16-f16,pass0,0.0,PC-005,process_card,21,21,1
+f16-f16,pass0,0.0,PC-006,process_card,18,18,1
+f16-f16,pass0,0.0,PC-007,process_card,24,24,1
+f16-f16,pass0,0.0,PC-008,process_card,24,24,1
+f16-f16,pass0,0.0,PC-009,process_card,28,28,1
+f16-f16,pass0,0.0,PC-010,process_card,21,21,1
+f16-f16,pass0,0.0,PC-011,process_card,35,35,1
+f16-f16,pass0,0.0,PC-012,process_card,14,14,1
+f16-f16,pass0,0.0,PC-013,process_card,16,16,1
+f16-f16,pass0,0.0,PC-014,process_card,30,30,1
+f16-f16,pass0,0.0,PC-015,process_card,32,32,1
+f16-f16,pass0,0.0,PC-016,process_card,13,13,1
+f16-f16,pass0,0.0,PC-017,process_card,33,33,1
+f16-f16,pass0,0.0,PC-018,process_card,36,36,1
+f16-f16,pass0,0.0,PC-019,process_card,33,33,1
+f16-f16,pass0,0.0,PC-020,process_card,21,21,1
+f16-f16,pass0,0.0,DI-001,daily_inspection,2026-03-30,2026-03-30,1
+f16-f16,pass0,0.0,DI-002,daily_inspection,2026-03-08,2026-03-08,1
+f16-f16,pass0,0.0,DI-003,daily_inspection,2026-03-24,2026-03-24,1
+f16-f16,pass0,0.0,DI-004,daily_inspection,2026-03-22,2026-03-22,1
+f16-f16,pass0,0.0,DI-005,daily_inspection,2026-03-02,2026-03-02,1
+f16-f16,pass0,0.0,DI-006,daily_inspection,2026-03-09,2026-03-09,1
+f16-f16,pass0,0.0,DI-007,daily_inspection,2026-03-18,2026-03-18,1
+f16-f16,pass0,0.0,DI-008,daily_inspection,2026-03-25,2026-03-25,1
+f16-f16,pass0,0.0,DI-009,daily_inspection,2026-03-02,2026-03-02,1
+f16-f16,pass0,0.0,DI-010,daily_inspection,2026-03-13,2026-03-13,1
+f16-f16,pass0,0.0,DI-011,daily_inspection,2026-03-18,2026-03-18,1
+f16-f16,pass0,0.0,DI-012,daily_inspection,2026-03-16,2026-03-16,1
+f16-f16,pass0,0.0,DI-013,daily_inspection,2026-03-14,2026-03-14,1
+f16-f16,pass0,0.0,DI-014,daily_inspection,2026-03-21,2026-03-21,1
+f16-f16,pass0,0.0,DI-015,daily_inspection,2026-03-05,2026-03-05,1
+f16-f16,pass0,0.0,MP-001,maintenance_plan,2026-04-29,2026-04-29,1
+f16-f16,pass0,0.0,MP-002,maintenance_plan,2026-10-06,2026-10-06,1
+f16-f16,pass0,0.0,MP-003,maintenance_plan,2026-04-22,2026-04-22,1
+f16-f16,pass0,0.0,MP-004,maintenance_plan,2026-08-25,2026-08-25,1
+f16-f16,pass0,0.0,MP-005,maintenance_plan,2026-05-14,2026-05-14,1
+f16-f16,pass0,0.0,MP-006,maintenance_plan,2026-05-23,2026-05-23,1
+f16-f16,pass0,0.0,MP-007,maintenance_plan,2026-09-21,2026-09-21,1
+f16-f16,pass0,0.0,MP-008,maintenance_plan,2026-09-16,2026-09-16,1
+f16-f16,pass0,0.0,RO-001,repair_order,1 h,1 h,1
+f16-f16,pass0,0.0,RO-002,repair_order,2 h,2 h,1
+f16-f16,pass0,0.0,RO-003,repair_order,1 h,1 h,1
+f16-f16,pass0,0.0,RO-004,repair_order,13 h,13 h,1
+f16-f16,pass0,0.0,RO-005,repair_order,15 h,15 h,1
+f16-f16,pass0,0.0,RO-006,repair_order,13 h,13 h,1
+f16-f16,pass0,0.0,RO-007,repair_order,12 h,12 h,1
+f16-f16,pass0,0.0,RO-008,repair_order,9 h,9 h,1
+f16-f16,pass0,0.0,RO-009,repair_order,7 h,7 h,1
+f16-f16,pass0,0.0,RO-010,repair_order,2 h,2 h,1
+f16-f16,pass0,0.0,MC-001,mold_change,2026-04-16,2026-04-16,1
+f16-f16,pass0,0.0,MC-002,mold_change,2026-03-27,2026-03-27,1
+f16-f16,pass0,0.0,MC-003,mold_change,2026-03-06,2026-03-06,1
+f16-f16,pass0,0.0,MC-004,mold_change,2026-03-10,2026-03-10,1
+f16-f16,pass0,0.0,MC-005,mold_change,2026-06-24,2026-06-24,1
+f16-f16,pass0,0.0,QI-001,quality_incident,B66483,B66483,1
+f16-f16,pass0,0.0,QI-002,quality_incident,B91999,B91999,1
+f16-f16,pass1,0.7,PC-001,process_card,24,24,1
+f16-f16,pass1,0.7,PC-002,process_card,31,43,0
+f16-f16,pass1,0.7,PC-003,process_card,34,30,0
+f16-f16,pass1,0.7,PC-004,process_card,17,17,1
+f16-f16,pass1,0.7,PC-005,process_card,21,21,1
+f16-f16,pass1,0.7,PC-006,process_card,18,18,1
+f16-f16,pass1,0.7,PC-007,process_card,24,24,1
+f16-f16,pass1,0.7,PC-008,process_card,24,24,1
+f16-f16,pass1,0.7,PC-009,process_card,28,28,1
+f16-f16,pass1,0.7,PC-010,process_card,21,41,0
+f16-f16,pass1,0.7,PC-011,process_card,35,35,1
+f16-f16,pass1,0.7,PC-012,process_card,14,14,1
+f16-f16,pass1,0.7,PC-013,process_card,16,16,1
+f16-f16,pass1,0.7,PC-014,process_card,30,30,1
+f16-f16,pass1,0.7,PC-015,process_card,32,32,1
+f16-f16,pass1,0.7,PC-016,process_card,13,13,1
+f16-f16,pass1,0.7,PC-017,process_card,33,33,1
+f16-f16,pass1,0.7,PC-018,process_card,36,36,1
+f16-f16,pass1,0.7,PC-019,process_card,33,33,1
+f16-f16,pass1,0.7,PC-020,process_card,21,21,1
+f16-f16,pass1,0.7,DI-001,daily_inspection,2026-03-30,2026-03-30,1
+f16-f16,pass1,0.7,DI-002,daily_inspection,2026-03-08,2026-03-08,1
+f16-f16,pass1,0.7,DI-003,daily_inspection,2026-03-24,2026-03-24,1
+f16-f16,pass1,0.7,DI-004,daily_inspection,2026-03-22,2026-03-22,1
+f16-f16,pass1,0.7,DI-005,daily_inspection,2026-03-02,2026-03-02,1
+f16-f16,pass1,0.7,DI-006,daily_inspection,2026-03-09,2026-03-09,1
+f16-f16,pass1,0.7,DI-007,daily_inspection,2026-03-18,2026-03-18,1
+f16-f16,pass1,0.7,DI-008,daily_inspection,2026-03-25,2026-03-25,1
+f16-f16,pass1,0.7,DI-009,daily_inspection,2026-03-02,2026-03-02,1
+f16-f16,pass1,0.7,DI-010,daily_inspection,2026-03-13,2026-03-13,1
+f16-f16,pass1,0.7,DI-011,daily_inspection,2026-03-18,2026-03-18,1
+f16-f16,pass1,0.7,DI-012,daily_inspection,2026-03-16,2026-03-16,1
+f16-f16,pass1,0.7,DI-013,daily_inspection,2026-03-14,2026-03-14,1
+f16-f16,pass1,0.7,DI-014,daily_inspection,2026-03-21,2026-03-21,1
+f16-f16,pass1,0.7,DI-015,daily_inspection,2026-03-05,2026-03-05,1
+f16-f16,pass1,0.7,MP-001,maintenance_plan,2026-04-29,2026-04-29,1
+f16-f16,pass1,0.7,MP-002,maintenance_plan,2026-10-06,2026-10-06,1
+f16-f16,pass1,0.7,MP-003,maintenance_plan,2026-04-22,2026-04-22,1
+f16-f16,pass1,0.7,MP-004,maintenance_plan,2026-08-25,2026-08-25,1
+f16-f16,pass1,0.7,MP-005,maintenance_plan,2026-05-14,2026-05-14,1
+f16-f16,pass1,0.7,MP-006,maintenance_plan,2026-05-23,2026-05-23,1
+f16-f16,pass1,0.7,MP-007,maintenance_plan,2026-09-21,2026-09-21,1
+f16-f16,pass1,0.7,MP-008,maintenance_plan,2026-09-16,2026-09-16,1
+f16-f16,pass1,0.7,RO-001,repair_order,1 h,1 h,1
+f16-f16,pass1,0.7,RO-002,repair_order,2 h,2 h,1
+f16-f16,pass1,0.7,RO-003,repair_order,1 h,1 h,1
+f16-f16,pass1,0.7,RO-004,repair_order,13 h,13 h,1
+f16-f16,pass1,0.7,RO-005,repair_order,15 h,15 h,1
+f16-f16,pass1,0.7,RO-006,repair_order,13 h,13 h,1
+f16-f16,pass1,0.7,RO-007,repair_order,12 h,12 h,1
+f16-f16,pass1,0.7,RO-008,repair_order,9 h,9 h,1
+f16-f16,pass1,0.7,RO-009,repair_order,7 h,7 h,1
+f16-f16,pass1,0.7,RO-010,repair_order,2 h,2 h,1
+f16-f16,pass1,0.7,MC-001,mold_change,2026-04-16,2026-04-16,1
+f16-f16,pass1,0.7,MC-002,mold_change,2026-03-27,2026-03-27,1
+f16-f16,pass1,0.7,MC-003,mold_change,2026-03-06,2026-03-06,1
+f16-f16,pass1,0.7,MC-004,mold_change,2026-03-10,2026-03-10,1
+f16-f16,pass1,0.7,MC-005,mold_change,2026-06-24,2026-06-24,1
+f16-f16,pass1,0.7,QI-001,quality_incident,B66483,B66483,1
+f16-f16,pass1,0.7,QI-002,quality_incident,B91999,B91999,1
+f16-f16,pass2,0.7,PC-001,process_card,24,24,1
+f16-f16,pass2,0.7,PC-002,process_card,31,30,0
+f16-f16,pass2,0.7,PC-003,process_card,34,30,0
+f16-f16,pass2,0.7,PC-004,process_card,17,17,1
+f16-f16,pass2,0.7,PC-005,process_card,21,21,1
+f16-f16,pass2,0.7,PC-006,process_card,18,18,1
+f16-f16,pass2,0.7,PC-007,process_card,24,24,1
+f16-f16,pass2,0.7,PC-008,process_card,24,24,1
+f16-f16,pass2,0.7,PC-009,process_card,28,28,1
+f16-f16,pass2,0.7,PC-010,process_card,21,21,1
+f16-f16,pass2,0.7,PC-011,process_card,35,35,1
+f16-f16,pass2,0.7,PC-012,process_card,14,14,1
+f16-f16,pass2,0.7,PC-013,process_card,16,16,1
+f16-f16,pass2,0.7,PC-014,process_card,30,30,1
+f16-f16,pass2,0.7,PC-015,process_card,32,32,1
+f16-f16,pass2,0.7,PC-016,process_card,13,13,1
+f16-f16,pass2,0.7,PC-017,process_card,33,33,1
+f16-f16,pass2,0.7,PC-018,process_card,36,36,1
+f16-f16,pass2,0.7,PC-019,process_card,33,33,1
+f16-f16,pass2,0.7,PC-020,process_card,21,21,1
+f16-f16,pass2,0.7,DI-001,daily_inspection,2026-03-30,2026-03-30,1
+f16-f16,pass2,0.7,DI-002,daily_inspection,2026-03-08,2026-03-08,1
+f16-f16,pass2,0.7,DI-003,daily_inspection,2026-03-24,2026-03-24,1
+f16-f16,pass2,0.7,DI-004,daily_inspection,2026-03-22,2026-03-22,1
+f16-f16,pass2,0.7,DI-005,daily_inspection,2026-03-02,2026-03-02,1
+f16-f16,pass2,0.7,DI-006,daily_inspection,2026-03-09,2026-03-09,1
+f16-f16,pass2,0.7,DI-007,daily_inspection,2026-03-18,2026-03-18,1
+f16-f16,pass2,0.7,DI-008,daily_inspection,2026-03-25,2026-03-25,1
+f16-f16,pass2,0.7,DI-009,daily_inspection,2026-03-02,2026-03-02,1
+f16-f16,pass2,0.7,DI-010,daily_inspection,2026-03-13,2026-03-13,1
+f16-f16,pass2,0.7,DI-011,daily_inspection,2026-03-18,2026-03-18,1
+f16-f16,pass2,0.7,DI-012,daily_inspection,2026-03-16,2026-03-16,1
+f16-f16,pass2,0.7,DI-013,daily_inspection,2026-03-14,2026-03-14,1
+f16-f16,pass2,0.7,DI-014,daily_inspection,2026-03-21,2026-03-21,1
+f16-f16,pass2,0.7,DI-015,daily_inspection,2026-03-05,2026-03-05,1
+f16-f16,pass2,0.7,MP-001,maintenance_plan,2026-04-29,2026-04-29,1
+f16-f16,pass2,0.7,MP-002,maintenance_plan,2026-10-06,2026-10-06,1
+f16-f16,pass2,0.7,MP-003,maintenance_plan,2026-04-22,2026-04-22,1
+f16-f16,pass2,0.7,MP-004,maintenance_plan,2026-08-25,2026-08-25,1
+f16-f16,pass2,0.7,MP-005,maintenance_plan,2026-05-14,2026-05-14,1
+f16-f16,pass2,0.7,MP-006,maintenance_plan,2026-05-23,2026-05-23,1
+f16-f16,pass2,0.7,MP-007,maintenance_plan,2026-09-21,2026-09-21,1
+f16-f16,pass2,0.7,MP-008,maintenance_plan,2026-09-16,2026-09-16,1
+f16-f16,pass2,0.7,RO-001,repair_order,1 h,1 h,1
+f16-f16,pass2,0.7,RO-002,repair_order,2 h,2 h,1
+f16-f16,pass2,0.7,RO-003,repair_order,1 h,1 h,1
+f16-f16,pass2,0.7,RO-004,repair_order,13 h,13 h,1
+f16-f16,pass2,0.7,RO-005,repair_order,15 h,15 h,1
+f16-f16,pass2,0.7,RO-006,repair_order,13 h,13 h,1
+f16-f16,pass2,0.7,RO-007,repair_order,12 h,12 h,1
+f16-f16,pass2,0.7,RO-008,repair_order,9 h,9 h,1
+f16-f16,pass2,0.7,RO-009,repair_order,7 h,7 h,1
+f16-f16,pass2,0.7,RO-010,repair_order,2 h,2 h,1
+f16-f16,pass2,0.7,MC-001,mold_change,2026-04-16,2026-04-16,1
+f16-f16,pass2,0.7,MC-002,mold_change,2026-03-27,2026-03-27,1
+f16-f16,pass2,0.7,MC-003,mold_change,2026-03-06,2026-03-06,1
+f16-f16,pass2,0.7,MC-004,mold_change,2026-03-10,2026-03-10,1
+f16-f16,pass2,0.7,MC-005,mold_change,2026-06-24,2026-06-24,1
+f16-f16,pass2,0.7,QI-001,quality_incident,B66483,B66483,1
+f16-f16,pass2,0.7,QI-002,quality_incident,B91999,B91999,1
+q4_0-q4_0,pass0,0.0,PC-001,process_card,24,24,1
+q4_0-q4_0,pass0,0.0,PC-002,process_card,31,35,0
+q4_0-q4_0,pass0,0.0,PC-003,process_card,34,34,1
+q4_0-q4_0,pass0,0.0,PC-004,process_card,17,17,1
+q4_0-q4_0,pass0,0.0,PC-005,process_card,21,21,1
+q4_0-q4_0,pass0,0.0,PC-006,process_card,18,18,1
+q4_0-q4_0,pass0,0.0,PC-007,process_card,24,24,1
+q4_0-q4_0,pass0,0.0,PC-008,process_card,24,24,1
+q4_0-q4_0,pass0,0.0,PC-009,process_card,28,28,1
+q4_0-q4_0,pass0,0.0,PC-010,process_card,21,21,1
+q4_0-q4_0,pass0,0.0,PC-011,process_card,35,35,1
+q4_0-q4_0,pass0,0.0,PC-012,process_card,14,14,1
+q4_0-q4_0,pass0,0.0,PC-013,process_card,16,16,1
+q4_0-q4_0,pass0,0.0,PC-014,process_card,30,30,1
+q4_0-q4_0,pass0,0.0,PC-015,process_card,32,32,1
+q4_0-q4_0,pass0,0.0,PC-016,process_card,13,13,1
+q4_0-q4_0,pass0,0.0,PC-017,process_card,33,33,1
+q4_0-q4_0,pass0,0.0,PC-018,process_card,36,36,1
+q4_0-q4_0,pass0,0.0,PC-019,process_card,33,33,1
+q4_0-q4_0,pass0,0.0,PC-020,process_card,21,21,1
+q4_0-q4_0,pass0,0.0,DI-001,daily_inspection,2026-03-30,2026-03-30,1
+q4_0-q4_0,pass0,0.0,DI-002,daily_inspection,2026-03-08,2026-03-08,1
+q4_0-q4_0,pass0,0.0,DI-003,daily_inspection,2026-03-24,2026-03-24,1
+q4_0-q4_0,pass0,0.0,DI-004,daily_inspection,2026-03-22,2026-03-22,1
+q4_0-q4_0,pass0,0.0,DI-005,daily_inspection,2026-03-02,2026-03-02,1
+q4_0-q4_0,pass0,0.0,DI-006,daily_inspection,2026-03-09,2026-03-09,1
+q4_0-q4_0,pass0,0.0,DI-007,daily_inspection,2026-03-18,2026-03-18,1
+q4_0-q4_0,pass0,0.0,DI-008,daily_inspection,2026-03-25,2026-03-25,1
+q4_0-q4_0,pass0,0.0,DI-009,daily_inspection,2026-03-02,2026-03-02,1
+q4_0-q4_0,pass0,0.0,DI-010,daily_inspection,2026-03-13,2026-03-13,1
+q4_0-q4_0,pass0,0.0,DI-011,daily_inspection,2026-03-18,2026-03-18,1
+q4_0-q4_0,pass0,0.0,DI-012,daily_inspection,2026-03-16,2026-03-16,1
+q4_0-q4_0,pass0,0.0,DI-013,daily_inspection,2026-03-14,2026-03-14,1
+q4_0-q4_0,pass0,0.0,DI-014,daily_inspection,2026-03-21,2026-03-21,1
+q4_0-q4_0,pass0,0.0,DI-015,daily_inspection,2026-03-05,2026-03-05,1
+q4_0-q4_0,pass0,0.0,MP-001,maintenance_plan,2026-04-29,2026-04-29,1
+q4_0-q4_0,pass0,0.0,MP-002,maintenance_plan,2026-10-06,2026-10-06,1
+q4_0-q4_0,pass0,0.0,MP-003,maintenance_plan,2026-04-22,2026-04-22,1
+q4_0-q4_0,pass0,0.0,MP-004,maintenance_plan,2026-08-25,2026-08-25,1
+q4_0-q4_0,pass0,0.0,MP-005,maintenance_plan,2026-05-14,2026-05-14,1
+q4_0-q4_0,pass0,0.0,MP-006,maintenance_plan,2026-05-23,2026-05-23,1
+q4_0-q4_0,pass0,0.0,MP-007,maintenance_plan,2026-09-21,2026-09-21,1
+q4_0-q4_0,pass0,0.0,MP-008,maintenance_plan,2026-09-16,2026-09-16,1
+q4_0-q4_0,pass0,0.0,RO-001,repair_order,1 h,1 h,1
+q4_0-q4_0,pass0,0.0,RO-002,repair_order,2 h,2 h,1
+q4_0-q4_0,pass0,0.0,RO-003,repair_order,1 h,1 h,1
+q4_0-q4_0,pass0,0.0,RO-004,repair_order,13 h,13 h,1
+q4_0-q4_0,pass0,0.0,RO-005,repair_order,15 h,15 h,1
+q4_0-q4_0,pass0,0.0,RO-006,repair_order,13 h,13 h,1
+q4_0-q4_0,pass0,0.0,RO-007,repair_order,12 h,12 h,1
+q4_0-q4_0,pass0,0.0,RO-008,repair_order,9 h,9 h,1
+q4_0-q4_0,pass0,0.0,RO-009,repair_order,7 h,7 h,1
+q4_0-q4_0,pass0,0.0,RO-010,repair_order,2 h,2 h,1
+q4_0-q4_0,pass0,0.0,MC-001,mold_change,2026-04-16,2026-04-16,1
+q4_0-q4_0,pass0,0.0,MC-002,mold_change,2026-03-27,2026-03-27,1
+q4_0-q4_0,pass0,0.0,MC-003,mold_change,2026-03-06,2026-03-06,1
+q4_0-q4_0,pass0,0.0,MC-004,mold_change,2026-03-10,2026-03-10,1
+q4_0-q4_0,pass0,0.0,MC-005,mold_change,2026-06-24,2026-06-24,1
+q4_0-q4_0,pass0,0.0,QI-001,quality_incident,B66483,B66483,1
+q4_0-q4_0,pass0,0.0,QI-002,quality_incident,B91999,B91999,1

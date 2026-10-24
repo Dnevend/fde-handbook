@@ -1,0 +1,135 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 520" width="960" height="520" data-generator="fireworks-tech-graph" data-schema-version="1" data-text-metrics="heuristic-v1" data-style-id="4" data-visual-theme="Notion Clean" data-diagram-type="architecture" data-motion-scene="" data-semantic-profile="generic" data-semantic-valid="true" data-quality-profile="standard" data-max-bends-per-edge="12" data-max-total-bends="100" data-max-route-stretch="5.0" data-max-bridged-crossings="8" data-min-node-gap="0.0" data-min-container-gutter="0.0" data-min-label-clearance="2.0" data-min-segment-length="0.0">
+  <defs>
+    <marker id="arrowA" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto">
+      <polygon points="0 0, 8 3, 0 6" fill="#3b82f6"/>
+    </marker>
+    <marker id="arrowB" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto">
+      <polygon points="0 0, 8 3, 0 6" fill="#3b82f6"/>
+    </marker>
+    <marker id="arrowC" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto">
+      <polygon points="0 0, 8 3, 0 6" fill="#3b82f6"/>
+    </marker>
+    <marker id="arrowE" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto">
+      <polygon points="0 0, 8 3, 0 6" fill="#3b82f6"/>
+    </marker>
+    <marker id="arrowF" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto">
+      <polygon points="0 0, 8 3, 0 6" fill="#9ca3af"/>
+    </marker>
+    <marker id="arrowG" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto">
+      <polygon points="0 0, 8 3, 0 6" fill="#9ca3af"/>
+    </marker>
+    <marker id="arrowH" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto">
+      <polygon points="0 0, 8 3, 0 6" fill="#d1d5db"/>
+    </marker>
+    <style>
+    text { font-family: 'Hiragino Sans GB', 'PingFang SC', 'Noto Sans CJK SC', 'Microsoft YaHei', 'Helvetica Neue', Arial, sans-serif; }
+    .title { font-size: 24px; font-weight: 700; fill: #111827; }
+    .subtitle { font-size: 15px; font-weight: 500; fill: #9ca3af; }
+    .section { font-size: 13px; font-weight: 700; fill: #6b7280; letter-spacing: 1.4px; }
+    .section-sub { font-size: 12px; font-weight: 500; fill: #6b7280; }
+    .node-title { font-weight: 700; fill: #111827; }
+    .node-sub { font-weight: 500; fill: #374151; }
+    .node-type { font-size: 11px; font-weight: 700; fill: #6b7280; letter-spacing: 0.08em; }
+    .arrow-label { font-size: 12px; font-weight: 600; fill: #6b7280; }
+    .legend { font-size: 12px; font-weight: 500; fill: #6b7280; }
+    .footnote { font-size: 12px; font-weight: 500; fill: #6b7280; }
+    .metric-label { font-size: 8.5px; font-weight: 700; fill: #6b7280; text-transform: uppercase; }
+    .metric-value { font-size: 9.5px; font-weight: 700; fill: #111827; }
+    </style>
+  </defs>
+  <rect data-graph-role="background" width="960.0" height="520.0" fill="#ffffff"/>
+  <text x="48.0" y="48" text-anchor="start" class="title">同样叫 16 位，位怎么分决定了它能表示什么</text>
+  <line x1="48" y1="82" x2="912.0" y2="82" stroke="#e5e7eb" stroke-width="1"/>
+  <g id="node-lbl32" data-graph-role="node" data-node-id="lbl32" data-semantic-role="rect" data-motion-role="" data-motion-stage="" data-motion-order="" data-parent="" data-deployment-id="" data-topic-id="" data-span-id="" data-station-order="" data-status="" data-start-ms="" data-duration-ms="" data-parent-span="" data-graph-bounds="48,96,148,136">
+  <rect x="48.0" y="96.0" width="100.0" height="40.0" rx="4.0" fill="none" stroke="none" stroke-width="1.8"/>
+  <text data-text-role="title" data-full-text="fp32" data-text-max-width="76.0" x="98.0" y="116.0" text-anchor="middle" class="node-title" font-size="20.0">fp32</text>
+  </g>
+  <g id="node-f32-s" data-graph-role="node" data-node-id="f32-s" data-semantic-role="rect" data-motion-role="" data-motion-stage="" data-motion-order="" data-parent="" data-deployment-id="" data-topic-id="" data-span-id="" data-station-order="" data-status="" data-start-ms="" data-duration-ms="" data-parent-span="" data-graph-bounds="180,92,200,136">
+  <rect x="180.0" y="92.0" width="20.0" height="44.0" rx="4.0" fill="#fecaca" stroke="#ffffff" stroke-width="1.0"/>
+  </g>
+  <g id="node-f32-e" data-graph-role="node" data-node-id="f32-e" data-semantic-role="rect" data-motion-role="" data-motion-stage="" data-motion-order="" data-parent="" data-deployment-id="" data-topic-id="" data-span-id="" data-station-order="" data-status="" data-start-ms="" data-duration-ms="" data-parent-span="" data-graph-bounds="202,92,362,136">
+  <rect x="202.0" y="92.0" width="160.0" height="44.0" rx="4.0" fill="#fef3c7" stroke="#ffffff" stroke-width="1.0"/>
+  <text data-text-role="title" data-full-text="8 位指数" data-text-max-width="136.0" x="282.0" y="114.0" text-anchor="middle" class="node-title" font-size="20.0">8 位指数</text>
+  </g>
+  <g id="node-f32-m" data-graph-role="node" data-node-id="f32-m" data-semantic-role="rect" data-motion-role="" data-motion-stage="" data-motion-order="" data-parent="" data-deployment-id="" data-topic-id="" data-span-id="" data-station-order="" data-status="" data-start-ms="" data-duration-ms="" data-parent-span="" data-graph-bounds="364,92,824,136">
+  <rect x="364.0" y="92.0" width="460.0" height="44.0" rx="4.0" fill="#dbeafe" stroke="#ffffff" stroke-width="1.0"/>
+  <text data-text-role="title" data-full-text="23 位尾数" data-text-max-width="436.0" x="594.0" y="114.0" text-anchor="middle" class="node-title" font-size="20.0">23 位尾数</text>
+  </g>
+  <g id="node-f32-note" data-graph-role="node" data-node-id="f32-note" data-semantic-role="rect" data-motion-role="" data-motion-stage="" data-motion-order="" data-parent="" data-deployment-id="" data-topic-id="" data-span-id="" data-station-order="" data-status="" data-start-ms="" data-duration-ms="" data-parent-span="" data-graph-bounds="836,96,936,136">
+  <rect x="836.0" y="96.0" width="100.0" height="40.0" rx="4.0" fill="none" stroke="none" stroke-width="1.8"/>
+  <text data-text-role="title" data-full-text="32 位" data-text-max-width="76.0" x="886.0" y="116.0" text-anchor="middle" class="node-title" font-size="20.0">32 位</text>
+  </g>
+  <g id="node-lbl16" data-graph-role="node" data-node-id="lbl16" data-semantic-role="rect" data-motion-role="" data-motion-stage="" data-motion-order="" data-parent="" data-deployment-id="" data-topic-id="" data-span-id="" data-station-order="" data-status="" data-start-ms="" data-duration-ms="" data-parent-span="" data-graph-bounds="48,172,148,212">
+  <rect x="48.0" y="172.0" width="100.0" height="40.0" rx="4.0" fill="none" stroke="none" stroke-width="1.8"/>
+  <text data-text-role="title" data-full-text="fp16" data-text-max-width="76.0" x="98.0" y="192.0" text-anchor="middle" class="node-title" font-size="20.0">fp16</text>
+  </g>
+  <g id="node-f16-s" data-graph-role="node" data-node-id="f16-s" data-semantic-role="rect" data-motion-role="" data-motion-stage="" data-motion-order="" data-parent="" data-deployment-id="" data-topic-id="" data-span-id="" data-station-order="" data-status="" data-start-ms="" data-duration-ms="" data-parent-span="" data-graph-bounds="180,168,200,212">
+  <rect x="180.0" y="168.0" width="20.0" height="44.0" rx="4.0" fill="#fecaca" stroke="#ffffff" stroke-width="1.0"/>
+  </g>
+  <g id="node-f16-e" data-graph-role="node" data-node-id="f16-e" data-semantic-role="rect" data-motion-role="" data-motion-stage="" data-motion-order="" data-parent="" data-deployment-id="" data-topic-id="" data-span-id="" data-station-order="" data-status="" data-start-ms="" data-duration-ms="" data-parent-span="" data-graph-bounds="202,168,302,212">
+  <rect x="202.0" y="168.0" width="100.0" height="44.0" rx="4.0" fill="#fef3c7" stroke="#ffffff" stroke-width="1.0"/>
+  <text data-text-role="title" data-full-text="5 位指数" data-text-max-width="76.0" x="252.0" y="190.0" text-anchor="middle" class="node-title" font-size="17.86">5 位指数</text>
+  </g>
+  <g id="node-f16-m" data-graph-role="node" data-node-id="f16-m" data-semantic-role="rect" data-motion-role="" data-motion-stage="" data-motion-order="" data-parent="" data-deployment-id="" data-topic-id="" data-span-id="" data-station-order="" data-status="" data-start-ms="" data-duration-ms="" data-parent-span="" data-graph-bounds="304,168,504,212">
+  <rect x="304.0" y="168.0" width="200.0" height="44.0" rx="4.0" fill="#dbeafe" stroke="#ffffff" stroke-width="1.0"/>
+  <text data-text-role="title" data-full-text="10 位尾数" data-text-max-width="176.0" x="404.0" y="190.0" text-anchor="middle" class="node-title" font-size="20.0">10 位尾数</text>
+  </g>
+  <g id="node-f16-note" data-graph-role="node" data-node-id="f16-note" data-semantic-role="rect" data-motion-role="" data-motion-stage="" data-motion-order="" data-parent="" data-deployment-id="" data-topic-id="" data-span-id="" data-station-order="" data-status="" data-start-ms="" data-duration-ms="" data-parent-span="" data-graph-bounds="516,172,936,212">
+  <rect x="516.0" y="172.0" width="420.0" height="40.0" rx="4.0" fill="none" stroke="none" stroke-width="1.8"/>
+  <text data-text-role="title" data-full-text="16 位：范围到 65504，精度高" data-text-max-width="396.0" x="726.0" y="192.0" text-anchor="middle" class="node-title" font-size="20.0">16 位：范围到 65504，精度高</text>
+  </g>
+  <g id="node-lblbf" data-graph-role="node" data-node-id="lblbf" data-semantic-role="rect" data-motion-role="" data-motion-stage="" data-motion-order="" data-parent="" data-deployment-id="" data-topic-id="" data-span-id="" data-station-order="" data-status="" data-start-ms="" data-duration-ms="" data-parent-span="" data-graph-bounds="48,248,148,288">
+  <rect x="48.0" y="248.0" width="100.0" height="40.0" rx="4.0" fill="none" stroke="none" stroke-width="1.8"/>
+  <text data-text-role="title" data-full-text="bf16" data-text-max-width="76.0" x="98.0" y="268.0" text-anchor="middle" class="node-title" font-size="20.0">bf16</text>
+  </g>
+  <g id="node-bf16-s" data-graph-role="node" data-node-id="bf16-s" data-semantic-role="rect" data-motion-role="" data-motion-stage="" data-motion-order="" data-parent="" data-deployment-id="" data-topic-id="" data-span-id="" data-station-order="" data-status="" data-start-ms="" data-duration-ms="" data-parent-span="" data-graph-bounds="180,244,200,288">
+  <rect x="180.0" y="244.0" width="20.0" height="44.0" rx="4.0" fill="#fecaca" stroke="#ffffff" stroke-width="1.0"/>
+  </g>
+  <g id="node-bf16-e" data-graph-role="node" data-node-id="bf16-e" data-semantic-role="rect" data-motion-role="" data-motion-stage="" data-motion-order="" data-parent="" data-deployment-id="" data-topic-id="" data-span-id="" data-station-order="" data-status="" data-start-ms="" data-duration-ms="" data-parent-span="" data-graph-bounds="202,244,362,288">
+  <rect x="202.0" y="244.0" width="160.0" height="44.0" rx="4.0" fill="#fef3c7" stroke="#ffffff" stroke-width="1.0"/>
+  <text data-text-role="title" data-full-text="8 位指数" data-text-max-width="136.0" x="282.0" y="266.0" text-anchor="middle" class="node-title" font-size="20.0">8 位指数</text>
+  </g>
+  <g id="node-bf16-m" data-graph-role="node" data-node-id="bf16-m" data-semantic-role="rect" data-motion-role="" data-motion-stage="" data-motion-order="" data-parent="" data-deployment-id="" data-topic-id="" data-span-id="" data-station-order="" data-status="" data-start-ms="" data-duration-ms="" data-parent-span="" data-graph-bounds="364,244,504,288">
+  <rect x="364.0" y="244.0" width="140.0" height="44.0" rx="4.0" fill="#dbeafe" stroke="#ffffff" stroke-width="1.0"/>
+  <text data-text-role="title" data-full-text="7 位尾数" data-text-max-width="116.0" x="434.0" y="266.0" text-anchor="middle" class="node-title" font-size="20.0">7 位尾数</text>
+  </g>
+  <g id="node-bf16-note" data-graph-role="node" data-node-id="bf16-note" data-semantic-role="rect" data-motion-role="" data-motion-stage="" data-motion-order="" data-parent="" data-deployment-id="" data-topic-id="" data-span-id="" data-station-order="" data-status="" data-start-ms="" data-duration-ms="" data-parent-span="" data-graph-bounds="516,248,936,288">
+  <rect x="516.0" y="248.0" width="420.0" height="40.0" rx="4.0" fill="none" stroke="none" stroke-width="1.8"/>
+  <text data-text-role="title" data-full-text="16 位：范围同 fp32，精度低 8 倍" data-text-max-width="396.0" x="726.0" y="268.0" text-anchor="middle" class="node-title" font-size="20.0">16 位：范围同 fp32，精度低 8 倍</text>
+  </g>
+  <g id="node-lbl8" data-graph-role="node" data-node-id="lbl8" data-semantic-role="rect" data-motion-role="" data-motion-stage="" data-motion-order="" data-parent="" data-deployment-id="" data-topic-id="" data-span-id="" data-station-order="" data-status="" data-start-ms="" data-duration-ms="" data-parent-span="" data-graph-bounds="48,324,148,364">
+  <rect x="48.0" y="324.0" width="100.0" height="40.0" rx="4.0" fill="none" stroke="none" stroke-width="1.8"/>
+  <text data-text-role="title" data-full-text="int8" data-text-max-width="76.0" x="98.0" y="344.0" text-anchor="middle" class="node-title" font-size="20.0">int8</text>
+  </g>
+  <g id="node-i8-q" data-graph-role="node" data-node-id="i8-q" data-semantic-role="rect" data-motion-role="" data-motion-stage="" data-motion-order="" data-parent="" data-deployment-id="" data-topic-id="" data-span-id="" data-station-order="" data-status="" data-start-ms="" data-duration-ms="" data-parent-span="" data-graph-bounds="180,320,340,364">
+  <rect x="180.0" y="320.0" width="160.0" height="44.0" rx="4.0" fill="#e5e7eb" stroke="#9ca3af" stroke-width="1.6"/>
+  <text data-text-role="title" data-full-text="8 位整数" data-text-max-width="136.0" x="260.0" y="342.0" text-anchor="middle" class="node-title" font-size="20.0">8 位整数</text>
+  </g>
+  <g id="node-i8-s" data-graph-role="node" data-node-id="i8-s" data-semantic-role="rect" data-motion-role="" data-motion-stage="" data-motion-order="" data-parent="" data-deployment-id="" data-topic-id="" data-span-id="" data-station-order="" data-status="" data-start-ms="" data-duration-ms="" data-parent-span="" data-graph-bounds="344,320,420,364">
+  <rect x="344.0" y="320.0" width="76.0" height="44.0" rx="4.0" fill="#ede9fe" stroke="#ffffff" stroke-width="1.0"/>
+  <text data-text-role="title" data-full-text="scale" data-text-max-width="52.0" x="382.0" y="342.0" text-anchor="middle" class="node-title" font-size="18.23">scale</text>
+  </g>
+  <g id="node-i8-note" data-graph-role="node" data-node-id="i8-note" data-semantic-role="rect" data-motion-role="" data-motion-stage="" data-motion-order="" data-parent="" data-deployment-id="" data-topic-id="" data-span-id="" data-station-order="" data-status="" data-start-ms="" data-duration-ms="" data-parent-span="" data-graph-bounds="436,324,936,364">
+  <rect x="436.0" y="324.0" width="500.0" height="40.0" rx="4.0" fill="none" stroke="none" stroke-width="1.8"/>
+  <text data-text-role="title" data-full-text="每 32 个权重共享一个 fp16 scale" data-text-max-width="476.0" x="686.0" y="344.0" text-anchor="middle" class="node-title" font-size="20.0">每 32 个权重共享一个 fp16 scale</text>
+  </g>
+  <g id="node-lbl4" data-graph-role="node" data-node-id="lbl4" data-semantic-role="rect" data-motion-role="" data-motion-stage="" data-motion-order="" data-parent="" data-deployment-id="" data-topic-id="" data-span-id="" data-station-order="" data-status="" data-start-ms="" data-duration-ms="" data-parent-span="" data-graph-bounds="48,400,148,440">
+  <rect x="48.0" y="400.0" width="100.0" height="40.0" rx="4.0" fill="none" stroke="none" stroke-width="1.8"/>
+  <text data-text-role="title" data-full-text="int4" data-text-max-width="76.0" x="98.0" y="420.0" text-anchor="middle" class="node-title" font-size="20.0">int4</text>
+  </g>
+  <g id="node-i4-q" data-graph-role="node" data-node-id="i4-q" data-semantic-role="rect" data-motion-role="" data-motion-stage="" data-motion-order="" data-parent="" data-deployment-id="" data-topic-id="" data-span-id="" data-station-order="" data-status="" data-start-ms="" data-duration-ms="" data-parent-span="" data-graph-bounds="180,396,260,440">
+  <rect x="180.0" y="396.0" width="80.0" height="44.0" rx="4.0" fill="#e5e7eb" stroke="#9ca3af" stroke-width="1.6"/>
+  <text data-text-role="title" data-full-text="4 位" data-text-max-width="56.0" x="220.0" y="418.0" text-anchor="middle" class="node-title" font-size="20.0">4 位</text>
+  </g>
+  <g id="node-i4-s" data-graph-role="node" data-node-id="i4-s" data-semantic-role="rect" data-motion-role="" data-motion-stage="" data-motion-order="" data-parent="" data-deployment-id="" data-topic-id="" data-span-id="" data-station-order="" data-status="" data-start-ms="" data-duration-ms="" data-parent-span="" data-graph-bounds="264,396,340,440">
+  <rect x="264.0" y="396.0" width="76.0" height="44.0" rx="4.0" fill="#ede9fe" stroke="#ffffff" stroke-width="1.0"/>
+  <text data-text-role="title" data-full-text="scale" data-text-max-width="52.0" x="302.0" y="418.0" text-anchor="middle" class="node-title" font-size="18.23">scale</text>
+  </g>
+  <g id="node-i4-note" data-graph-role="node" data-node-id="i4-note" data-semantic-role="rect" data-motion-role="" data-motion-stage="" data-motion-order="" data-parent="" data-deployment-id="" data-topic-id="" data-span-id="" data-station-order="" data-status="" data-start-ms="" data-duration-ms="" data-parent-span="" data-graph-bounds="356,400,936,440">
+  <rect x="356.0" y="400.0" width="580.0" height="40.0" rx="4.0" fill="none" stroke="none" stroke-width="1.8"/>
+  <text data-text-role="title" data-full-text="Q4_K 靠 32 权重的子块 scale 补回范围" data-text-max-width="556.0" x="646.0" y="420.0" text-anchor="middle" class="node-title" font-size="20.0">Q4_K 靠 32 权重的子块 scale 补回范围</text>
+  </g>
+  <g id="footer" data-graph-role="reserved" data-graph-bounds="48,480,321,496">
+  <text x="48.0" y="492.0" class="footnote">红=符号 黄=指数 蓝=尾数；整数格式没有指数，靠外挂的 scale 找回范围</text>
+  </g>
+</svg>

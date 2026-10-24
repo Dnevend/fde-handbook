@@ -1,0 +1,61 @@
+doc_id,kind,question,answer
+PC-001,process_card,这张工艺参数卡里，保压时间与冷却时间相加是多少秒？只回答数字。,24
+PC-002,process_card,这张工艺参数卡里，保压时间与冷却时间相加是多少秒？只回答数字。,31
+PC-003,process_card,这张工艺参数卡里，保压时间与冷却时间相加是多少秒？只回答数字。,34
+PC-004,process_card,这张工艺参数卡里，保压时间与冷却时间相加是多少秒？只回答数字。,17
+PC-005,process_card,这张工艺参数卡里，保压时间与冷却时间相加是多少秒？只回答数字。,21
+PC-006,process_card,这张工艺参数卡里，保压时间与冷却时间相加是多少秒？只回答数字。,18
+PC-007,process_card,这张工艺参数卡里，保压时间与冷却时间相加是多少秒？只回答数字。,24
+PC-008,process_card,这张工艺参数卡里，保压时间与冷却时间相加是多少秒？只回答数字。,24
+PC-009,process_card,这张工艺参数卡里，保压时间与冷却时间相加是多少秒？只回答数字。,28
+PC-010,process_card,这张工艺参数卡里，保压时间与冷却时间相加是多少秒？只回答数字。,21
+PC-011,process_card,这张工艺参数卡里，保压时间与冷却时间相加是多少秒？只回答数字。,35
+PC-012,process_card,这张工艺参数卡里，保压时间与冷却时间相加是多少秒？只回答数字。,14
+PC-013,process_card,这张工艺参数卡里，保压时间与冷却时间相加是多少秒？只回答数字。,16
+PC-014,process_card,这张工艺参数卡里，保压时间与冷却时间相加是多少秒？只回答数字。,30
+PC-015,process_card,这张工艺参数卡里，保压时间与冷却时间相加是多少秒？只回答数字。,32
+PC-016,process_card,这张工艺参数卡里，保压时间与冷却时间相加是多少秒？只回答数字。,13
+PC-017,process_card,这张工艺参数卡里，保压时间与冷却时间相加是多少秒？只回答数字。,33
+PC-018,process_card,这张工艺参数卡里，保压时间与冷却时间相加是多少秒？只回答数字。,36
+PC-019,process_card,这张工艺参数卡里，保压时间与冷却时间相加是多少秒？只回答数字。,33
+PC-020,process_card,这张工艺参数卡里，保压时间与冷却时间相加是多少秒？只回答数字。,21
+DI-001,daily_inspection,这张点检表的日期是哪一天？只回答 YYYY-MM-DD。,2026-03-30
+DI-002,daily_inspection,这张点检表的日期是哪一天？只回答 YYYY-MM-DD。,2026-03-08
+DI-003,daily_inspection,这张点检表的日期是哪一天？只回答 YYYY-MM-DD。,2026-03-24
+DI-004,daily_inspection,这张点检表的日期是哪一天？只回答 YYYY-MM-DD。,2026-03-22
+DI-005,daily_inspection,这张点检表的日期是哪一天？只回答 YYYY-MM-DD。,2026-03-02
+DI-006,daily_inspection,这张点检表的日期是哪一天？只回答 YYYY-MM-DD。,2026-03-09
+DI-007,daily_inspection,这张点检表的日期是哪一天？只回答 YYYY-MM-DD。,2026-03-18
+DI-008,daily_inspection,这张点检表的日期是哪一天？只回答 YYYY-MM-DD。,2026-03-25
+DI-009,daily_inspection,这张点检表的日期是哪一天？只回答 YYYY-MM-DD。,2026-03-02
+DI-010,daily_inspection,这张点检表的日期是哪一天？只回答 YYYY-MM-DD。,2026-03-13
+DI-011,daily_inspection,这张点检表的日期是哪一天？只回答 YYYY-MM-DD。,2026-03-18
+DI-012,daily_inspection,这张点检表的日期是哪一天？只回答 YYYY-MM-DD。,2026-03-16
+DI-013,daily_inspection,这张点检表的日期是哪一天？只回答 YYYY-MM-DD。,2026-03-14
+DI-014,daily_inspection,这张点检表的日期是哪一天？只回答 YYYY-MM-DD。,2026-03-21
+DI-015,daily_inspection,这张点检表的日期是哪一天？只回答 YYYY-MM-DD。,2026-03-05
+MP-001,maintenance_plan,这份保养计划的下次执行日期是哪一天？只回答 YYYY-MM-DD。,2026-04-29
+MP-002,maintenance_plan,这份保养计划的下次执行日期是哪一天？只回答 YYYY-MM-DD。,2026-10-06
+MP-003,maintenance_plan,这份保养计划的下次执行日期是哪一天？只回答 YYYY-MM-DD。,2026-04-22
+MP-004,maintenance_plan,这份保养计划的下次执行日期是哪一天？只回答 YYYY-MM-DD。,2026-08-25
+MP-005,maintenance_plan,这份保养计划的下次执行日期是哪一天？只回答 YYYY-MM-DD。,2026-05-14
+MP-006,maintenance_plan,这份保养计划的下次执行日期是哪一天？只回答 YYYY-MM-DD。,2026-05-23
+MP-007,maintenance_plan,这份保养计划的下次执行日期是哪一天？只回答 YYYY-MM-DD。,2026-09-21
+MP-008,maintenance_plan,这份保养计划的下次执行日期是哪一天？只回答 YYYY-MM-DD。,2026-09-16
+RO-001,repair_order,这张维修工单的停机时间是多少？只回答数字加 h，例如 2 h。,1 h
+RO-002,repair_order,这张维修工单的停机时间是多少？只回答数字加 h，例如 2 h。,2 h
+RO-003,repair_order,这张维修工单的停机时间是多少？只回答数字加 h，例如 2 h。,1 h
+RO-004,repair_order,这张维修工单的停机时间是多少？只回答数字加 h，例如 2 h。,13 h
+RO-005,repair_order,这张维修工单的停机时间是多少？只回答数字加 h，例如 2 h。,15 h
+RO-006,repair_order,这张维修工单的停机时间是多少？只回答数字加 h，例如 2 h。,13 h
+RO-007,repair_order,这张维修工单的停机时间是多少？只回答数字加 h，例如 2 h。,12 h
+RO-008,repair_order,这张维修工单的停机时间是多少？只回答数字加 h，例如 2 h。,9 h
+RO-009,repair_order,这张维修工单的停机时间是多少？只回答数字加 h，例如 2 h。,7 h
+RO-010,repair_order,这张维修工单的停机时间是多少？只回答数字加 h，例如 2 h。,2 h
+MC-001,mold_change,这份换模记录的换模结束日期是哪一天？只回答 YYYY-MM-DD。,2026-04-16
+MC-002,mold_change,这份换模记录的换模结束日期是哪一天？只回答 YYYY-MM-DD。,2026-03-27
+MC-003,mold_change,这份换模记录的换模结束日期是哪一天？只回答 YYYY-MM-DD。,2026-03-06
+MC-004,mold_change,这份换模记录的换模结束日期是哪一天？只回答 YYYY-MM-DD。,2026-03-10
+MC-005,mold_change,这份换模记录的换模结束日期是哪一天？只回答 YYYY-MM-DD。,2026-06-24
+QI-001,quality_incident,这张质量异常单的批次号是什么？只回答批次号。,B66483
+QI-002,quality_incident,这张质量异常单的批次号是什么？只回答批次号。,B91999

@@ -58,9 +58,11 @@ npm run docs:preview  # 预览构建结果
 
 ## 进度
 
-序、第一部分（推理原理）、第二部分（模型选型）、第三部分（本地部署）已有正文；其余部分仍为占位页（只有标题与"本章要回答的问题"）。正文按 `docs/00-preface/` → `docs/08-delivery/` 的顺序推进。
+序、第一至第四部分已有正文；第五至第八部分与附录仍为占位页（只有标题与"本章要回答的问题"）。正文按 `docs/00-preface/` → `docs/08-delivery/` 的顺序推进。
 
 第三部分的实验代码在 `labs/03-deployment/`，已在本机跑通；对应实测数据在 `benchmarks/`（`gguf-format/`、`prefill-decode/`、`template/`、`sampling/`、`concurrency/`、`client-bench/`）。
+
+第四部分的实验代码在 `labs/04-quantization/`，同样已跑通；数据在 `benchmarks/quantization/`（张量格式误差、分组量化、KV 量化、跨域困惑度、60 题探针）。这一部分没有下载额外的量化模型：需要从 16 位源重切阶梯的对照写在各节的「待实测」里。
 
 ## 协议
 
