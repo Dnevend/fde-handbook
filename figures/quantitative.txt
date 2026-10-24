@@ -4,3 +4,8 @@
 1-6-vram-budget.svg
 4-2-group-size.svg
 4-6-ppl-domain.svg
+5-1-long-context.svg
+5-3-chunking.svg
+5-5-ann.svg
+5-6-retrieval.svg
+5-7-rerank.svg

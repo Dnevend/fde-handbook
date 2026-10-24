@@ -1,0 +1,169 @@
+{
+  "schema_version": 1,
+  "mode": "flowchart",
+  "template_type": "flowchart",
+  "style": 4,
+  "quality_profile": "standard",
+  "text_policy": "strict",
+  "width": 960,
+  "height": 460,
+  "title": "生成：先查得到，再答得出，最后指得准",
+  "subtitle": "提示词只给 top-5，要求逐条标号；没有依据时允许说「资料中没有相关信息」",
+  "footer": "引用的编号必须指向实际检索到的段落；答不出不是失败，编出来才是。",
+  "footer_x": 32,
+  "footer_y": 432,
+  "nodes": [
+    {
+      "id": "q",
+      "kind": "rect",
+      "x": 32,
+      "y": 150,
+      "width": 168,
+      "height": 64,
+      "type_label": "输入",
+      "label": "问题",
+      "sublabel": "用户自然语言",
+      "fill": "#ffffff",
+      "stroke": "#e5e7eb",
+      "stroke_width": 1.8,
+      "flat": true,
+      "title_size": 18
+    },
+    {
+      "id": "ctx",
+      "kind": "rect",
+      "x": 32,
+      "y": 256,
+      "width": 168,
+      "height": 64,
+      "type_label": "证据",
+      "label": "top-5 段落",
+      "sublabel": "带 doc / 条款号",
+      "fill": "#dbeafe",
+      "stroke": "#3b82f6",
+      "stroke_width": 1.8,
+      "flat": true,
+      "title_size": 18
+    },
+    {
+      "id": "p",
+      "kind": "rect",
+      "x": 248,
+      "y": 158,
+      "width": 168,
+      "height": 64,
+      "type_label": "拼装",
+      "label": "提示词",
+      "sublabel": "只能依据资料",
+      "fill": "#ffffff",
+      "stroke": "#e5e7eb",
+      "stroke_width": 1.8,
+      "flat": true,
+      "title_size": 18
+    },
+    {
+      "id": "m",
+      "kind": "rect",
+      "x": 464,
+      "y": 158,
+      "width": 168,
+      "height": 64,
+      "type_label": "生成",
+      "label": "本地模型",
+      "sublabel": "Qwen3.5-9B",
+      "fill": "#ffffff",
+      "stroke": "#e5e7eb",
+      "stroke_width": 1.8,
+      "flat": true,
+      "title_size": 18
+    },
+    {
+      "id": "dec",
+      "kind": "hexagon",
+      "x": 680,
+      "y": 158,
+      "width": 136,
+      "height": 64,
+      "label": "资料够吗",
+      "fill": "#fef3c7",
+      "stroke": "#f59e0b",
+      "stroke_width": 1.8,
+      "flat": true,
+      "title_size": 17
+    },
+    {
+      "id": "yes",
+      "kind": "rect",
+      "x": 680,
+      "y": 76,
+      "width": 200,
+      "height": 56,
+      "type_label": "够",
+      "label": "答案 + [编号]",
+      "sublabel": "可回查原文",
+      "fill": "#ffffff",
+      "stroke": "#3b82f6",
+      "stroke_width": 1.8,
+      "flat": true,
+      "title_size": 16
+    },
+    {
+      "id": "no",
+      "kind": "rect",
+      "x": 680,
+      "y": 260,
+      "width": 200,
+      "height": 56,
+      "type_label": "不够",
+      "label": "拒答",
+      "sublabel": "资料中没有相关信息",
+      "fill": "#f3f4f6",
+      "stroke": "#9ca3af",
+      "stroke_width": 1.8,
+      "flat": true,
+      "title_size": 16
+    }
+  ],
+  "arrows": [
+    {
+      "id": "e1",
+      "source": "q",
+      "target": "p",
+      "flow": "control",
+      "source_port": "right",
+      "target_port": "left"
+    },
+    {
+      "id": "e2",
+      "source": "ctx",
+      "target": "p",
+      "flow": "control",
+      "source_port": "top",
+      "target_port": "bottom"
+    },
+    {
+      "id": "e3",
+      "source": "p",
+      "target": "m",
+      "flow": "control"
+    },
+    {
+      "id": "e4",
+      "source": "m",
+      "target": "dec",
+      "flow": "control"
+    },
+    {
+      "id": "e5",
+      "source": "dec",
+      "target": "yes",
+      "flow": "control"
+    },
+    {
+      "id": "e6",
+      "source": "dec",
+      "target": "no",
+      "flow": "control"
+    }
+  ]
+}

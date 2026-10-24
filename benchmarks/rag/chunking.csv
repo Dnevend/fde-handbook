@@ -1,0 +1,4 @@
+strategy,chunks,avg_chars,p95_chars,recall@5,mrr@10,ndcg@10,broken_table_rows,elapsed_s
+structure,734,273,398,0.967,0.841,0.744,0,43.5
+fixed,829,362,400,0.817,0.546,0.47,0,64.9
+semantic,988,141,352,0.7,0.487,0.45,0,140.9

@@ -27,6 +27,7 @@ import matplotlib
 matplotlib.use("Agg")
 import matplotlib.pyplot as plt
 from matplotlib import font_manager
+from matplotlib.ticker import NullFormatter
 
 ROOT = Path(__file__).resolve().parents[2]
 HERE = Path(__file__).resolve().parent
@@ -222,6 +223,165 @@ def plot_ppl_domain(preview: bool) -> None:
     save(fig, "4-6-ppl-domain", preview)
 
 
+def read_rag(name: str) -> list[dict[str, str]]:
+    """第五部分的实验数据在 benchmarks/rag/。"""
+    with open(ROOT / "benchmarks" / "rag" / name, encoding="utf-8") as handle:
+        return list(csv.DictReader(handle))
+
+
+def plot_long_context(preview: bool) -> None:
+    rows = [row for row in read_rag("long-context.csv") if row["mode"] == "long_context"]
+    rag = next(row for row in read_rag("long-context.csv") if row["mode"] == "rag_top5")
+
+    fig, ax = plt.subplots(figsize=(9.6, 4.4), dpi=100)
+    positions = {"0.0": "开头", "0.5": "中间", "1.0": "结尾"}
+    colors = {"0.0": BLUE, "0.5": AMBER, "1.0": "#10b981"}
+    offsets = {"0.0": (8, 10), "0.5": (-34, 12), "1.0": (8, -18)}
+    for key, label in positions.items():
+        subset = [row for row in rows if row["position"] == key]
+        xs = [int(row["context_tokens"]) for row in subset]
+        ys = [float(row["ttft_s"]) for row in subset]
+        ax.plot(xs, ys, marker="o", markersize=6, linewidth=1.6, color=colors[key], label=f"答案在{label}")
+        dx, dy = offsets[key]
+        for x, y in zip(xs, ys):
+            ax.annotate(f"{y:.0f}s", (x, y), textcoords="offset points", xytext=(dx, dy), fontsize=9, color=colors[key])
+
+    rag_tokens = int(rag["context_tokens"])
+    rag_ttft = float(rag["ttft_s"])
+    ax.scatter([rag_tokens], [rag_ttft], marker="*", s=180, color=INK, zorder=5, label=f"RAG top-5（{rag_tokens} token）")
+    ax.annotate(f"RAG：{rag_ttft:.1f}s\n上下文只有 {rag_tokens / 1000:.1f}k token",
+                (rag_tokens, rag_ttft), textcoords="offset points", xytext=(16, 22), fontsize=9, color=INK, ha="left")
+
+    ax.set_xscale("log")
+    ax.set_xticks([2000, 8000, 20000], ["2k", "8k", "20k"])
+    ax.xaxis.set_minor_formatter(NullFormatter())
+    ax.set_xlabel("上下文 token 数")
+    ax.set_ylabel("首字延迟（秒）")
+    ax.set_ylim(0, 130)
+    ax.set_title("答案都在，代价是首字延迟随上下文线性涨", loc="left", fontsize=14, color=INK, pad=14)
+    style_axes(ax)
+    ax.legend(loc="upper left", frameon=False, fontsize=9)
+    fig.tight_layout()
+    save(fig, "5-1-long-context", preview)
+
+
+def plot_chunking(preview: bool) -> None:
+    rows = read_rag("chunking.csv")
+    labels = {"structure": "按结构", "fixed": "按长度", "semantic": "按语义"}
+    names = [labels[row["strategy"]] for row in rows]
+    recall = [float(row["recall@5"]) for row in rows]
+    mrr = [float(row["mrr@10"]) for row in rows]
+    chunks = [int(row["chunks"]) for row in rows]
+
+    fig, ax = plt.subplots(figsize=(9.6, 4.4), dpi=100)
+    x = list(range(len(names)))
+    width = 0.34
+    ax.bar([i - width / 2 for i in x], recall, width, color=BLUE, label="Recall@5", zorder=3)
+    ax.bar([i + width / 2 for i in x], mrr, width, color=BLUE_LIGHT, edgecolor=BLUE, linewidth=1, label="MRR@10", zorder=3)
+    for i, (r, m, c) in enumerate(zip(recall, mrr, chunks)):
+        ax.text(i, -0.07, f"{c} 块", ha="center", fontsize=9, color=MUTED)
+        ax.text(i - width / 2, r + 0.01, f"{r:.2f}", ha="center", fontsize=10, color=INK)
+        ax.text(i + width / 2, m + 0.01, f"{m:.2f}", ha="center", fontsize=10, color=INK)
+
+    ax.set_xticks(x, names)
+    ax.set_ylim(0, 1.05)
+    ax.tick_params(axis="x", pad=18)
+    ax.set_ylabel("指标（越高越好）")
+    ax.set_title("同一套向量，只换切法：按结构最稳，语义切分反而更碎", loc="left", fontsize=14, color=INK, pad=14)
+    style_axes(ax)
+    ax.legend(loc="upper right", frameon=False, fontsize=10)
+    fig.tight_layout()
+    save(fig, "5-3-chunking", preview)
+
+
+def plot_ann(preview: bool) -> None:
+    rows = read_rag("ann.csv")
+    fig, (left, right) = plt.subplots(1, 2, figsize=(9.6, 4.2), dpi=100)
+
+    for dataset, label, color in (("real", "真实语料 794 块", BLUE), ("random-20k", "随机向量 2 万条", AMBER)):
+        subset = [row for row in rows if row["dataset"] == dataset and row["method"] == "hnsw"]
+        xs = [int(row["ef_search"]) for row in subset]
+        recall = [float(row["recall@10"]) for row in subset]
+        latency = [float(row["p50_ms"]) for row in subset]
+        left.plot(xs, recall, marker="o", linewidth=2, color=color, label=label)
+        right.plot(xs, latency, marker="o", linewidth=2, color=color, label=label)
+
+    left.set_xscale("log", base=2)
+    left.set_xticks([10, 20, 40, 80, 160], ["10", "20", "40", "80", "160"])
+    left.set_ylim(0, 1.05)
+    left.set_xlabel("efSearch")
+    left.set_ylabel("Recall@10（对暴力检索）")
+    left.set_title("召回：真实数据很快饱和", loc="left", fontsize=13, pad=10)
+    left.legend(frameon=False, fontsize=9, loc="lower right")
+
+    right.set_xscale("log", base=2)
+    right.set_yscale("log")
+    right.set_xticks([10, 20, 40, 80, 160], ["10", "20", "40", "80", "160"])
+    right.set_xlabel("efSearch")
+    right.set_ylabel("单次查询 p50（毫秒，对数轴）")
+    right.set_title("延迟：随机向量上并不便宜", loc="left", fontsize=13, pad=10)
+
+    for ax in (left, right):
+        for side in ("top", "right"):
+            ax.spines[side].set_visible(False)
+        ax.grid(color=RULE, linewidth=0.8)
+        ax.set_axisbelow(True)
+    fig.suptitle("HNSW 的收益取决于数据分布，不能拿随机向量外推", x=0.01, ha="left", fontsize=14, color=INK)
+    fig.tight_layout(rect=(0, 0, 1, 0.94))
+    save(fig, "5-5-ann", preview)
+
+
+def plot_retrieval(preview: bool) -> None:
+    rows = [row for row in read_rag("retrieval.csv") if row["category"] in {"direct", "condition", "cross", "identifier"}]
+    categories = [("direct", "直接摘取"), ("condition", "条件判断"), ("cross", "跨段组合"), ("identifier", "标识符")]
+    strategies = [("bm25", "BM25", AMBER), ("dense", "向量", BLUE), ("hybrid", "混合 RRF", "#10b981")]
+
+    fig, ax = plt.subplots(figsize=(9.6, 4.4), dpi=100)
+    width = 0.25
+    x = list(range(len(categories)))
+    for index, (strategy, label, color) in enumerate(strategies):
+        values = []
+        for key, _ in categories:
+            row = next(item for item in rows if item["strategy"] == strategy and item["category"] == key)
+            values.append(float(row["mrr@10"]))
+        offset = (index - 1) * width
+        ax.bar([i + offset for i in x], values, width, color=color, label=label, zorder=3)
+        for i, value in enumerate(values):
+            ax.text(i + offset, value + 0.02, f"{value:.2f}", ha="center", fontsize=8, color=INK)
+
+    ax.set_xticks(x, [name for _, name in categories])
+    ax.set_ylim(0, 1.12)
+    ax.set_ylabel("MRR@10")
+    ax.set_title("没有一路通吃：语义题向量领先，标识符题混合领先", loc="left", fontsize=13, color=INK, pad=14)
+    style_axes(ax)
+    ax.legend(loc="upper center", bbox_to_anchor=(0.5, -0.12), ncol=3, frameon=False, fontsize=10)
+    fig.tight_layout()
+    save(fig, "5-6-retrieval", preview)
+
+
+def plot_rerank(preview: bool) -> None:
+    rows = {row["stage"]: row for row in read_rag("rerank.csv")}
+    metrics = [("recall@5", "Recall@5"), ("mrr@10", "MRR@10"), ("ndcg@10", "nDCG@10")]
+
+    fig, ax = plt.subplots(figsize=(9.6, 4.0), dpi=100)
+    x = list(range(len(metrics)))
+    width = 0.34
+    for offset, stage, label, color in ((-width / 2, "before", "重排前", GRAY), (width / 2, "after", "重排后", BLUE)):
+        values = [float(rows[stage][key]) for key, _ in metrics]
+        ax.bar([i + offset for i in x], values, width, color=color, label=label, zorder=3)
+        for i, value in enumerate(values):
+            ax.text(i + offset, value + 0.02, f"{value:.3f}", ha="center", fontsize=9, color=INK)
+
+    ax.set_xticks(x, [label for _, label in metrics])
+    ax.set_ylim(0, 1.05)
+    ax.set_ylabel("指标")
+    ax.set_title("重排把相关段落推进前 5，但第一名不一定更稳", loc="left", fontsize=14, color=INK, pad=14)
+    style_axes(ax)
+    ax.legend(frameon=False, fontsize=10, loc="upper right")
+    fig.tight_layout()
+    save(fig, "5-7-rerank", preview)
+
+
 def save(fig: plt.Figure, name: str, preview: bool) -> None:
     OUT.mkdir(parents=True, exist_ok=True)
     fig.savefig(OUT / f"{name}.svg", format="svg", facecolor="white")
@@ -240,3 +400,8 @@ if __name__ == "__main__":
     plot_bandwidth(args.preview)
     plot_group_size(args.preview)
     plot_ppl_domain(args.preview)
+    plot_long_context(args.preview)
+    plot_chunking(args.preview)
+    plot_ann(args.preview)
+    plot_retrieval(args.preview)
+    plot_rerank(args.preview)

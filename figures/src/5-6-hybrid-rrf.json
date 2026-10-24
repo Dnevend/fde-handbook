@@ -1,0 +1,143 @@
+{
+  "schema_version": 1,
+  "mode": "flowchart",
+  "template_type": "flowchart",
+  "style": 4,
+  "quality_profile": "standard",
+  "text_policy": "strict",
+  "width": 960,
+  "height": 400,
+  "title": "混合检索：两条路各自找人，RRF 只比名次",
+  "subtitle": "BM25 管型号与数字，向量管同义改写；融合时不需要把两种分数换算到同一量纲",
+  "footer": "实测（734 块）：语义题 recall@5 为 0.90 / 0.97 / 0.92；标识符题 MRR@10 为 0.73 / 0.75 / 0.88（BM25 / 向量 / 混合）。",
+  "footer_x": 32,
+  "footer_y": 372,
+  "nodes": [
+    {
+      "id": "q",
+      "kind": "rect",
+      "x": 32,
+      "y": 158,
+      "width": 160,
+      "height": 64,
+      "type_label": "查询",
+      "label": "用户问题",
+      "sublabel": "中文自然语言",
+      "fill": "#ffffff",
+      "stroke": "#e5e7eb",
+      "stroke_width": 1.8,
+      "flat": true,
+      "title_size": 18
+    },
+    {
+      "id": "b",
+      "kind": "rect",
+      "x": 240,
+      "y": 76,
+      "width": 160,
+      "height": 64,
+      "type_label": "稀疏",
+      "label": "BM25",
+      "sublabel": "jieba 分词 + 词频",
+      "fill": "#fef3c7",
+      "stroke": "#f59e0b",
+      "stroke_width": 1.8,
+      "flat": true,
+      "title_size": 18
+    },
+    {
+      "id": "d",
+      "kind": "rect",
+      "x": 240,
+      "y": 240,
+      "width": 160,
+      "height": 64,
+      "type_label": "稠密",
+      "label": "向量检索",
+      "sublabel": "Qwen3-Embedding",
+      "fill": "#dbeafe",
+      "stroke": "#3b82f6",
+      "stroke_width": 1.8,
+      "flat": true,
+      "title_size": 18
+    },
+    {
+      "id": "r",
+      "kind": "rect",
+      "x": 456,
+      "y": 158,
+      "width": 160,
+      "height": 64,
+      "type_label": "融合",
+      "label": "RRF",
+      "sublabel": "按名次加权",
+      "fill": "#ffffff",
+      "stroke": "#111827",
+      "stroke_width": 1.8,
+      "flat": true,
+      "title_size": 18
+    },
+    {
+      "id": "c",
+      "kind": "rect",
+      "x": 672,
+      "y": 158,
+      "width": 160,
+      "height": 64,
+      "type_label": "候选",
+      "label": "top-20",
+      "sublabel": "交给重排",
+      "fill": "#ffffff",
+      "stroke": "#e5e7eb",
+      "stroke_width": 1.8,
+      "flat": true,
+      "title_size": 18
+    },
+    {
+      "id": "note",
+      "kind": "rect",
+      "x": 672,
+      "y": 264,
+      "width": 240,
+      "height": 52,
+      "label": "两路各取 20，再融合",
+      "sublabel": "",
+      "fill": "none",
+      "stroke": "none",
+      "flat": true,
+      "title_size": 16
+    }
+  ],
+  "arrows": [
+    {
+      "id": "e1",
+      "source": "q",
+      "target": "b",
+      "flow": "control"
+    },
+    {
+      "id": "e2",
+      "source": "q",
+      "target": "d",
+      "flow": "control"
+    },
+    {
+      "id": "e3",
+      "source": "b",
+      "target": "r",
+      "flow": "control"
+    },
+    {
+      "id": "e4",
+      "source": "d",
+      "target": "r",
+      "flow": "control"
+    },
+    {
+      "id": "e5",
+      "source": "r",
+      "target": "c",
+      "flow": "control"
+    }
+  ]
+}

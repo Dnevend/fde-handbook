@@ -1,0 +1,62 @@
+# 第五部分实验参数。所有脚本只从这里读参数，正文引用本文件的字段名。
+# 改这里会改变 benchmarks/rag/ 下的所有结果，重跑前先记下改了什么。
+
+models:
+  # 模型不入库。download-models.sh 会下到 $FDE_MODEL_DIR（默认 ~/.cache/fde-handbook/models）。
+  dir: ~/.cache/fde-handbook/models
+  embedding: Qwen3-Embedding-0.6B-Q8_0.gguf
+  embedding_sha256: 06507c7b42688469c4e7298b0a1e16deff06caf291cf0a5b278c308249c3e439
+  reranker: bge-reranker-v2-m3-Q8_0.gguf
+  reranker_sha256: a43c7c9b11a4c1517e5bf95151960e1621d1b72f7a493364b01e386cf1aaa1d3
+  llm_env: MODEL  # 由 labs/env.sh 提供，Qwen3.5-9B-Q4_K_M
+
+servers:
+  embedding_port: 8081
+  reranker_port: 8082
+  llm_port: 8080
+
+corpus:
+  # 块长按中文字符计（不是 token）。400 字约等于 280–320 个 Qwen token。
+  chunk_size: 400
+  chunk_overlap: 80
+  min_chunk: 60
+  semantic_threshold: 0.55  # 相邻句向量余弦低于此值就断开
+  synthetic: true          # 合成工单只用于链路与规模，不产生质量结论
+
+embedding:
+  # Qwen3-Embedding 的查询侧指令；文档侧不加。
+  query_instruction: "给定一个中文问题，检索能回答该问题的段落"
+  batch: 8
+  dim_full: 1024
+  dims: [1024, 512, 256]
+  dtype: f16               # f16 | q8（q8 用 numpy 模拟逐通道 8 位）
+
+retrieval:
+  top_k: 5
+  candidate_k: 20
+  bm25_k1: 1.5
+  bm25_b: 0.75
+  rrf_k: 60
+
+hnsw:
+  M: 16
+  ef_construction: 200
+  ef_search: 64
+  seed: 42
+
+generation:
+  temperature: 0.0
+  top_p: 1.0
+  seed: 42
+  max_tokens: 384
+  # 拒答判定：答案里出现这句话，或模型输出「无法回答」类措辞，算拒答。
+  refusal_marker: "资料中没有相关信息"
+
+eval:
+  categories: [direct, cross, condition, refuse]
+  per_category: 20
+
+access:
+  # 演示用的简化权限模型：不是真实 ACL，只区分「受限文档对内部用户不可见」。
+  user_level: 内部
+  restricted_docs: [PC-007, acc-fangsu-0518, acc-yisheng-0527]

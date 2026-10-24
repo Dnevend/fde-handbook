@@ -1,0 +1,86 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 400" width="960" height="400" data-generator="fireworks-tech-graph" data-schema-version="1" data-text-metrics="heuristic-v1" data-style-id="4" data-visual-theme="Notion Clean" data-diagram-type="flowchart" data-motion-scene="" data-semantic-profile="generic" data-semantic-valid="true" data-quality-profile="standard" data-max-bends-per-edge="12" data-max-total-bends="100" data-max-route-stretch="5.0" data-max-bridged-crossings="8" data-min-node-gap="0.0" data-min-container-gutter="0.0" data-min-label-clearance="2.0" data-min-segment-length="0.0">
+  <defs>
+    <marker id="arrowA" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto">
+      <polygon points="0 0, 8 3, 0 6" fill="#3b82f6"/>
+    </marker>
+    <marker id="arrowB" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto">
+      <polygon points="0 0, 8 3, 0 6" fill="#3b82f6"/>
+    </marker>
+    <marker id="arrowC" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto">
+      <polygon points="0 0, 8 3, 0 6" fill="#3b82f6"/>
+    </marker>
+    <marker id="arrowE" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto">
+      <polygon points="0 0, 8 3, 0 6" fill="#3b82f6"/>
+    </marker>
+    <marker id="arrowF" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto">
+      <polygon points="0 0, 8 3, 0 6" fill="#9ca3af"/>
+    </marker>
+    <marker id="arrowG" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto">
+      <polygon points="0 0, 8 3, 0 6" fill="#9ca3af"/>
+    </marker>
+    <marker id="arrowH" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto">
+      <polygon points="0 0, 8 3, 0 6" fill="#d1d5db"/>
+    </marker>
+    <style>
+    text { font-family: 'Hiragino Sans GB', 'PingFang SC', 'Noto Sans CJK SC', 'Microsoft YaHei', 'Helvetica Neue', Arial, sans-serif; }
+    .title { font-size: 24px; font-weight: 700; fill: #111827; }
+    .subtitle { font-size: 15px; font-weight: 500; fill: #9ca3af; }
+    .section { font-size: 13px; font-weight: 700; fill: #6b7280; letter-spacing: 1.4px; }
+    .section-sub { font-size: 12px; font-weight: 500; fill: #6b7280; }
+    .node-title { font-weight: 700; fill: #111827; }
+    .node-sub { font-weight: 500; fill: #374151; }
+    .node-type { font-size: 11px; font-weight: 700; fill: #6b7280; letter-spacing: 0.08em; }
+    .arrow-label { font-size: 12px; font-weight: 600; fill: #6b7280; }
+    .legend { font-size: 12px; font-weight: 500; fill: #6b7280; }
+    .footnote { font-size: 12px; font-weight: 500; fill: #6b7280; }
+    .metric-label { font-size: 8.5px; font-weight: 700; fill: #6b7280; text-transform: uppercase; }
+    .metric-value { font-size: 9.5px; font-weight: 700; fill: #111827; }
+    </style>
+  </defs>
+  <rect data-graph-role="background" width="960.0" height="400.0" fill="#ffffff"/>
+  <text x="48.0" y="48" text-anchor="start" class="title">混合检索：两条路各自找人，RRF 只比名次</text>
+  <text x="48.0" y="72" text-anchor="start" class="subtitle">BM25 管型号与数字，向量管同义改写；融合时不需要把两种分数换算到同一量纲</text>
+  <line x1="48" y1="100" x2="912.0" y2="100" stroke="#e5e7eb" stroke-width="1"/>
+  <path id="e1" data-graph-role="edge" data-edge-id="e1" data-source="q" data-target="b" data-edge-kind="flow" data-topic-id="" data-flow="control" data-motion-role="" data-motion-stage="" data-motion-order="" data-protocol="" data-via="" data-critical-path-id="" data-critical-hop="" data-critical-hops="" data-critical="false" data-bends="2" data-route-stretch="1.0" data-bridges="" d="M 192,181 L 212.4,181 L 212.4,108 L 240,108" fill="none" stroke="#3b82f6" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#arrowA)"/>
+  <path id="e2" data-graph-role="edge" data-edge-id="e2" data-source="q" data-target="d" data-edge-kind="flow" data-topic-id="" data-flow="control" data-motion-role="" data-motion-stage="" data-motion-order="" data-protocol="" data-via="" data-critical-path-id="" data-critical-hop="" data-critical-hops="" data-critical="false" data-bends="2" data-route-stretch="1.0" data-bridges="" d="M 192,199 L 212.4,199 L 212.4,272 L 240,272" fill="none" stroke="#3b82f6" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#arrowA)"/>
+  <path id="e3" data-graph-role="edge" data-edge-id="e3" data-source="b" data-target="r" data-edge-kind="flow" data-topic-id="" data-flow="control" data-motion-role="" data-motion-stage="" data-motion-order="" data-protocol="" data-via="" data-critical-path-id="" data-critical-hop="" data-critical-hops="" data-critical="false" data-bends="2" data-route-stretch="1.0" data-bridges="" d="M 400,108 L 420.4,108 L 420.4,181 L 456,181" fill="none" stroke="#3b82f6" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#arrowA)"/>
+  <path id="e4" data-graph-role="edge" data-edge-id="e4" data-source="d" data-target="r" data-edge-kind="flow" data-topic-id="" data-flow="control" data-motion-role="" data-motion-stage="" data-motion-order="" data-protocol="" data-via="" data-critical-path-id="" data-critical-hop="" data-critical-hops="" data-critical="false" data-bends="2" data-route-stretch="1.0" data-bridges="" d="M 400,272 L 420.4,272 L 420.4,199 L 456,199" fill="none" stroke="#3b82f6" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#arrowA)"/>
+  <path id="e5" data-graph-role="edge" data-edge-id="e5" data-source="r" data-target="c" data-edge-kind="flow" data-topic-id="" data-flow="control" data-motion-role="" data-motion-stage="" data-motion-order="" data-protocol="" data-via="" data-critical-path-id="" data-critical-hop="" data-critical-hops="" data-critical="false" data-bends="0" data-route-stretch="1.0" data-bridges="" d="M 616,190 L 672,190" fill="none" stroke="#3b82f6" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#arrowA)"/>
+  <g id="node-q" data-graph-role="node" data-node-id="q" data-semantic-role="rect" data-motion-role="" data-motion-stage="" data-motion-order="" data-parent="" data-deployment-id="" data-topic-id="" data-span-id="" data-station-order="" data-status="" data-start-ms="" data-duration-ms="" data-parent-span="" data-graph-bounds="32,158,192,222">
+  <rect x="32.0" y="158.0" width="160.0" height="64.0" rx="4.0" fill="#ffffff" stroke="#e5e7eb" stroke-width="1.8"/>
+  <text x="112.0" y="176.0" text-anchor="middle" class="node-type">查询</text>
+  <text data-text-role="title" data-full-text="用户问题" data-text-max-width="136.0" x="112.0" y="196.0" text-anchor="middle" class="node-title" font-size="18.0">用户问题</text>
+  <text data-text-role="subtitle" data-full-text="中文自然语言" data-text-max-width="136.0" x="112.0" y="218.0" text-anchor="middle" class="node-sub" font-size="12">中文自然语言</text>
+  </g>
+  <g id="node-b" data-graph-role="node" data-node-id="b" data-semantic-role="rect" data-motion-role="" data-motion-stage="" data-motion-order="" data-parent="" data-deployment-id="" data-topic-id="" data-span-id="" data-station-order="" data-status="" data-start-ms="" data-duration-ms="" data-parent-span="" data-graph-bounds="240,76,400,140">
+  <rect x="240.0" y="76.0" width="160.0" height="64.0" rx="4.0" fill="#fef3c7" stroke="#f59e0b" stroke-width="1.8"/>
+  <text x="320.0" y="94.0" text-anchor="middle" class="node-type">稀疏</text>
+  <text data-text-role="title" data-full-text="BM25" data-text-max-width="136.0" x="320.0" y="114.0" text-anchor="middle" class="node-title" font-size="18.0">BM25</text>
+  <text data-text-role="subtitle" data-full-text="jieba 分词 + 词频" data-text-max-width="136.0" x="320.0" y="136.0" text-anchor="middle" class="node-sub" font-size="12">jieba 分词 + 词频</text>
+  </g>
+  <g id="node-d" data-graph-role="node" data-node-id="d" data-semantic-role="rect" data-motion-role="" data-motion-stage="" data-motion-order="" data-parent="" data-deployment-id="" data-topic-id="" data-span-id="" data-station-order="" data-status="" data-start-ms="" data-duration-ms="" data-parent-span="" data-graph-bounds="240,240,400,304">
+  <rect x="240.0" y="240.0" width="160.0" height="64.0" rx="4.0" fill="#dbeafe" stroke="#3b82f6" stroke-width="1.8"/>
+  <text x="320.0" y="258.0" text-anchor="middle" class="node-type">稠密</text>
+  <text data-text-role="title" data-full-text="向量检索" data-text-max-width="136.0" x="320.0" y="278.0" text-anchor="middle" class="node-title" font-size="18.0">向量检索</text>
+  <text data-text-role="subtitle" data-full-text="Qwen3-Embedding" data-text-max-width="136.0" x="320.0" y="300.0" text-anchor="middle" class="node-sub" font-size="12">Qwen3-Embedding</text>
+  </g>
+  <g id="node-r" data-graph-role="node" data-node-id="r" data-semantic-role="rect" data-motion-role="" data-motion-stage="" data-motion-order="" data-parent="" data-deployment-id="" data-topic-id="" data-span-id="" data-station-order="" data-status="" data-start-ms="" data-duration-ms="" data-parent-span="" data-graph-bounds="456,158,616,222">
+  <rect x="456.0" y="158.0" width="160.0" height="64.0" rx="4.0" fill="#ffffff" stroke="#111827" stroke-width="1.8"/>
+  <text x="536.0" y="176.0" text-anchor="middle" class="node-type">融合</text>
+  <text data-text-role="title" data-full-text="RRF" data-text-max-width="136.0" x="536.0" y="196.0" text-anchor="middle" class="node-title" font-size="18.0">RRF</text>
+  <text data-text-role="subtitle" data-full-text="按名次加权" data-text-max-width="136.0" x="536.0" y="218.0" text-anchor="middle" class="node-sub" font-size="12">按名次加权</text>
+  </g>
+  <g id="node-c" data-graph-role="node" data-node-id="c" data-semantic-role="rect" data-motion-role="" data-motion-stage="" data-motion-order="" data-parent="" data-deployment-id="" data-topic-id="" data-span-id="" data-station-order="" data-status="" data-start-ms="" data-duration-ms="" data-parent-span="" data-graph-bounds="672,158,832,222">
+  <rect x="672.0" y="158.0" width="160.0" height="64.0" rx="4.0" fill="#ffffff" stroke="#e5e7eb" stroke-width="1.8"/>
+  <text x="752.0" y="176.0" text-anchor="middle" class="node-type">候选</text>
+  <text data-text-role="title" data-full-text="top-20" data-text-max-width="136.0" x="752.0" y="196.0" text-anchor="middle" class="node-title" font-size="18.0">top-20</text>
+  <text data-text-role="subtitle" data-full-text="交给重排" data-text-max-width="136.0" x="752.0" y="218.0" text-anchor="middle" class="node-sub" font-size="12">交给重排</text>
+  </g>
+  <g id="node-note" data-graph-role="node" data-node-id="note" data-semantic-role="rect" data-motion-role="" data-motion-stage="" data-motion-order="" data-parent="" data-deployment-id="" data-topic-id="" data-span-id="" data-station-order="" data-status="" data-start-ms="" data-duration-ms="" data-parent-span="" data-graph-bounds="672,264,912,316">
+  <rect x="672.0" y="264.0" width="240.0" height="52.0" rx="4.0" fill="none" stroke="none" stroke-width="1.8"/>
+  <text data-text-role="title" data-full-text="两路各取 20，再融合" data-text-max-width="216.0" x="792.0" y="290.0" text-anchor="middle" class="node-title" font-size="16.0">两路各取 20，再融合</text>
+  </g>
+  <g id="footer" data-graph-role="reserved" data-graph-bounds="32,360,683,376">
+  <text x="32.0" y="372.0" class="footnote">实测（734 块）：语义题 recall@5 为 0.90 / 0.97 / 0.92；标识符题 MRR@10 为 0.73 / 0.75 / 0.88（BM25 / 向量 / 混合）。</text>
+  </g>
+</svg>

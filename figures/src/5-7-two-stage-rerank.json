@@ -1,0 +1,101 @@
+{
+  "schema_version": 1,
+  "mode": "flowchart",
+  "template_type": "flowchart",
+  "style": 4,
+  "quality_profile": "standard",
+  "text_policy": "strict",
+  "width": 960,
+  "height": 380,
+  "title": "重排：把 20 条候选逐对读一遍，只留下 5 条",
+  "subtitle": "双塔先负责「不漏」，交叉编码器再负责「排对」；代价是每一对都要过一次模型",
+  "footer": "本机实测：20 条候选重排一次约 1.04 秒（p50），recall@5 从 0.917 升到 0.967。",
+  "footer_x": 32,
+  "footer_y": 352,
+  "nodes": [
+    {
+      "id": "n1",
+      "kind": "rect",
+      "x": 40,
+      "y": 140,
+      "width": 176,
+      "height": 68,
+      "type_label": "输入",
+      "label": "候选 20 条",
+      "sublabel": "召回阶段不能漏",
+      "fill": "#ffffff",
+      "stroke": "#e5e7eb",
+      "stroke_width": 1.8,
+      "flat": true,
+      "title_size": 18
+    },
+    {
+      "id": "n2",
+      "kind": "rect",
+      "x": 280,
+      "y": 140,
+      "width": 176,
+      "height": 68,
+      "type_label": "逐对打分",
+      "label": "交叉编码器",
+      "sublabel": "问题 + 段落一起读",
+      "fill": "#dbeafe",
+      "stroke": "#3b82f6",
+      "stroke_width": 1.8,
+      "flat": true,
+      "title_size": 18
+    },
+    {
+      "id": "n3",
+      "kind": "rect",
+      "x": 520,
+      "y": 140,
+      "width": 176,
+      "height": 68,
+      "type_label": "截断",
+      "label": "top-5",
+      "sublabel": "按相关性排序",
+      "fill": "#ffffff",
+      "stroke": "#e5e7eb",
+      "stroke_width": 1.8,
+      "flat": true,
+      "title_size": 18
+    },
+    {
+      "id": "n4",
+      "kind": "rect",
+      "x": 760,
+      "y": 140,
+      "width": 168,
+      "height": 68,
+      "type_label": "交付",
+      "label": "带出处生成",
+      "sublabel": "编号对应原文",
+      "fill": "#ffffff",
+      "stroke": "#e5e7eb",
+      "stroke_width": 1.8,
+      "flat": true,
+      "title_size": 18
+    }
+  ],
+  "arrows": [
+    {
+      "id": "e1",
+      "source": "n1",
+      "target": "n2",
+      "flow": "control"
+    },
+    {
+      "id": "e2",
+      "source": "n2",
+      "target": "n3",
+      "flow": "control"
+    },
+    {
+      "id": "e3",
+      "source": "n3",
+      "target": "n4",
+      "flow": "control"
+    }
+  ]
+}

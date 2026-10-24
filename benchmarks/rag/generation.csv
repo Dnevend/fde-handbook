@@ -1,0 +1,11 @@
+mode,category,n,correct_rate,citation_hit,citation_all,refused_rate,false_refusal
+rag,direct,20,0.95,1.0,,0.0,0.0
+rag,condition,20,0.75,1.0,,0.0,0.0
+rag,cross,20,0.35,0.85,0.45,0.0,0.0
+rag,refuse,20,,,,1.0,
+rag,all,80,0.683,0.95,0.45,0.25,0.0
+closed_book,direct,20,0.8,0.0,,0.0,0.0
+closed_book,condition,20,0.5,0.0,,0.0,0.0
+closed_book,cross,20,0.0,0.0,0.0,0.0,0.0
+closed_book,refuse,20,,,,0.95,
+closed_book,all,80,0.433,0.0,0.0,0.237,0.0

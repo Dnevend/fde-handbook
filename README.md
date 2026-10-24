@@ -70,7 +70,7 @@ npm run docs:preview  # 预览构建结果
 | 第二部分 模型选型 | 已完成 | 6 |
 | 第三部分 本地部署 | 已完成 | 7 |
 | 第四部分 量化 | 已完成 | 7 |
-| 第五部分 RAG 全链路 | 占位 | 9 |
+| 第五部分 RAG 全链路 | 已完成 | 9 |
 | 第六部分 评估与调优 | 占位 | 5 |
 | 第七部分 GPU 服务器与推理加速 | 占位 | 9 |
 | 第八部分 工程化与交付 | 占位 | 7 |
@@ -80,6 +80,7 @@ npm run docs:preview  # 预览构建结果
 
 - **第三部分 本地部署**：实验代码在 `labs/03-deployment/`，已在本机跑通；数据在 `benchmarks/`（`gguf-format/`、`prefill-decode/`、`template/`、`sampling/`、`concurrency/`、`client-bench/`）。
 - **第四部分 量化**：实验代码在 `labs/04-quantization/`，同样已跑通；数据在 `benchmarks/quantization/`（张量格式误差、分组量化、KV 量化、跨域困惑度、60 题探针）。本部分没有下载额外的量化模型：需要从 16 位源重切阶梯的对照写在各节的「动手实验」里。
+- **第五部分 RAG 全链路**：实验代码在 `labs/05-rag/`，数据在 `benchmarks/rag/`，测试集在 `eval/`（80 题）。参数集中在 `labs/05-rag/config.yaml`。OCR 与双栏版面未实测，见 `corpus/GAPS.md`。
 <!-- progress:end -->
 
 ## 协议

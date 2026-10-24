@@ -301,78 +301,78 @@
       "dir": "05-rag",
       "nav": "第五部分 RAG 全链路",
       "title": "第五部分 RAG 全链路",
-      "status": "placeholder",
-      "note": "",
+      "status": "done",
+      "note": "实验代码在 `labs/05-rag/`，数据在 `benchmarks/rag/`，测试集在 `eval/`（80 题）。参数集中在 `labs/05-rag/config.yaml`。OCR 与双栏版面未实测，见 `corpus/GAPS.md`。",
       "sections": [
         {
           "num": null,
           "path": "/05-rag/",
           "title": "第五部分 RAG 全链路",
           "nav": "导言",
-          "status": "placeholder"
+          "status": "done"
         },
         {
           "num": "5.1",
           "path": "/05-rag/01-why-rag",
           "title": "为什么用 RAG：对比微调与长上下文",
           "nav": "为什么用 RAG",
-          "status": "placeholder"
+          "status": "done"
         },
         {
           "num": "5.2",
           "path": "/05-rag/02-document-parsing",
           "title": "文档解析：文字版 PDF / 表格 / 扫描件 OCR / 版面分析",
           "nav": "文档解析",
-          "status": "placeholder"
+          "status": "done"
         },
         {
           "num": "5.3",
           "path": "/05-rag/03-chunking",
           "title": "切分：按长度、按结构、按语义，以及表格怎么处理",
           "nav": "切分",
-          "status": "placeholder"
+          "status": "done"
         },
         {
           "num": "5.4",
           "path": "/05-rag/04-embedding",
           "title": "Embedding：向量如何表示语义",
           "nav": "Embedding",
-          "status": "placeholder"
+          "status": "done"
         },
         {
           "num": "5.5",
           "path": "/05-rag/05-vector-index",
           "title": "向量库与 ANN 索引：HNSW 的直观理解",
           "nav": "向量库与 ANN 索引",
-          "status": "placeholder"
+          "status": "done"
         },
         {
           "num": "5.6",
           "path": "/05-rag/06-hybrid-search",
           "title": "稀疏检索与混合检索：BM25、RRF，以及工业场景为什么离不开关键词",
           "nav": "稀疏检索与混合检索",
-          "status": "placeholder"
+          "status": "done"
         },
         {
           "num": "5.7",
           "path": "/05-rag/07-reranking",
           "title": "重排：双塔模型与交叉编码器",
           "nav": "重排",
-          "status": "placeholder"
+          "status": "done"
         },
         {
           "num": "5.8",
           "path": "/05-rag/08-generation",
           "title": "生成：Prompt 设计、标注出处、查不到时拒答",
           "nav": "生成",
-          "status": "placeholder"
+          "status": "done"
         },
         {
           "num": "5.9",
           "path": "/05-rag/09-metadata-and-updates",
           "title": "元数据、权限过滤与增量更新",
           "nav": "元数据、权限过滤与增量更新",
-          "status": "placeholder"
+          "status": "done"
         }
       ]
     },
