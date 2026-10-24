@@ -52,17 +52,35 @@ npm run docs:preview  # 预览构建结果
 ## 写作约定
 
 - 每个数据都注明硬件、软件版本与完整命令，原始数据放 `benchmarks/`。
-- 数据来源用文字括注，不用 emoji：估算写「约 5.7 GB（估算，推导见下）」，引用写「（引用 [1]）」，实测写「（实测，见 `benchmarks/…`）」。引用编号对应当节末尾的「参考资料」，只收一手资料：论文、官方文档、源码、模型卡、协议原文。
+- 数据来源用文字括注，不用 emoji：估算写「约 5.7 GB（估算，推导见下）」，引用写「（引用 [\[1\]](#ref-1)）」，实测写「（实测，见 `benchmarks/…`）」。引用编号对应本节末尾「参考资料」的第几条，锚点写成 `<a id="ref-1">`；正文里的每个 `[n]` 都必须链到 `#ref-n`。参考资料只收一手资料：论文、官方文档、源码、模型卡、协议原文。
 - 语料不入库，并注明各份资料的协议。
 - 插图不手画：结构图的源是 `figures/src/*.json`，定量图由 `benchmarks/estimates/plot.py` 从 CSV 生成，`docs/public/figures/` 里只有渲染产物。图号写 `图 1.3-1`（部分导言页写 `图 3-1`），正文至少引用一次，图里的每个数字同样要标来源。
 
 ## 进度
 
-序、第一至第四部分已有正文；第五至第八部分与附录仍为占位页（只有标题与"本章要回答的问题"）。正文按 `docs/00-preface/` → `docs/08-delivery/` 的顺序推进。
+<!-- progress:start -->
+（本节由 `npm run docs:sync` 从 `docs/.vitepress/book.json` 生成，勿手改。）
 
-第三部分的实验代码在 `labs/03-deployment/`，已在本机跑通；对应实测数据在 `benchmarks/`（`gguf-format/`、`prefill-decode/`、`template/`、`sampling/`、`concurrency/`、`client-bench/`）。
+正文按 `docs/00-preface/` → `docs/08-delivery/` 的顺序推进。当前状态：
 
-第四部分的实验代码在 `labs/04-quantization/`，同样已跑通；数据在 `benchmarks/quantization/`（张量格式误差、分组量化、KV 量化、跨域困惑度、60 题探针）。这一部分没有下载额外的量化模型：需要从 16 位源重切阶梯的对照写在各节的「待实测」里。
+| 部分 | 状态 | 节数 |
+|---|---|---|
+| 序 | 已完成 | 4 |
+| 第一部分 推理原理（只学到"够用"） | 已完成 | 6 |
+| 第二部分 模型选型 | 已完成 | 6 |
+| 第三部分 本地部署 | 已完成 | 7 |
+| 第四部分 量化 | 已完成 | 7 |
+| 第五部分 RAG 全链路 | 占位 | 9 |
+| 第六部分 评估与调优 | 占位 | 5 |
+| 第七部分 GPU 服务器与推理加速 | 占位 | 9 |
+| 第八部分 工程化与交付 | 占位 | 7 |
+| 附录 | 占位 | 7 |
+
+已完成部分的实验代码与数据：
+
+- **第三部分 本地部署**：实验代码在 `labs/03-deployment/`，已在本机跑通；数据在 `benchmarks/`（`gguf-format/`、`prefill-decode/`、`template/`、`sampling/`、`concurrency/`、`client-bench/`）。
+- **第四部分 量化**：实验代码在 `labs/04-quantization/`，同样已跑通；数据在 `benchmarks/quantization/`（张量格式误差、分组量化、KV 量化、跨域困惑度、60 题探针）。本部分没有下载额外的量化模型：需要从 16 位源重切阶梯的对照写在各节的「动手实验」里。
+<!-- progress:end -->
 
 ## 协议
 

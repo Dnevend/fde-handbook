@@ -12,12 +12,9 @@ title: 序
 
 <Figure
   id="0-1"
-  src="/figures/0-0-book-map.svg"
+  src="/figures/0-part0-book-map.svg"
   alt="全书八部分排成一条链路：推理原理、模型选型、本地部署、量化、RAG 全链路、评估与调优、GPU 加速、工程交付"
   caption="蓝色三块是主线，其余四块是主线上绕不开的取舍；顺序不是课程表，是交付顺序。"
 />
 
-- [0.1 写给焦虑的工程师](./01-why-fde)
-- [0.2 全景图](./02-system-overview)
-- [0.3 硬件与环境](./03-hardware-and-environment)
-- [0.4 怎么读这本书](./04-how-to-read)
+<ChapterList part="00" />

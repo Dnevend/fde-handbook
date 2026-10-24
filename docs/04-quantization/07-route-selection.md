@@ -20,7 +20,7 @@ title: 三条量化路线怎么选：GGUF / MLX / AWQ-GPTQ（原理在 4.2，AWQ
 | 服务引擎 | llama.cpp、Ollama、LM Studio | mlx_lm.server | vLLM、SGLang、TensorRT-LLM |
 | 离线交付 | 一个文件拷走 | 一个目录拷走 | 一个目录 + 引擎版本 |
 
-（引用 [1][2][3][4]）
+（引用 [\[1\]](#ref-1)、[\[2\]](#ref-2)、[\[3\]](#ref-3)、[\[4\]](#ref-4)）
 
 三条路线的量化精度没有本质高下，区别在**误差往哪放**：
 

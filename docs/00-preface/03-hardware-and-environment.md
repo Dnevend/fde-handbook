@@ -91,7 +91,7 @@ echo "$MODEL"      # 例如 ~/.cache/huggingface/hub/models--unsloth--.../Qwen3.
 bash benchmarks/record-env.sh > benchmarks/<主题>/env.txt
 ```
 
-本书的"待实测"提示块里，命令是写全的，你跑完把输出填进去就能得到一条可引用的结论。
+本书的"动手实验"提示块里，命令是写全的，你跑完把输出填进去就能得到一条可引用的结论。
 
 ## 接下来
 

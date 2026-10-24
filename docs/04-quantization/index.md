@@ -8,7 +8,7 @@ title: 第四部分 量化
 
 七节从"一个数怎么存"讲到"选哪条路线"（图 4-1）：先看数值表示，再看压缩原理与具体格式，然后是保住质量的两种手段，最后才谈评估与选路。
 
-这一部分的实验代码在 `labs/04-quantization/`，原始数据在 `benchmarks/quantization/`。与第三部分不同的是，本部分没有下载额外的量化模型：权重误差、分组量化、KV 量化、任务探针都在本地这一个 Q4_K_M 文件上测；需要从 16 位源重新切档的对照（完整阶梯、imatrix 消融）放在各节的「待实测」，命令完整，读者可自行复现。
+这一部分的实验代码在 `labs/04-quantization/`，原始数据在 `benchmarks/quantization/`。与第三部分不同的是，本部分没有下载额外的量化模型：权重误差、分组量化、KV 量化、任务探针都在本地这一个 Q4_K_M 文件上测；需要从 16 位源重新切档的对照（完整阶梯、imatrix 消融）放在各节的「动手实验」，命令完整，读者可自行复现。
 
 <Figure
   id="4-1"
@@ -17,10 +17,4 @@ title: 第四部分 量化
   caption="先原理后格式，先度量后选择；中间两节（imatrix、KV 量化）是可选的加固手段。"
 />
 
-- [4.1 数值表示](./01-number-formats)
-- [4.2 量化原理](./02-quantization-principles)
-- [4.3 GGUF K-quants](./03-gguf-k-quants)
-- [4.4 imatrix](./04-imatrix)
-- [4.5 KV Cache 量化](./05-kv-cache-quantization)
-- [4.6 评估量化损失](./06-measuring-loss)
-- [4.7 三条量化路线](./07-route-selection)
+<ChapterList part="04" />

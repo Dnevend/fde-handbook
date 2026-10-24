@@ -1,0 +1,6 @@
+# 由 benchmarks/estimates/plot.py 从 CSV 生成的定量图，没有 figures/src/*.json 图源。
+# 每行一个文件名；check-docs.mjs 用这份白名单区分「定量图」与「漏了图源」。
+1-5-bandwidth-scaling.svg
+1-6-vram-budget.svg
+4-2-group-size.svg
+4-6-ppl-domain.svg

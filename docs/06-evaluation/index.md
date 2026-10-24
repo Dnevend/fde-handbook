@@ -15,8 +15,4 @@ title: 第六部分 评估与调优
   caption="没有评估集的「优化」，只是换了一种感觉；归因是这条链的出口，不是入口。"
 />
 
-- [6.1 构建测试集](./01-building-test-set)
-- [6.2 检索指标](./02-retrieval-metrics)
-- [6.3 生成指标](./03-generation-metrics)
-- [6.4 消融实验](./04-ablation)
-- [6.5 错误回答归因](./05-error-attribution)
+<ChapterList part="06" />

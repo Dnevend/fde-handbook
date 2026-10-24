@@ -15,9 +15,4 @@ title: 第二部分 模型选型
   caption="前半段在拆名字和算代价，后半段在排除干扰项，最后一节才收成结论。"
 />
 
-- [2.1 模型家族与版本](./01-model-families)
-- [2.2 参数量取舍](./02-parameter-tradeoff)
-- [2.3 Dense 与 MoE](./03-dense-vs-moe)
-- [2.4 上下文、协议与中文](./04-context-and-license)
-- [2.5 榜单怎么看](./05-leaderboards)
-- [2.6 选型方法论](./06-selection-method)
+<ChapterList part="02" />

@@ -1,0 +1,658 @@
+{
+  "updated": "2026-10-24",
+  "parts": [
+    {
+      "id": "00",
+      "dir": "00-preface",
+      "nav": "序",
+      "title": "序",
+      "status": "done",
+      "note": "",
+      "sections": [
+        {
+          "num": null,
+          "path": "/00-preface/",
+          "title": "序",
+          "nav": "导言",
+          "status": "done"
+        },
+        {
+          "num": "0.1",
+          "path": "/00-preface/01-why-fde",
+          "title": "写给焦虑的工程师：为什么是 FDE，以及你已有的经验值多少",
+          "nav": "写给焦虑的工程师",
+          "status": "done"
+        },
+        {
+          "num": "0.2",
+          "path": "/00-preface/02-system-overview",
+          "title": "全景图：一个离线知识库系统由哪些部分组成",
+          "nav": "全景图",
+          "status": "done"
+        },
+        {
+          "num": "0.3",
+          "path": "/00-preface/03-hardware-and-environment",
+          "title": "硬件与环境：Apple Silicon 和 NVIDIA 的差异，本书如何对照",
+          "nav": "硬件与环境",
+          "status": "done"
+        },
+        {
+          "num": "0.4",
+          "path": "/00-preface/04-how-to-read",
+          "title": "怎么读这本书 / 怎么复现",
+          "nav": "怎么读这本书 / 怎么复现",
+          "status": "done"
+        }
+      ]
+    },
+    {
+      "id": "01",
+      "dir": "01-inference-basics",
+      "nav": "第一部分 推理原理（只学到\"够用\"）",
+      "title": "第一部分 推理原理（只学到\"够用\"）",
+      "status": "done",
+      "note": "",
+      "sections": [
+        {
+          "num": null,
+          "path": "/01-inference-basics/",
+          "title": "第一部分 推理原理（只学到\"够用\"）",
+          "nav": "导言",
+          "status": "done"
+        },
+        {
+          "num": "1.1",
+          "path": "/01-inference-basics/01-tokens",
+          "title": "Token 与分词：中文为什么更\"贵\"",
+          "nav": "Token 与分词",
+          "status": "done"
+        },
+        {
+          "num": "1.2",
+          "path": "/01-inference-basics/02-autoregressive",
+          "title": "自回归生成：为什么一个字一个字地输出",
+          "nav": "自回归生成",
+          "status": "done"
+        },
+        {
+          "num": "1.3",
+          "path": "/01-inference-basics/03-prefill-and-decode",
+          "title": "Prefill 与 Decode：首字延迟和生成速度分别由什么决定",
+          "nav": "Prefill 与 Decode",
+          "status": "done"
+        },
+        {
+          "num": "1.4",
+          "path": "/01-inference-basics/04-kv-cache",
+          "title": "KV Cache：上下文为什么会吃掉内存",
+          "nav": "KV Cache",
+          "status": "done"
+        },
+        {
+          "num": "1.5",
+          "path": "/01-inference-basics/05-bandwidth-bottleneck",
+          "title": "带宽瓶颈：为什么推理速度看内存带宽而不是算力",
+          "nav": "带宽瓶颈",
+          "status": "done"
+        },
+        {
+          "num": "1.6",
+          "path": "/01-inference-basics/06-vram-estimation",
+          "title": "显存估算：一套通用公式和速查表",
+          "nav": "显存估算",
+          "status": "done"
+        }
+      ]
+    },
+    {
+      "id": "02",
+      "dir": "02-model-selection",
+      "nav": "第二部分 模型选型",
+      "title": "第二部分 模型选型",
+      "status": "done",
+      "note": "",
+      "sections": [
+        {
+          "num": null,
+          "path": "/02-model-selection/",
+          "title": "第二部分 模型选型",
+          "nav": "导言",
+          "status": "done"
+        },
+        {
+          "num": "2.1",
+          "path": "/02-model-selection/01-model-families",
+          "title": "认识模型家族与版本（基座版 / 指令版 / 推理版）",
+          "nav": "认识模型家族与版本",
+          "status": "done"
+        },
+        {
+          "num": "2.2",
+          "path": "/02-model-selection/02-parameter-tradeoff",
+          "title": "参数量取舍（实验：8B 对比 14B）",
+          "nav": "参数量取舍",
+          "status": "done"
+        },
+        {
+          "num": "2.3",
+          "path": "/02-model-selection/03-dense-vs-moe",
+          "title": "Dense 与 MoE：总参数和激活参数",
+          "nav": "Dense 与 MoE",
+          "status": "done"
+        },
+        {
+          "num": "2.4",
+          "path": "/02-model-selection/04-context-and-license",
+          "title": "上下文长度、开源协议、中文能力",
+          "nav": "上下文长度、开源协议、中文能力",
+          "status": "done"
+        },
+        {
+          "num": "2.5",
+          "path": "/02-model-selection/05-leaderboards",
+          "title": "榜单怎么看，以及为什么要用自己的数据评测",
+          "nav": "榜单怎么看，以及为什么要用自己的数据评测",
+          "status": "done"
+        },
+        {
+          "num": "2.6",
+          "path": "/02-model-selection/06-selection-method",
+          "title": "选型方法论：一张决策表",
+          "nav": "选型方法论",
+          "status": "done"
+        }
+      ]
+    },
+    {
+      "id": "03",
+      "dir": "03-deployment",
+      "nav": "第三部分 本地部署",
+      "title": "第三部分 本地部署",
+      "status": "done",
+      "note": "实验代码在 `labs/03-deployment/`，已在本机跑通；数据在 `benchmarks/`（`gguf-format/`、`prefill-decode/`、`template/`、`sampling/`、`concurrency/`、`client-bench/`）。",
+      "sections": [
+        {
+          "num": null,
+          "path": "/03-deployment/",
+          "title": "第三部分 本地部署",
+          "nav": "导言",
+          "status": "done"
+        },
+        {
+          "num": "3.1",
+          "path": "/03-deployment/01-model-formats",
+          "title": "模型格式：safetensors / GGUF / MLX",
+          "nav": "模型格式",
+          "status": "done"
+        },
+        {
+          "num": "3.2",
+          "path": "/03-deployment/02-engine-comparison",
+          "title": "推理引擎对比：llama.cpp / Ollama / MLX / vLLM",
+          "nav": "推理引擎对比",
+          "status": "done"
+        },
+        {
+          "num": "3.3",
+          "path": "/03-deployment/03-chat-template",
+          "title": "对话模板（Chat Template）：模板错了模型就会胡言乱语",
+          "nav": "对话模板",
+          "status": "done"
+        },
+        {
+          "num": "3.4",
+          "path": "/03-deployment/04-sampling",
+          "title": "采样参数：temperature / top-p / 重复惩罚",
+          "nav": "采样参数",
+          "status": "done"
+        },
+        {
+          "num": "3.5",
+          "path": "/03-deployment/05-openai-compatible-api",
+          "title": "服务化：OpenAI 兼容接口",
+          "nav": "服务化",
+          "status": "done"
+        },
+        {
+          "num": "3.6",
+          "path": "/03-deployment/06-concurrency",
+          "title": "并发与批处理：并发槽位、连续批处理",
+          "nav": "并发与批处理",
+          "status": "done"
+        },
+        {
+          "num": "3.7",
+          "path": "/03-deployment/07-benchmarking",
+          "title": "性能测量方法：怎么测才可信",
+          "nav": "性能测量方法",
+          "status": "done"
+        }
+      ]
+    },
+    {
+      "id": "04",
+      "dir": "04-quantization",
+      "nav": "第四部分 量化",
+      "title": "第四部分 量化",
+      "status": "done",
+      "note": "实验代码在 `labs/04-quantization/`，同样已跑通；数据在 `benchmarks/quantization/`（张量格式误差、分组量化、KV 量化、跨域困惑度、60 题探针）。本部分没有下载额外的量化模型：需要从 16 位源重切阶梯的对照写在各节的「动手实验」里。",
+      "sections": [
+        {
+          "num": null,
+          "path": "/04-quantization/",
+          "title": "第四部分 量化",
+          "nav": "导言",
+          "status": "done"
+        },
+        {
+          "num": "4.1",
+          "path": "/04-quantization/01-number-formats",
+          "title": "数值表示：FP32 / FP16 / BF16 / INT8 / INT4",
+          "nav": "数值表示",
+          "status": "done"
+        },
+        {
+          "num": "4.2",
+          "path": "/04-quantization/02-quantization-principles",
+          "title": "量化原理：scale、zero-point 与分组量化",
+          "nav": "量化原理",
+          "status": "done"
+        },
+        {
+          "num": "4.3",
+          "path": "/04-quantization/03-gguf-k-quants",
+          "title": "GGUF K-quants：各个等级在做什么",
+          "nav": "GGUF K-quants",
+          "status": "done"
+        },
+        {
+          "num": "4.4",
+          "path": "/04-quantization/04-imatrix",
+          "title": "imatrix：低比特量化如何尽量保住质量",
+          "nav": "imatrix",
+          "status": "done"
+        },
+        {
+          "num": "4.5",
+          "path": "/04-quantization/05-kv-cache-quantization",
+          "title": "KV Cache 量化",
+          "nav": "KV Cache 量化",
+          "status": "done"
+        },
+        {
+          "num": "4.6",
+          "path": "/04-quantization/06-measuring-loss",
+          "title": "评估量化损失：困惑度、任务正确率，以及各自的局限",
+          "nav": "评估量化损失",
+          "status": "done"
+        },
+        {
+          "num": "4.7",
+          "path": "/04-quantization/07-route-selection",
+          "title": "三条量化路线怎么选：GGUF / MLX / AWQ-GPTQ（原理在 4.2，AWQ/GPTQ 实操见 7.5）",
+          "nav": "三条量化路线怎么选",
+          "status": "done"
+        }
+      ]
+    },
+    {
+      "id": "05",
+      "dir": "05-rag",
+      "nav": "第五部分 RAG 全链路",
+      "title": "第五部分 RAG 全链路",
+      "status": "placeholder",
+      "note": "",
+      "sections": [
+        {
+          "num": null,
+          "path": "/05-rag/",
+          "title": "第五部分 RAG 全链路",
+          "nav": "导言",
+          "status": "placeholder"
+        },
+        {
+          "num": "5.1",
+          "path": "/05-rag/01-why-rag",
+          "title": "为什么用 RAG：对比微调与长上下文",
+          "nav": "为什么用 RAG",
+          "status": "placeholder"
+        },
+        {
+          "num": "5.2",
+          "path": "/05-rag/02-document-parsing",
+          "title": "文档解析：文字版 PDF / 表格 / 扫描件 OCR / 版面分析",
+          "nav": "文档解析",
+          "status": "placeholder"
+        },
+        {
+          "num": "5.3",
+          "path": "/05-rag/03-chunking",
+          "title": "切分：按长度、按结构、按语义，以及表格怎么处理",
+          "nav": "切分",
+          "status": "placeholder"
+        },
+        {
+          "num": "5.4",
+          "path": "/05-rag/04-embedding",
+          "title": "Embedding：向量如何表示语义",
+          "nav": "Embedding",
+          "status": "placeholder"
+        },
+        {
+          "num": "5.5",
+          "path": "/05-rag/05-vector-index",
+          "title": "向量库与 ANN 索引：HNSW 的直观理解",
+          "nav": "向量库与 ANN 索引",
+          "status": "placeholder"
+        },
+        {
+          "num": "5.6",
+          "path": "/05-rag/06-hybrid-search",
+          "title": "稀疏检索与混合检索：BM25、RRF，以及工业场景为什么离不开关键词",
+          "nav": "稀疏检索与混合检索",
+          "status": "placeholder"
+        },
+        {
+          "num": "5.7",
+          "path": "/05-rag/07-reranking",
+          "title": "重排：双塔模型与交叉编码器",
+          "nav": "重排",
+          "status": "placeholder"
+        },
+        {
+          "num": "5.8",
+          "path": "/05-rag/08-generation",
+          "title": "生成：Prompt 设计、标注出处、查不到时拒答",
+          "nav": "生成",
+          "status": "placeholder"
+        },
+        {
+          "num": "5.9",
+          "path": "/05-rag/09-metadata-and-updates",
+          "title": "元数据、权限过滤与增量更新",
+          "nav": "元数据、权限过滤与增量更新",
+          "status": "placeholder"
+        }
+      ]
+    },
+    {
+      "id": "06",
+      "dir": "06-evaluation",
+      "nav": "第六部分 评估与调优",
+      "title": "第六部分 评估与调优",
+      "status": "placeholder",
+      "note": "",
+      "sections": [
+        {
+          "num": null,
+          "path": "/06-evaluation/",
+          "title": "第六部分 评估与调优",
+          "nav": "导言",
+          "status": "placeholder"
+        },
+        {
+          "num": "6.1",
+          "path": "/06-evaluation/01-building-test-set",
+          "title": "构建测试集：问题分类、标准答案、出处标注",
+          "nav": "构建测试集",
+          "status": "placeholder"
+        },
+        {
+          "num": "6.2",
+          "path": "/06-evaluation/02-retrieval-metrics",
+          "title": "检索指标：Recall@k / MRR / nDCG",
+          "nav": "检索指标",
+          "status": "placeholder"
+        },
+        {
+          "num": "6.3",
+          "path": "/06-evaluation/03-generation-metrics",
+          "title": "生成指标：忠实度、正确率，以及用模型当评判（LLM-as-judge）的坑",
+          "nav": "生成指标",
+          "status": "placeholder"
+        },
+        {
+          "num": "6.4",
+          "path": "/06-evaluation/04-ablation",
+          "title": "消融实验：每次只改一个变量",
+          "nav": "消融实验",
+          "status": "placeholder"
+        },
+        {
+          "num": "6.5",
+          "path": "/06-evaluation/05-error-attribution",
+          "title": "错误回答归因：一张排查流程图",
+          "nav": "错误回答归因",
+          "status": "placeholder"
+        }
+      ]
+    },
+    {
+      "id": "07",
+      "dir": "07-gpu-inference",
+      "nav": "第七部分 GPU 服务器与推理加速",
+      "title": "第七部分 GPU 服务器与推理加速",
+      "status": "placeholder",
+      "note": "",
+      "sections": [
+        {
+          "num": null,
+          "path": "/07-gpu-inference/",
+          "title": "第七部分 GPU 服务器与推理加速",
+          "nav": "导言",
+          "status": "placeholder"
+        },
+        {
+          "num": "7.1",
+          "path": "/07-gpu-inference/01-gpu-hardware",
+          "title": "GPU 硬件常识：显存 / 带宽 / 算力三者的关系，消费卡与数据中心卡，NVLink 与 PCIe",
+          "nav": "GPU 硬件常识",
+          "status": "placeholder"
+        },
+        {
+          "num": "7.2",
+          "path": "/07-gpu-inference/02-software-stack",
+          "title": "软件栈：驱动、CUDA、PyTorch 的版本对应，容器里调用 GPU（nvidia-container-toolkit）",
+          "nav": "软件栈",
+          "status": "placeholder"
+        },
+        {
+          "num": "7.3",
+          "path": "/07-gpu-inference/03-monitoring",
+          "title": "监控与诊断：nvidia-smi、nvtop、DCGM；利用率、显存、功耗、温度与降频",
+          "nav": "监控与诊断",
+          "status": "placeholder"
+        },
+        {
+          "num": "7.4",
+          "path": "/07-gpu-inference/04-vllm",
+          "title": "vLLM 部署：PagedAttention、连续批处理、关键参数与调参顺序",
+          "nav": "vLLM 部署",
+          "status": "placeholder"
+        },
+        {
+          "num": "7.5",
+          "path": "/07-gpu-inference/05-gpu-quantization",
+          "title": "GPU 端量化实操：AWQ / GPTQ / FP8",
+          "nav": "GPU 端量化实操",
+          "status": "placeholder"
+        },
+        {
+          "num": "7.6",
+          "path": "/07-gpu-inference/06-inference-acceleration",
+          "title": "推理加速：Prefix Caching（RAG 场景收益最大）、Chunked Prefill、投机解码",
+          "nav": "推理加速",
+          "status": "placeholder"
+        },
+        {
+          "num": "7.7",
+          "path": "/07-gpu-inference/07-multi-gpu",
+          "title": "多卡：张量并行、流水线并行、多副本三者的取舍；单机上 LLM / Embedding / Reranker 怎么分配",
+          "nav": "多卡",
+          "status": "placeholder"
+        },
+        {
+          "num": "7.8",
+          "path": "/07-gpu-inference/08-oom-and-latency",
+          "title": "卡顿与 OOM 排查：从现象到原因的诊断流程图",
+          "nav": "卡顿与 OOM 排查",
+          "status": "placeholder"
+        },
+        {
+          "num": "7.9",
+          "path": "/07-gpu-inference/09-capacity-planning",
+          "title": "容量规划：并发数 × 上下文长度 → 需要什么卡、几张",
+          "nav": "容量规划",
+          "status": "placeholder"
+        }
+      ]
+    },
+    {
+      "id": "08",
+      "dir": "08-delivery",
+      "nav": "第八部分 工程化与交付",
+      "title": "第八部分 工程化与交付",
+      "status": "placeholder",
+      "note": "",
+      "sections": [
+        {
+          "num": null,
+          "path": "/08-delivery/",
+          "title": "第八部分 工程化与交付",
+          "nav": "导言",
+          "status": "placeholder"
+        },
+        {
+          "num": "8.1",
+          "path": "/08-delivery/01-service-architecture",
+          "title": "服务架构与流式输出",
+          "nav": "服务架构与流式输出",
+          "status": "placeholder"
+        },
+        {
+          "num": "8.2",
+          "path": "/08-delivery/02-offline-deployment",
+          "title": "离线部署与断网验证",
+          "nav": "离线部署与断网验证",
+          "status": "placeholder"
+        },
+        {
+          "num": "8.3",
+          "path": "/08-delivery/03-load-testing",
+          "title": "压测与容量验收",
+          "nav": "压测与容量验收",
+          "status": "placeholder"
+        },
+        {
+          "num": "8.4",
+          "path": "/08-delivery/04-observability",
+          "title": "可观测性：日志、链路追踪、反馈闭环",
+          "nav": "可观测性",
+          "status": "placeholder"
+        },
+        {
+          "num": "8.5",
+          "path": "/08-delivery/05-security-and-permissions",
+          "title": "数据安全与权限",
+          "nav": "数据安全与权限",
+          "status": "placeholder"
+        },
+        {
+          "num": "8.6",
+          "path": "/08-delivery/06-mac-to-gpu",
+          "title": "从 Mac 迁移到 GPU 服务器：迁移清单与环境差异",
+          "nav": "从 Mac 迁移到 GPU 服务器",
+          "status": "placeholder"
+        },
+        {
+          "num": "8.7",
+          "path": "/08-delivery/07-deliverables",
+          "title": "交付物：部署文档、培训材料、AI 使用规范",
+          "nav": "交付物",
+          "status": "placeholder"
+        }
+      ]
+    },
+    {
+      "id": "appendix",
+      "dir": "appendix",
+      "nav": "附录",
+      "title": "附录",
+      "status": "placeholder",
+      "note": "",
+      "sections": [
+        {
+          "num": null,
+          "path": "/appendix/",
+          "title": "附录",
+          "nav": "导言",
+          "status": "placeholder"
+        },
+        {
+          "num": "A",
+          "path": "/appendix/a-vram-cheatsheet",
+          "title": "附录 A 显存速查表",
+          "nav": "显存速查表",
+          "status": "placeholder"
+        },
+        {
+          "num": "B",
+          "path": "/appendix/b-glossary",
+          "title": "附录 B 术语表（中英对照）",
+          "nav": "术语表（中英对照）",
+          "status": "placeholder"
+        },
+        {
+          "num": "C",
+          "path": "/appendix/c-troubleshooting",
+          "title": "附录 C 故障排查手册",
+          "nav": "故障排查手册",
+          "status": "placeholder"
+        },
+        {
+          "num": "D",
+          "path": "/appendix/d-hardware-reference",
+          "title": "附录 D 硬件选型参考",
+          "nav": "硬件选型参考",
+          "status": "placeholder"
+        },
+        {
+          "num": "E",
+          "path": "/appendix/e-interview-index",
+          "title": "附录 E 面试题索引（汇总各章的\"面试视角\"）",
+          "nav": "面试题索引",
+          "status": "placeholder"
+        },
+        {
+          "num": "F",
+          "path": "/appendix/f-cloud-gpu-manual",
+          "title": "附录 F 云 GPU 实验手册（租机、环境准备、成本记录）",
+          "nav": "云 GPU 实验手册",
+          "status": "placeholder"
+        },
+        {
+          "num": "G",
+          "path": "/appendix/g-references",
+          "title": "附录 G 参考文献",
+          "nav": "参考文献",
+          "status": "placeholder"
+        }
+      ]
+    }
+  ],
+  "readingPaths": {
+    "shortest": [
+      "1.1",
+      "1.3",
+      "1.4",
+      "2.6",
+      "3.3",
+      "3.5",
+      "5.1",
+      "5.3",
+      "5.4",
+      "5.8"
+    ]
+  }
+}

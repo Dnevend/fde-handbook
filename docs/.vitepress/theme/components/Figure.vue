@@ -37,21 +37,8 @@ withDefaults(
   margin: 32px 0;
 }
 
-/* 图是 960px 画布设计的。正文栏在宽屏下只有 688px，等比缩到 0.72 后
-   图内 12–14px 的字会偏小，所以宽屏时向两侧借一点留白，别让读者去放大。 */
-@media (min-width: 1440px) {
-  .book-figure {
-    width: calc(100% + 144px);
-    margin-left: -72px;
-  }
-}
-
-@media (min-width: 1700px) {
-  .book-figure {
-    width: calc(100% + 200px);
-    margin-left: -100px;
-  }
-}
+/* 图和正文同宽：不向两侧借留白，保持左右边界对齐。
+   960px 画布缩到正文宽度后图内文字会偏小，点开原图（figure 里的链接）可看全尺寸。 */
 
 /* 所有插图是白底 SVG。浅色主题下白底与页面同色，不需要额外装饰；
    深色主题下给它一块白卡，避免图上的深色文字失去对比度。 */
