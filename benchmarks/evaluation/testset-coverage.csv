@@ -1,0 +1,4 @@
+doc,clauses_available,clauses_used,citations,coverage_rate
+reg-safety-law,119,84,166,0.706
+reg-mem-order-13,22,19,48,0.864
+gov-ledger-guide,54,38,86,0.704

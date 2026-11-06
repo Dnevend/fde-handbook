@@ -15,7 +15,7 @@ title: 第五部分 RAG 全链路
   caption="5.2–5.5 决定「资料能不能被找到」，5.6–5.9 决定「找到的东西能不能答对问题」。"
 />
 
-这一部分的实验代码在 `labs/05-rag/`，原始数据在 `benchmarks/rag/`，测试集在 `eval/`（80 题，四类各 20）。
+这一部分的实验代码在 `labs/05-rag/`，原始数据在 `benchmarks/rag/`，测试集在 `eval/`（80 题，四类各 20；第六部分扩到 300 题，见 `eval/qa-v2.jsonl`）。
 参数集中在 `labs/05-rag/config.yaml`；所有延迟数字都来自 M4 / 24GB 本机，换机器只比相对差异。
 
 与前面几部分不同，这一部分用到了两个额外模型：`Qwen3-Embedding-0.6B`（1024 维）与 `bge-reranker-v2-m3`（交叉编码器），

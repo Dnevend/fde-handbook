@@ -1,0 +1,17 @@
+metric,value
+answers,60
+citations,205
+citation_support_micro,0.644
+citation_relevance_micro,0.361
+content_support_micro,0.727
+answers_content_all_supported,0.683
+answers_all_supported,0.533
+answers_support_ge_80,0.533
+judge_faithful,0.967
+judge_vs_all_supported_agreement,0.533
+judge_vs_all_supported_kappa,0.005
+judge_vs_80_agreement,0.533
+judge_vs_80_kappa,0.005
+judge_vs_content_agreement,0.683
+judge_vs_content_kappa,0.037
+mean_latency_s,5.03

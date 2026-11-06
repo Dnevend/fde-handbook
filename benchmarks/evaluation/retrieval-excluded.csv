@@ -1,0 +1,9 @@
+id,category,missing
+D34,direct,reg-safety-law 第四十七条
+D51,direct,reg-mem-order-13 第十一条
+C25,condition,reg-safety-law 第四十七条
+C48,condition,reg-mem-order-13 第十一条
+X25,cross,reg-mem-order-13 第十条
+X26,cross,reg-mem-order-13 第十一条
+X28,cross,reg-safety-law 第四十七条
+X47,cross,reg-safety-law 第六条

@@ -1,0 +1,123 @@
+{
+  "schema_version": 1,
+  "mode": "flowchart",
+  "template_type": "flowchart",
+  "style": 4,
+  "quality_profile": "standard",
+  "text_policy": "strict",
+  "width": 960,
+  "height": 300,
+  "title": "测试集是校验出来的，不是写出来的",
+  "subtitle": "答案能回到原文、出处能唯一定位，这套题才敢用来下结论",
+  "footer": "v2：300 题覆盖 3 份语料的 141 条条款；test 的 150 题全部未参与第五部分调参。",
+  "footer_x": 32,
+  "footer_y": 272,
+  "nodes": [
+    {
+      "id": "n1",
+      "kind": "rect",
+      "x": 24,
+      "y": 120,
+      "width": 168,
+      "height": 72,
+      "type_label": "输入",
+      "label": "条款索引",
+      "sublabel": "195 条 / 3 份",
+      "fill": "#ffffff",
+      "stroke": "#e5e7eb",
+      "stroke_width": 1.8,
+      "flat": true,
+      "title_size": 18
+    },
+    {
+      "id": "n2",
+      "kind": "rect",
+      "x": 210,
+      "y": 120,
+      "width": 168,
+      "height": 72,
+      "type_label": "出题",
+      "label": "分层出题",
+      "sublabel": "4 类 × 75 题",
+      "fill": "#ffffff",
+      "stroke": "#e5e7eb",
+      "stroke_width": 1.8,
+      "flat": true,
+      "title_size": 18
+    },
+    {
+      "id": "n3",
+      "kind": "rect",
+      "x": 396,
+      "y": 120,
+      "width": 168,
+      "height": 72,
+      "type_label": "自动校验",
+      "label": "三道闸",
+      "sublabel": "结构 · 出处 · 原文",
+      "fill": "#dbeafe",
+      "stroke": "#3b82f6",
+      "stroke_width": 1.8,
+      "flat": true,
+      "title_size": 18
+    },
+    {
+      "id": "n4",
+      "kind": "rect",
+      "x": 582,
+      "y": 120,
+      "width": 168,
+      "height": 72,
+      "type_label": "拒答",
+      "label": "可答性审计",
+      "sublabel": "75 题过检索",
+      "fill": "#ffffff",
+      "stroke": "#e5e7eb",
+      "stroke_width": 1.8,
+      "flat": true,
+      "title_size": 18
+    },
+    {
+      "id": "n5",
+      "kind": "rect",
+      "x": 768,
+      "y": 120,
+      "width": 168,
+      "height": 72,
+      "type_label": "交付",
+      "label": "分片",
+      "sublabel": "dev 150 / test 150",
+      "fill": "#ffffff",
+      "stroke": "#e5e7eb",
+      "stroke_width": 1.8,
+      "flat": true,
+      "title_size": 18
+    }
+  ],
+  "arrows": [
+    {
+      "id": "e1",
+      "source": "n1",
+      "target": "n2",
+      "flow": "control"
+    },
+    {
+      "id": "e2",
+      "source": "n2",
+      "target": "n3",
+      "flow": "control"
+    },
+    {
+      "id": "e3",
+      "source": "n3",
+      "target": "n4",
+      "flow": "control"
+    },
+    {
+      "id": "e4",
+      "source": "n4",
+      "target": "n5",
+      "flow": "control"
+    }
+  ]
+}

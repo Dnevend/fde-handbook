@@ -1,0 +1,11 @@
+metric,value
+questions,60
+auto_correct,41
+auto_correct_rate,0.683
+judge_correct,52
+judge_correct_rate,0.867
+auto_judge_agreement,0.817
+answerable,40
+answerable_auto_rate,0.525
+answerable_judge_rate,0.8
+mean_judge_latency_s,2.34

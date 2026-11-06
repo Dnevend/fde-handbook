@@ -1,5 +1,5 @@
 {
-  "updated": "2026-10-24",
+  "updated": "2026-11-06",
   "parts": [
     {
       "id": "00",
@@ -381,50 +381,50 @@
       "dir": "06-evaluation",
       "nav": "第六部分 评估与调优",
       "title": "第六部分 评估与调优",
-      "status": "placeholder",
-      "note": "",
+      "status": "done",
+      "note": "实验代码在 `labs/06-evaluation/`，数据在 `benchmarks/evaluation/`。测试集 v2 在 `eval/qa-v2.jsonl`（300 题，dev/test 各 150）；test 有 8 道题因 5.3 的短条款缺失被排除。",
       "sections": [
         {
           "num": null,
           "path": "/06-evaluation/",
           "title": "第六部分 评估与调优",
           "nav": "导言",
-          "status": "placeholder"
+          "status": "done"
         },
         {
           "num": "6.1",
           "path": "/06-evaluation/01-building-test-set",
           "title": "构建测试集：问题分类、标准答案、出处标注",
           "nav": "构建测试集",
-          "status": "placeholder"
+          "status": "done"
         },
         {
           "num": "6.2",
           "path": "/06-evaluation/02-retrieval-metrics",
           "title": "检索指标：Recall@k / MRR / nDCG",
           "nav": "检索指标",
-          "status": "placeholder"
+          "status": "done"
         },
         {
           "num": "6.3",
           "path": "/06-evaluation/03-generation-metrics",
           "title": "生成指标：忠实度、正确率，以及用模型当评判（LLM-as-judge）的坑",
           "nav": "生成指标",
-          "status": "placeholder"
+          "status": "done"
         },
         {
           "num": "6.4",
           "path": "/06-evaluation/04-ablation",
           "title": "消融实验：每次只改一个变量",
           "nav": "消融实验",
-          "status": "placeholder"
+          "status": "done"
         },
         {
           "num": "6.5",
           "path": "/06-evaluation/05-error-attribution",
           "title": "错误回答归因：一张排查流程图",
           "nav": "错误回答归因",
-          "status": "placeholder"
+          "status": "done"
         }
       ]
     },

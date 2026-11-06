@@ -1,0 +1,10 @@
+human,judge,count
+correct,correct,48
+correct,partial,2
+correct,wrong,0
+partial,correct,5
+partial,partial,2
+partial,wrong,0
+wrong,correct,0
+wrong,partial,2
+wrong,wrong,1

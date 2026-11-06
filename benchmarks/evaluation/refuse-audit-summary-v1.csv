@@ -1,0 +1,10 @@
+metric,value
+answerable_min_top1,0.705
+answerable_p05_top1,0.726
+answerable_median_top1,0.835
+refuse_median_top1,0.409
+refuse_p90_top1,0.604
+refuse_max_top1,0.693
+refuse_flagged,1
+refuse_total,20
+threshold,0.65

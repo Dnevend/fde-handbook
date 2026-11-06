@@ -1,0 +1,7 @@
+human,judge,count
+correct,faithful,48
+correct,unfaithful,2
+partial,faithful,7
+partial,unfaithful,0
+wrong,faithful,3
+wrong,unfaithful,0

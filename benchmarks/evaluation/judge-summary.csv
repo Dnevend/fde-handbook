@@ -1,0 +1,16 @@
+metric,value
+questions,80
+answerable,60
+strict_accuracy,0.85
+score_accuracy,0.85
+strict_kappa,0.403
+score_kappa,0.428
+strict_vs_score_agreement,0.933
+correct_precision,0.906
+correct_recall,0.96
+correct_f1,0.932
+refusal_accuracy,1.0
+mean_latency_s,4.5
+p95_latency_s,6.12
+verbosity_flip_rate,0.0
+position_flip_rate,0.533

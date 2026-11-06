@@ -3,7 +3,7 @@
 给在本仓库里工作的 agent。面向读者的说明在 `README.md`，这里只写"改这个仓库时该注意什么"。
 
 **仓库是什么**：一本书的站点与配套实验代码——《FDE Handbook：从本地大模型到 RAG 落地》。VitePress 站点 + 章节正文 + `labs/` 实验脚本。
-**当前阶段**：已完成序与第一至第四部分；第五至第八部分与附录仍是占位页。**进度以 `docs/.vitepress/book.json` 为准**，不要在这里复制状态——它曾经和正文对不上。
+**当前阶段**：已完成序与第一至第六部分；第七、第八部分与附录仍是占位页。**进度以 `docs/.vitepress/book.json` 为准**，不要在这里复制状态——它曾经和正文对不上。
 
 ## 硬规则
 
@@ -28,7 +28,7 @@
 - `labs/07-gpu-inference/`：云 GPU 实验，**本地（Mac）不要求能跑**。
 - `benchmarks/`：原始测量数据与生成图表的脚本。`benchmarks/estimates/` 放估算类的 CSV 与绘图脚本（PEP 723 + uv，不写进 `package.json`）。
 - `corpus/`：语料清单与流水线。`sources.yaml` 记出处、协议与 `redistributable` 档位；`index.json` 是条款索引，入库；`raw/` 是下载物、节选与合成产物，**不入库**。规则见「写语料的约定」。
-- `eval/`：测试问题集（问题 / 标准答案 / 出处）。**当前为空**（只有 `.gitkeep`），缺口见 `corpus/GAPS.md`。
+- `eval/`：测试问题集与校验脚本。`qa.jsonl` 是第五部分的 v1（80 题）；`qa-v2.jsonl` 是第六部分的 v2（300 题，dev/test 各 150，`split` 字段区分）。改题后跑 `python3 eval/validate.py`；口径见 `eval/README.md`，统计产物在 `benchmarks/evaluation/`。
 
 ## 常用命令
 
@@ -48,6 +48,7 @@ uv run benchmarks/estimates/plot.py --preview   # 重画定量图
 uv run corpus/excerpt.py --all                    # 切 excerpt 档
 uv run corpus/index.py                            # 重建条款索引
 uv run corpus/synthetic/generate.py --clean --validate   # 合成语料 + 自检
+python3 eval/validate.py                          # 校验 v1/v2 测试集
 ```
 
 画图的几何校验靠 `fireworks-tech-graph`（装在 `~/.agents/skills/fireworks-tech-graph`，用 `FIREWORKS_GRAPH_SKILL` 覆盖路径）。它要求显式坐标，所以图源是 JSON 而不是 Markdown 指令；`check` 会拦文字截断、标注重叠和连线弯折，但字号是启发式估算，导出 PNG 目视一次仍不可省。

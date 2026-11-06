@@ -1,0 +1,9 @@
+category,split,n,mean_question_chars,p95_question_chars,mean_answer_chars,mean_sources
+direct,dev,37,31.0,50,39.7,1.0
+direct,test,38,29.6,46,54.5,1.0
+condition,dev,38,35.2,45,45.5,1.0
+condition,test,37,34.1,44,66.8,1.0
+cross,dev,37,33.6,43,79.4,2.0
+cross,test,38,36.1,47,98.4,2.0
+refuse,dev,38,17.3,23,10.0,0.0
+refuse,test,37,19.1,24,10.0,0.0

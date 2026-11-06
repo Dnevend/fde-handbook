@@ -32,7 +32,7 @@
 | `labs/` | 与章节一一对应的可运行代码（`07-gpu-inference/` 只放云 GPU 脚本，本地不跑） |
 | `benchmarks/` | 原始测量数据（CSV/JSON）与生成图表的脚本 |
 | `corpus/` | 公开语料清单与下载脚本；**只提交清单，不提交 PDF 本体** |
-| `eval/` | 测试问题集（问题 / 标准答案 / 出处） |
+| `eval/` | 测试问题集：v1 80 题（第五部分）、v2 300 题（第六部分） |
 
 ## 本地起站
 
@@ -71,7 +71,7 @@ npm run docs:preview  # 预览构建结果
 | 第三部分 本地部署 | 已完成 | 7 |
 | 第四部分 量化 | 已完成 | 7 |
 | 第五部分 RAG 全链路 | 已完成 | 9 |
-| 第六部分 评估与调优 | 占位 | 5 |
+| 第六部分 评估与调优 | 已完成 | 5 |
 | 第七部分 GPU 服务器与推理加速 | 占位 | 9 |
 | 第八部分 工程化与交付 | 占位 | 7 |
 | 附录 | 占位 | 7 |
@@ -81,6 +81,7 @@ npm run docs:preview  # 预览构建结果
 - **第三部分 本地部署**：实验代码在 `labs/03-deployment/`，已在本机跑通；数据在 `benchmarks/`（`gguf-format/`、`prefill-decode/`、`template/`、`sampling/`、`concurrency/`、`client-bench/`）。
 - **第四部分 量化**：实验代码在 `labs/04-quantization/`，同样已跑通；数据在 `benchmarks/quantization/`（张量格式误差、分组量化、KV 量化、跨域困惑度、60 题探针）。本部分没有下载额外的量化模型：需要从 16 位源重切阶梯的对照写在各节的「动手实验」里。
 - **第五部分 RAG 全链路**：实验代码在 `labs/05-rag/`，数据在 `benchmarks/rag/`，测试集在 `eval/`（80 题）。参数集中在 `labs/05-rag/config.yaml`。OCR 与双栏版面未实测，见 `corpus/GAPS.md`。
+- **第六部分 评估与调优**：实验代码在 `labs/06-evaluation/`，数据在 `benchmarks/evaluation/`。测试集 v2 在 `eval/qa-v2.jsonl`（300 题，dev/test 各 150）；test 有 8 道题因 5.3 的短条款缺失被排除。
 <!-- progress:end -->
 
 ## 协议

@@ -1,0 +1,31 @@
+test,id,variant,human,label,score,note
+verbosity,D01,padded,correct,correct,,correct -> correct
+verbosity,D02,padded,correct,correct,,correct -> correct
+verbosity,D03,padded,correct,correct,,correct -> correct
+verbosity,D04,padded,correct,correct,,correct -> correct
+verbosity,D05,padded,correct,correct,,correct -> correct
+verbosity,D06,padded,correct,correct,,correct -> correct
+verbosity,D07,padded,correct,correct,,correct -> correct
+verbosity,D08,padded,correct,correct,,correct -> correct
+verbosity,D09,padded,correct,correct,,correct -> correct
+verbosity,D10,padded,correct,correct,,correct -> correct
+verbosity,D11,padded,correct,correct,,correct -> correct
+verbosity,D12,padded,correct,correct,,correct -> correct
+verbosity,D13,padded,correct,correct,,correct -> correct
+verbosity,D14,padded,correct,correct,,correct -> correct
+verbosity,D15,padded,correct,correct,,correct -> correct
+position,D01,swap,correct,B/B,,flip
+position,D02,swap,correct,A/A,,flip
+position,D03,swap,correct,TIE/A,,flip
+position,D04,swap,correct,A/A,,flip
+position,D05,swap,correct,B/A,,consistent
+position,D06,swap,correct,B/A,,consistent
+position,D07,swap,correct,A/B,,consistent
+position,D08,swap,correct,A/B,,consistent
+position,D09,swap,correct,A/A,,flip
+position,D10,swap,correct,A/A,,flip
+position,D11,swap,correct,TIE/A,,flip
+position,D12,swap,correct,B/A,,consistent
+position,D13,swap,correct,B/A,,consistent
+position,D14,swap,correct,B/A,,consistent
+position,D15,swap,correct,TIE/A,,flip

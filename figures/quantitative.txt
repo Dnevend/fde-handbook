@@ -9,3 +9,9 @@
 5-5-ann.svg
 5-6-retrieval.svg
 5-7-rerank.svg
+6-2-recall-curve.svg
+6-2-metric-shape.svg
+6-3-judge-confusion.svg
+6-3-eval-disagreement.svg
+6-4-ablation.svg
+6-4-forest.svg

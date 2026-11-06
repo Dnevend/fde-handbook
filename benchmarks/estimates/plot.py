@@ -382,6 +382,212 @@ def plot_rerank(preview: bool) -> None:
     save(fig, "5-7-rerank", preview)
 
 
+
+def read_evaluation(name: str) -> list[dict[str, str]]:
+    """第六部分的实验数据在 benchmarks/evaluation/。"""
+    with open(ROOT / "benchmarks" / "evaluation" / name, encoding="utf-8") as handle:
+        return list(csv.DictReader(handle))
+
+
+def plot_recall_curve(preview: bool) -> None:
+    rows = read_evaluation("retrieval-k-curve.csv")
+    labels = {"bm25": "BM25", "dense": "稠密检索", "rrf": "RRF 混合"}
+    colors = {"bm25": MUTED, "dense": BLUE, "rrf": AMBER}
+
+    fig, ax = plt.subplots(figsize=(9.6, 4.4), dpi=100)
+    for strategy, label in labels.items():
+        subset = [row for row in rows if row["strategy"] == strategy]
+        xs = [int(row["k"]) for row in subset]
+        ys = [float(row["recall"]) for row in subset]
+        ax.plot(xs, ys, marker="o", markersize=4, linewidth=1.8, color=colors[strategy], label=label)
+        at_five = next(row for row in subset if row["k"] == "5")
+        offsets = {"bm25": (-30, -18), "dense": (10, 10), "rrf": (12, -14)}
+        ax.annotate(
+            f"{float(at_five['recall']):.2f}",
+            (5, float(at_five["recall"])),
+            textcoords="offset points",
+            xytext=offsets[strategy],
+            fontsize=9,
+            color=colors[strategy],
+        )
+
+    ax.axvline(5, color=RULE, linewidth=1, linestyle="--", zorder=1)
+    ax.set_xlim(0.5, 20.5)
+    ax.set_ylim(0.6, 1.02)
+    ax.set_xticks([1, 5, 10, 15, 20])
+    ax.set_xlabel("截断位置 k")
+    ax.set_ylabel("Recall@k")
+    ax.set_title("召回很快贴顶：k=5 之后，三条线都挤在 0.94 以上", loc="left", fontsize=14, color=INK, pad=14)
+    style_axes(ax)
+    ax.legend(loc="lower right", frameon=False, fontsize=10)
+    fig.tight_layout()
+    save(fig, "6-2-recall-curve", preview)
+
+
+def plot_metric_shape(preview: bool) -> None:
+    rows = [
+        row
+        for row in read_evaluation("retrieval-metrics.csv")
+        if row["relevance"] == "answer" and row["category"] == "all"
+    ]
+    order = ["bm25", "dense", "rrf"]
+    labels = {"bm25": "BM25", "dense": "稠密", "rrf": "RRF"}
+    metrics = [("recall@5", "Recall@5"), ("mrr@10", "MRR@10"), ("ndcg@10", "nDCG@10")]
+    by_strategy = {row["strategy"]: row for row in rows}
+
+    fig, ax = plt.subplots(figsize=(9.6, 4.4), dpi=100)
+    width = 0.24
+    palette = [BLUE, BLUE_LIGHT, "#93c5fd"]
+    for index, (key, label) in enumerate(metrics):
+        values = [float(by_strategy[strategy][key]) for strategy in order]
+        positions = [position + (index - 1) * width for position in range(len(order))]
+        bars = ax.bar(positions, values, width, color=palette[index], label=label, zorder=3)
+        for bar, value in zip(bars, values):
+            ax.text(bar.get_x() + bar.get_width() / 2, value + 0.012, f"{value:.2f}", ha="center", fontsize=9, color=INK)
+
+    ax.set_xticks(range(len(order)), [labels[strategy] for strategy in order])
+    ax.set_ylim(0, 1.1)
+    ax.set_ylabel("指标值（越高越好）")
+    ax.set_title("召回都接近 1，差距在排序：MRR 与 nDCG 把 RRF 拉开", loc="left", fontsize=14, color=INK, pad=14)
+    style_axes(ax)
+    ax.grid(False)
+    ax.legend(loc="upper right", frameon=False, fontsize=9, ncol=3)
+    fig.tight_layout()
+    save(fig, "6-2-metric-shape", preview)
+
+
+
+def plot_judge_confusion(preview: bool) -> None:
+    rows = read_evaluation("judge-confusion.csv")
+    labels = ["correct", "partial", "wrong"]
+    matrix = [[0 for _ in labels] for _ in labels]
+    for row in rows:
+        matrix[labels.index(row["human"])][labels.index(row["judge"])] = int(row["count"])
+
+    fig, ax = plt.subplots(figsize=(5.6, 4.6), dpi=100)
+    ax.imshow(matrix, cmap="Blues", vmin=0, vmax=max(max(row) for row in matrix))
+    for i, human in enumerate(labels):
+        for j, judge in enumerate(labels):
+            value = matrix[i][j]
+            ax.text(j, i, str(value), ha="center", va="center", fontsize=14, color=INK if value < 40 else "white")
+    ax.set_xticks(range(3), ["correct", "partial", "wrong"])
+    ax.set_yticks(range(3), ["correct", "partial", "wrong"])
+    ax.set_xlabel("裁判判定")
+    ax.set_ylabel("人工标签")
+    ax.set_title("裁判偏宽：5 道 partial 被判成 correct", loc="left", fontsize=13, color=INK, pad=12)
+    for spine in ax.spines.values():
+        spine.set_visible(False)
+    fig.tight_layout()
+    save(fig, "6-3-judge-confusion", preview)
+
+
+def plot_eval_disagreement(preview: bool) -> None:
+    faithful = {row["metric"]: float(row["value"]) for row in read_evaluation("faithfulness-summary.csv") if row["value"] not in ("",)}
+    pointwise = [row for row in read_evaluation("judge-pointwise.csv") if row["category"] != "refuse"]
+    auto_map = {row["id"]: row["auto_correct"] for row in read_rag("generation-audit.csv")}
+    human_correct = sum(row["human"] == "correct" for row in pointwise) / len(pointwise)
+    auto_correct = sum(1 for row in pointwise if auto_map.get(row["id"]) == "1") / len(pointwise)
+    judge_correct = sum(row["strict"] == "correct" for row in pointwise) / len(pointwise)
+
+    fig, (left, right) = plt.subplots(1, 2, figsize=(9.6, 4.2), dpi=100)
+    names = ["人工标签", "字符串判定", "9B 裁判"]
+    values = [human_correct, auto_correct, judge_correct]
+    colors = [GRAY, BLUE_LIGHT, BLUE]
+    bars = left.bar(names, values, color=colors, width=0.56, zorder=3)
+    for bar, value in zip(bars, values):
+        left.text(bar.get_x() + bar.get_width() / 2, value + 0.02, f"{value:.0%}", ha="center", fontsize=11, color=INK)
+    left.set_ylim(0, 1.08)
+    left.set_ylabel("判为 correct 的比例")
+    left.set_title("正确率：三把尺子最多差 20 个百分点", loc="left", fontsize=13, color=INK, pad=12)
+    style_axes(left)
+    left.grid(False)
+
+    names = ["程序判定（全句支撑）", "9B 裁判"]
+    values = [faithful.get("answers_content_all_supported", 0), faithful.get("judge_faithful", 0)]
+    bars = right.bar(names, values, color=[BLUE_LIGHT, BLUE], width=0.46, zorder=3)
+    for bar, value in zip(bars, values):
+        right.text(bar.get_x() + bar.get_width() / 2, value + 0.02, f"{value:.0%}", ha="center", fontsize=11, color=INK)
+    right.set_ylim(0, 1.08)
+    right.set_ylabel("判为忠实的比例")
+    right.set_title("忠实度：程序 68%，裁判 97%", loc="left", fontsize=13, color=INK, pad=12)
+    style_axes(right)
+    right.grid(False)
+    fig.tight_layout()
+    save(fig, "6-3-eval-disagreement", preview)
+
+
+
+def plot_ablation(preview: bool) -> None:
+    rows = read_evaluation("ablation-retrieval.csv")
+    order = ["bm25", "dense", "rrf", "rrf_rerank", "rrf_fixed", "rrf_512"]
+    labels = {
+        "bm25": "BM25",
+        "dense": "稠密",
+        "rrf": "RRF",
+        "rrf_rerank": "RRF+重排",
+        "rrf_fixed": "固定切分",
+        "rrf_512": "512 维",
+    }
+    by_name = {row["variant"]: row for row in rows}
+    colors = {"bm25": GRAY, "dense": BLUE_LIGHT, "rrf": BLUE, "rrf_rerank": "#93c5fd", "rrf_fixed": AMBER, "rrf_512": "#fcd34d"}
+
+    fig, ax = plt.subplots(figsize=(9.6, 4.4), dpi=100)
+    width = 0.36
+    for index, (metric, label, offset) in enumerate(
+        (("recall@5", "Recall@5", -width / 2), ("mrr@10", "MRR@10", width / 2))
+    ):
+        values = [float(by_name[name][metric]) for name in order]
+        positions = [position + offset for position in range(len(order))]
+        metric_color = BLUE if metric == "recall@5" else BLUE_LIGHT
+        bars = ax.bar(positions, values, width, color=metric_color, label=label, zorder=3)
+        for bar, value in zip(bars, values):
+            ax.text(bar.get_x() + bar.get_width() / 2, value + 0.012, f"{value:.2f}", ha="center", fontsize=8, color=INK)
+
+    ax.set_xticks(range(len(order)), [labels[name] for name in order])
+    ax.set_ylim(0, 1.08)
+    ax.set_ylabel("指标值（越高越好）")
+    ax.set_title("换切分掉 10 个点，重排几乎不动：组件的重要性差一个量级", loc="left", fontsize=14, color=INK, pad=14)
+    style_axes(ax)
+    ax.grid(False)
+    ax.legend(loc="upper right", frameon=False, fontsize=9, ncol=2)
+    fig.tight_layout()
+    save(fig, "6-4-ablation", preview)
+
+
+def plot_ablation_forest(preview: bool) -> None:
+    rows = [
+        row
+        for row in read_evaluation("ablation-paired.csv")
+        if row["metric"] == "mrr@10"
+    ]
+    labels = {
+        "bm25": "BM25",
+        "dense": "稠密",
+        "rrf_rerank": "RRF+重排",
+        "rrf_fixed": "固定切分",
+        "rrf_512": "512 维",
+    }
+    rows.sort(key=lambda row: float(row["delta"]))
+    fig, ax = plt.subplots(figsize=(9.6, 3.8), dpi=100)
+    ys = list(range(len(rows)))
+    for y, row in zip(ys, rows):
+        low, high = float(row["ci_low"]), float(row["ci_high"])
+        delta = float(row["delta"])
+        color = AMBER if low > 0 or high < 0 else MUTED
+        ax.plot([low, high], [y, y], color=color, linewidth=2.2)
+        ax.plot(delta, y, marker="o", markersize=7, color=color)
+        ax.text(high + 0.008, y, f"{delta:+.2f}", va="center", fontsize=9, color=color)
+
+    ax.axvline(0, color=INK, linewidth=1, linestyle="--")
+    ax.set_yticks(ys, [labels[row["variant"]] for row in rows])
+    ax.set_xlabel("MRR@10 相对 RRF 的差值（95% bootstrap 区间）")
+    ax.set_title("重排的区间跨过 0：这项改动在本测试集上分辨不出收益", loc="left", fontsize=14, color=INK, pad=14)
+    style_axes(ax)
+    ax.grid(axis="x")
+    fig.tight_layout()
+    save(fig, "6-4-forest", preview)
+
+
 def save(fig: plt.Figure, name: str, preview: bool) -> None:
     OUT.mkdir(parents=True, exist_ok=True)
     fig.savefig(OUT / f"{name}.svg", format="svg", facecolor="white")

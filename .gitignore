@@ -36,7 +36,7 @@ __pycache__/
 .playwright-mcp/
 
 # 第五部分实验的向量缓存与日志
-labs/05-rag/.cache/
+labs/*/.cache/
 
 # 测量与日志的临时输出
 benchmarks/**/*.tmp
