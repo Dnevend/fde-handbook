@@ -42,8 +42,10 @@ labs/*/.cache/
 benchmarks/**/*.tmp
 *.log
 
-# 第八部分：反馈原文可能含用户数据，只提汇总
+# 第八部分：反馈/追踪/审计原文可能含用户数据，只提汇总
 benchmarks/delivery/feedback.jsonl
+benchmarks/delivery/traces.jsonl
+benchmarks/delivery/audit.jsonl
 
 # 离线 bundle 产物
 dist/

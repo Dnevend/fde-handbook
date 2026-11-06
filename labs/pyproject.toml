@@ -10,6 +10,7 @@ dependencies = [
     "numpy>=2.4.6",
     "openai>=2,<3",
     "pymupdf>=2.0",
+    "pyyaml>=6",
     "uvicorn>=0.32,<1",
 ]
 

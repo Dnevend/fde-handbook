@@ -549,14 +549,14 @@
           "path": "/08-delivery/04-observability",
           "title": "可观测性：日志、链路追踪、反馈闭环",
           "nav": "可观测性",
-          "status": "placeholder"
+          "status": "draft"
         },
         {
           "num": "8.5",
           "path": "/08-delivery/05-security-and-permissions",
           "title": "数据安全与权限",
           "nav": "数据安全与权限",
-          "status": "placeholder"
+          "status": "draft"
         },
         {
           "num": "8.6",

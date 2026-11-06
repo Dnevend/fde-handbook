@@ -1,0 +1,73 @@
+{
+  "date": "2026-11-07",
+  "host": "Apple M4 / 24GB",
+  "engine": "llama.cpp 0.7.0",
+  "service": "labs/08-delivery/service/app.py",
+  "purpose": "8.4/8.5 本机冒烟：结构化日志、traces、audit、feedback、ACL",
+  "requests": 5,
+  "users": {
+    "auditor": 2,
+    "alice": 1,
+    "bob": 1,
+    "anonymous": 1
+  },
+  "acl_checks": [
+    {
+      "user": "auditor",
+      "question": "涉事吹瓶机的型号和厂家是什么？",
+      "result": "answered",
+      "citations": [
+        "acc-fangsu-0518"
+      ]
+    },
+    {
+      "user": "alice",
+      "question": "涉事吹瓶机的型号和厂家是什么？",
+      "result": "refused",
+      "citations": [
+        "gov-ledger-guide"
+      ]
+    },
+    {
+      "user": "bob",
+      "question": "涉事吹瓶机的型号和厂家是什么？",
+      "result": "refused",
+      "citations": [
+        "gov-ledger-guide"
+      ]
+    },
+    {
+      "user": "anonymous",
+      "question": "应急预案多久演练一次？",
+      "result": "refused",
+      "citations": []
+    }
+  ],
+  "trace_fields": [
+    "request_id",
+    "user",
+    "roles",
+    "allowed_count",
+    "retrieval_ms",
+    "ttft_s",
+    "generation_s",
+    "total_s",
+    "tokens",
+    "docs",
+    "ok",
+    "question_len",
+    "question_sha256",
+    "refused",
+    "cancelled"
+  ],
+  "artifacts": {
+    "traces": "benchmarks/delivery/traces.jsonl（gitignore，运行时生成）",
+    "audit": "benchmarks/delivery/audit.jsonl（gitignore，运行时生成）",
+    "feedback": "benchmarks/delivery/feedback.jsonl（gitignore，运行时生成）"
+  },
+  "limitations": [
+    "身份来自 X-User-ID，不是 SSO/OIDC",
+    "权限策略是演示用 access.yaml，不是客户组织架构",
+    "GPU/生产环境未测"
+  ]
+}

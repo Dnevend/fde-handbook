@@ -1,0 +1,33 @@
+# 8.5 演示用文档级权限。生产要接 SSO/OIDC 和正式的权限系统，
+# 这里只表达「身份 → 角色 → 允许的 doc_id」这条链路。
+version: 1
+default_role: anonymous
+
+roles:
+  anonymous:
+    allow_docs: []
+  internal:
+    allow_all: true
+    deny_docs:
+      # PC-007 是合成工艺卡；服务索引 include_synthetic=False，它不在
+      # corpus/sources.yaml 的 16 个 doc_id 里。要限制它，先把合成件纳入
+      # 服务索引，再在这里登记；否则 deny 是空操作（access.py 会拒绝未知 id）。
+      - acc-fangsu-0518     # 事故报告，含个人信息
+      - acc-yisheng-0527    # 事故报告，含个人信息
+  contractor:
+    allow_docs:
+      - reg-safety-law
+      - reg-mem-order-13
+      - gov-ledger-guide
+      - gov-checklist-hs
+      - gov-responsibility-zs
+  auditor:
+    allow_all: true
+
+users:
+  alice:
+    roles: [internal]
+  bob:
+    roles: [contractor]
+  auditor:
+    roles: [auditor]

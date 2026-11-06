@@ -84,7 +84,7 @@ bash verify.sh --mode local      # 不隔离，只冒烟
 sudo bash verify.sh --mode unshare  # Linux 真断网
 ```
 
-`--mode unshare` 会新建 net namespace、把 loopback 起起来，再跑 `--mode local`；这样本地 `127.0.0.1` 的 llama-server 仍可用，外网不可达。`verify.sh` 会检查：清单、必需文件、服务健康、已知问题（回答+引用）、语料外问题（拒答）、反馈接口、metrics。
+`--mode unshare` 会新建 net namespace、把 loopback 起起来，再跑 `--mode local`；这样本地 `127.0.0.1` 的 llama-server 仍可用，外网不可达。`verify.sh` 会检查：清单、必需文件、服务健康、已知问题（`X-User-ID: auditor`，回答+引用）、语料外问题（anonymous，拒答）、反馈接口、metrics。如果你改了 8.5 的权限策略，先同步改脚本里的测试身份。
 
 **验收证据要留**：`verify-answer.json`、`verify-refusal.json`、`verify.log`，以及执行时间/执行人。只写“已离线验证”不算。
 

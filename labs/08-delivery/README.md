@@ -70,6 +70,42 @@ data: {...}
 data: [DONE]
 ```
 
+## 8.4 可观测性
+
+服务默认把 JSON 日志写到 stderr；设置 `LOG_FILE` 后同时写文件。每个请求有 `X-Request-ID`，并落三份数据：
+
+- `benchmarks/delivery/traces.jsonl`：请求级 span（retrieval、generation、TTFT、token），不记问题原文；
+- `benchmarks/delivery/feedback.jsonl`：评分/评论；
+- `benchmarks/delivery/audit.jsonl`：权限审计（用户、角色、允许文档数、引用文档 id）。
+
+```bash
+cd labs
+LOG_FILE=../benchmarks/delivery/service.log uv run 08-delivery/service/app.py
+# 另开终端发几个请求后（在仓库根目录）：
+uv run labs/08-delivery/observability/report.py
+uv run labs/08-delivery/observability/report.py --json
+```
+
+`/metrics` 提供 `rag_requests_total`、`rag_errors_total`、`rag_ttft_seconds`、`rag_tpot_seconds`、`rag_retrieval_ms`、`rag_tokens_total`、`rag_feedback_total`。
+
+## 8.5 安全与权限
+
+`service/access.yaml` 是演示用 ACL：`alice`（internal）、`bob`（contractor）、`auditor`（全部）、未带 `X-User-ID` 的 anonymous（默认拒绝）。服务在检索前按用户过滤候选池，不是对 top-5 事后过滤。
+
+```bash
+# alice 能看法规，但看不到事故报告/客户资料
+curl -s -X POST http://127.0.0.1:8090/v1/chat/completions \
+  -H 'Content-Type: application/json' -H 'X-User-ID: alice' \
+  -d '{"model":"rag-service","messages":[{"role":"user","content":"主要负责人对本单位安全生产工作负什么责任？"}],"max_tokens":64}'
+
+# anonymous 没有可见文档，应拒答
+curl -s -X POST http://127.0.0.1:8090/v1/chat/completions \
+  -H 'Content-Type: application/json' \
+  -d '{"model":"rag-service","messages":[{"role":"user","content":"应急预案多久演练一次？"}],"max_tokens":64}'
+```
+
+生产要接 SSO/OIDC、正式权限系统和审计存储；`X-User-ID` 只是实验里的身份入口。
+
 ## 8.2 离线 bundle
 
 ```bash

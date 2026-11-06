@@ -157,6 +157,8 @@ export SERVICE_HOST=127.0.0.1
 export SERVICE_PORT=8090
 export BACKEND_MODEL=qwen3.5-9b
 export RERANK=1
+export ACCESS_POLICY="$BUNDLE/labs/08-delivery/service/access.yaml"
+export LOG_FILE="$BUNDLE/benchmarks/delivery/service.log"
 # export ALLOWED_DOCS=reg-safety-law,reg-mem-order-13
 EOF
 

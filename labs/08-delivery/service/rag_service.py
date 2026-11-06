@@ -99,18 +99,31 @@ class RagEngine:
             rag.ensure_reranker_server()
         self.llm_port = rag.ensure_llm_server(ctx=8192)
 
-    def retrieve(self, question: str) -> tuple[list[Passage], float]:
+    def _effective_allowed(self, allowed_docs: set[str] | None) -> set[str] | None:
+        """请求级允许集合与全局白名单取交集；None 表示不限制。"""
+        if self.allowed_docs is None:
+            return allowed_docs
+        if allowed_docs is None:
+            return self.allowed_docs
+        return self.allowed_docs & allowed_docs
+
+    def retrieve(
+        self,
+        question: str,
+        allowed_docs: set[str] | None = None,
+    ) -> tuple[list[Passage], float]:
         started = time.perf_counter()
         query_vector = rag.embed_texts([question], kind="query")[0]
 
         # 权限过滤在候选池上做，而不是对 top-20 事后过滤：
         # 否则受限文档很多的用户可能因为候选被截断而“误拒”。
         # 注意 rank_from_scores 不会跳过 -inf，所以 k 要封顶到允许块数。
+        effective_allowed = self._effective_allowed(allowed_docs)
         allowed_mask = None
         allowed_count = len(self.ids)
-        if self.allowed_docs is not None:
+        if effective_allowed is not None:
             allowed_mask = np.array(
-                [self.by_id[chunk_id]["doc_id"] in self.allowed_docs for chunk_id in self.ids],
+                [self.by_id[chunk_id]["doc_id"] in effective_allowed for chunk_id in self.ids],
                 dtype=bool,
             )
             allowed_count = int(allowed_mask.sum())
@@ -175,14 +188,22 @@ class RagEngine:
         ]
         return build_prompt(question, chunks, with_context=True)
 
-    def stream(self, question: str, *, max_tokens: int = 384, model: str | None = None):
+    def stream(
+        self,
+        question: str,
+        *,
+        max_tokens: int = 384,
+        model: str | None = None,
+        allowed_docs: set[str] | None = None,
+    ):
         """生成事件流：retrieval → delta* → citations → done。
 
         model 是后端 served-model-name；对外暴露的模型名由 app.py 处理。
         vLLM 会校验这个名字，不能把 `rag-service` 直接传进来。
+        allowed_docs 是请求级权限；None 表示沿用全局白名单/不限制。
         """
         backend_model = model or os.environ.get("BACKEND_MODEL", "qwen3.5-9b")
-        passages, retrieval_ms = self.retrieve(question)
+        passages, retrieval_ms = self.retrieve(question, allowed_docs=allowed_docs)
         yield {
             "type": "retrieval",
             "retrieval_ms": round(retrieval_ms, 1),
@@ -200,6 +221,7 @@ class RagEngine:
                 "total_s": 0.0,
                 "tokens": 0,
                 "citations": [],
+                "refused": True,
             }
             return
 
@@ -253,15 +275,28 @@ class RagEngine:
             "tokens": usage_tokens or tokens,
             "prompt_tokens": prompt_tokens,
             "citations": citations,
+            "refused": False,
         }
 
-    def answer(self, question: str, *, max_tokens: int = 384, model: str | None = None) -> dict:
+    def answer(
+        self,
+        question: str,
+        *,
+        max_tokens: int = 384,
+        model: str | None = None,
+        allowed_docs: set[str] | None = None,
+    ) -> dict:
         """非流式包装，给 /v1/chat/completions?stream=false 用。"""
         content: list[str] = []
         citations: list[dict] = []
         retrieval_ms = 0.0
         usage = {}
-        for event in self.stream(question, max_tokens=max_tokens, model=model):
+        for event in self.stream(
+            question,
+            max_tokens=max_tokens,
+            model=model,
+            allowed_docs=allowed_docs,
+        ):
             if event["type"] == "retrieval":
                 retrieval_ms = event["retrieval_ms"]
             elif event["type"] == "delta":
@@ -277,4 +312,5 @@ class RagEngine:
             "total_s": usage.get("total_s", 0.0),
             "tokens": usage.get("tokens", 0),
             "prompt_tokens": usage.get("prompt_tokens", 0),
+            "refused": usage.get("refused", False),
         }

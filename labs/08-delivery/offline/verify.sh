@@ -60,6 +60,8 @@ for required in \
   labs/05-rag/raglib.py labs/05-rag/config.yaml \
   labs/05-rag/.cache/chunks-structure-real.jsonl \
   labs/08-delivery/service/app.py labs/08-delivery/service/rag_service.py \
+  labs/08-delivery/service/access.py labs/08-delivery/service/access.yaml \
+  labs/08-delivery/observability/report.py \
   corpus/sources.yaml; do
   [ -e "$BUNDLE/$required" ] || fail "缺 $required"
 done
@@ -165,7 +167,7 @@ ok "服务已就绪：http://127.0.0.1:$SERVICE_PORT"
 
 answer_json="$BUNDLE/verify-answer.json"
 curl -sS -m 300 -X POST "http://127.0.0.1:$SERVICE_PORT/v1/chat/completions" \
-  -H 'Content-Type: application/json' \
+  -H 'Content-Type: application/json' -H 'X-User-ID: auditor' \
   -d "{\"model\":\"rag-service\",\"messages\":[{\"role\":\"user\",\"content\":\"$QUESTION\"}],\"stream\":false,\"max_tokens\":128}" \
   > "$answer_json"
 
@@ -185,7 +187,7 @@ PY
 
 refusal_json="$BUNDLE/verify-refusal.json"
 curl -sS -m 300 -X POST "http://127.0.0.1:$SERVICE_PORT/v1/chat/completions" \
-  -H 'Content-Type: application/json' \
+  -H 'Content-Type: application/json' -H 'X-User-ID: anonymous' \
   -d "{\"model\":\"rag-service\",\"messages\":[{\"role\":\"user\",\"content\":\"$REFUSAL_QUESTION\"}],\"stream\":false,\"max_tokens\":64}" \
   > "$refusal_json"
 
@@ -201,7 +203,7 @@ print("PASS: 拒答正确")
 PY
 
 curl -sS -m 10 -X POST "http://127.0.0.1:$SERVICE_PORT/feedback" \
-  -H 'Content-Type: application/json' \
+  -H 'Content-Type: application/json' -H 'X-User-ID: auditor' \
   -d '{"request_id":"verify","rating":5,"comment":"offline verify","tags":["verify"]}' >/dev/null
 ok "反馈接口可用"
 

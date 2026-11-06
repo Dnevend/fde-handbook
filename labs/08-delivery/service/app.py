@@ -17,7 +17,12 @@
     SERVICE_HOST=127.0.0.1  SERVICE_PORT=8090
     SERVICE_WARMUP=1        启动时拉起 embedding/rerank/llm
     RERANK=1                是否重排
-    ALLOWED_DOCS=           逗号分隔的 doc_id；空表示不限制（8.5 的权限钩子）
+    BACKEND_MODEL=qwen3.5-9b 后端 served-model-name
+    ACCESS_POLICY=...       8.5 的 access.yaml
+    LOG_FILE=...            额外写一份 JSON 日志
+    ALLOWED_DOCS=           逗号分隔的 doc_id；作为全局白名单与用户权限取交集
+
+身份：请求头 X-User-ID 对应 access.yaml 里的用户；不带就是 anonymous（默认拒绝）。
 """
 
 from __future__ import annotations
@@ -38,10 +43,14 @@ from fastapi.responses import JSONResponse, PlainTextResponse, StreamingResponse
 from pydantic import BaseModel, ConfigDict, Field
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
+from access import AccessPolicy, User, question_fingerprint  # noqa: E402
 from rag_service import RagEngine  # noqa: E402
 
 ROOT = Path(__file__).resolve().parents[3]
 FEEDBACK = ROOT / "benchmarks" / "delivery" / "feedback.jsonl"
+TRACES = ROOT / "benchmarks" / "delivery" / "traces.jsonl"
+TRACE_LOCK = Lock()
+ACCESS = AccessPolicy.load()
 
 logger = logging.getLogger("rag-service")
 logger.setLevel(logging.INFO)
@@ -49,10 +58,26 @@ _handler = logging.StreamHandler(sys.stderr)
 _handler.setFormatter(logging.Formatter("%(message)s"))
 if not logger.handlers:
     logger.addHandler(_handler)
+_log_file = os.environ.get("LOG_FILE")
+if _log_file:
+    Path(_log_file).parent.mkdir(parents=True, exist_ok=True)
+    if not any(isinstance(handler, logging.FileHandler) for handler in logger.handlers):
+        _file_handler = logging.FileHandler(_log_file, encoding="utf-8")
+        _file_handler.setFormatter(logging.Formatter("%(message)s"))
+        logger.addHandler(_file_handler)
 
 
 def log_event(**fields: Any) -> None:
     logger.info(json.dumps({"ts": time.strftime("%Y-%m-%dT%H:%M:%S%z"), **fields}, ensure_ascii=False))
+
+
+def append_trace(row: dict) -> None:
+    """一条请求一行，只记结构/耗时/文档 id，不记问题和正文。"""
+    TRACES.parent.mkdir(parents=True, exist_ok=True)
+    payload = {"ts": time.strftime("%Y-%m-%dT%H:%M:%S%z"), **row}
+    with TRACE_LOCK:
+        with TRACES.open("a", encoding="utf-8") as handle:
+            handle.write(json.dumps(payload, ensure_ascii=False) + "\n")
 
 
 class Metrics:
@@ -64,13 +89,24 @@ class Metrics:
         self.errors = 0
         self.ttft_sum = 0.0
         self.ttft_count = 0
+        self.tpot_sum = 0.0
+        self.tpot_count = 0
         self.total_sum = 0.0
         self.tokens = 0
         self.retrieval_sum = 0.0
         self.retrieval_count = 0
         self.feedback = 0
 
-    def observe(self, *, ok: bool, ttft: float, total: float, tokens: int, retrieval_ms: float) -> None:
+    def observe(
+        self,
+        *,
+        ok: bool,
+        ttft: float,
+        total: float,
+        tokens: int,
+        retrieval_ms: float,
+        tpot: float = 0.0,
+    ) -> None:
         with self.lock:
             self.requests += 1
             if not ok:
@@ -78,6 +114,9 @@ class Metrics:
             if ttft:
                 self.ttft_sum += ttft
                 self.ttft_count += 1
+            if tpot:
+                self.tpot_sum += tpot
+                self.tpot_count += 1
             self.total_sum += total
             self.tokens += tokens
             if retrieval_ms:
@@ -110,6 +149,13 @@ class Metrics:
                     "# TYPE rag_ttft_seconds summary",
                     f"rag_ttft_seconds_sum {self.ttft_sum:.4f}",
                     f"rag_ttft_seconds_count {self.ttft_count}",
+                ]
+            if self.tpot_count:
+                lines += [
+                    "# HELP rag_tpot_seconds 每 token 延迟",
+                    "# TYPE rag_tpot_seconds summary",
+                    f"rag_tpot_seconds_sum {self.tpot_sum:.4f}",
+                    f"rag_tpot_seconds_count {self.tpot_count}",
                 ]
             if self.retrieval_count:
                 lines += [
@@ -144,6 +190,37 @@ def get_engine() -> RagEngine:
             if ENGINE is None:
                 ENGINE = build_engine()
     return ENGINE
+
+
+def user_from_request(request: Request) -> User:
+    return ACCESS.authenticate(request.headers.get("x-user-id"))
+
+
+def allowed_for_user(user: User) -> set[str] | None:
+    engine = get_engine()
+    docs = ACCESS.allowed_docs(user)
+    if engine.allowed_docs is not None:
+        docs = engine.allowed_docs if docs is None else docs & engine.allowed_docs
+    return docs
+
+
+def audit_reject(
+    request_id: str,
+    user: User,
+    status: int,
+    reason: str,
+    question: str = "",
+) -> None:
+    ACCESS.audit({
+        "event": "reject",
+        "request_id": request_id,
+        "status": status,
+        "reason": reason,
+        "user": user.user_id,
+        "roles": list(user.roles),
+        "authenticated": user.authenticated,
+        **question_fingerprint(question),
+    })
 
 
 app = FastAPI(title="FDE Handbook RAG Service", version="0.1.0")
@@ -223,20 +300,40 @@ def chunk_payload(request_id: str, model: str, text: str) -> dict:
     }
 
 
-def stream_events(question: str, request_id: str, model: str, max_tokens: int):
+def stream_events(
+    question: str,
+    request_id: str,
+    model: str,
+    max_tokens: int,
+    user: User,
+    allowed_docs: set[str] | None,
+):
     started = time.perf_counter()
     done: dict = {}
     retrieval_ms = 0.0
+    passage_docs: list[str] = []
     ok = False
+    error_text = ""
     try:
         engine = get_engine()
         for event in engine.stream(
             question,
             max_tokens=max_tokens,
             model=os.environ.get("BACKEND_MODEL", "qwen3.5-9b"),
+            allowed_docs=allowed_docs,
         ):
             if event["type"] == "retrieval":
                 retrieval_ms = float(event["retrieval_ms"])
+                passage_docs = [item["doc_id"] for item in event["passages"]]
+                log_event(
+                    event="span",
+                    request_id=request_id,
+                    span="retrieval",
+                    user=user.user_id,
+                    ms=round(retrieval_ms, 1),
+                    passages=len(passage_docs),
+                    docs=sorted(set(passage_docs)),
+                )
                 yield sse(
                     "retrieval",
                     {
@@ -250,6 +347,15 @@ def stream_events(question: str, request_id: str, model: str, max_tokens: int):
             elif event["type"] == "done":
                 done = event
                 ok = True
+                log_event(
+                    event="span",
+                    request_id=request_id,
+                    span="generation",
+                    user=user.user_id,
+                    ms=round(float(event.get("total_s", 0.0)) * 1000, 1),
+                    ttft_s=event.get("ttft_s", 0.0),
+                    tokens=event.get("tokens", 0),
+                )
                 yield sse(None, {
                     "id": f"chatcmpl-{request_id}",
                     "object": "chat.completion.chunk",
@@ -270,7 +376,8 @@ def stream_events(question: str, request_id: str, model: str, max_tokens: int):
                 })
         yield "data: [DONE]\n\n"
     except Exception as exc:  # noqa: BLE001 - 错误要变成 SSE 事件，不能只写日志
-        log_event(event="error", request_id=request_id, error=f"{type(exc).__name__}: {exc}")
+        error_text = f"{type(exc).__name__}: {exc}"
+        log_event(event="error", request_id=request_id, span="error", user=user.user_id, error=error_text)
         yield sse("error", {
             "request_id": request_id,
             "error": "internal_error",
@@ -279,34 +386,73 @@ def stream_events(question: str, request_id: str, model: str, max_tokens: int):
         yield "data: [DONE]\n\n"
     finally:
         # 注意：finally 里不能再 yield。客户端断开时生成器会被 close，
-        # 在 finally 里 yield 会抛 GeneratorExit/RuntimeError；这里只记指标和日志。
+        # 在 finally 里 yield 会抛 GeneratorExit/RuntimeError；这里只记指标/审计/追踪。
         total = time.perf_counter() - started
+        ttft = float(done.get("ttft_s", 0.0))
+        tokens = int(done.get("tokens", 0))
+        gen_total = float(done.get("total_s", 0.0))
+        tpot = (gen_total - ttft) / (tokens - 1) if tokens > 1 and gen_total > ttft else 0.0
         metrics.observe(
             ok=ok,
-            ttft=float(done.get("ttft_s", 0.0)),
+            ttft=ttft,
             total=total,
-            tokens=int(done.get("tokens", 0)),
+            tokens=tokens,
             retrieval_ms=retrieval_ms,
+            tpot=tpot,
         )
+        trace = {
+            "request_id": request_id,
+            "route": "/v1/chat/completions",
+            "stream": True,
+            "user": user.user_id,
+            "roles": list(user.roles),
+            "allowed_count": None if allowed_docs is None else len(allowed_docs),
+            "retrieval_ms": round(retrieval_ms, 1),
+            "ttft_s": ttft,
+            "generation_s": round(gen_total, 3),
+            "total_s": round(total, 3),
+            "tokens": tokens,
+            "docs": sorted(set(passage_docs)),
+            "ok": ok,
+            "refused": bool(done.get("refused", False)),
+            "cancelled": bool(not ok and not error_text),
+            "error": error_text,
+            **question_fingerprint(question),
+        }
+        append_trace(trace)
+        ACCESS.audit({
+            "event": "chat",
+            **trace,
+            "authenticated": user.authenticated,
+            "retrieved_docs": sorted(set(passage_docs)),
+        })
         log_event(
             event="chat",
             request_id=request_id,
+            user=user.user_id,
             ok=ok,
             total_s=round(total, 3),
-            ttft_s=done.get("ttft_s"),
-            tokens=done.get("tokens"),
+            ttft_s=ttft,
+            tokens=tokens,
+            allowed_count=None if allowed_docs is None else len(allowed_docs),
         )
 
 
 @app.get("/health")
 def health() -> dict:
     engine = get_engine()
+    summary = ACCESS.summary()
     return {
         "status": "ok",
         "chunks": len(engine.chunks),
         "model": os.environ.get("BACKEND_MODEL", "qwen3.5-9b"),
         "rerank": engine.rerank_enabled,
-        "allowed_docs": sorted(engine.allowed_docs) if engine.allowed_docs else None,
+        # 不暴露用户名/角色名/策略路径；排障用日志和审计
+        "policy": {
+            "version": summary["version"],
+            "docs": summary["docs"],
+            "users": len(summary["users"]),
+        },
     }
 
 
@@ -321,9 +467,11 @@ def models() -> dict:
 @app.post("/v1/chat/completions")
 def chat_completions(request: Request, payload: ChatRequest):
     request_id = getattr(request.state, "request_id", uuid.uuid4().hex[:12])
+    user = user_from_request(request)
     try:
         question = last_user_message(payload.messages)
     except ValueError as exc:
+        audit_reject(request_id, user, 400, "empty_user_message")
         return JSONResponse(
             status_code=400,
             content={"error": {"message": str(exc), "type": "invalid_request_error"}},
@@ -332,6 +480,7 @@ def chat_completions(request: Request, payload: ChatRequest):
     max_chars = int(os.environ.get("MAX_QUESTION_CHARS", "8000"))
     total_chars = sum(len(message.content) for message in payload.messages)
     if total_chars > max_chars:
+        audit_reject(request_id, user, 413, "too_large", question)
         return JSONResponse(
             status_code=413,
             content={
@@ -342,9 +491,18 @@ def chat_completions(request: Request, payload: ChatRequest):
             },
         )
 
+    allowed_docs = allowed_for_user(user)
+
     if payload.stream:
         return StreamingResponse(
-            stream_events(question, request_id, payload.model, payload.max_tokens),
+            stream_events(
+                question,
+                request_id,
+                payload.model,
+                payload.max_tokens,
+                user,
+                allowed_docs,
+            ),
             media_type="text/event-stream",
             headers={"Cache-Control": "no-cache", "X-Accel-Buffering": "no"},
         )
@@ -356,13 +514,57 @@ def chat_completions(request: Request, payload: ChatRequest):
             question,
             max_tokens=payload.max_tokens,
             model=os.environ.get("BACKEND_MODEL", "qwen3.5-9b"),
+            allowed_docs=allowed_docs,
         )
+        total = time.perf_counter() - started
+        ttft = float(result.get("ttft_s", 0.0))
+        tokens = int(result.get("tokens", 0))
+        gen_total = float(result.get("total_s", 0.0))
+        tpot = (gen_total - ttft) / (tokens - 1) if tokens > 1 and gen_total > ttft else 0.0
         metrics.observe(
             ok=True,
-            ttft=float(result.get("ttft_s", 0.0)),
-            total=time.perf_counter() - started,
-            tokens=int(result.get("tokens", 0)),
+            ttft=ttft,
+            total=total,
+            tokens=tokens,
             retrieval_ms=float(result.get("retrieval_ms", 0.0)),
+            tpot=tpot,
+        )
+        docs = sorted({item["doc_id"] for item in result["citations"]})
+        trace = {
+            "request_id": request_id,
+            "route": "/v1/chat/completions",
+            "stream": False,
+            "user": user.user_id,
+            "roles": list(user.roles),
+            "allowed_count": None if allowed_docs is None else len(allowed_docs),
+            "retrieval_ms": round(float(result.get("retrieval_ms", 0.0)), 1),
+            "ttft_s": ttft,
+            "generation_s": round(gen_total, 3),
+            "total_s": round(total, 3),
+            "tokens": tokens,
+            "docs": docs,
+            "ok": True,
+            "refused": bool(result.get("refused", False)),
+            "cancelled": False,
+            "error": "",
+            **question_fingerprint(question),
+        }
+        append_trace(trace)
+        ACCESS.audit({
+            "event": "chat",
+            **trace,
+            "authenticated": user.authenticated,
+            "retrieved_docs": docs,
+        })
+        log_event(
+            event="chat",
+            request_id=request_id,
+            user=user.user_id,
+            ok=True,
+            total_s=round(total, 3),
+            ttft_s=ttft,
+            tokens=tokens,
+            allowed_count=None if allowed_docs is None else len(allowed_docs),
         )
         return {
             "id": f"chatcmpl-{request_id}",
@@ -384,8 +586,36 @@ def chat_completions(request: Request, payload: ChatRequest):
             },
         }
     except Exception as exc:  # noqa: BLE001
-        metrics.observe(ok=False, ttft=0.0, total=time.perf_counter() - started, tokens=0, retrieval_ms=0.0)
-        log_event(event="error", request_id=request_id, error=f"{type(exc).__name__}: {exc}")
+        total = time.perf_counter() - started
+        metrics.observe(ok=False, ttft=0.0, total=total, tokens=0, retrieval_ms=0.0)
+        error_text = f"{type(exc).__name__}: {exc}"
+        log_event(event="error", request_id=request_id, span="error", user=user.user_id, error=error_text)
+        trace = {
+            "request_id": request_id,
+            "route": "/v1/chat/completions",
+            "stream": False,
+            "user": user.user_id,
+            "roles": list(user.roles),
+            "allowed_count": None if allowed_docs is None else len(allowed_docs),
+            "retrieval_ms": 0.0,
+            "ttft_s": 0.0,
+            "generation_s": 0.0,
+            "total_s": round(total, 3),
+            "tokens": 0,
+            "docs": [],
+            "ok": False,
+            "refused": False,
+            "cancelled": False,
+            "error": error_text,
+            **question_fingerprint(question),
+        }
+        append_trace(trace)
+        ACCESS.audit({
+            "event": "chat",
+            **trace,
+            "authenticated": user.authenticated,
+            "retrieved_docs": [],
+        })
         return JSONResponse(
             status_code=500,
             content={"error": {"message": "生成失败，请用 request_id 查日志。", "type": "internal_error"}},
