@@ -513,7 +513,7 @@
       "dir": "08-delivery",
       "nav": "第八部分 工程化与交付",
       "title": "第八部分 工程化与交付",
-      "status": "placeholder",
+      "status": "draft",
       "note": "",
       "sections": [
         {
@@ -521,21 +521,21 @@
           "path": "/08-delivery/",
           "title": "第八部分 工程化与交付",
           "nav": "导言",
-          "status": "placeholder"
+          "status": "draft"
         },
         {
           "num": "8.1",
           "path": "/08-delivery/01-service-architecture",
           "title": "服务架构与流式输出",
           "nav": "服务架构与流式输出",
-          "status": "placeholder"
+          "status": "draft"
         },
         {
           "num": "8.2",
           "path": "/08-delivery/02-offline-deployment",
           "title": "离线部署与断网验证",
           "nav": "离线部署与断网验证",
-          "status": "placeholder"
+          "status": "draft"
         },
         {
           "num": "8.3",
