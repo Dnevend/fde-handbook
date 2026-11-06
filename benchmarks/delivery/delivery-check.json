@@ -1,0 +1,32 @@
+{
+  "date": "2026-11-07",
+  "scope": "labs/08-delivery/delivery",
+  "checks": {
+    "templates_with_allow_flags": "PASS：8 份模板，关键小节/表格齐全",
+    "templates_without_allow_placeholders": "FAIL as expected：157 个未填占位符",
+    "filled_package_with_manifest": "PASS：8 份文档 + 全文件哈希清单",
+    "manifest_empty": "FAIL as expected：没列核心文档",
+    "manifest_only_one_file": "FAIL as expected：其余文件没列",
+    "tampered_manifest": "FAIL as expected：哈希不匹配",
+    "heading_removed": "FAIL as expected：缺标题「回滚」",
+    "heading_only_in_code_block": "FAIL as expected：代码块里的 # 回滚 不算标题",
+    "acceptance_table_empty": "FAIL as expected：缺数据行",
+    "operations_alert_table_empty": "FAIL as expected：「常见告警」表缺数据行",
+    "licenses_model_table_empty": "FAIL as expected：「模型」表缺数据行",
+    "angle_placeholder": "FAIL as expected：<目标目录> 未填",
+    "email_and_html_not_flagged": "PASS：<alice@example.com> / <div> 不算占位符",
+    "secret_in_config_env": "FAIL as expected：疑似密钥/密码",
+    "modern_openai_key": "HIT：sk-proj / sk-ant",
+    "chinese_password": "HIT：密码/口令（全角/半角/行首）",
+    "template_env_expression": "MISS：api_key: ${LLM_API_KEY}"
+  },
+  "commands": [
+    "python3 labs/08-delivery/delivery/check_delivery.py --allow-placeholders --allow-missing-manifest",
+    "python3 labs/08-delivery/delivery/check_delivery.py --dir <filled-package>",
+    "python3 labs/08-delivery/delivery/check_delivery.py --dir <tampered-package>"
+  ],
+  "limitations": [
+    "只验证结构与明显密钥，不验证内容正确性",
+    "模板未在真实客户交付中跑过；换人重装测试待做"
+  ]
+}

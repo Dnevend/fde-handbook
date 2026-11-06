@@ -106,6 +106,18 @@ curl -s -X POST http://127.0.0.1:8090/v1/chat/completions \
 
 生产要接 SSO/OIDC、正式权限系统和审计存储；`X-User-ID` 只是实验里的身份入口。
 
+## 8.7 交付物
+
+`delivery/templates/` 有 8 份核心文档模板：README、架构、部署、运维、验收、培训、AI 使用规范、许可证。`delivery/check_delivery.py` 做交付前自检：文件、关键小节、未填占位符、明显密钥。
+
+```bash
+# 模板自检（允许【占位符】）
+python3 labs/08-delivery/delivery/check_delivery.py --allow-placeholders --allow-missing-manifest
+
+# 真实交付包（占位符会失败）
+python3 labs/08-delivery/delivery/check_delivery.py --dir dist/delivery-<客户>-<版本>
+```
+
 ## 8.2 离线 bundle
 
 ```bash

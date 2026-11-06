@@ -570,7 +570,7 @@
           "path": "/08-delivery/07-deliverables",
           "title": "交付物：部署文档、培训材料、AI 使用规范",
           "nav": "交付物",
-          "status": "placeholder"
+          "status": "draft"
         }
       ]
     },
