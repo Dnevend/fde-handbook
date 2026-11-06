@@ -13,14 +13,14 @@ const byNum = new Map(
 const items = (book.readingPaths as Record<string, string[]>)[props.id]
   ?.map((num) => byNum.get(num))
   .filter((s): s is NonNullable<typeof s> => Boolean(s)) ?? []
-const pending = items.filter((s) => s.status === 'placeholder')
+const pending = items.filter((s) => s.status === 'placeholder' || s.status === 'draft')
 </script>
 
 <template>
   <div class="reading-path">
     <p class="reading-path__seq">
       <template v-for="(s, i) in items" :key="s.path">
-        <a :href="s.path" :class="{ 'is-pending': s.status === 'placeholder' }">{{ s.num }}</a>
+        <a :href="s.path" :class="{ 'is-pending': s.status === 'placeholder' || s.status === 'draft' }">{{ s.num }}</a>
         <span v-if="i < items.length - 1" class="reading-path__sep">→</span>
       </template>
     </p>

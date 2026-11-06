@@ -19,7 +19,7 @@ export function renderProgress() {
   const book = JSON.parse(readFileSync(join(ROOT, 'docs/.vitepress/book.json'), 'utf8'))
   const rows = book.parts.map((part) => {
     const sections = part.sections.filter((s) => s.num)
-    const status = part.status === 'done' ? '已完成' : '占位'
+    const status = part.status === 'done' ? '已完成' : part.status === 'draft' ? '草稿' : '占位'
     return `| ${part.title} | ${status} | ${sections.length} |`
   })
   const notes = book.parts

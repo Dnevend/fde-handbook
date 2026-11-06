@@ -14,6 +14,7 @@ const sections = book.parts.find((p) => p.id === props.part)?.sections.filter((s
     <li v-for="s in sections" :key="s.path">
       <a :href="s.path">{{ s.num }} {{ s.nav }}</a>
       <span v-if="s.status === 'placeholder'" class="chapter-list__tag">写作中</span>
+      <span v-else-if="s.status === 'draft'" class="chapter-list__tag">草稿</span>
     </li>
   </ul>
 </template>

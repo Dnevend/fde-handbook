@@ -433,7 +433,7 @@
       "dir": "07-gpu-inference",
       "nav": "第七部分 GPU 服务器与推理加速",
       "title": "第七部分 GPU 服务器与推理加速",
-      "status": "placeholder",
+      "status": "draft",
       "note": "",
       "sections": [
         {
@@ -441,70 +441,70 @@
           "path": "/07-gpu-inference/",
           "title": "第七部分 GPU 服务器与推理加速",
           "nav": "导言",
-          "status": "placeholder"
+          "status": "draft"
         },
         {
           "num": "7.1",
           "path": "/07-gpu-inference/01-gpu-hardware",
           "title": "GPU 硬件常识：显存 / 带宽 / 算力三者的关系，消费卡与数据中心卡，NVLink 与 PCIe",
           "nav": "GPU 硬件常识",
-          "status": "placeholder"
+          "status": "draft"
         },
         {
           "num": "7.2",
           "path": "/07-gpu-inference/02-software-stack",
           "title": "软件栈：驱动、CUDA、PyTorch 的版本对应，容器里调用 GPU（nvidia-container-toolkit）",
           "nav": "软件栈",
-          "status": "placeholder"
+          "status": "draft"
         },
         {
           "num": "7.3",
           "path": "/07-gpu-inference/03-monitoring",
           "title": "监控与诊断：nvidia-smi、nvtop、DCGM；利用率、显存、功耗、温度与降频",
           "nav": "监控与诊断",
-          "status": "placeholder"
+          "status": "draft"
         },
         {
           "num": "7.4",
           "path": "/07-gpu-inference/04-vllm",
           "title": "vLLM 部署：PagedAttention、连续批处理、关键参数与调参顺序",
           "nav": "vLLM 部署",
-          "status": "placeholder"
+          "status": "draft"
         },
         {
           "num": "7.5",
           "path": "/07-gpu-inference/05-gpu-quantization",
           "title": "GPU 端量化实操：AWQ / GPTQ / FP8",
           "nav": "GPU 端量化实操",
-          "status": "placeholder"
+          "status": "draft"
         },
         {
           "num": "7.6",
           "path": "/07-gpu-inference/06-inference-acceleration",
           "title": "推理加速：Prefix Caching（RAG 场景收益最大）、Chunked Prefill、投机解码",
           "nav": "推理加速",
-          "status": "placeholder"
+          "status": "draft"
         },
         {
           "num": "7.7",
           "path": "/07-gpu-inference/07-multi-gpu",
           "title": "多卡：张量并行、流水线并行、多副本三者的取舍；单机上 LLM / Embedding / Reranker 怎么分配",
           "nav": "多卡",
-          "status": "placeholder"
+          "status": "draft"
         },
         {
           "num": "7.8",
           "path": "/07-gpu-inference/08-oom-and-latency",
           "title": "卡顿与 OOM 排查：从现象到原因的诊断流程图",
           "nav": "卡顿与 OOM 排查",
-          "status": "placeholder"
+          "status": "draft"
         },
         {
           "num": "7.9",
           "path": "/07-gpu-inference/09-capacity-planning",
           "title": "容量规划：并发数 × 上下文长度 → 需要什么卡、几张",
           "nav": "容量规划",
-          "status": "placeholder"
+          "status": "draft"
         }
       ]
     },
@@ -629,7 +629,7 @@
           "path": "/appendix/f-cloud-gpu-manual",
           "title": "附录 F 云 GPU 实验手册（租机、环境准备、成本记录）",
           "nav": "云 GPU 实验手册",
-          "status": "placeholder"
+          "status": "draft"
         },
         {
           "num": "G",
