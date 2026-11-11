@@ -1,9 +1,9 @@
 import { defineConfig } from 'vitepress'
 import book from './book.json'
 
-// GitHub Pages 项目页的地址是 https://dnevend.github.io/fde-handbook/，
-// 本地 dev/preview 也会带这个前缀。
-const base = '/fde-handbook/'
+// 站点通过自定义域名 https://fde.dnevend.site/ 发布（GitHub Pages 项目页 +
+// project custom domain），所以站点位于域名根，base 用默认的 '/'。
+// 若改回 username.github.io/repo/ 形式，需要把 base 改成 '/repo/'。
 
 // 侧边栏与部分导言页的章节列表都由 book.json 生成。
 // 增删章节只改 book.json，再跑 `npm run docs:sync` 更新 README 的进度块。
@@ -20,13 +20,13 @@ export default defineConfig({
   lang: 'zh-CN',
   title: 'FDE Handbook',
   description: '从本地大模型到 RAG 落地',
-  base,
+  base: '/',
   cleanUrls: true,
   srcExclude: ['**/README.md'],
-  sitemap: { hostname: 'https://dnevend.github.io/fde-handbook/' },
+  sitemap: { hostname: 'https://fde.dnevend.site/' },
 
-  // head 里的链接不会自动加 base，必须手动拼。
-  head: [['link', { rel: 'icon', type: 'image/svg+xml', href: `${base}favicon.svg` }]],
+  // head 里的链接不会自动加 base，这里显式写出根路径。
+  head: [['link', { rel: 'icon', type: 'image/svg+xml', href: '/favicon.svg' }]],
 
   themeConfig: {
     // 深浅两版除颜色外必须一致；含义见 docs/public/logo.svg 的注释
