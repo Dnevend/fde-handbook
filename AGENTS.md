@@ -93,6 +93,6 @@ python3 eval/validate.py                          # 校验 v1/v2 测试集
 - 不要为了"看起来完整"提前填正文，占位页是刻意的。
 - 不要手改生成物：`config.ts` 的 `sidebar`、部分导言页的 `<ChapterList>` 输出、README 进度块、`docs/public/figures/*.svg`。改源头（`book.json` / `figures/src/`），再跑 `npm run docs:sync` 或 `./figures/render.sh`。
 - 不要调整章节顺序或增删部分，结构由维护者决定。
-- 不要擅自更换开源协议（正文与数据 CC BY-NC-SA 4.0、代码 MIT，见 `LICENSE-docs` 与 `LICENSE`），也不要擅自决定部署方式（待定）。
+- 不要擅自更换开源协议（正文与数据 CC BY-NC-SA 4.0、代码 MIT，见 `LICENSE-docs` 与 `LICENSE`），也不要擅自更换部署方式（已定为 GitHub Pages + GitHub Actions，见 `.github/workflows/deploy.yml`）。
 - 不要引入与当前章节无关的依赖；需要新依赖时先说明用途。
 - 不要在仓库里写本机绝对路径（`/Users/...`）。

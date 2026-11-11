@@ -6,6 +6,8 @@
  * 图注三段：图号、一句话说明、数据来源。只要图里有数字，source 必填，
  * 并沿用正文的"估算 / 引用 / 实测"标注口径。
  */
+import { withBase } from 'vitepress'
+
 withDefaults(
   defineProps<{
     id: string
@@ -21,8 +23,8 @@ withDefaults(
 <template>
   <figure class="book-figure">
     <!-- 点开原始 SVG：小屏上正文栏只有 320px 左右，图缩得太小，开新标签能按原尺寸看。 -->
-    <a class="book-figure__link" :href="src" target="_blank" rel="noopener">
-      <img class="book-figure__img" :src="src" :alt="alt" loading="lazy" />
+    <a class="book-figure__link" :href="withBase(src)" target="_blank" rel="noopener">
+      <img class="book-figure__img" :src="withBase(src)" :alt="alt" loading="lazy" />
     </a>
     <figcaption class="book-figure__caption">
       <span class="book-figure__id">图 {{ id }}</span>

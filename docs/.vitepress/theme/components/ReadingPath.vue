@@ -3,6 +3,7 @@
  * 阅读路径。章节编号与完稿状态来自 docs/.vitepress/book.json：
  * 路径里混进占位页时，页面会自动标灰并说明，不必手工维护提示语。
  */
+import { withBase } from 'vitepress'
 import book from '../../book.json'
 
 const props = defineProps<{ id: string }>()
@@ -20,7 +21,7 @@ const pending = items.filter((s) => s.status === 'placeholder' || s.status === '
   <div class="reading-path">
     <p class="reading-path__seq">
       <template v-for="(s, i) in items" :key="s.path">
-        <a :href="s.path" :class="{ 'is-pending': s.status === 'placeholder' || s.status === 'draft' }">{{ s.num }}</a>
+        <a :href="withBase(s.path)" :class="{ 'is-pending': s.status === 'placeholder' || s.status === 'draft' }">{{ s.num }}</a>
         <span v-if="i < items.length - 1" class="reading-path__sep">→</span>
       </template>
     </p>

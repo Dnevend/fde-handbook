@@ -40,14 +40,16 @@
 
 ```bash
 npm install
-npm run docs:dev      # 本地预览，默认 http://localhost:5173
+npm run docs:dev      # 本地预览，http://localhost:5173/fde-handbook/
 npm run docs:build    # 构建静态站点到 docs/.vitepress/dist
-npm run docs:preview  # 预览构建结果
+npm run docs:preview  # 预览构建结果，同样带 /fde-handbook/ 前缀
 ```
 
 ## 部署
 
-待定。当前仓库为私有，暂未配置发布流程。
+站点发布在 GitHub Pages：<https://dnevend.github.io/fde-handbook/>。
+
+推送到 `master` 会自动触发 `.github/workflows/deploy.yml`：先跑 `npm run check`，通过后再构建并发布；也可以在 Actions 页面手动触发。站点按项目页部署，`docs/.vitepress/config.ts` 的 `base` 固定为 `/fde-handbook/`；改仓库名、迁移域名或换成用户主页时，要同步修改 `base` 与 `sitemap.hostname`。
 
 ## 写作约定
 

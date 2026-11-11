@@ -3,6 +3,7 @@
  * 部分导言页末尾的章节列表。
  * 数据来自 docs/.vitepress/book.json，与侧边栏、README 进度同源，避免手工同步。
  */
+import { withBase } from 'vitepress'
 import book from '../../book.json'
 
 const props = defineProps<{ part: string }>()
@@ -12,7 +13,7 @@ const sections = book.parts.find((p) => p.id === props.part)?.sections.filter((s
 <template>
   <ul>
     <li v-for="s in sections" :key="s.path">
-      <a :href="s.path">{{ s.num }} {{ s.nav }}</a>
+      <a :href="withBase(s.path)">{{ s.num }} {{ s.nav }}</a>
       <span v-if="s.status === 'placeholder'" class="chapter-list__tag">写作中</span>
       <span v-else-if="s.status === 'draft'" class="chapter-list__tag">草稿</span>
     </li>
